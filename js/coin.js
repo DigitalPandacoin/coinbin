@@ -10,8 +10,8 @@
 	var coinjs = window.coinjs = function () { };
 
 	/* public vars */
-	coinjs.pub = 0x00;
-	coinjs.priv = 0x80;
+	coinjs.pub = 0x37;
+	coinjs.priv = 0xB7;
 	coinjs.multisig = 0x05;
 	coinjs.hdkey = {'prv':0x0488ade4, 'pub':0x0488b21e};
 	coinjs.bech32 = {'charset':'qpzry9x8gf2tvdw0s3jn54khce6mua7l', 'version':0, 'hrp':'bc'};
@@ -316,8 +316,8 @@
 	}
 
 	/* retreive the balance from a given address */
-	coinjs.addressBalance = function(address, callback){
-		coinjs.ajax(coinjs.host+'?uid='+coinjs.uid+'&key='+coinjs.key+'&setmodule=addresses&request=bal&address='+address+'&r='+Math.random(), callback, "GET");
+	coinjs.addressBalance = function(explorer_api, address, callback){
+		coinjs.ajax(explorer_api+address, callback, "GET");
 	}
 
 	/* decompress an compressed public key */
@@ -1031,7 +1031,7 @@
 
 		/* list unspent transactions */
 		r.listUnspent = function(address, callback) {
-			coinjs.ajax(coinjs.host+'?uid='+coinjs.uid+'&key='+coinjs.key+'&setmodule=addresses&request=unspent&address='+address+'&r='+Math.random(), callback, "GET");
+			coinjs.ajax('https://chainz.cryptoid.info/pnd/api.dws?q=unspent&active='+address+'&key=1a9c92c7492b', callback, "GET");
 		}
 
 		/* add unspent to transaction */
@@ -1096,9 +1096,29 @@
 
 		/* broadcast a transaction */
 		r.broadcast = function(callback, txhex){
-			var tx = txhex || this.serialize();
-			coinjs.ajax(coinjs.host+'?uid='+coinjs.uid+'&key='+coinjs.key+'&setmodule=bitcoin&request=sendrawtransaction&rawtx='+tx+'&r='+Math.random(), callback, "GET");
+			console.log("Reqesting");
+			$.ajax({
+				type: "POST",
+				url: "./RPCSendRawTrans.php",
+				data: txhex,
+				dataType: "json",
+				contentType: "application/json",
+				error: function(data) {
+					return callback("failed");
+				},			
+				success: function(data) {
+					return callback(data);
+				},
+				complete: function (data, satus) {
+					// nothing
+				}
+			});				
 		}
+        //r.broadcast = function(callback, txhex, pandacoin){
+		//	var tx = txhex || this.serialize();
+		//	coinjs.ajax(coinjs.host+'?uid='+coinjs.uid+'&key='+coinjs.key+'&setmodule=bitcoin&request=sendrawtransaction&rawtx='+tx+'&r='+Math.random(), callback, "GET");
+            
+		//}
 
 		/* generate the transaction hash to sign from a transaction input */
 		r.transactionHash = function(index, sigHashType) {
