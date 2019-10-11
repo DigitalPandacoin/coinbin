@@ -34,7 +34,7 @@ function XVarDump(&$Var, $flatten = true) // for debugging
 function execWallet($method, $param = array())
 {
 	//----------
-	$uri = 'http://'.RPC_USER.':'.RPC_PASS.'@'.RPC_HOST.':'.RPC_PORT.'/';
+	$uri = 'https://chainz.cryptoid.info/zeit/api.dws?q=pushtx';
 	//----------
 	$request = json_encode( array('method' => $method, 'params' => $param, 'id' => 1) );
 	$opts = array('http' => array( 'method' => 'POST', 'header' => 'Content-type: application/json', 'content' => $request, 'ignore_errors' => false));
@@ -66,7 +66,7 @@ function execWallet($method, $param = array())
 }
 //----------
 $postBody = file_get_contents('php://input');
-$reply = execWallet("sendrawtransaction", array($postBody));
+$reply = execWallet(array($postBody));
 //----------
 if ($reply === false)
 	echo "failed";
