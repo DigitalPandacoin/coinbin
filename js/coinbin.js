@@ -638,6 +638,7 @@ $(document).ready(function() {
 	});
 
 	$("#transactionBtn").click(function(){
+    debugger;
 		var tx = coinjs.transaction();
 		var estimatedTxSize = 10; // <4:version><1:txInCount><1:txOutCount><4:nLockTime>
 
@@ -737,6 +738,7 @@ $(document).ready(function() {
 	$("#feesestnewtx").click(function(){
 		$(this).attr('est','y');
 		$("#transactionBtn").click();
+    debugger;
 	});
 
 	$("#feesestwallet").click(function(){
@@ -1462,11 +1464,13 @@ $(document).ready(function() {
 	/* broadcast a transaction */
 
 	$("#rawSubmitBtn").click(function(){
-		console.log('#rawsubmitbtn')
+debugger;
+    console.log('#rawsubmitbtn')
         rawSubmitDefault(this);
 	});
 
     function rawSubmitDefault(thisbtn){
+      debugger;
         $(thisbtn).val('Please wait, loading...').attr('disabled',true);
         txhex = $("#rawTransaction").val();
         console.log("Reqesting");
@@ -1548,6 +1552,7 @@ $(document).ready(function() {
 
 	// broadcast transaction via cryptoid
 	function rawSubmitcryptoid_Carboncoin(thisbtn) {
+    debugger;
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
 		$.ajax ({
 			type: "POST",
@@ -1573,6 +1578,7 @@ $(document).ready(function() {
 	}
 
     function rawSubmitCypherFunk(thisbtn){
+      debugger;
         $(thisbtn).val('Please wait, loading...').attr('disabled',true);
         txhex = $("#rawTransaction").val();
         console.log("Reqesting");
@@ -1611,68 +1617,73 @@ $(document).ready(function() {
             });
 }
 
+//function rawSubmitzeitcoin(thisbtn){
+//  debugger;
+//      $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+//      txhex = $("#rawTransaction").val();
+//      console.log("Reqesting");
+//      console.log(txhex);
+//       console.log("success reply:");
+//          $.ajax({
+//              type: "POST",
+//              url: "./js/RPCSendRawTrans-zeit.php",
+//              data: txhex,
+//              //dataType: "json",
+//              contentType: "application/json",
+//              error: function(data) {
+//                  var r = ' Failed to Broadcast.'; // this wants a preceding space
+//                  $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+//              },
+//              success: function(data) {
+//                  if(data){
+//                      var txid = data; // is this right?
+//                      $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'">' + txid + '</a>');
+//                  } else {
+//                      $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+//                  }
+//              },
+  //            complete: function (data, status) {
+  //                                 console.log(data);
+
+                  //$("#rawTransactionStatus").fadeOut().fadeIn();
+                  //$(thisbtn).val('Submit').attr('disabled',false);
+              //}
+          //});
+//}
 function rawSubmitzeitcoin(thisbtn){
-      $(thisbtn).val('Please wait, loading...').attr('disabled',true);
-      txhex = $("#rawTransaction").val();
-      console.log("Reqesting");
-      console.log(txhex);
-       console.log("success reply:");
-          $.ajax({
-              type: "POST",
-              url: "./js/RPCSendRawTrans.php",
-              data: txhex,
-              //dataType: "json",
-              contentType: "application/json",
-              error: function(data) {
-                  var r = ' Failed to Broadcast.'; // this wants a preceding space
-                  $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
-              },
-              success: function(data) {
-                  if(data){
-                      var txid = data; // is this right?
-                      $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'">' + txid + '</a>');
-                  } else {
-                      $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
-                  }
-              },
-              complete: function (data, status) {
-                                   console.log(data);
-
-                  $("#rawTransactionStatus").fadeOut().fadeIn();
-                  $(thisbtn).val('Submit').attr('disabled',false);
-              }
-          });
-}
-
-  //	$(thisbtn).val('Please wait, loading...').attr('disabled',true);
-	//	$.ajax ({
-	//		type: "POST",
-	//		url: "https://chainz.cryptoid.info/zeit/api.dws?q=pushtx",
-	//		data: JSON.stringify({ "rawtx": $("#rawTransaction").val() }),
-	//		dataType : "json",
-	//		contentType: "application/json",
-  //    error: function(data) {
-	//			var obj = data.responseText;
-	//			var r = ' ';
-	//			r += (obj) ? ' '+obj : '';
-	//			r = (r!='') ? r : ' Failed to broadcast'; // build response
-	//			$("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
-	//		},
-	//		success: function(data) {
-	//			if(data){
-	//				$("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: ' + data.txid);
-	//			} else {
-	//				$("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
-	//			}
-	//		},
-	//		complete: function(data, status) {
-	//			$("#rawTransactionStatus").fadeOut().fadeIn();
-	//			$(thisbtn).val('Submit').attr('disabled',false);
-	//		}
-	//	});
-	//}
+  var myHeaders = new Headers();
+   myHeaders.append('Access-Control-Allow-Methods:', 'GET', 'POST', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS');
+   myHeaders.append('Access-Control-Allow-Headers:', 'Content-Type');
+  	$(thisbtn).val('Please wait, loading...').attr('disabled',true);
+		$.ajax ({
+			type: "POST",
+			url: "https://chainz.cryptoid.info/zeit/api.dws?q=pushtx",
+			data: JSON.stringify({ "rawtx": $("#rawTransaction").val() }),
+			dataType : "json",
+			contentType: "application/json",
+      error: function(data) {
+				var obj = data.responseText;
+				var r = ' ';
+				r += (obj) ? ' '+obj : '';
+				r = (r!='') ? r : ' Failed to broadcast'; // build response
+				$("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+			},
+			success: function(data) {
+				if(data){
+					$("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: ' + data.txid);
+				} else {
+					$("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+				}
+			},
+			complete: function(data, status) {
+				$("#rawTransactionStatus").fadeOut().fadeIn();
+				$(thisbtn).val('Submit').attr('disabled',false);
+			}
+		});
+	}
 
 function rawSubmitDigiExplorer(thisbtn){
+  debugger;
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
 		$.ajax ({
 			type: "POST",
@@ -1703,6 +1714,7 @@ function rawSubmitDigiExplorer(thisbtn){
 
 	// broadcast transaction via chain.so (mainnet)
 	function rawSubmitChainso(thisbtn, network){
+    debugger;
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
 		$.ajax ({
 			type: "POST",
@@ -1732,6 +1744,7 @@ function rawSubmitDigiExplorer(thisbtn){
 
 	// broadcast transaction via blockcypher.com (mainnet)
 	function rawSubmitblockcypher(thisbtn, network){
+    debugger;
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
 		$.ajax ({
 			type: "POST",
@@ -1762,6 +1775,7 @@ function rawSubmitDigiExplorer(thisbtn){
 
 	// broadcast transaction via chain.so for litecoin
 	function rawSubmitblockchair(thisbtn, network){
+    debugger;
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
                 $.ajax ({
                         type: "POST",
@@ -2129,6 +2143,7 @@ function rawSubmitDigiExplorer(thisbtn){
 	if(_getBroadcast[0]){
 		$("#rawTransaction").val(_getBroadcast[0]);
 		$("#rawSubmitBtn").click();
+    debugger;
 		window.location.hash = "#broadcast";
 	}
 
