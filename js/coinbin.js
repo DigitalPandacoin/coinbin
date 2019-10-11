@@ -140,6 +140,7 @@ $(document).ready(function() {
 	});
 
 	$("#walletConfirmSend").click(function(){
+    debugger;
 		var thisbtn = $(this);
 		var tx = coinjs.transaction();
 		var txfee = $("#txFee");
