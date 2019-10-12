@@ -1470,7 +1470,33 @@ debugger;
 	});
 
     function rawSubmitDefault(thisbtn){
-      debugger;
+    /*  $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+      $.ajax ({
+        type: "POST",
+        url: "https://chainz.cryptoid.info/pnd/api.dws?q=pushtx",
+        data: JSON.stringify({ "rawtx": $("#rawTransaction").val() }),
+        dataType : "json",
+        //contentType: "application/json",
+        error: function(data) {
+          var obj = data.responseText;
+          var r = ' ';
+          r += (obj) ? ' '+obj : '';
+          r = (r!='') ? r : ' Failed to broadcast'; // build response
+          $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+        },
+        success: function(data) {
+          if(data){
+            $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: ' + data.txid);
+          } else {
+            $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+          }
+        },
+        complete: function(data, status) {
+          $("#rawTransactionStatus").fadeOut().fadeIn();
+          $(thisbtn).val('Submit').attr('disabled',false);
+        }
+      });
+    } */
         $(thisbtn).val('Please wait, loading...').attr('disabled',true);
         txhex = $("#rawTransaction").val();
         console.log("Reqesting");
@@ -1578,44 +1604,71 @@ debugger;
 	}
 
     function rawSubmitCypherFunk(thisbtn){
-      debugger;
-        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
-        txhex = $("#rawTransaction").val();
-        console.log("Reqesting");
-        console.log(txhex);
-         console.log("success reply:");
-            $.ajax({
-                type: "POST",
-                url: "./js/RPCSendRawTrans-funk.php",
-                data: txhex,
-                dataType: "json",
-                contentType: "application/json",
-                error: function(data) {
-                    console.log(data);
-                    console.log("(Ajax connection failed)")
-                    var r = ' Transaction Processed'; // this wants a preceding space
-                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
-                },
-                success: function(data) {
-                                     console.log(data);
+      $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+      $.ajax ({
+        type: "POST",
+        url: "https://chainz.cryptoid.info/funk/api.dws?q=pushtx",
+        data: JSON.stringify({ "rawtx": $("#rawTransaction").val() }),
+        dataType : "json",
+        //contentType: "application/json",
+        error: function(data) {
+          var obj = data.responseText;
+          var r = ' ';
+          r += (obj) ? ' '+obj : '';
+          r = (r!='') ? r : ' Failed to broadcast'; // build response
+          $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+        },
+        success: function(data) {
+          if(data){
+            $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: ' + data.txid);
+          } else {
+            $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+          }
+        },
+        complete: function(data, status) {
+          $("#rawTransactionStatus").fadeOut().fadeIn();
+          $(thisbtn).val('Submit').attr('disabled',false);
+        }
+      });
+      }
+    //  debugger;
+    //    $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+    //    txhex = $("#rawTransaction").val();
+    //    console.log("Reqesting");
+    //   console.log(txhex);
+    //     console.log("success reply:");
+    //        $.ajax({
+    //            type: "POST",
+    //            url: "./js/RPCSendRawTrans-funk.php",
+    //            data: txhex,
+    //            dataType: "json",
+    //            contentType: "application/json",
+    //            error: function(data) {
+    //                console.log(data);
+    //                console.log("(Ajax connection failed)")
+    //                var r = ' Transaction Processed'; // this wants a preceding space
+    //                $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+    //            },
+    //            success: function(data) {
+    //                                 console.log(data);
 
-                    if(data){
-                        console.log("success reply:");
-                        console.log(data);
-                        var txid = data; // is this right?
-                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: ' + txid);
-                    } else {
-                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
-                    }
-                },
-                complete: function (data, status) {
-                                     console.log(data);
+    //                if(data){
+    //                    console.log("success reply:");
+    //                    console.log(data);
+    //                    var txid = data; // is this right?
+    //                    $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: ' + txid);
+    //                } else {
+    //                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+    //                }
+    //            },
+    //            complete: function (data, status) {
+    //                                 console.log(data);
 
-                    $("#rawTransactionStatus").fadeOut().fadeIn();
-                    $(thisbtn).val('Submit').attr('disabled',false);
-                }
-            });
-}
+    //                $("#rawTransactionStatus").fadeOut().fadeIn();
+    //                $(thisbtn).val('Submit').attr('disabled',false);
+    //            }
+    //        });
+//}
 
 //function rawSubmitzeitcoin(thisbtn){
 //  debugger;
