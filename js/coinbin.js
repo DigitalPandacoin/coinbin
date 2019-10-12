@@ -1651,16 +1651,13 @@ debugger;
           //});
 //}
 function rawSubmitzeitcoin(thisbtn){
-  var myHeaders = new Headers();
-   myHeaders.append('Access-Control-Allow-Methods:', 'GET', 'POST', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS');
-   myHeaders.append('Access-Control-Allow-Headers:', 'Content-Type');
   	$(thisbtn).val('Please wait, loading...').attr('disabled',true);
 		$.ajax ({
 			type: "POST",
 			url: "https://chainz.cryptoid.info/zeit/api.dws?q=pushtx",
 			data: JSON.stringify({ "rawtx": $("#rawTransaction").val() }),
 			dataType : "json",
-			contentType: "application/json",
+			//contentType: "application/json",
       error: function(data) {
 				var obj = data.responseText;
 				var r = ' ';
