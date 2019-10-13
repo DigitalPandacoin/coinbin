@@ -2430,6 +2430,8 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_block = "https://chainz.cryptoid.info/funk/block.dws?";
                 explorer_api = "https://chainz.cryptoid.info/funk/api.dws?q=getbalance&a=";
                 tickerCode = "FUNK";
+                document.getElementById("coinLogo").src = "images/logo/funk.png";
+                document.getElementById("bTtitle").textContent = "Cypherfunk";
         } else if(host=='cryptoid.info_zeitcoin'){
                 console.log(host)
                 explorer_tx = "https://chainz.cryptoid.info/zeit/tx.dws?";
@@ -2437,6 +2439,8 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_block = "https://chainz.cryptoid.info/zeit/block.dws?";
                 explorer_api = "https://chainz.cryptoid.info/zeit/api.dws?q=getbalance&a=";
                 tickerCode = "ZEIT";
+                document.getElementById("coinLogo").src = "images/logo/zeit.png";
+                document.getElementById("bTtitle").textContent = "Zeitcoin";
         } else if(host=='blockcypher_dogecoin'){
                 console.log(host)
                 explorer_tx = "https://dogechain.info/tx/";
@@ -2444,6 +2448,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_block = "https://dogechain.info/block/";
                 explorer_api = "https://dogechain.info/chain/Dogecoin/q/addressbalance/";
                 tickerCode = "DOGE";
+                document.getElementById("bTtitle").textContent = "Dogecoin";
         } else if(host=='blockchair_dogecoin'){
                 console.log(host)
                 explorer_tx = "https://dogechain.info/tx/";
@@ -2451,6 +2456,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_block = "https://dogechain.info/block/";
                 explorer_api = "https://dogechain.info/chain/Dogecoin/q/addressbalance/";
                 tickerCode = "DOGE";
+                document.getElementById("bTtitle").textContent = "Dogecoin";
         } else if(host=='chain.so_dogecoin'){
                 console.log(host)
                 explorer_tx = "https://dogechain.info/tx/";
@@ -2458,6 +2464,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_block = "https://dogechain.info/block/";
                 explorer_api = "https://dogechain.info/chain/Dogecoin/q/addressbalance/";
                 tickerCode = "DOGE";
+                document.getElementById("bTtitle").textContent = "Dogecoin";
         } else {
                 console.log(host)
                 explorer_tx = "https://chainz.cryptoid.info/pnd/tx.dws?";
@@ -2465,6 +2472,8 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_block = "https://chainz.cryptoid.info/pnd/block.dws?";
                 explorer_api = "https://chainz.cryptoid.info/pnd/api.dws?q=getbalance&a=";
                 tickerCode = "PND";
+                document.getElementById("coinLogo").src = "images/logo/pnd.png";
+                document.getElementById("bTtitle").textContent = "Pandacoin";
         }
 	}
 
