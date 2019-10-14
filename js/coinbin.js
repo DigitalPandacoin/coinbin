@@ -2432,6 +2432,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 tickerCode = "FUNK";
                 document.getElementById("coinLogo").src = "images/logo/funk.png";
                 document.getElementById("bTtitle").textContent = "Cypherfunk";
+                document.getElementById("bTtitle1").textContent = "Cypherfunk";
         } else if(host=='cryptoid.info_zeitcoin'){
                 console.log(host)
                 explorer_tx = "https://chainz.cryptoid.info/zeit/tx.dws?";
@@ -2441,6 +2442,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 tickerCode = "ZEIT";
                 document.getElementById("coinLogo").src = "images/logo/zeit.png";
                 document.getElementById("bTtitle").textContent = "Zeitcoin";
+                document.getElementById("bTtitle1").textContent = "Zeitcoin";
         } else if(host=='blockcypher_dogecoin'){
                 console.log(host)
                 explorer_tx = "https://dogechain.info/tx/";
@@ -2449,6 +2451,8 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_api = "https://dogechain.info/chain/Dogecoin/q/addressbalance/";
                 tickerCode = "DOGE";
                 document.getElementById("bTtitle").textContent = "Dogecoin";
+                document.getElementById("bTtitle1").textContent = "Dogecoin";
+                document.getElementById("coinLogo").src = "images/logo/dogecoin.png";
         } else if(host=='blockchair_dogecoin'){
                 console.log(host)
                 explorer_tx = "https://dogechain.info/tx/";
@@ -2457,6 +2461,8 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_api = "https://dogechain.info/chain/Dogecoin/q/addressbalance/";
                 tickerCode = "DOGE";
                 document.getElementById("bTtitle").textContent = "Dogecoin";
+                document.getElementById("bTtitle1").textContent = "Dogecoin";
+                document.getElementById("coinLogo").src = "images/logo/dogecoin.png";
         } else if(host=='chain.so_dogecoin'){
                 console.log(host)
                 explorer_tx = "https://dogechain.info/tx/";
@@ -2465,6 +2471,35 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_api = "https://dogechain.info/chain/Dogecoin/q/addressbalance/";
                 tickerCode = "DOGE";
                 document.getElementById("bTtitle").textContent = "Dogecoin";
+                document.getElementById("bTtitle1").textContent = "Dogecoin";
+                document.getElementById("coinLogo").src = "images/logo/dogecoin.png";
+        } else if(host=='digiexplorer.info'){
+          console.log(host);
+          document.getElementById("bTtitle").textContent = "DigiBytes";
+          document.getElementById("bTtitle1").textContent = "DigiBytes";
+          document.getElementById("coinLogo").src = "images/logo/digibyte.png";
+          tickerCode = "DGB";
+        }
+        else if(host=='blockcypher_litecoin'){
+          console.log(host);
+          document.getElementById("bTtitle").textContent = "Litecoin";
+          document.getElementById("bTtitle1").textContent = "Litecoin";
+          document.getElementById("coinLogo").src = "images/logo/litecoin.png";
+          tickerCode = "LTC";
+        }
+        else if(host=='cryptoid.info_carboncoin'){
+          console.log(host);
+          document.getElementById("bTtitle").textContent = "Carboncoin";
+          document.getElementById("bTtitle1").textContent = "Carboncoin";
+          document.getElementById("coinLogo").src = "images/logo/carboncoin.png";
+          tickerCode = "CARBON";
+        }
+        else if(host=='shadowcash.host'){
+          console.log(host);
+          document.getElementById("bTtitle").textContent = "ShadowCash";
+          document.getElementById("bTtitle1").textContent = "ShadowCash";
+          document.getElementById("coinLogo").src = "images/logo/shadowcash.png";
+          tickerCode = "SDC";
         } else {
                 console.log(host)
                 explorer_tx = "https://chainz.cryptoid.info/pnd/tx.dws?";
@@ -2474,6 +2509,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 tickerCode = "PND";
                 document.getElementById("coinLogo").src = "images/logo/pnd.png";
                 document.getElementById("bTtitle").textContent = "Pandacoin";
+                document.getElementById("bTtitle1").textContent = "Pandacoin";
         }
 	}
 
