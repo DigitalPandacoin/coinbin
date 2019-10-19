@@ -7,6 +7,15 @@
  * JSON RPC functionality addapted from JSON-RPC PHP by Sergio Vaccaro <sergio@inservibile.org>
 */
 //----------
+function console_log($output, $with_script_tags = true) {
+    $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) .
+');';
+    if ($with_script_tags) {
+        $js_code = '<script>' . $js_code . '</script>';
+    }
+    echo $js_code;
+}
+
 define('RPC_HOST', ""); // @ CHANGEME
 define('RPC_PORT', ""); // @ CHANGEME
 define('RPC_USER', ""); // @ CHANGEME
@@ -34,7 +43,7 @@ function XVarDump(&$Var, $flatten = true) // for debugging
 function execWallet($method, $param = array())
 {
 	//----------
-	$uri = 'http://'.RPC_USER.':'.RPC_PASS.'@'.RPC_HOST.':'.RPC_PORT.'/';
+	$uri = 'https://chainz.cryptoid.info/zeit/api.dws?q=pushtx';
 	//----------
 	$request = json_encode( array('method' => $method, 'params' => $param, 'id' => 1) );
 	$opts = array('http' => array( 'method' => 'POST', 'header' => 'Content-type: application/json', 'content' => $request, 'ignore_errors' => false));
@@ -66,7 +75,8 @@ function execWallet($method, $param = array())
 }
 //----------
 $postBody = file_get_contents('php://input');
-$reply = execWallet("sendrawtransaction", array($postBody));
+$reply = execWallet(array($postBody));
+console_log(array($postBody));
 //----------
 if ($reply === false)
 	echo "failed";
