@@ -19,7 +19,7 @@
 	coinjs.compressed = false;
 
 	/* other vars */
-	coinjs.developer = '3K1oFZMks41C7qDYBsr72SYjapLqDuSYuN'; //bitcoin
+	coinjs.developer = 'PWEuZH8VWWnYKjwiuL7iRYCDggJjiVqLRa'; //bitcoin
 
 	/* bit(coinb.in) api vars */
 	coinjs.hostname	= ((document.location.hostname.split(".")[(document.location.hostname.split(".")).length-1]) == 'onion') ? '4zpinp6gdkjfplhk.onion' : 'coinb.in';
@@ -650,7 +650,7 @@
 		// derive key from index
 		r.derive = function(i){
 			i = (i)?i:0;
-			var blob = (Crypto.util.hexToBytes(this.keys.pubkey)).concat(coinjs.numToBytes(i,4).reverse());
+			var blob = (Crypto.util.hexToBytes(this.keys.pubkey)).concat(coinjs.numToBytes(i,4));
 
 			var j = new jsSHA(Crypto.util.bytesToHex(blob), 'HEX');
  			var hash = j.getHMAC(Crypto.util.bytesToHex(r.chain_code), "HEX", "SHA-512", "HEX");
@@ -736,7 +736,7 @@
 			k = k.concat(data.parent_fingerprint);
 
 			//child index
-			k = k.concat((coinjs.numToBytes(data.child_index, 4)).reverse());
+			k = k.concat((coinjs.numToBytes(data.child_index, 4)));
 
 			//Chain code
 			k = k.concat(data.chain_code);
@@ -745,7 +745,7 @@
 
 			//encode xprv key
 			if(data.privkey){
-				var prv = (coinjs.numToBytes(coinjs.hdkey.prv, 4)).reverse();
+				var prv = (coinjs.numToBytes(coinjs.hdkey.prv, 4));
 				prv = prv.concat(k);
 				prv.push(0x00);
 				prv = prv.concat(Crypto.util.hexToBytes(data.privkey));
@@ -757,7 +757,7 @@
 
 			//encode xpub key
 			if(data.pubkey){
-				var pub = (coinjs.numToBytes(coinjs.hdkey.pub, 4)).reverse();
+				var pub = (coinjs.numToBytes(coinjs.hdkey.pub, 4));
 				pub = pub.concat(k);
 				pub = pub.concat(Crypto.util.hexToBytes(data.pubkey));
 				var hash = Crypto.SHA256( Crypto.SHA256(pub, { asBytes: true } ), { asBytes: true } );
@@ -1033,7 +1033,7 @@
 		r.listUnspent = function(address, callback) {
 			coinjs.ajax('https://chainz.cryptoid.info/pnd/api.dws?q=unspent&active='+ address +'&key=1a9c92c7492b', callback, "GET");
 		}
-		
+
 		/* add unspent to transaction */
 		r.addUnspent = function(address, callback, script, segwit, sequence){
 			var self = this;
@@ -1048,25 +1048,20 @@
 				var x = {};
                 console.log(x);
 
-				if (window.DOMParser) {
-					parser=new DOMParser();
-					xmlDoc=parser.parseFromString(data,"text/xml");
-				} else {
-					xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
-					xmlDoc.async=false;
-					xmlDoc.loadXML(data);
-				}
+				var jsonDoc = JSON.parse(data);
 
-				var unspent = xmlDoc.getElementsByTagName("unspent_outputs")[0];
+				var unspent = jsonDoc.unspent_outputs;
                 console.log(unspent);
-				for(i=1;i<=unspent.childElementCount;i++){
-					var u = xmlDoc.getElementsByTagName("unspent_"+i)[0]
+				for(i=0;i<unspent.length;i++){
+					var u = unspent[i];
                 console.log(u);
-                console.log(u.getElementsByTagName("script"));
-
-                    var txhash = (u.getElementsByTagName("tx_hash")[0].childNodes[0].nodeValue).match(/.{1,2}/g).reverse().join("")+'';
-					var n = u.getElementsByTagName("tx_output_n")[0].childNodes[0].nodeValue;
-					var scr = script || u.getElementsByTagName("script")[0].childNodes[0].nodeValue;
+// n = undefined script = reporting false
+                    var txhash = u.tx_hash;
+										console.log(txhash);
+					var n = u.tx_output_n;
+					console.log(n);
+					var scr = u.script;
+					console.log(script);
 
 					if(segwit){
 						/* this is a small hack to include the value with the redeemscript to make the signing procedure smoother.
@@ -1081,11 +1076,11 @@
 
 					var seq = sequence || false;
 					self.addinput(txhash, n, scr, seq);
-					value += u.getElementsByTagName("value")[0].childNodes[0].nodeValue*1;
+					value += u.value*1;
 					total++;
 				}
 
-				x.unspent = $(xmlDoc).find("unspent");
+				x.unspent = unspent;
 				x.value = value;
 				x.total = total;
 				return callback(x);
@@ -1107,7 +1102,7 @@
 			console.log("Reqesting");
 			$.ajax({
 				type: "POST",
-				url: "./RPCSendRawTrans.php",
+				url: "./js/RPCSendRawTrans.php",
 				data: txhex,
 				dataType: "json",
 				contentType: "application/json",
@@ -1252,7 +1247,7 @@
 			var bufferTmp = [];
 			if(!(sigHashType >= 80)){	// not sighash anyonecanpay
 				for(var i = 0; i < this.ins.length; i++){
-					bufferTmp = bufferTmp.concat(Crypto.util.hexToBytes(this.ins[i].outpoint.hash).reverse());
+					bufferTmp = bufferTmp.concat(Crypto.util.hexToBytes(this.ins[i].outpoint.hash));
 					bufferTmp = bufferTmp.concat(coinjs.numToBytes(this.ins[i].outpoint.index, 4));
 				}
 			}
@@ -1266,7 +1261,7 @@
 			}
 			var hashSequence = bufferTmp.length >= 1 ? Crypto.SHA256(Crypto.SHA256(bufferTmp, {asBytes: true}), {asBytes: true}) : zero;
 
-			var outpoint = Crypto.util.hexToBytes(this.ins[index].outpoint.hash).reverse();
+			var outpoint = Crypto.util.hexToBytes(this.ins[index].outpoint.hash);
 			outpoint = outpoint.concat(coinjs.numToBytes(this.ins[index].outpoint.index, 4));
 
 			var nsequence = coinjs.numToBytes(this.ins[index].sequence, 4);
@@ -1652,7 +1647,7 @@
 			buffer = buffer.concat(coinjs.numToVarInt(this.ins.length));
 			for (var i = 0; i < this.ins.length; i++) {
 				var txin = this.ins[i];
-				buffer = buffer.concat(Crypto.util.hexToBytes(txin.outpoint.hash).reverse());
+				buffer = buffer.concat(Crypto.util.hexToBytes(txin.outpoint.hash));
 				buffer = buffer.concat(coinjs.numToBytes(parseInt(txin.outpoint.index),4));
 				var scriptBytes = txin.script.buffer;
 				buffer = buffer.concat(coinjs.numToVarInt(scriptBytes.length));
@@ -1730,7 +1725,7 @@
 			for (var i = 0; i < ins; i++) {
 				obj.ins.push({
 					outpoint: {
-						hash: Crypto.util.bytesToHex(readBytes(32).reverse()),
+						hash: Crypto.util.bytesToHex(readBytes(32)),
  						index: readAsInt(4)
 					},
 					script: coinjs.script(readVarString()),
