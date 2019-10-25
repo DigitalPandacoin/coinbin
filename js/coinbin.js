@@ -1910,17 +1910,17 @@ function listUnspentBlockcypher(redeem,network){
           $(thisbtn).val('Submit').attr('disabled',false);
         }
       });
-    } */
+    }
         $(thisbtn).val('Please wait, loading...').attr('disabled',true);
-        txhex = $("#rawTransaction").val();
-        console.log("Reqesting");
+        txhex = $("#rawTransaction").val().trim();
         console.log(txhex);
-         console.log("success reply:");
             $.ajax({
                 type: "POST",
-                url: "./js/RPCSendRawTrans.php",
-                data: txhex,
-                contentType: "application/json",
+                //url: "./js/RPCSendRawTrans.php",
+                url: "https://chainz.cryptoid.info/pnd/api.dws?q=pushtx",
+                data: $("#rawTransaction").val(),
+                //dataType: "text",
+                //  contentType: "text/plain; charset=utf-8",
                 error: function(data) {
                     var r = ' Failed to Broadcast.'; // this wants a preceding space
                     $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
@@ -1940,6 +1940,36 @@ function listUnspentBlockcypher(redeem,network){
                     $(thisbtn).val('Submit').attr('disabled',false);
                 }
             });
+} */
+$(thisbtn).val('Please wait, loading...').attr('disabled',true);
+$.ajax ({
+  type: "POST",
+  url: "./js/RPCSendRawTrans.php",
+  data: $("#rawTransaction").val(),
+  //dataType : "json",
+  //contentType: "application/json",
+  error: function(data) {
+    console.log(data);
+    var obj = data.responseText;
+    var r = ' ';
+    r += (obj) ? ' '+obj : '';
+    r = (r!='') ? r : ' Failed to broadcast'; // build response
+    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+  },
+  success: function(data) {
+    console.log(data);
+    if(data){
+      $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: ' + data.txid);
+    } else {
+      $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+    }
+  },
+  complete: function(data, status) {
+    console.log(data);
+    $("#rawTransactionStatus").fadeOut().fadeIn();
+    $(thisbtn).val('Submit').attr('disabled',false);
+  }
+});
 }
 
 
@@ -1975,8 +2005,8 @@ function listUnspentBlockcypher(redeem,network){
       $.ajax ({
         type: "POST",
         url: "https://chainz.cryptoid.info/funk/api.dws?q=pushtx",
-        data: JSON.stringify({ "rawtx": $("#rawTransaction").val() }),
-        dataType : "json",
+        data: $("#rawTransaction").val(),
+        //dataType : "json",
         //contentType: "application/json",
         error: function(data) {
           console.log(data);
@@ -2007,8 +2037,7 @@ function rawSubmitzeitcoin(thisbtn){
 		$.ajax ({
 			type: "POST",
 			url: "https://chainz.cryptoid.info/zeit/api.dws?q=pushtx",
-			data: JSON.stringify({ "rawtx": $("#rawTransaction").val() }),
-			dataType : "json",
+			data: $("#rawTransaction").val(),
       error: function(data) {
 				var obj = data.responseText;
 				var r = ' ';
