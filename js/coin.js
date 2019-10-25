@@ -650,7 +650,7 @@
 		// derive key from index
 		r.derive = function(i){
 			i = (i)?i:0;
-			var blob = (Crypto.util.hexToBytes(this.keys.pubkey)).concat(coinjs.numToBytes(i,4));
+			var blob = (Crypto.util.hexToBytes(this.keys.pubkey)).concat(coinjs.numToBytes(i,4).reverse());
 
 			var j = new jsSHA(Crypto.util.bytesToHex(blob), 'HEX');
  			var hash = j.getHMAC(Crypto.util.bytesToHex(r.chain_code), "HEX", "SHA-512", "HEX");
@@ -736,7 +736,7 @@
 			k = k.concat(data.parent_fingerprint);
 
 			//child index
-			k = k.concat((coinjs.numToBytes(data.child_index, 4)));
+			k = k.concat((coinjs.numToBytes(data.child_index, 4)).reverse());
 
 			//Chain code
 			k = k.concat(data.chain_code);
@@ -745,7 +745,7 @@
 
 			//encode xprv key
 			if(data.privkey){
-				var prv = (coinjs.numToBytes(coinjs.hdkey.prv, 4));
+				var prv = (coinjs.numToBytes(coinjs.hdkey.prv, 4)).reverse();
 				prv = prv.concat(k);
 				prv.push(0x00);
 				prv = prv.concat(Crypto.util.hexToBytes(data.privkey));
@@ -757,7 +757,7 @@
 
 			//encode xpub key
 			if(data.pubkey){
-				var pub = (coinjs.numToBytes(coinjs.hdkey.pub, 4));
+				var pub = (coinjs.numToBytes(coinjs.hdkey.pub, 4)).reverse();
 				pub = pub.concat(k);
 				pub = pub.concat(Crypto.util.hexToBytes(data.pubkey));
 				var hash = Crypto.SHA256( Crypto.SHA256(pub, { asBytes: true } ), { asBytes: true } );
@@ -1055,13 +1055,10 @@
 				for(i=0;i<unspent.length;i++){
 					var u = unspent[i];
                 console.log(u);
-// n = undefined script = reporting false
+
                     var txhash = u.tx_hash;
-										console.log(txhash);
-					var n = u.tx_output_n;
-					console.log(n);
+					var n = u.tx_ouput_n;
 					var scr = u.script;
-					console.log(script);
 
 					if(segwit){
 						/* this is a small hack to include the value with the redeemscript to make the signing procedure smoother.
@@ -1104,16 +1101,25 @@
 				type: "POST",
 				url: "./js/RPCSendRawTrans.php",
 				data: txhex,
-				dataType: "json",
-				contentType: "application/json",
+				//dataType: "json",
+				//contentType: "application/json",
 				error: function(data) {
-					return callback("failed");
+						var r = ' Failed to Broadcast.'; // this wants a preceding space
+						$("#walletSendConfirmStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
 				},
 				success: function(data) {
-					return callback(data);
+						if(data){
+								var txid = data; // is this right?
+								$("#walletSendConfirmStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'">' + txid + '</a>');
+						} else {
+								$("#walletSendConfirmStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+						}
 				},
-				complete: function (data, satus) {
-					// nothing
+				complete: function (data, status) {
+														 console.log(data);
+
+						$("#walletSendConfirmStatus").fadeOut().fadeIn();
+						$(thisbtn).val('Submit').attr('disabled',false);
 				}
 			});
 		}
@@ -1247,7 +1253,7 @@
 			var bufferTmp = [];
 			if(!(sigHashType >= 80)){	// not sighash anyonecanpay
 				for(var i = 0; i < this.ins.length; i++){
-					bufferTmp = bufferTmp.concat(Crypto.util.hexToBytes(this.ins[i].outpoint.hash));
+					bufferTmp = bufferTmp.concat(Crypto.util.hexToBytes(this.ins[i].outpoint.hash).reverse());
 					bufferTmp = bufferTmp.concat(coinjs.numToBytes(this.ins[i].outpoint.index, 4));
 				}
 			}
@@ -1261,7 +1267,7 @@
 			}
 			var hashSequence = bufferTmp.length >= 1 ? Crypto.SHA256(Crypto.SHA256(bufferTmp, {asBytes: true}), {asBytes: true}) : zero;
 
-			var outpoint = Crypto.util.hexToBytes(this.ins[index].outpoint.hash);
+			var outpoint = Crypto.util.hexToBytes(this.ins[index].outpoint.hash).reverse();
 			outpoint = outpoint.concat(coinjs.numToBytes(this.ins[index].outpoint.index, 4));
 
 			var nsequence = coinjs.numToBytes(this.ins[index].sequence, 4);
@@ -1647,7 +1653,7 @@
 			buffer = buffer.concat(coinjs.numToVarInt(this.ins.length));
 			for (var i = 0; i < this.ins.length; i++) {
 				var txin = this.ins[i];
-				buffer = buffer.concat(Crypto.util.hexToBytes(txin.outpoint.hash));
+				buffer = buffer.concat(Crypto.util.hexToBytes(txin.outpoint.hash).reverse());
 				buffer = buffer.concat(coinjs.numToBytes(parseInt(txin.outpoint.index),4));
 				var scriptBytes = txin.script.buffer;
 				buffer = buffer.concat(coinjs.numToVarInt(scriptBytes.length));
@@ -1725,7 +1731,7 @@
 			for (var i = 0; i < ins; i++) {
 				obj.ins.push({
 					outpoint: {
-						hash: Crypto.util.bytesToHex(readBytes(32)),
+						hash: Crypto.util.bytesToHex(readBytes(32).reverse()),
  						index: readAsInt(4)
 					},
 					script: coinjs.script(readVarString()),
