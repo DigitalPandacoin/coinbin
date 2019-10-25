@@ -1906,21 +1906,19 @@ function listUnspentBlockcypher(redeem,network){
         },
         complete: function(data, status) {
           console.log($("#rawTransaction").val());
-          $("#rawTransactionStatus").fadeOut().fadeIn();
+          $(//"#rawTransactionStatus").fadeOut().fadeIn();
           $(thisbtn).val('Submit').attr('disabled',false);
         }
       });
     }
+*/
         $(thisbtn).val('Please wait, loading...').attr('disabled',true);
         txhex = $("#rawTransaction").val().trim();
         console.log(txhex);
             $.ajax({
                 type: "POST",
-                //url: "./js/RPCSendRawTrans.php",
-                url: "https://chainz.cryptoid.info/pnd/api.dws?q=pushtx",
+                url: "./js/RPCSendRawTrans.php",
                 data: $("#rawTransaction").val(),
-                //dataType: "text",
-                //  contentType: "text/plain; charset=utf-8",
                 error: function(data) {
                     var r = ' Failed to Broadcast.'; // this wants a preceding space
                     $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
@@ -1940,7 +1938,7 @@ function listUnspentBlockcypher(redeem,network){
                     $(thisbtn).val('Submit').attr('disabled',false);
                 }
             });
-} */
+} /*
 $(thisbtn).val('Please wait, loading...').attr('disabled',true);
 $.ajax ({
   type: "POST",
