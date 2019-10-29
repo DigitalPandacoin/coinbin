@@ -10,6 +10,8 @@ $(document).ready(function() {
 
     var wallet_timer = false;
 
+    var customCoinName;
+
 	$("#openBtn").click(function(){
 		var email = $("#openEmail").val().toLowerCase();
 		if(email.match(/[\s\w\d]+@[\s\w\d]+/g)){
@@ -2696,6 +2698,8 @@ function rawSubmitDigiExplorer(thisbtn){
             else if (coinjs.pub == 0x1e){   // DOGE
                 explorer_addr = "https://chain.so/address/DOGE/";
             }
+
+      customCoinName = $('#customCoinName').val();
 
 			$("#statusSettings").addClass("alert-success").removeClass("hidden").html("<span class=\"glyphicon glyphicon-ok\"></span> Settings updates successfully").fadeOut().fadeIn();
 		} else {
