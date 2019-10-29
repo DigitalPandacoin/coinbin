@@ -1521,8 +1521,8 @@ function listUnspentBlockcypher(redeem,network){
 		});
 	}
 
-// Coin Summary For Customized coinjs
-function customizeCoinSummary() {
+// Get list of coins and populate select box
+function populateCoinSelectBox() {
   $.ajax ({
     type: "POST",
     url: "https://chainz.cryptoid.info/explorer/api.dws?q=summary",
@@ -1535,11 +1535,20 @@ function customizeCoinSummary() {
     complete: function(data, status) {
       console.log(data);
       console.log(status);
+
+      var jsonDoc = JSON.parse(data);
+
+      // https://stackoverflow.com/a/26514334
+
+      var listitems = '';
+      $.each(jsonDoc, function(key, value){
+          listitems += '<option value=' + key + '>' + value.name + '</option>';
+      });
+      $('#customCoinName').append(listitems);
     },
   });
 
 }
-
 
 	/* retrieve unspent data from chain.so for carboncoin */
 	function listUnspentCryptoidinfo_Carboncoin(redeem) {
@@ -3142,5 +3151,12 @@ function rawSubmitDigiExplorer(thisbtn){
 
 		return true;
 	};
+
+
+  // populate coin select box with supported coins
+  populateCoinSelectBox();
+    
+
+
 
 });
