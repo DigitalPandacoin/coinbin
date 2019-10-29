@@ -499,7 +499,6 @@ $(document).ready(function() {
 	});
 
 	$("#walletConfirmSend").click(function(){
-    debugger;
 		var thisbtn = $(this);
 		var tx = coinjs.transaction();
 		var txfee = $("#txFee");
@@ -583,7 +582,6 @@ $(document).ready(function() {
 	});
 
 	$("#walletSendBtn").click(function(){
-    debugger;
 		$("#walletSendFailTransaction").addClass('hidden');
 		$("#walletSendStatus").addClass("hidden").html("");
 
@@ -1522,6 +1520,26 @@ function listUnspentBlockcypher(redeem,network){
 			}
 		});
 	}
+
+// Coin Summary For Customized coinjs
+function customizeCoinSummary() {
+  $.ajax ({
+    type: "POST",
+    url: "https://chainz.cryptoid.info/explorer/api.dws?q=summary",
+    error: function() {
+      console.log(data);
+    },
+    success: function(data) {
+      console.log(data);
+    },
+    complete: function(data, status) {
+      console.log(data);
+      console.log(status);
+    },
+  });
+
+}
+
 
 	/* retrieve unspent data from chain.so for carboncoin */
 	function listUnspentCryptoidinfo_Carboncoin(redeem) {
@@ -2635,7 +2653,7 @@ function rawSubmitDigiExplorer(thisbtn){
 
 	$("#coinjs_hdpub").val('0x'+(coinjs.hdkey.pub).toString(16));
 	$("#coinjs_hdprv").val('0x'+(coinjs.hdkey.prv).toString(16));
-
+  //$("#coinjs_ticker");
 	$("#settingsBtn").click(function(){
 
 		// log out of openwallet
