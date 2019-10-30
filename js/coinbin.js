@@ -1291,31 +1291,47 @@ $(document).ready(function() {
 
 		if(host=='chain.so_bitcoinmainnet'){
 			listUnspentChainso(redeem, "BTC");
-        } else if(host=='chain.so_litecoin'){
+    }
+    else if(host=='chain.so_litecoin'){
 			listUnspentChainso(redeem, "LTC");
-		} else if(host=='digiexplorer.info'){
+		}
+    else if(host=='digiexplorer.info'){
 			listUnspentDigiExplorer(redeem);
-        } else if(host=='chain.so_dogecoin'){
-            listUnspentChainso(redeem, "DOGE");
-		} else if(host=='blockcypher_bitcoinmainnet'){
+    }
+    else if(host=='chain.so_dogecoin'){
+      listUnspentChainso(redeem, "DOGE");
+		}
+    else if(host=='blockcypher_bitcoinmainnet'){
 			listUnspentBlockcypher(redeem, "btc");
-        } else if(host=='blockcypher_litecoin'){
+    }
+    else if(host=='blockcypher_litecoin'){
 			listUnspentBlockcypher(redeem, "ltc");
-		} else if(host=='blockcypher_dogecoin'){
+		}
+    else if(host=='blockcypher_dogecoin'){
 			listUnspentBlockcypher(redeem, "doge");
- 		} else if(host=='blockchair_bitcoinmainnet'){
+ 		}
+    else if(host=='blockchair_bitcoinmainnet'){
 			listUnspentBlockchair(redeem, "bitcoin");
-        } else if(host=='blockchair_litecoin'){
+    }
+    else if(host=='blockchair_litecoin'){
 			listUnspentBlockchair(redeem, "litecoin");
-		} else if(host=='cryptoid.info_carboncoin'){
+		}
+    else if(host=='cryptoid.info_carboncoin'){
 			listUnspentCryptoidinfo_Carboncoin(redeem);
-		} else if(host=='cryptoid.info_pandacoin'){
+		}
+    else if(host=='cryptoid.info_pandacoin'){
 			listUnspentCryptoidinfo_Pandacoin(redeem);
-		} else if(host=='cryptoid.info_cypherfunk'){
+		}
+    else if(host=='cryptoid.info_cypherfunk'){
 			listUnspentCypherFunk(redeem);
-        } else if(host=='cryptoid.info_zeitcoin'){
+    }
+    else if(host=='cryptoid.info_zeitcoin'){
 			listUnspentzeitcoin(redeem);
-        } else {
+    }
+    else if(host=="cryptoid.custom"){
+      listUnspentCryptoidinfo(redeem);
+    }
+    else {
 			listUnspentCryptoidinfo_Pandacoin(redeem);
 		}
 
@@ -1524,9 +1540,9 @@ function listUnspentBlockcypher(redeem,network){
 	}
 
 // Get list of coins and populate select box
-function populateCoinSelectBox() {
+/* function populateCoinSelectBox() {
   $.ajax ({
-    type: "POST",
+    type: "GET",
     url: "https://chainz.cryptoid.info/explorer/api.dws?q=summary",
     error: function() {
       console.log(data);
@@ -1550,7 +1566,7 @@ function populateCoinSelectBox() {
     },
   });
 
-}
+} */
 
 	/* retrieve unspent data from chain.so for carboncoin */
 	function listUnspentCryptoidinfo_Carboncoin(redeem) {
@@ -1586,6 +1602,42 @@ function populateCoinSelectBox() {
 
 	}
     /* retrieve unspent data from chain.so for carboncoin */
+    function listUnspentCryptoidinfo(redeem) {
+      console.log("listUnspentCryptoidinfo");
+      $.ajax ({
+        type: "GET",
+        url: "https://chainz.cryptoid.info/"+ customCoinName +"/api.dws?q=unspent&key=1a9c92c7492b&active="+ redeem.addr,
+        dataType: "json",
+        error: function() {
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> '+ url + 'Unexpected error, unable to retrieve unspent outputs! pnd test function error');
+        },
+
+              success: function(data) {
+          //if($(data).find("unspent_outputs").text()==1){
+                    $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            console.log(data)
+                  data.unspent_outputs.forEach(function(item, i) {
+                      var tx_hash = item.tx_hash;
+                      var tx_ouput_n = item.tx_ouput_n;
+                      var value = item.value /100000000;
+                      //var value = ((item.value.text()*1)/100000000).toFixed(8);
+                      var confirms = item.confirmations;
+                      console.log(confirms)
+                      var script = item.script;
+                      var addr = item.addr;
+                      console.log(addr)
+                      console.log(tx_hash, tx_ouput_n, script, value)
+                      addOutput(tx_hash, tx_ouput_n, script, value);
+                      });
+                  },
+        complete: function(data, status) {
+          $("#redeemFromBtn").html("Load").attr('disabled',false);
+          totalInputAmount();
+        }
+      });
+
+    }
+
     function listUnspentCryptoidinfo_Pandacoin(redeem) {
 
   		$.ajax ({
@@ -1908,39 +1960,6 @@ function populateCoinSelectBox() {
 	});
 
     function rawSubmitDefault(thisbtn){
-    /*  $(thisbtn).val('Please wait, loading...').attr('disabled',true);
-      $.ajax ({
-        type: "POST",
-        url: "https://chainz.cryptoid.info/pnd/api.dws?q=pushtx",
-        //data: JSON.stringify({ "rawtx": $("#rawTransaction").val() }),
-        data: $("#rawTransaction").val(),
-        //dataType : "json",
-        //contentType: "application/json",
-        error: function(data) {
-          console.log($("#rawTransaction").val());
-          var obj = data.responseText;
-          var r = ' ';
-          r += (obj) ? ' '+obj : '';
-          r = (r!='') ? r : ' Failed to broadcast'; // build response
-          $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
-        },
-        success: function(data) {
-          if(data){
-            console.log($("#rawTransaction").val());
-            $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: ' + data.txid);
-          } else {
-            console.lo($("#rawTransaction").val());
-            $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
-          }
-        },
-        complete: function(data, status) {
-          console.log($("#rawTransaction").val());
-          $(//"#rawTransactionStatus").fadeOut().fadeIn();
-          $(thisbtn).val('Submit').attr('disabled',false);
-        }
-      });
-    }
-*/
         $(thisbtn).val('Please wait, loading...').attr('disabled',true);
         txhex = $("#rawTransaction").val().trim();
         console.log(txhex);
@@ -1967,40 +1986,7 @@ function populateCoinSelectBox() {
                     $(thisbtn).val('Submit').attr('disabled',false);
                 }
             });
-} /*
-$(thisbtn).val('Please wait, loading...').attr('disabled',true);
-$.ajax ({
-  type: "POST",
-  url: "./js/RPCSendRawTrans.php",
-  data: $("#rawTransaction").val(),
-  //dataType : "json",
-  //contentType: "application/json",
-  error: function(data) {
-    console.log(data);
-    var obj = data.responseText;
-    var r = ' ';
-    r += (obj) ? ' '+obj : '';
-    r = (r!='') ? r : ' Failed to broadcast'; // build response
-    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
-  },
-  success: function(data) {
-    console.log(data);
-    if(data){
-      $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: ' + data.txid);
-    } else {
-      $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
-    }
-  },
-  complete: function(data, status) {
-    console.log(data);
-    $("#rawTransactionStatus").fadeOut().fadeIn();
-    $(thisbtn).val('Submit').attr('disabled',false);
-  }
-});
-}
-
-
-  // broadcast transaction via cryptoid
+} // broadcast transaction via cryptoid
 	function rawSubmitcryptoid_Carboncoin(thisbtn) {
     debugger;
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
@@ -2058,6 +2044,37 @@ $.ajax ({
         }
       });
       }
+
+      function rawSubmitcryptoid(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        $.ajax ({
+          type: "POST",
+          url: "https://chainz.cryptoid.info/"+ customCoinName +"/api.dws?q=pushtx",
+          data: $("#rawTransaction").val(),
+          error: function(data) {
+            console.log(data);
+            var obj = data.responseText;
+            var r = ' ';
+            r += (obj) ? ' '+obj : '';
+            r = (r!='') ? r : ' Failed to broadcast'; // build response
+            $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+          },
+          success: function(data) {
+            console.log(data);
+            if(data){
+              $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: ' + data.txid);
+            } else {
+              $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+            }
+          },
+          complete: function(data, status) {
+            console.log(data);
+            $("#rawTransactionStatus").fadeOut().fadeIn();
+            $(thisbtn).val('Submit').attr('disabled',false);
+          }
+        });
+        }
+
 
 function rawSubmitzeitcoin(thisbtn){
   	$(thisbtn).val('Please wait, loading...').attr('disabled',true);
@@ -2700,6 +2717,7 @@ function rawSubmitDigiExplorer(thisbtn){
             }
 
       customCoinName = $('#customCoinName').val();
+      console.log(customCoinName);
 
 			$("#statusSettings").addClass("alert-success").removeClass("hidden").html("<span class=\"glyphicon glyphicon-ok\"></span> Settings updates successfully").fadeOut().fadeIn();
 		} else {
@@ -2799,7 +2817,11 @@ function rawSubmitDigiExplorer(thisbtn){
 			$("#rawSubmitBtn").click(function(){
 				rawSubmitDigiExplorer(this);
 			});
-		} else {
+		} else if(host="cryptoid.custom"){
+      $("#rawSubmitBtn").click(function(){
+        rawSubmitcryptoid(this);
+    });
+    } else {
 			$("#rawSubmitBtn").click(function(){
 				rawSubmitDefault(this); // revert to default
 			});
@@ -3158,8 +3180,8 @@ function rawSubmitDigiExplorer(thisbtn){
 
 
   // populate coin select box with supported coins
-  populateCoinSelectBox();
-    
+  // populateCoinSelectBox();
+
 
 
 
