@@ -2908,7 +2908,11 @@ function rawSubmitDigiExplorer(thisbtn){
           document.getElementById("bTtitle1").textContent = "ShadowCash";
           document.getElementById("coinLogo").src = "images/logo/shadowcash.png";
           tickerCode = "SDC";
-        } else {
+        }
+        else if(host=='cryptoid.custom') {
+
+        } 
+        else {
                 console.log(host)
                 explorer_tx = "https://chainz.cryptoid.info/pnd/tx.dws?";
                 explorer_addr = "https://chainz.cryptoid.info/pnd/address.dws?";
