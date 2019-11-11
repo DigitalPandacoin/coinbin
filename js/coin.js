@@ -1031,7 +1031,6 @@
 
 		/* list unspent transactions */
 		r.listUnspent = function(address, callback) {
-			console.log(host);
 			console.log("no");
 			coinjs.ajax('https://chainz.cryptoid.info/pnd/api.dws?q=unspent&active='+ address +'&key=1a9c92c7492b', callback, "GET");
 		}
