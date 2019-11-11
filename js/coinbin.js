@@ -1,3 +1,4 @@
+var tickerCode = "";
 $(document).ready(function() {
 
     /* open wallet code */
@@ -6,7 +7,7 @@ $(document).ready(function() {
                 var explorer_addr = "https://chainz.cryptoid.info/pnd/address.dws?";
                 var explorer_block = "https://chainz.cryptoid.info/pnd/block.dws?";
                 var explorer_api = "https://chainz.cryptoid.info/pnd/api.dws?q=getbalance&a=";
-                var tickerCode = "PND";
+                tickerCode = "PND";
 
     var wallet_timer = false;
 
@@ -2910,8 +2911,8 @@ function rawSubmitDigiExplorer(thisbtn){
           tickerCode = "SDC";
         }
         else if(host=='cryptoid.custom') {
-
-        } 
+          console.log(host);
+        }
         else {
                 console.log(host)
                 explorer_tx = "https://chainz.cryptoid.info/pnd/tx.dws?";
