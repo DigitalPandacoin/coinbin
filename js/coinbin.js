@@ -1655,6 +1655,7 @@ function listUnspentBlockcypher(redeem,network){
                   	$("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
   					console.log(data)
                   data.unspent_outputs.forEach(function(item, i) {
+                    if (i > 100) return;
                       var tx_hash = item.tx_hash;
                       var tx_ouput_n = item.tx_ouput_n;
                       var value = item.value /100000000;
