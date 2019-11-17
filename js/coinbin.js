@@ -2919,6 +2919,11 @@ function rawSubmitDigiExplorer(thisbtn){
           tickerCode = "SDC";
         }
         else if(host=='cryptoid.custom') {
+          // change to customcoin for explorer
+                        var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinName +"/tx.dws?";
+                        var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinName +"/address.dws?";
+                        var explorer_block = "https://chainz.cryptoid.info/"+ customCoinName +"/block.dws?";
+                        var explorer_api = "https://chainz.cryptoid.info/"+ customCoinName +"/api.dws?q=getbalance&a=";
           console.log(host);
         }
         else {
