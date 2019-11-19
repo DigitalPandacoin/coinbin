@@ -1,17 +1,20 @@
-var tickerCode = "";
+var tickerCode;
+var customCoinName;
 $(document).ready(function() {
 
     /* open wallet code */
 
-                var explorer_tx = "https://chainz.cryptoid.info/pnd/tx.dws?";
-                var explorer_addr = "https://chainz.cryptoid.info/pnd/address.dws?";
-                var explorer_block = "https://chainz.cryptoid.info/pnd/block.dws?";
-                var explorer_api = "https://chainz.cryptoid.info/pnd/api.dws?q=getbalance&a=";
+                var customCoinName = "pnd";
+                var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinName +"/tx.dws?";
+                var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinName +"/address.dws?";
+                var explorer_block = "https://chainz.cryptoid.info/"+ customCoinName +"/block.dws?";
+                var explorer_api = "https://chainz.cryptoid.info/"+ customCoinName +"/api.dws?q=getbalance&a=";
                 tickerCode = "PND";
+
 
     var wallet_timer = false;
 
-    var customCoinName;
+
 
 	$("#openBtn").click(function(){
 		var email = $("#openEmail").val().toLowerCase();
@@ -60,7 +63,7 @@ $(document).ready(function() {
 
 					$("#walletQrCode").html("");
 					var qrcode = new QRCode("walletQrCode");
-					qrcode.makeCode("bitcoin:"+address);
+					qrcode.makeCode("pandacoin:"+address);
 
 					$("#walletKeys .privkey").val(wif);
 					$("#walletKeys .pubkey").val(pubkey);
@@ -459,7 +462,7 @@ $(document).ready(function() {
 
 		$("#walletQrCode").html("");
 		var qrcode = new QRCode("walletQrCode");
-		qrcode.makeCode("bitcoin:");
+		qrcode.makeCode("pandacoin:");
 
 		$("#walletKeys .privkey").val("");
 		$("#walletKeys .pubkey").val("");
@@ -2847,6 +2850,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_block = "https://chainz.cryptoid.info/funk/block.dws?";
                 explorer_api = "https://chainz.cryptoid.info/funk/api.dws?q=getbalance&a=";
                 tickerCode = "FUNK";
+                customCoinName = "funk";
                 document.getElementById("coinLogo").src = "images/logo/funk.png";
                 document.getElementById("bTtitle").textContent = "Cypherfunk";
                 document.getElementById("bTtitle1").textContent = "Cypherfunk";
@@ -2857,6 +2861,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_block = "https://chainz.cryptoid.info/zeit/block.dws?";
                 explorer_api = "https://chainz.cryptoid.info/zeit/api.dws?q=getbalance&a=";
                 tickerCode = "ZEIT";
+                customCoinName = "zeit";
                 document.getElementById("coinLogo").src = "images/logo/zeit.png";
                 document.getElementById("bTtitle").textContent = "Zeitcoin";
                 document.getElementById("bTtitle1").textContent = "Zeitcoin";
@@ -2867,6 +2872,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_block = "https://dogechain.info/block/";
                 explorer_api = "https://dogechain.info/chain/Dogecoin/q/addressbalance/";
                 tickerCode = "DOGE";
+                customCoinName = "doge";
                 document.getElementById("bTtitle").textContent = "Dogecoin";
                 document.getElementById("bTtitle1").textContent = "Dogecoin";
                 document.getElementById("coinLogo").src = "images/logo/dogecoin.png";
@@ -2896,6 +2902,7 @@ function rawSubmitDigiExplorer(thisbtn){
           document.getElementById("bTtitle1").textContent = "DigiBytes";
           document.getElementById("coinLogo").src = "images/logo/digibyte.png";
           tickerCode = "DGB";
+          customCoinName = "dgb";
         }
         else if(host=='blockcypher_litecoin'){
           console.log(host);
@@ -2903,6 +2910,7 @@ function rawSubmitDigiExplorer(thisbtn){
           document.getElementById("bTtitle1").textContent = "Litecoin";
           document.getElementById("coinLogo").src = "images/logo/litecoin.png";
           tickerCode = "LTC";
+          customCoinName = "ltc";
         }
         else if(host=='cryptoid.info_carboncoin'){
           console.log(host);
@@ -2910,6 +2918,7 @@ function rawSubmitDigiExplorer(thisbtn){
           document.getElementById("bTtitle1").textContent = "Carboncoin";
           document.getElementById("coinLogo").src = "images/logo/carboncoin.png";
           tickerCode = "CARBON";
+          customCoinName = "carbon";
         }
         else if(host=='shadowcash.host'){
           console.log(host);
@@ -2917,6 +2926,7 @@ function rawSubmitDigiExplorer(thisbtn){
           document.getElementById("bTtitle1").textContent = "ShadowCash";
           document.getElementById("coinLogo").src = "images/logo/shadowcash.png";
           tickerCode = "SDC";
+          customCoinName = "sdc";
         }
         else if(host=='cryptoid.custom') {
           // change to customcoin for explorer
@@ -2933,6 +2943,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_block = "https://chainz.cryptoid.info/pnd/block.dws?";
                 explorer_api = "https://chainz.cryptoid.info/pnd/api.dws?q=getbalance&a=";
                 tickerCode = "PND";
+                customCoinName = "pnd";
                 document.getElementById("coinLogo").src = "images/logo/pnd.png";
                 document.getElementById("bTtitle").textContent = "Pandacoin";
                 document.getElementById("bTtitle1").textContent = "Pandacoin";
