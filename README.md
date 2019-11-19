@@ -2,7 +2,7 @@ coinbin
 =======
 
 A Open Source Browser Based Cryptocurrency Wallet and tool. Version 2.0.10 is currently in test and development.
-Includes Open Wallet a browser based Pandacoin and many other cryptocurrencies wallet and tool.
+Includes Open Wallet, a browser based Pandacoin and many other cryptocurrencies wallet and tool.
 
 Note: Coinbin is a powerful transaction tool as well as a wallet and is intended for advanced users, use with caution.
       This project is currently in development, we suggest getting familiar with it using smaller amounts for now.
