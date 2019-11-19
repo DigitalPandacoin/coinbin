@@ -395,6 +395,8 @@ $(document).ready(function() {
               }
             });
           } */
+
+          /*
            $.ajax ({
             type: "GET",
             url: "https://chainz.cryptoid.info/pnd/api.dws?q=unspent&key=1a9c92c7492b&active="+ address + "",
@@ -427,6 +429,7 @@ $(document).ready(function() {
               totalInputAmount();
             }
           }); // end listunspent
+          */
 
 					walletBalance();
 					checkBalanceLoop();
@@ -1618,6 +1621,7 @@ function listUnspentBlockcypher(redeem,network){
                     $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
             console.log(data)
                   data.unspent_outputs.forEach(function(item, i) {
+                    if (i > 100) return;
                       var tx_hash = item.tx_hash;
                       var tx_ouput_n = item.tx_ouput_n;
                       var value = item.value /100000000;
@@ -1692,6 +1696,7 @@ function listUnspentBlockcypher(redeem,network){
                   	$("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
   					console.log(data)
                   data.unspent_outputs.forEach(function(item, i) {
+                    if (i > 100) return;
                       var tx_hash = item.tx_hash;
                       var tx_ouput_n = item.tx_ouput_n;
                       var value = item.value /100000000;
@@ -1728,6 +1733,7 @@ function listUnspentBlockcypher(redeem,network){
 					$("#redeemFromAddress").removeClass('hidden').html(
 						'<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
 				data.unspent_outputs.forEach(function(item, i) {
+          if (i > 100) return;
                     var tx_hash = item.tx_hash;
                     var tx_ouput_n = item.tx_ouput_n;
                     var value = item.value /100000000;
@@ -1765,6 +1771,7 @@ function listUnspentBlockcypher(redeem,network){
   					$("#redeemFromAddress").removeClass('hidden').html(
   						'<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
   				data.unspent_outputs.forEach(function(item, i) {
+            if (i > 100) return;
                       var tx_hash = item.tx_hash;
                       var tx_ouput_n = item.tx_ouput_n;
                       var value = item.value /100000000;
@@ -2912,6 +2919,11 @@ function rawSubmitDigiExplorer(thisbtn){
           tickerCode = "SDC";
         }
         else if(host=='cryptoid.custom') {
+          // change to customcoin for explorer
+                        var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinName +"/tx.dws?";
+                        var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinName +"/address.dws?";
+                        var explorer_block = "https://chainz.cryptoid.info/"+ customCoinName +"/block.dws?";
+                        var explorer_api = "https://chainz.cryptoid.info/"+ customCoinName +"/api.dws?q=getbalance&a=";
           console.log(host);
         }
         else {
