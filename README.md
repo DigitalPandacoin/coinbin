@@ -1,11 +1,16 @@
 coinbin
 =======
 
-A Open Source Browser Based Bitcoin Wallet. Version 1.4 beta by OutCast3k
+A Open Source Browser Based Cryptocurrency Wallet and tool. Version 2.0.10 is currently in test and development.
+Includes Open Wallet a browser based Pandacoin and many other cryptocurrencies wallet and tool.
 
-Live version available at http://coinb.in/ or http://4zpinp6gdkjfplhk.onion
+Note: Coinbin is a powerful transaction tool as well as a wallet and is intended for advanced users, use with caution.
+      This project is currently in development, we suggest getting familiar with it using smaller amounts for now.
+ 
+Compatible with Pandacoin as well as most other Blockchains, we are working on an easy coin configuration option in Settings.
 
-Github URL: https://github.com/OutCast3k/coinbin/
+Coinbin is an open source web based wallet and tool written in javascript and released under the MIT license which means it's free to use and edit.  https://github.com/DigitalPandacoin/coinbin
+Secure design, only you keep your keys, the site does not collect and store IP or transaction data via our servers nor do we receive or store your coins private key.
 
 Coinb.in supports a number of key features such as: 
 
@@ -22,14 +27,13 @@ Coinb.in supports a number of key features such as:
 - Add custom data to transactions with the use of OP_RETURN.
 - Support current Dark Wallet Stealth Address structure (as of version Alpha 7) for outputs.
 - Brain wallet support.
-- Compatible with bitcoin-qt
-- An offical .onion address for tor users.
+- Compatible with Pandacoin-qt, Pandacoin Electrum as well as Pandawallet and many others
 - Offline qrcode creator and scanning tool
 - HD (bip32) support
-- Supports altcoins such as litecoin
+- Supports many altcoins such as litecoin, dogecoin...
 - Replace by fee (RBF) Support
 - Segwit Support
 - Bech32 address support
 - Fee calculator - https://coinb.in/#fees
 
-Donate to 3K1oFZMks41C7qDYBsr72SYjapLqDuSYuN to see more development!
+Donate Pandacoin to PWEuZH8VWWnYKjwiuL7iRYCDggJjiVqLRa to see more development!
