@@ -530,7 +530,7 @@
 			  document.getElementById("coinjs_pub").value = "0x32";
 			  document.getElementById("coinjs_priv").value = "0xb0";
 			  document.getElementById("coinjs_multisig").value = "0x37";
-			  document.getElementById("coinLogo").src = "images/logo/.png";
+			  document.getElementById("coinLogo").src = "images/logo/mona.png";
 			  document.getElementById("bTtitle").textContent = "Monacoin";
 			  document.getElementById("bTtitle1").textContent = "Monacoin";
 			  tickerCode = "MONA";
@@ -539,7 +539,7 @@
 			  document.getElementById("coinjs_pub").value = "0x3";
 			  document.getElementById("coinjs_priv").value = "0x83";
 			  document.getElementById("coinjs_multisig").value = "0x5";
-			  document.getElementById("coinLogo").src = "images/logo/.png";
+			  document.getElementById("coinLogo").src = "images/logo/moon.png";
 			  document.getElementById("bTtitle").textContent = "Mooncoin";
 			  document.getElementById("bTtitle1").textContent = "Mooncoin";
 			  tickerCode = "MOON";
@@ -859,16 +859,16 @@
 			  document.getElementById("bTtitle1").textContent = "Aegeus";
 			  tickerCode = "AEG";
 			}
-		/*	else if (document.getElementById("customCoinName").value == "Asiacoin (AC)") {
+			else if (document.getElementById("customCoinName").value == "Asiacoin (AC)") {
 				console.log("customCoinName");
-				document.getElementById("coinjs_pub").value = "0x";
-			  document.getElementById("coinjs_priv").value = "0x";
-			  document.getElementById("coinjs_multisig").value = "0x";
-			  document.getElementById("coinLogo").src = "images/logo/.png";
-			  document.getElementById("bTtitle").textContent = "";
-			  document.getElementById("bTtitle1").textContent = "";
-			  tickerCode = "";
-			} */
+				document.getElementById("coinjs_pub").value = "0x17";
+			  document.getElementById("coinjs_priv").value = "0x97";
+			  document.getElementById("coinjs_multisig").value = "0x8";
+			  document.getElementById("coinLogo").src = "images/logo/ac.png";
+			  document.getElementById("bTtitle").textContent = "Asiacoin";
+			  document.getElementById("bTtitle1").textContent = "Asiacoin";
+			  tickerCode = "AC";
+			}
 			else if (document.getElementById("customCoinName").value == "btdx") {
 			  document.getElementById("coinjs_pub").value = "0x99";
 			  document.getElementById("coinjs_priv").value = "0x19";
@@ -894,9 +894,155 @@
 			  document.getElementById("coinLogo").src = "images/logo/xch.png";
 			  document.getElementById("bTtitle").textContent = "ClearingHouse";
 			  document.getElementById("bTtitle1").textContent = "ClearingHouse";
+				document.getElementById("xfeeTicker").textContent = "XCH";
 			  tickerCode = "XCH";
 			}
+			else if (document.getElementById("customCoinName").value == "Jumbucks (JBS)") {
+			  document.getElementById("coinjs_pub").value = "0x2b";
+			  document.getElementById("coinjs_priv").value = "0xab";
+			  document.getElementById("coinjs_multisig").value = "0x69";
+			  document.getElementById("coinLogo").src = "images/logo/jbs.png";
+			  document.getElementById("bTtitle").textContent = "Jumbucks";
+			  document.getElementById("bTtitle1").textContent = "Jumbucks";
+			  tickerCode = "JBS";
+			}
+			else if (document.getElementById("customCoinName").value == "Monero (XMR)") {
+			  document.getElementById("coinjs_pub").value = "0x";
+			  document.getElementById("coinjs_priv").value = "0x";
+			  document.getElementById("coinjs_multisig").value = "0x";
+			  document.getElementById("coinLogo").src = "images/logo/xmr.png";
+			  document.getElementById("bTtitle").textContent = "Monero";
+			  document.getElementById("bTtitle1").textContent = "Monero";
+			  tickerCode = "XMR";
+			}
+			else if (document.getElementById("customCoinName").value == "Nushares (NSR)") {
+			  document.getElementById("coinjs_pub").value = "0x";
+			  document.getElementById("coinjs_priv").value = "0x";
+			  document.getElementById("coinjs_multisig").value = "0x";
+			  document.getElementById("coinLogo").src = "images/logo/nsr.png";
+			  document.getElementById("bTtitle").textContent = "Nushares";
+			  document.getElementById("bTtitle1").textContent = "Nushares";
+			  tickerCode = "NSR";
+			}
+			else if (document.getElementById("customCoinName").value == "Nxt (NXT)") {
+			  document.getElementById("coinjs_pub").value = "0x";
+			  document.getElementById("coinjs_priv").value = "0x";
+			  document.getElementById("coinjs_multisig").value = "0x";
+			  document.getElementById("coinLogo").src = "images/logo/nxt.png";
+			  document.getElementById("bTtitle").textContent = "Nxt";
+			  document.getElementById("bTtitle1").textContent = "Nxt";
+			  tickerCode = "NXT";
+			}
+			else if (document.getElementById("customCoinName").value == "Ripple (XRP)") {
+			  document.getElementById("coinjs_pub").value = "0x";
+			  document.getElementById("coinjs_priv").value = "0x";
+			  document.getElementById("coinjs_multisig").value = "0x";
+			  document.getElementById("coinLogo").src = "images/logo/ripple.jpg";
+			  document.getElementById("bTtitle").textContent = "Ripple";
+			  document.getElementById("bTtitle1").textContent = "Ripple";
+			  tickerCode = "XRP";
+			}
+			else if (document.getElementById("customCoinName").value == "Shadowcoin (SDC)") {
+			  document.getElementById("coinjs_pub").value = "0x3f";
+			  document.getElementById("coinjs_priv").value = "0xbf";
+			  document.getElementById("coinjs_multisig").value = "0xbf";
+			  document.getElementById("coinLogo").src = "images/logo/sdc.png";
+			  document.getElementById("bTtitle").textContent = "Shadowcoin";
+			  document.getElementById("bTtitle1").textContent = "Shadowcoin";
+			  tickerCode = "SDC";
+			}
+			else if (document.getElementById("customCoinName").value == "Startcoin (START)") {
+			  document.getElementById("coinjs_pub").value = "0x7d";
+			  document.getElementById("coinjs_priv").value = "0xfd";
+			  document.getElementById("coinjs_multisig").value = "0x5";
+			  document.getElementById("coinLogo").src = "images/logo/start.png";
+			  document.getElementById("bTtitle").textContent = "Startcoin";
+			  document.getElementById("bTtitle1").textContent = "Startcoin";
+			  tickerCode = "START";
+			}
+			else if (document.getElementById("customCoinName").value == "Tezos (XTZ)") {
+			  document.getElementById("coinjs_pub").value = "0x";
+			  document.getElementById("coinjs_priv").value = "0x";
+			  document.getElementById("coinjs_multisig").value = "0x";
+			  document.getElementById("coinLogo").src = "images/logo/xtz.png";
+			  document.getElementById("bTtitle").textContent = "Tezos";
+			  document.getElementById("bTtitle1").textContent = "Tezos";
+			  tickerCode = "XTZ";
+			}
+			else if (document.getElementById("customCoinName").value == "TPCash (TPC)") {
+			  document.getElementById("coinjs_pub").value = "0x41";
+			  document.getElementById("coinjs_priv").value = "0xc1";
+			  document.getElementById("coinjs_multisig").value = "0x55";
+			  document.getElementById("coinLogo").src = "images/logo/tpc.png";
+			  document.getElementById("bTtitle").textContent = "TPCash";
+			  document.getElementById("bTtitle1").textContent = "TPCash";
+			  tickerCode = "TPC";
+			}
+			else if (document.getElementById("customCoinName").value == "Vpncoin (VPN)") {
+			  document.getElementById("coinjs_pub").value = "0x47";
+			  document.getElementById("coinjs_priv").value = "0xc7";
+			  document.getElementById("coinjs_multisig").value = "0x5";
+			  document.getElementById("coinLogo").src = "images/logo/vpn.png";
+			  document.getElementById("bTtitle").textContent = "Vpncoin";
+			  document.getElementById("bTtitle1").textContent = "Vpncoin";
+			  tickerCode = "VPN";
+			}
+			else if (document.getElementById("customCoinName").value == "zCash (ZEC)") {
+			  document.getElementById("coinjs_pub").value = "0x1c";
+			  document.getElementById("coinjs_priv").value = "0x9c";
+			  document.getElementById("coinjs_multisig").value = "0x1c";
+			  document.getElementById("coinLogo").src = "images/logo/zec.png";
+			  document.getElementById("bTtitle").textContent = "zCash";
+			  document.getElementById("bTtitle1").textContent = "zCash";
+			  tickerCode = "ZEC";
+			}
+			else if (document.getElementById("customCoinName").value == "Ziftrcoim (ZRC)") {
+			  document.getElementById("coinjs_pub").value = "0x50";
+			  document.getElementById("coinjs_priv").value = "0xd0";
+			  document.getElementById("coinjs_multisig").value = "0x5";
+			  document.getElementById("coinLogo").src = "images/logo/zrc.png";
+			  document.getElementById("bTtitle").textContent = "Ziftrcoim";
+			  document.getElementById("bTtitle1").textContent = "Ziftrcoim";
+			  tickerCode = "ZRC";
+			}
+			else if (document.getElementById("customCoinName").value == "Zoomcoin (ZOOM)") {
+			  document.getElementById("coinjs_pub").value = "0x";
+			  document.getElementById("coinjs_priv").value = "0x";
+			  document.getElementById("coinjs_multisig").value = "0x";
+			  document.getElementById("coinLogo").src = "images/logo/zoom.png";
+			  document.getElementById("bTtitle").textContent = "Zoomcoin";
+			  document.getElementById("bTtitle1").textContent = "Zoomcoin";
+			  tickerCode = "ZOOM";
+			}
+			else if (document.getElementById("customCoinName").value == "slg") {
+			  document.getElementById("coinjs_pub").value = "0x3f";
+			  document.getElementById("coinjs_priv").value = "0xbf";
+			  document.getElementById("coinjs_multisig").value = "0x55";
+			  document.getElementById("coinLogo").src = "images/logo/slg.png";
+			  document.getElementById("bTtitle").textContent = "Sterlingcoin";
+			  document.getElementById("bTtitle1").textContent = "Sterlingcoin";
+			  tickerCode = "SLG";
+			}
+			else if (document.getElementById("customCoinName").value == "ldoge") {
+			  document.getElementById("coinjs_pub").value = "0x5a";
+			  document.getElementById("coinjs_priv").value = "0xda";
+			  document.getElementById("coinjs_multisig").value = "0x8";
+			  document.getElementById("coinLogo").src = "images/logo/ldoge.png";
+			  document.getElementById("bTtitle").textContent = "LiteDoge";
+			  document.getElementById("bTtitle1").textContent = "LiteDoge";
+			  tickerCode = "LDOGE";
+			}
+			else if (document.getElementById("customCoinName").value == "mint") {
+			  document.getElementById("coinjs_pub").value = "0x33";
+			  document.getElementById("coinjs_priv").value = "0xb3";
+			  document.getElementById("coinjs_multisig").value = "0x8";
+			  document.getElementById("coinLogo").src = "images/logo/mint.png";
+			  document.getElementById("bTtitle").textContent = "Mintcoin";
+			  document.getElementById("bTtitle1").textContent = "Mintcoin";
+			  tickerCode = "Mint";
+			}
 		  else {
+				document.getElementById("xfeeTicker").textContent = document.getElementById("customCoinName").value
 				console.log(document.getElementById("customCoinName").value);
 				tickerCode = document.getElementById("customCoinName").value.toUpperCase();
 				document.getElementById("coinLogo").src = `images/logo/${ document.getElementById("customCoinName").value}.png`;
@@ -2329,7 +2475,7 @@ jQuery(document).ready(function($) {
 <option value"mona">Monacoin (MONA)</option><option value"clam">Clam (CLAM)</option><option value"xpm">Primcoin (XPM)</option><option value"neos">Neoscoin (NEOS)</option><option value"jbs">Jumbucks (JBS)</option><option value"zrc">Ziftrcoim (ZRC)</option><option value"nxt">Nxt (NXT)</option><option value"zoom">Zoomcoin (ZOOM)</option>
 <option value"vpn">Vpncoin (VPN)</option><option value"cdn">Canadaecoin (CDN)</option><option value"sdc">Shadowcoin (SDC)</option><option value"pkb">ParkByte (PKB)</option>
 <option value"start">Startcoin (START)</option><option value"nvc">Novacoin (NVC)</option><option value"ac">Asiacoin (AC)</option><option value"btcd">BitcoinDark (BTCD)</option><option value"rpc">TPCash (TPC)</option><option value"eth">Ethereum (ETH)</option><option value"xvg">Verge (xvg)</option><option value"xrp">Ripple (XRP)</option>
-<option value"xmr">Monero (XMR)</option><option value"zec">zCash (ZEC)</option><option value"xtz">Tezos (XTZ)</option><option value="zln">ZillionCoin (zln)</option><option value="utip">uTipcoin (UTIP)</option><option value="XQR">Qredit (XQR)</options>
+<option value"xmr">Monero (XMR)</option><option value"zec">zCash (ZEC)</option><option value"xtz">Tezos (XTZ)</option><option value="zln">ZillionCoin (zln)</option><option value="utip">uTipcoin (UTIP)</option><option value="XQR">Qredit (XQR)</options><option value="ldoge">LiteDoge (LDOGE)</option><option value="mint">Mintcoin (MINT)</option>
 									</select>
 								</div>
 
@@ -2564,7 +2710,7 @@ jQuery(document).ready(function($) {
 				</div>
 
 				<div class="modal-body">
-					Please be aware that you have created a transaction with what seems to be a very high fee of <span id="modalWarningFeeAmount"></span> PND!
+					Please be aware that you have created a transaction with what seems to be a very high fee of <span id="modalWarningFeeAmount"></span> <span id="xfeeTicker">PND</span>!
 				</div>
 
 				<div class="modal-footer">
