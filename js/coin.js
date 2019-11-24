@@ -317,6 +317,13 @@
 
 	/* retreive the balance from a given address */
 	coinjs.addressBalance = function(explorer_api, address, callback){
+console.log(coinjs.host);
+console.log(tickerCode);
+console.log(customCoinName);
+console.log(explorer_api);
+console.log(address);
+//console.log(coinjs.explorer_api);
+
 		coinjs.ajax(explorer_api+address, callback, "GET");
 	}
 

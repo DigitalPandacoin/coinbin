@@ -4,13 +4,28 @@ $(document).ready(function() {
 
     /* open wallet code */
 
-                var customCoinName = "pnd";
+//                var customCoinName;
+if(tickerCode == null){
+        tickerCode = "PND";
+console.log("coinbin.js customCoinName reset to pnd")
+}
+
+if(customCoinName == null){
+        customCoinName = tickerCode.toLowerCase();
+
+}
+
+if(customCoinName == null){
+console.log("coinbin.js customCoinName reset to pnd")
+        customCoinName = "pnd";
+	tickerCode = "PND";
+}
+
                 var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinName +"/tx.dws?";
                 var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinName +"/address.dws?";
                 var explorer_block = "https://chainz.cryptoid.info/"+ customCoinName +"/block.dws?";
                 var explorer_api = "https://chainz.cryptoid.info/"+ customCoinName +"/api.dws?q=getbalance&a=";
-                tickerCode = "PND";
-
+        
 
     var wallet_timer = false;
 
@@ -59,6 +74,25 @@ $(document).ready(function() {
 					}
 
 					$("#walletAddress").html(address);
+if(tickerCode == null){
+        tickerCode = "PND";
+console.log("coinbin.js customCoinName reset to pnd")
+}
+
+if(customCoinName == null){
+        customCoinName = tickerCode.toLowerCase();
+
+}
+var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinName +"/address.dws?";
+var host = $("#coinjs_broadcast option:selected").val();
+if(host=='blockcypher_dogecoin'){
+                console.log(host)
+                explorer_tx = "https://dogechain.info/tx/";
+                explorer_addr = "https://dogechain.info/address/";
+                explorer_block = "https://dogechain.info/block/";
+                explorer_api = "https://dogechain.info/chain/Dogecoin/q/addressbalance/";
+                tickerCode = "DOGE";
+}
 					$("#walletHistory").attr('href',explorer_addr+address);
 
 					$("#walletQrCode").html("");
@@ -667,6 +701,32 @@ $(document).ready(function() {
 
 	function walletBalance(){
 		var tx = coinjs.transaction();
+console.log("function walletBalance()");
+if(tickerCode == null){
+        tickerCode = "PND";
+console.log("coinbin.js customCoinName reset to pnd")
+}
+if(customCoinName == null){
+        customCoinName = tickerCode.toLowerCase();
+}
+console.log(customCoinName);
+console.log(explorer_api);
+//configureGetUnspentTx();
+var explorer_api = "https://chainz.cryptoid.info/"+ customCoinName +"/api.dws?q=getbalance&a=";
+var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinName +"/address.dws?";
+//configureGetUnspentTx();
+var host = $("#coinjs_broadcast option:selected").val();
+if(host=='blockcypher_dogecoin'){
+                console.log(host)
+                explorer_tx = "https://dogechain.info/tx/";
+                explorer_addr = "https://dogechain.info/address/";
+                explorer_block = "https://dogechain.info/block/";
+                explorer_api = "https://dogechain.info/chain/Dogecoin/q/addressbalance/";
+                tickerCode = "DOGE";
+}
+console.log(host);
+console.log(customCoinName);
+console.log(explorer_api);
 		$("#walletLoader").removeClass("hidden");
 		coinjs.addressBalance(explorer_api, $("#walletAddress").html(),function(data){
             // if($(data).find("result").text()==1){
