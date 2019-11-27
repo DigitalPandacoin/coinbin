@@ -1,4 +1,4 @@
-coinbin
+Pandacoin coinbin
 =======
 
 A Open Source Browser Based Pandacoin and many other Cryptocurrency Wallet and multifunction tool. Pandacoin Coinbin is a friendly yet powerful and secure multicoin non custodial wallet, where only you control your private keys. Version 2.0.10 is currently in test and development.
