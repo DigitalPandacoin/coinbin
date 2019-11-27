@@ -8,7 +8,9 @@ Note: Pandacoin Coinbin is a powerful transaction tool as well as a wallet and i
  
 Compatible with Pandacoin as well as most other Blockchains, we now have an easy custom coin configuration option in Settings.
 
-Coinbin is an open source web based wallet and tool written in javascript and released under the MIT license which means it's free to use and edit.   Online here: https://cryptodepot.org/coinbin/#home       Source code: https://github.com/DigitalPandacoin/coinbin
+Coinbin is an open source web based wallet and tool written in javascript and released under the MIT license which means it's free to use and edit.         Online here: https://cryptodepot.org/coinbin/#home
+                      Source code: https://github.com/DigitalPandacoin/coinbin
+                      
 Secure design, only you keep your keys, the site does not collect and store IP or transaction data via our servers nor do we receive or store your coins private key.
 
 Coinb.in supports a number of key features such as: 
