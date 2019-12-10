@@ -25,7 +25,7 @@ console.log("coinbin.js customCoinName reset to pnd")
                 var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinName +"/address.dws?";
                 var explorer_block = "https://chainz.cryptoid.info/"+ customCoinName +"/block.dws?";
                 var explorer_api = "https://chainz.cryptoid.info/"+ customCoinName +"/api.dws?q=getbalance&a=";
-        
+
 
     var wallet_timer = false;
 
@@ -2104,7 +2104,7 @@ function listUnspentBlockcypher(redeem,network){
         success: function(data) {
           console.log(data);
           if(data){
-            $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: ' + data.txid);
+            $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: ' + data.responseText);
           } else {
             $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
           }

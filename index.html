@@ -2799,6 +2799,51 @@
 			  document.getElementById("bTtitle1").textContent = "Rupaya";
 			  tickerCode = "RUPX";
 			}
+			else if (document.getElementById("customCoinName").value == "1mt") {
+			  document.getElementById("coinjs_pub").value = "0x";
+			  document.getElementById("coinjs_priv").value = "0x";
+			  document.getElementById("coinjs_multisig").value = "0x";
+			  document.getElementById("coinLogo").src = "images/logo/1mt.png";
+			  document.getElementById("bTtitle").textContent = "1Million Token";
+			  document.getElementById("bTtitle1").textContent = "1Million Token";
+			  tickerCode = "1MT";
+			}
+			else if (document.getElementById("customCoinName").value == "airx") {
+			  document.getElementById("coinjs_pub").value = "0x";
+			  document.getElementById("coinjs_priv").value = "0x";
+			  document.getElementById("coinjs_multisig").value = "0x";
+			  document.getElementById("coinLogo").src = "images/logo/airx.png";
+			  document.getElementById("bTtitle").textContent = "Aircoins";
+			  document.getElementById("bTtitle1").textContent = "Aircoins";
+			  tickerCode = "AIRX";
+			}
+			else if (document.getElementById("customCoinName").value == "asafe2") {
+			  document.getElementById("coinjs_pub").value = "0x7d";
+			  document.getElementById("coinjs_priv").value = "0x5f";
+			  document.getElementById("coinjs_multisig").value = "0x53";
+			  document.getElementById("coinLogo").src = "images/logo/asafe2.png";
+			  document.getElementById("bTtitle").textContent = "Allsafe";
+			  document.getElementById("bTtitle1").textContent = "Allsafe";
+			  tickerCode = "ASAFE2";
+			}
+			else if (document.getElementById("customCoinName").value == "avn") {
+			  document.getElementById("coinjs_pub").value = "0x17";
+			  document.getElementById("coinjs_priv").value = "0x97";
+			  document.getElementById("coinjs_multisig").value = "0x29";
+			  document.getElementById("coinLogo").src = "images/logo/.png";
+			  document.getElementById("bTtitle").textContent = "Avantage";
+			  document.getElementById("bTtitle1").textContent = "Avantage";
+			  tickerCode = "AVN";
+			}
+			else if (document.getElementById("customCoinName").value == "bcf") {
+			  document.getElementById("coinjs_pub").value = "0x19";
+			  document.getElementById("coinjs_priv").value = "0x99";
+			  document.getElementById("coinjs_multisig").value = "0x8";
+			  document.getElementById("coinLogo").src = "images/logo/.png";
+			  document.getElementById("bTtitle").textContent = "Bitcoin Fast";
+			  document.getElementById("bTtitle1").textContent = "Bitcoin Fast";
+			  tickerCode = "BCF";
+			}
 	  else {
 				document.getElementById("xfeeTicker").textContent = document.getElementById("customCoinName").value
 				console.log(document.getElementById("customCoinName").value);
@@ -2848,7 +2893,7 @@ jQuery(document).ready(function($) {
 							<span class="icon-bar"></span>
 						</button>
 						<a href="#home" class="navbar-brand" id="homeBtn"><img src="images/coinbin.gif" style="height:25px;margin-top:-5px"></a>
-						<a href="#coins"><img id="coinLogo" src="images/logo/pnd.png" class="coinLogo" alt="Logo for PandaCoin" style="height: 3em; margin-top: 0.5em;"></a>
+						<a href="#Favorites"><img id="coinLogo" src="images/logo/pnd.png" class="coinLogo" alt="Logo for PandaCoin" style="height: 3em; margin-top: 0.5em;"></a>
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav">
@@ -2868,9 +2913,10 @@ jQuery(document).ready(function($) {
 							<li><a href="#sign" data-toggle="tab"><span class="glyphicon glyphicon-pencil"></span> Sign</a></li>
 							<li><a href="#broadcast" data-toggle="tab"><span class="glyphicon glyphicon-globe"></span> Broadcast</a></li>
 							<li><a href="#wallet" data-toggle="tab"><span class="glyphicon glyphicon-briefcase"></span> Wallet</a></li>
+							<li><a href="#Favorites" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Favorites</a></li>
 							<li><a href="#about" data-toggle="tab"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
-                            <li><a href="#settings" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-							<!-- <li class="hidden"><a href="#settings" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Settings</a></li> -->
+							<li><a href="#settings" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+				 <!-- <li class="hidden"><a href="#settings" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Settings</a></li> -->
 							<li class="hidden"><a href="#fees" data-toggle="tab"><span class="glyphicon glyphicon-tag"></span> Fees</a></li>
 						</ul>
 					</div>
@@ -4142,7 +4188,16 @@ jQuery(document).ready(function($) {
 						<h3>Donate</h3>
 						<p>Please donate to <a href="bitcoin:3K1oFZMks41C7qDYBsr72SYjapLqDuSYuN">3K1oFZMks41C7qDYBsr72SYjapLqDuSYuN</a> if you found this project useful or want to see more features!</p>
 					</div>
-
+					<div class="tab-pane tab-content" id="Favorites">
+						<div class="tab-content" style="align-content: auto;">
+							<center> <div style="float: left; margin-right: 10px;"><img src="https://cryptodepot.org/coinbin/images/logo/pnd.png" style="height:45px"><br>Pandacoin</div>
+											 <div style="float: left; margin-right: 10px;"><img src="https://cryptodepot.org/coinbin/images/logo/funk.png" style="height:45px"><br>Cypherfunk</div>
+											 <div style="float: left; margin-right: 10px;"><img src="https://cryptodepot.org/coinbin/images/logo/zeit.png" style="height:45px"><br>Zeitcoin</div>
+											 <div style="float: left; margin-right: 10px;"><img src="https://cryptodepot.org/coinbin/images/logo/ltc.png" style="height:45px;"><br>Litecoin</div>
+											 <div style="float: left; margin-right: 10px;"><img src="https://cryptodepot.org/coinbin/images/logo/dogecoin.png" style="height:45px;"><br>Dogecoin</div>
+											 <div style="clear: both"></div>
+						</div>
+					</div>
 					<div class="tab-pane tab-content" id="settings">
 						<h2>Settings <small> making coinb.in even better!</small></h2>
 						<p>These simple settings below make coinb.in one of the most decentralized wallets in the world.</p>
@@ -4194,41 +4249,41 @@ jQuery(document).ready(function($) {
 									<b>Select Supported Coins</b>: <br>
 									<select name="cCoinName" id="customCoinName" onchange="myFunction(event)">
 										<option selected disabled>Optional</option>
-<option value="42">42-coin (42)</option><option value="1337">Elite (1337)</option><option value="2give">2Give (2give)</option><option value="adc">AudioCoin (adc)</option><option value="ade">Adeptio (ade)</option><option value="aeg">Aegeus (aeg)</option><option value="agnt">ArgentumNT (agnt)</option>
-<option value="aias">Aias (aias)</option><option value="arco">AquariusCoin (arco)</option><option value="arepa">Arepacoin (arepa)</option><option value="arg">Argentum (arg)</option><option value="ari">Aricoin (ari)</option><option value="axe">Axe (axe)</option><option value="b3">B3Coin (b3)</option>
-<option value="bay">BitBay (bay)</option><option value="bbp">Biblepay (bbp)</option><option value="bbtc">BlakeBitcoin (bbtc)</option><option value="bcc">BitConnect Coin (bcc)</option><option value="bccx">BitConnect X (bccx)</option><option value="bcz">BCZ (bcz)</option><option value="bean">Bean Cash (bean)</option>
-<option value="biid">Biidcoin (biid)</option><option value="blc">Blakecoin (blc)</option><option value="blitz">Blitzcash (blitz)</option><option value="blk">BlackCoin (blk)</option><option value="block">Blocknet (block)</option><option value="blu">Bluecoin (blu)</option><option value="bnode">Beenode (bnode)</option>
-<option value="boli">BolivarCoin (boli)</option><option value="bro">Bitradio (bro)</option><option value="bsd">BitSend (bsd)</option><option value="bsx">Bitspace (bsx)</option><option value="btdx">BitCloud (btdx)</option><option value="btx">BitCore (btx)</option><option value="buk2">CryptoBuck (buk2)</option>
-<option value="bzl">BZLCoin (bzl)</option><option value="bzx">bitcoinzero (bzx)</option><option value="cache">'CACHE'Project (cache)</option><option value="cann">CannabisCoin (cann)</option><option value="caps">BottleCapsPlus (caps)</option><option value="cbx">Bullion (cbx)</option><option value="ccn">CannaCoin (ccn)</option>
-<option value="chbt">CHBToken (chbt)</option><option value="civ">Civitas (civ)</option><option value="cloak">CloakCoin (cloak)</option><option value="cmm">Commercium (cmm)</option><option value="cno">Coino (cno)</option><option value="colx">ColossusXT (colx)</option><option value="corg">Corgi (corg)</option>
-<option value="cpc">Capricoin (cpc)</option><option value="crypt">CryptCoin (crypt)</option><option value="crw">CROWN (crw)</option><option value="cure">CureCoin (cure)</option><option value="dal">Dallar (dal)</option><option value="dash">Dash (dash)</option><option value="dev">DeviantCoin (dev)</option>
-<option value="dgb">DigiByte (dgb)</option><option value="dgc">DigitalCoin (dgc)</option><option value="dime">Dimecoin (dime)</option><option value="divi">Divicoin (divi)</option><option value="dmd">Diamond (dmd)</option><option value="d">Denarius (d)</option><option value="dmb">Digitalmoneybits (dmb)</option>
-<option value="donu">Donu (donu)</option><option value="dope">DopeCoin (dope)</option><option value="drz">Droidz (drz)</option><option value="dtc">Datacoin (dtc)</option><option value="dvc">DevCoin (dvc)</option><option value="eac">EarthCoin (eac)</option><option value="ec">Eclipse (ec)</option>
-<option value="ecc">ECC (ecc)</option><option value="efl">e-Gulden (efl)</option><option value="egc">EverGreenCoin (egc)</option><option value="elt">Electron (elt)</option><option value="emc2">Einsteinium (emc2)</option><option value="emd">Emerald (emd)</option><option value="enrg">EnergyCoin (enrg)</option>
-<option value="ent">Eternity (ent)</option><option value="eny">EmergencyCoin (eny)</option><option value="eqt">EquiTrader (eqt)</option><option value="erc">Europecoin (erc)</option><option value="exo">Exosis (exo)</option><option value="excl">ExclusiveCoin (excl)</option><option value="fjc">Fujicoin (fjc)</option>
-<option value="ftc">Feathercoin (ftc)</option><option value="funk">The Cypherfunks (funk)</option><option value="gali">Galilel (gali)</option><option value="gap">GapCoin (gap)</option><option value="gcr">Global Currency Reserve (gcr)</option><option value="genx">Genesis (genx)</option><option value="glc">GoldCoin (glc)</option>
-<option value="glt">GlobalToken (glt)</option><option value="gpl2">GoldPressedLatinum (gpl2)</option><option value="grn">Granite (grn)</option><option value="grs">Groestlcoin (grs)</option><option value="grwi">Growers (grwi)</option><option value="gun">Guncoin (gun)</option>
-<option value="gxx">GravityCoin (gxx)</option><option value="hbn">HoboNickels (hbn)</option><option value="html">HTMLCOIN (html)</option><option value="html5">Html5coin (html5)</option><option value="i0c">I0Coin (i0c)</option><option value="ic">Ignition (ic)</option><option value="icn">iCoin (icn)</option>
-<option value="ifc">InfiniteCoin (ifc)</option><option value="iflt">InflationCoin (iflt)</option><option value="img">ImageCoin (img)</option><option value="imx">Impact (imx)</option><option value="info">Infocoin (info)</option><option value="infx">Influx (infx)</option><option value="insn">InsaneCoin (insn)</option>
-<option value="ioc">I/O Coin (ioc)</option><option value="ion">Ion (ion)</option><option value="ixc">iXcoin (ixc)</option><option value="j">JoinCoin (j)</option><option value="ked">Darsek (ked)</option><option value="klks">Kalkulus (klks)</option><option value="kng">BetKings (kng)</option>
-<option value="kobo">Kobocoin (kobo)</option><option value="kore">Kore (kore)</option><option value="kum">Krium (kum)</option><option value="lana">Lanacoin (lana)</option><option value="lcc">Litecoin Cash (lcc)</option><option value="linx">Linx (linx)</option><option value="lit">Lithium (lit)</option>
-<option value="ltc">Litecoin (ltc)</option><option value="lux">LUXCoin (lux)</option><option value="lynx">Lynx (lynx)</option><option value="lyra">Scrypta (lyra)</option><option value="manna">Manna (manna)</option><option value="marks">Bitmark (marks)</option><option value="mec">Megacoin (mec)</option>
-<option value="mfc">MFCoin (mfc)</option><option value="mic">Mindexcoin (mic)</option><option value="moon">Mooncoin (moon)</option><option value="mrc">Meritcoins (mrc)</option><option value="mscn">Master Swiscoin (mscn)</option><option value="mst">MustangCoin (mst)</option><option value="mue">MonetaryUnit (mue)</option>
-<option value="n8v">NativeCoin (n8v)</option><option value="nacho">NachoCoin (nacho)</option><option value="nav">NavCoin (nav)</option><option value="netko">NETKO (netko)</option><option value="neva">Nevacoin (neva)</option><option value="nix">NIX Core (nix)</option><option value="nobl">Noblecoin (nobl)</option>
-<option value="nor">Noir (nor)</option><option value="nort">Northern (nort)</option><option value="note">DNotes (note)</option><option value="npc">NPCcoin (npc)</option><option value="nro">Neuro (nro)</option><option value="ok">OKCash (ok)</option><option value="onion">DeepOnion (onion)</option>
-<option value="orb">Orbitcoin (orb)</option><option value="ozc">Ozziecoin (ozc)</option><option value="pak">PakCoin (pak)</option><option value="part">Particl (part)</option><option value="pcn">PeepCoin (pcn)</option><option value="pho">Photon (pho)</option><option value="phr">Phore (phr)</option>
-<option value="piggy">Piggycoin (piggy)</option><option value="pink">Pinkcoin (pink)</option><option value="pivx">PIVX (pivx)</option><option value="pnd">PandaCoin (pnd)</option><option value="pot">PotCoin (pot)</option><option value="ppc">PeerCoin (ppc)</option>
-<option value="ptc">Pesetacoin (ptc)</option><option value="pura">PURA (pura)</option><option value="put">PutinCoin (put)</option><option value="qac">Quasar (qac)</option><option value="qbt">Cubits (qbt)</option><option value="qrk">Quark (qrk)</option><option value="qub">QubeNet (qub)</option>
-<option value="rads">Radium (rads)</option><option value="rby">Rubycoin (rby)</option><option value="ric">Riecoin (ric)</option><option value="rpc">RonPaulCoin (rpc)</option><option value="scifi">UnitedSciFi (scifi)</option><option value="scol">Scolcoin (scol)</option><option value="scribe">Scribe (scribe)</option>
-<option value="sha">SHACoin (sha)</option><option value="skc">Skeincoin (skc)</option><option value="slg">Sterlingcoin (slg)</option><option value="slm">Slimcoin (slm)</option><option value="slr">SolarCoin (slr)</option><option value="slx">SLATE (slx)</option><option value="smly">Smileycoin (smly)</option>
-<option value="sphx">Sphinxcoin Core (sphx)</option><option value="sprts">Sprouts (sprts)</option><option value="stk">Stakecoin (stk)</option><option value="strat">Stratis (strat)</option><option value="super">SuperCoin (super)</option><option value="swift">Bitswift (swift)</option>
-<option value="swing">Swing (swing)</option><option value="sxc">SexCoin (sxc)</option><option value="sys">Syscoin (sys)</option><option value="taj">TajCoin (taj)</option><option value="talk">BTCTalkCoin (talk)</option>
-<option value="tao">Tao (tao)</option><option value="tes">Teslacoin (tes)</option><option value="toa">ToaCoin (toa)</option><option value="tpwr">TalonPower (tpwr)</option><option value="troll">Trollcoin (troll)</option><option value="trump">TrumpCoin (trump)</option>
-<option value="tx">Transfercoin (tx)</option><option value="tzc">Trezarcoin (tzc)</option><option value="ufo">UFO (ufo)</option><option value="umo">UniversalMolecule (umo)</option><option value="uno">Unobtanium (uno)</option><option value="vcn">Vcoin (vcn)</option><option value="veil">Veil (veil)</option>
-<option value="vls">Veles (vls)</option><option value="vgs">LasVegasCoin (vgs)</option><option value="vestx2">VESTX v2 (vestx2)</option><option value="via">Viacoin (via)</option><option value="vrc">VeriCoin (vrc)</option><option value="vrm">Verium (vrm)</option><option value="vtc">Vertcoin (vtc)</option>
-<option value="wc">Wincoin (wc)</option><option value="wdc">Worldcoin (wdc)</option><option value="wex">Wexcoin (wex)</option><option value="wgr">Wagerr (wgr)</option><option value="x0z">Zerozed (x0z)</option><option value="xbc">BitcoinPlus (xbc)</option><option value="xc">XCurrency (xc)</option>
-<option value="xde2">XDE2 (xde2)</option><option value="xjo">JouleCoin (xjo)</option><option value="xlr">Solaris (xlr)</option><option value="xmg">Magi (xmg)</option><option value="xmy">Myriad (xmy)</option><option value="xp">Experience Points (xp)</option>
-<option value="xspec">Spectrecoin (xspec)</option><option value="xst">Stealth (xst)</option><option value="xtp">TRUSTplus (xtp)</option><option value="xvp">VirtacoinPlus (xvp)</option><option value="xzc">ZCoin (xzc)</option><option value="zeit">ZeitCoin (zeit)</option><option value="zet">Zetacoin (zet)</option>
+<option value="42">42-coin (42)*</option><option value="1337">Elite (1337)*</option><option value="2give">2Give (2give)*</option><option value="adc">AudioCoin (adc)*</option><option value="ade">Adeptio (ade)*</option><option value="aeg">Aegeus (aeg)*</option><option value="agnt">ArgentumNT (agnt)*</option>
+<option value="aias">Aias (aias)*</option><option value="arco">AquariusCoin (arco)*</option><option value="arepa">Arepacoin (arepa)*</option><option value="arg">Argentum (arg)*</option><option value="ari">Aricoin (ari)*</option><option value="axe">Axe (axe)*</option><option value="b3">B3Coin (b3)*</option>
+<option value="bay">BitBay (bay)*</option><option value="bbp">Biblepay (bbp)*</option><option value="bbtc">BlakeBitcoin (bbtc)*</option><option value="bcc">BitConnect Coin (bcc)*</option><option value="bccx">BitConnect X (bccx)*</option><option value="bcz">BCZ (bcz)*</option><option value="bean">Bean Cash (bean)*</option>
+<option value="biid">Biidcoin (biid)*</option><option value="blc">Blakecoin (blc)*</option><option value="blitz">Blitzcash (blitz)*</option><option value="blk">BlackCoin (blk)*</option><option value="block">Blocknet (block)*</option><option value="blu">Bluecoin (blu)*</option><option value="bnode">Beenode (bnode)*</option>
+<option value="boli">BolivarCoin (boli)*</option><option value="bro">Bitradio (bro)*</option><option value="bsd">BitSend (bsd)*</option><option value="bsx">Bitspace (bsx)*</option><option value="btdx">BitCloud (btdx)*</option><option value="btx">BitCore (btx)*</option><option value="buk2">CryptoBuck (buk2)*</option>
+<option value="bzl">BZLCoin (bzl)*</option><option value="bzx">bitcoinzero (bzx)*</option><option value="cache">'CACHE'Project (cache)*</option><option value="cann">CannabisCoin (cann)*</option><option value="caps">BottleCapsPlus (caps)*</option><option value="cbx">Bullion (cbx)*</option><option value="ccn">CannaCoin (ccn)*</option>
+<option value="chbt">CHBToken (chbt)*</option><option value="civ">Civitas (civ)*</option><option value="cloak">CloakCoin (cloak)*</option><option value="cmm">Commercium (cmm)*</option><option value="cno">Coino (cno)*</option><option value="colx">ColossusXT (colx)*</option><option value="corg">Corgi (corg)*</option>
+<option value="cpc">Capricoin (cpc)*</option><option value="crypt">CryptCoin (crypt)*</option><option value="crw">CROWN (crw)*</option><option value="cure">CureCoin (cure)*</option><option value="dal">Dallar (dal)*</option><option value="dash">Dash (dash)*</option><option value="dev">DeviantCoin (dev)*</option>
+<option value="dgb">DigiByte (dgb)*</option><option value="dgc">DigitalCoin (dgc)*</option><option value="dime">Dimecoin (dime)*</option><option value="divi">Divicoin (divi)*</option><option value="dmd">Diamond (dmd)*</option><option value="d">Denarius (d)*</option><option value="dmb">Digitalmoneybits (dmb)*</option>
+<option value="donu">Donu (donu)*</option><option value="dope">DopeCoin (dope)*</option><option value="drz">Droidz (drz)*</option><option value="dtc">Datacoin (dtc)*</option><option value="dvc">DevCoin (dvc)*</option><option value="eac">EarthCoin (eac)*</option><option value="ec">Eclipse (ec)*</option>
+<option value="ecc">ECC (ecc)*</option><option value="efl">e-Gulden (efl)*</option><option value="egc">EverGreenCoin (egc)*</option><option value="elt">Electron (elt)*</option><option value="emc2">Einsteinium (emc2)*</option><option value="emd">Emerald (emd)*</option><option value="enrg">EnergyCoin (enrg)*</option>
+<option value="ent">Eternity (ent)*</option><option value="eny">EmergencyCoin (eny)*</option><option value="eqt">EquiTrader (eqt)*</option><option value="erc">Europecoin (erc)*</option><option value="exo">Exosis (exo)*</option><option value="excl">ExclusiveCoin (excl)*</option><option value="fjc">Fujicoin (fjc)*</option>
+<option value="ftc">Feathercoin (ftc)*</option><option value="funk">The Cypherfunks (funk)*</option><option value="gali">Galilel (gali)*</option><option value="gap">GapCoin (gap)*</option><option value="gcr">Global Currency Reserve (gcr)*</option><option value="genx">Genesis (genx)*</option><option value="glc">GoldCoin (glc)*</option>
+<option value="glt">GlobalToken (glt)*</option><option value="gpl2">GoldPressedLatinum (gpl2)*</option><option value="grn">Granite (grn)*</option><option value="grs">Groestlcoin (grs)*</option><option value="grwi">Growers (grwi)*</option><option value="gun">Guncoin (gun)*</option>
+<option value="gxx">GravityCoin (gxx)*</option><option value="hbn">HoboNickels (hbn)*</option><option value="html">HTMLCOIN (html)*</option><option value="html5">Html5coin (html5)*</option><option value="i0c">I0Coin (i0c)*</option><option value="ic">Ignition (ic)*</option><option value="icn">iCoin (icn)*</option>
+<option value="ifc">InfiniteCoin (ifc)*</option><option value="iflt">InflationCoin (iflt)*</option><option value="img">ImageCoin (img)*</option><option value="imx">Impact (imx)*</option><option value="info">Infocoin (info)*</option><option value="infx">Influx (infx)*</option><option value="insn">InsaneCoin (insn)*</option>
+<option value="ioc">I/O Coin (ioc)*</option><option value="ion">Ion (ion)*</option><option value="ixc">iXcoin (ixc)*</option><option value="j">JoinCoin (j)*</option><option value="ked">Darsek (ked)*</option><option value="klks">Kalkulus (klks)*</option><option value="kng">BetKings (kng)*</option>
+<option value="kobo">Kobocoin (kobo)*</option><option value="kore">Kore (kore)*</option><option value="kum">Krium (kum)*</option><option value="lana">Lanacoin (lana)*</option><option value="lcc">Litecoin Cash (lcc)*</option><option value="linx">Linx (linx)*</option><option value="lit">Lithium (lit)*</option>
+<option value="ltc">Litecoin (ltc)*</option><option value="lux">LUXCoin (lux)*</option><option value="lynx">Lynx (lynx)*</option><option value="lyra">Scrypta (lyra)*</option><option value="manna">Manna (manna)*</option><option value="marks">Bitmark (marks)*</option><option value="mec">Megacoin (mec)*</option>
+<option value="mfc">MFCoin (mfc)*</option><option value="mic">Mindexcoin (mic)*</option><option value="moon">Mooncoin (moon)*</option><option value="mrc">Meritcoins (mrc)*</option><option value="mscn">Master Swiscoin (mscn)*</option><option value="mst">MustangCoin (mst)*</option><option value="mue">MonetaryUnit (mue)*</option>
+<option value="n8v">NativeCoin (n8v)*</option><option value="nacho">NachoCoin (nacho)*</option><option value="nav">NavCoin (nav)*</option><option value="netko">NETKO (netko)*</option><option value="neva">Nevacoin (neva)*</option><option value="nix">NIX Core (nix)*</option><option value="nobl">Noblecoin (nobl)*</option>
+<option value="nor">Noir (nor)*</option><option value="nort">Northern (nort)*</option><option value="note">DNotes (note)*</option><option value="npc">NPCcoin (npc)*</option><option value="nro">Neuro (nro)*</option><option value="ok">OKCash (ok)*</option><option value="onion">DeepOnion (onion)*</option>
+<option value="orb">Orbitcoin (orb)*</option><option value="ozc">Ozziecoin (ozc)*</option><option value="pak">PakCoin (pak)*</option><option value="part">Particl (part)*</option><option value="pcn">PeepCoin (pcn)*</option><option value="pho">Photon (pho)*</option><option value="phr">Phore (phr)*</option>
+<option value="piggy">Piggycoin (piggy)*</option><option value="pink">Pinkcoin (pink)*</option><option value="pivx">PIVX (pivx)*</option><option value="pnd">PandaCoin (pnd)*</option><option value="pot">PotCoin (pot)*</option><option value="ppc">PeerCoin (ppc)*</option>
+<option value="ptc">Pesetacoin (ptc)*</option><option value="pura">PURA (pura)*</option><option value="put">PutinCoin (put)*</option><option value="qac">Quasar (qac)*</option><option value="qbt">Cubits (qbt)*</option><option value="qrk">Quark (qrk)*</option><option value="qub">QubeNet (qub)*</option>
+<option value="rads">Radium (rads)*</option><option value="rby">Rubycoin (rby)*</option><option value="ric">Riecoin (ric)*</option><option value="rpc">RonPaulCoin (rpc)*</option><option value="scifi">UnitedSciFi (scifi)*</option><option value="scol">Scolcoin (scol)*</option><option value="scribe">Scribe (scribe)*</option>
+<option value="sha">SHACoin (sha)*</option><option value="skc">Skeincoin (skc)*</option><option value="slg">Sterlingcoin (slg)*</option><option value="slm">Slimcoin (slm)*</option><option value="slr">SolarCoin (slr)*</option><option value="slx">SLATE (slx)*</option><option value="smly">Smileycoin (smly)*</option>
+<option value="sphx">Sphinxcoin Core (sphx)*</option><option value="sprts">Sprouts (sprts)*</option><option value="stk">Stakecoin (stk)*</option><option value="strat">Stratis (strat)*</option><option value="super">SuperCoin (super)*</option><option value="swift">Bitswift (swift)*</option>
+<option value="swing">Swing (swing)*</option><option value="sxc">SexCoin (sxc)*</option><option value="sys">Syscoin (sys)*</option><option value="taj">TajCoin (taj)*</option><option value="talk">BTCTalkCoin (talk)*</option>
+<option value="tao">Tao (tao)*</option><option value="tes">Teslacoin (tes)*</option><option value="toa">ToaCoin (toa)*</option><option value="tpwr">TalonPower (tpwr)*</option><option value="troll">Trollcoin (troll)*</option><option value="trump">TrumpCoin (trump)*</option>
+<option value="tx">Transfercoin (tx)*</option><option value="tzc">Trezarcoin (tzc)*</option><option value="ufo">UFO (ufo)*</option><option value="umo">UniversalMolecule (umo)*</option><option value="uno">Unobtanium (uno)*</option><option value="vcn">Vcoin (vcn)*</option><option value="veil">Veil (veil)*</option>
+<option value="vls">Veles (vls)*</option><option value="vgs">LasVegasCoin (vgs)*</option><option value="vestx2">VESTX v2 (vestx2)*</option><option value="via">Viacoin (via)*</option><option value="vrc">VeriCoin (vrc)*</option><option value="vrm">Verium (vrm)*</option><option value="vtc">Vertcoin (vtc)*</option>
+<option value="wc">Wincoin (wc)*</option><option value="wdc">Worldcoin (wdc)*</option><option value="wex">Wexcoin (wex)*</option><option value="wgr">Wagerr (wgr)*</option><option value="x0z">Zerozed (x0z)*</option><option value="xbc">BitcoinPlus (xbc)*</option><option value="xc">XCurrency (xc)*</option>
+<option value="xde2">XDE2 (xde2)*</option><option value="xjo">JouleCoin (xjo)*</option><option value="xlr">Solaris (xlr)*</option><option value="xmg">Magi (xmg)*</option><option value="xmy">Myriad (xmy)*</option><option value="xp">Experience Points (xp)*</option>
+<option value="xspec">Spectrecoin (xspec)*</option><option value="xst">Stealth (xst)*</option><option value="xtp">TRUSTplus (xtp)*</option><option value="xvp">VirtacoinPlus (xvp)*</option><option value="xzc">ZCoin (xzc)*</option><option value="zeit">ZeitCoin (zeit)*</option><option value="zet">Zetacoin (zet)*</option>
 <option value="btc">Bitcoin (BTC)</option><option value="rdd">Reddcoin (RDD)</option><option value="nmc">Namecoin (NMC)</option><option value="xcp">CounterParty (XCP)</option><option value="nsr">Nushares (NSR)</option><option value="nbt">Nubit (NBT)</option> <option value="mzc">Mazacoin (MZC)</option>
 <option value="xch">ClearingHouse (XCH)</option><option value="mona">Monacoin (MONA)</option><option value="clam">Clam (CLAM)</option><option value="xpm">Primcoin (XPM)</option><option value="neos">Neoscoin (NEOS)</option><option value="jbs">Jumbucks (JBS)</option><option value="zrc">Ziftrcoim (ZRC)</option>
 <option value="nxt">Nxt (NXT)</option><option value="zoom">Zoomcoin (ZOOM)</option><option value="vpn">Vpncoin (VPN)</option><option value="cdn">Canadaecoin (CDN)</option><option value="sdc">Shadowcoin (SDC)</option><option value="pkb">ParkByte (PKB)</option>
@@ -4238,6 +4293,8 @@ jQuery(document).ready(function($) {
 <option value="luna">LunaCoin (LUNA)</option><option value="odn">Obsidian (ODN)</option><option value="esp">Espers 2.0 (ESP)</option><option value="moin">MoinCoin (MOIN)</option><option value="hyp">HyperStake (HYP)</option><option value="grc">Gridcoin (GRC)</option><option value="rupx">Rupaya (RUPX)</option>
 <option value="xhi">HiCoin (XHI)</option><option value="nka">IncaKoin (NKA)</option><option value="net">Netcoin (NET)</option><option value="jmc">Junson Ming Chan Coin (JMC)</option><option value="pac">Paccoin (PAC)</option><option value="hpc">HappyCoin (HPC)</option><option value="bost">Boostcoin (BOST)</option>
 <option value="rbt">Rimbit (RBT)</option><option value="fair">Faircoin (FAIR)</option><option value="dem">eMark (DEM)</option><option value="boat">Boat (BOAT)</option><option value="alex">Alexandrite (ALEX)</option><option value="nlc2">NoLimitCoin (NLC2)</option><option value="flt">Fluttercoin (FLT)</option>
+<option value="1mt">1Million Token (1MT)</option><option value="airx">Aircoins (AIRX)</option><option value="asafe2">Allsafe (ASAFE2)</option><option value="avn">Avantage (AVN)</option><option value="bcf">Bitcoin Fast (BCF)</option><option value="bdc">BollywoodCoin (BDC)</option><option value="bell">Bellcoin (BELL)</option>
+<option value="bfl">Bitflate (BFL)</option><option value="bis">Bismuth (BIS)</option><option value="bnb">Binance Coin (BNB)</option><option value="brix">BrixCoin (BRIX)</option><option value="btb">BitBall (BTB)</option>
 									</select>
 								</div>
 
