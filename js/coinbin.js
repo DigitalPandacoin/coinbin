@@ -2796,7 +2796,6 @@ function rawSubmitDigiExplorer(thisbtn){
 			$("#statusSettings").addClass("alert-danger").removeClass("hidden").html("There is an error with one or more of your settings");
 		}
 	});
-$("#favoritesSubmitButtonIDHere").click(function() { $("#coinjs_coin").val($("#favoritesFormIDHere input[type='radio']:checked").val()).trigger("change"); $("#settingsBtn").trigger("click"); });
 	$("#coinjs_coin").change(function(){
 
 		var o = ($("option:selected",this).attr("rel")).split(";");
@@ -2833,6 +2832,8 @@ $("#favoritesSubmitButtonIDHere").click(function() { $("#coinjs_coin").val($("#f
 			$("#settingsCustom").addClass("hidden");
 		}
 	});
+  $("#favoritesSubmitButtonIDHere").click(function() { $("#coinjs_coin").val($("#favoritesFormIDHere input[type='radio']:checked").val()).trigger("change"); $("#settingsBtn").trigger("click"); return false;});
+  $("#allcoinsSubmitButtonIDHere").click(function() { $("#coinjs_coin").val("custom").trigger("change"); $("#customCoinName").val($("#allcoinsFormIDHere input[type='radio']:checked").val()).trigger("change"); $("#settingsBtn").trigger("click"); return false;});
 
 	function configureBroadcast(){
 		var host = $("#coinjs_broadcast option:selected").val();
