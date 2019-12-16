@@ -2833,6 +2833,7 @@ function rawSubmitDigiExplorer(thisbtn){
 		}
 	});
   $("#favoritesSubmitButtonIDHere").click(function() { $("#coinjs_coin").val($("#favoritesFormIDHere input[type='radio']:checked").val()).trigger("change"); $("#settingsBtn").trigger("click"); return false;});
+  $("#allcoinsSubmitButtonIDHere").click(function() { $("#coinjs_coin").val("custom").trigger("change"); $("#customCoinName").val($("#allcoinsFormIDHere input[type='radio']:checked").val()).trigger("change"); $("#settingsBtn").trigger("click"); return false;});
 
 	function configureBroadcast(){
 		var host = $("#coinjs_broadcast option:selected").val();
