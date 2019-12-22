@@ -532,6 +532,12 @@ if(host=='blockcypher_dogecoin'){
 		$("#openBtn").click();
 	});
 
+  $("#walletToLegacy2").click(function(){
+		$("#walletToBtn").html('Legacy <span class="caret"></span>');
+		$("#walletSegwit")[0].checked = false;
+		$("#openBtn").click();
+	});
+
 	$("#walletShowKeys").click(function(){
 		$("#walletKeys").removeClass("hidden");
 		$("#walletSpend").removeClass("hidden").addClass("hidden");
@@ -1398,6 +1404,12 @@ console.log(explorer_api);
     else if(host=="cryptoid.custom"){
       listUnspentCryptoidinfo(redeem);
     }
+    else if(host=="coinexplorer.custom"){
+      listUnspentcoinexplorer(redeem);
+      var explorer_tx = "https://www.coinexplorer.net/"+ customCoinName +"/transaction/";
+      var explorer_addr = "https://www.coinexplorer.net/"+ customCoinName +"/address/";
+      var explorer_block = "https://www.coinexplorer.net/"+ customCoinName +"/block/";
+    }
     else {
 			listUnspentCryptoidinfo_Pandacoin(redeem);
 		}
@@ -1705,7 +1717,42 @@ function listUnspentBlockcypher(redeem,network){
       });
 
     }
+    function listUnspentcoinexplorer(redeem) {
+      console.log("listUnspentcoinexplorer");
+      $.ajax ({
+        type: "GET",
+        url: "http://www.coinexplorer.net/api/v1/"+ customCoinName +"/address/unspent?address="+ redeem.addr,
+        //dataType: "json",
+        error: function() {
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> '+ url + 'Unexpected error, unable to retrieve unspent outputs! pnd test function error');
+        },
 
+              success: function(data) {
+          //if($(data).find("unspent_outputs").text()==1){
+                    $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            console.log(data)
+                  data.unspent_outputs.forEach(function(item, i) {
+                    if (i > 100) return;
+                      var tx_hash = item.tx_hash;
+                      var tx_ouput_n = item.tx_ouput_n;
+                      var value = item.value /100000000;
+                      //var value = ((item.value.text()*1)/100000000).toFixed(8);
+                      var confirms = item.confirmations;
+                      console.log(confirms)
+                      var script = item.script;
+                      var addr = item.addr;
+                      console.log(addr)
+                      console.log(tx_hash, tx_ouput_n, script, value)
+                      addOutput(tx_hash, tx_ouput_n, script, value);
+                      });
+                  },
+        complete: function(data, status) {
+          $("#redeemFromBtn").html("Load").attr('disabled',false);
+          totalInputAmount();
+        }
+      });
+
+    }
     function listUnspentCryptoidinfo_Pandacoin(redeem) {
 
   		$.ajax ({
@@ -2991,11 +3038,17 @@ function rawSubmitDigiExplorer(thisbtn){
         }
         else if(host=='cryptoid.custom') {
           // change to customcoin for explorer
-                        var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinName +"/tx.dws?";
-                        var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinName +"/address.dws?";
-                        var explorer_block = "https://chainz.cryptoid.info/"+ customCoinName +"/block.dws?";
-                        var explorer_api = "https://chainz.cryptoid.info/"+ customCoinName +"/api.dws?q=getbalance&a=";
+          var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinName +"/tx.dws?";
+          var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinName +"/address.dws?";
+          var explorer_block = "https://chainz.cryptoid.info/"+ customCoinName +"/block.dws?";
+          var explorer_api = "https://chainz.cryptoid.info/"+ customCoinName +"/api.dws?q=getbalance&a=";
           console.log(host);
+        }
+        else if(host=='coinexplorer.custom'){
+                console.log(host)
+                var explorer_tx = "https://www.coinexplorer.net/"+ customCoinName +"/transaction/";
+                var explorer_addr = "https://www.coinexplorer.net/"+ customCoinName +"/address/";
+                var explorer_block = "https://www.coinexplorer.net/"+ customCoinName +"/block/";
         }
         else {
                 console.log(host)
