@@ -93,6 +93,10 @@ if(host=='blockcypher_dogecoin'){
                 explorer_api = "https://dogechain.info/chain/Dogecoin/q/addressbalance/";
                 tickerCode = "DOGE";
 }
+else if(host=='coinexplorer_custom'){
+  explorer_addr = "https://www.coinexplorer.net/"+ customCoinName +"/address/";
+  customCoinName = $('#customCoinName').val();
+}
 					$("#walletHistory").attr('href',explorer_addr+address);
 
 					$("#walletQrCode").html("");
@@ -1404,11 +1408,8 @@ console.log(explorer_api);
     else if(host=="cryptoid.custom"){
       listUnspentCryptoidinfo(redeem);
     }
-    else if(host=="coinexplorer.custom"){
+    else if(host=="coinexplorer_custom"){
       listUnspentcoinexplorer(redeem);
-      var explorer_tx = "https://www.coinexplorer.net/"+ customCoinName +"/transaction/";
-      var explorer_addr = "https://www.coinexplorer.net/"+ customCoinName +"/address/";
-      var explorer_block = "https://www.coinexplorer.net/"+ customCoinName +"/block/";
     }
     else {
 			listUnspentCryptoidinfo_Pandacoin(redeem);
@@ -1721,8 +1722,8 @@ function listUnspentBlockcypher(redeem,network){
       console.log("listUnspentcoinexplorer");
       $.ajax ({
         type: "GET",
-        url: "http://www.coinexplorer.net/api/v1/"+ customCoinName +"/address/unspent?address="+ redeem.addr,
-        //dataType: "json",
+        url: "https://www.coinexplorer.net/api/v1/"+ customCoinName +"/address/unspent?address="+ redeem.addr,
+        dataType: "json",
         error: function() {
           $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> '+ url + 'Unexpected error, unable to retrieve unspent outputs! pnd test function error');
         },
@@ -2880,7 +2881,16 @@ function rawSubmitDigiExplorer(thisbtn){
 		}
 	});
   $("#favoritesSubmitButtonIDHere").click(function() { $("#coinjs_coin").val($("#favoritesFormIDHere input[type='radio']:checked").val()).trigger("change"); $("#settingsBtn").trigger("click"); return false;});
-  $("#allcoinsSubmitButtonIDHere").click(function() { $("#coinjs_coin").val("custom").trigger("change"); $("#customCoinName").val($("#allcoinsFormIDHere input[type='radio']:checked").val()).trigger("change"); $("#settingsBtn").trigger("click"); return false;});
+  $("#allcoinsSubmitButtonIDHere").click(function() {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinName").val($("#allcoinsFormIDHere input[type='radio']:checked").val()).trigger("change");
+    if (($("#allcoinsFormIDHere input[type='radio']:checked").val() == "alex") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "pivx") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "emc") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "bitg") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "scc") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "shnd") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "monk") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "peng") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "aem") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "vulc") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "abet") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "shmn") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "apr") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "scriv") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "arion") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "dvt") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "trbo") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "VARIUS")) {
+      $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+      $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    }
+    $("#settingsBtn").trigger("click");
+    return false;
+  });
 
 	function configureBroadcast(){
 		var host = $("#coinjs_broadcast option:selected").val();
@@ -3044,13 +3054,11 @@ function rawSubmitDigiExplorer(thisbtn){
           var explorer_api = "https://chainz.cryptoid.info/"+ customCoinName +"/api.dws?q=getbalance&a=";
           console.log(host);
         }
-        else if(host=='coinexplorer.custom'){
-                console.log(host)
-                var explorer_tx = "https://www.coinexplorer.net/"+ customCoinName +"/transaction/";
-                var explorer_addr = "https://www.coinexplorer.net/"+ customCoinName +"/address/";
-                var explorer_block = "https://www.coinexplorer.net/"+ customCoinName +"/block/";
+        else if(host=='coinexplorer_custom') {
+          // change to customcoin for explorer
+          console.log(host);
         }
-        else {
+          else {
                 console.log(host)
                 explorer_tx = "https://chainz.cryptoid.info/pnd/tx.dws?";
                 explorer_addr = "https://chainz.cryptoid.info/pnd/address.dws?";
