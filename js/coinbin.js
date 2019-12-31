@@ -93,6 +93,15 @@ if(host=='blockcypher_dogecoin'){
                 explorer_api = "https://dogechain.info/chain/Dogecoin/q/addressbalance/";
                 tickerCode = "DOGE";
 }
+else if(host=='panda.tech') {
+  // change to customcoin for explorer
+  var explorer_tx = "http://pandacoin.tech:3001/tx/";
+  var explorer_addr = "http://pandacoin.tech:3001/address/";
+  var explorer_block = "http://pandacoin.tech:3001/block/";
+  var explorer_api = "http://pandacoin.tech:3001/ext/getbalance/";
+  console.log(host);
+}
+
 else if(host=='coinexplorer_custom'){
   explorer_addr = "https://www.coinexplorer.net/"+ customCoinName +"/address/";
   customCoinName = $('#customCoinName').val();
@@ -1722,27 +1731,26 @@ function listUnspentBlockcypher(redeem,network){
       console.log("listUnspentcoinexplorer");
       $.ajax ({
         type: "GET",
-        url: "https://www.coinexplorer.net/api/v1/"+ customCoinName +"/address/unspent?address="+ redeem.addr,
-        dataType: "json",
-        error: function() {
-          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> '+ url + 'Unexpected error, unable to retrieve unspent outputs! pnd test function error');
+        url: "https://cors-anywhere.herokuapp.com/https://www.coinexplorer.net/api/v1/"+ customCoinName +"/address/unspent?address="+ redeem.addr +"",
+        dataType: "JSON",
+        error: function(data) {
+          var url = "https://www.coinexplorer.net/api/v1/"+ customCoinName +"/address/unspent?address="+ redeem.addr +"";
+          console.log(r.json);
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> '+ url + 'Unexpected error, unable to retrieve unspent outputs!');
         },
-
-              success: function(data) {
+            success: function(data) {
           //if($(data).find("unspent_outputs").text()==1){
                     $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
             console.log(data)
-                  data.unspent_outputs.forEach(function(item, i) {
+                  data.result.forEach(function(item, i) {
                     if (i > 100) return;
-                      var tx_hash = item.tx_hash;
-                      var tx_ouput_n = item.tx_ouput_n;
-                      var value = item.value /100000000;
+                      var tx_hash = item.txid;
+                      var tx_ouput_n = item.vout;
+                      var value = item.value // /100000000;
                       //var value = ((item.value.text()*1)/100000000).toFixed(8);
-                      var confirms = item.confirmations;
-                      console.log(confirms)
-                      var script = item.script;
-                      var addr = item.addr;
-                      console.log(addr)
+                      //var confirms = item.confirmations;
+                      var script = item.txid;
+                      var addr = item.address;
                       console.log(tx_hash, tx_ouput_n, script, value)
                       addOutput(tx_hash, tx_ouput_n, script, value);
                       });
@@ -3056,6 +3064,14 @@ function rawSubmitDigiExplorer(thisbtn){
         }
         else if(host=='coinexplorer_custom') {
           // change to customcoin for explorer
+          console.log(host);
+        }
+        else if(host=='panda.tech') {
+          // change to customcoin for explorer
+          var explorer_tx = "http://pandacoin.tech:3001/tx/";
+          var explorer_addr = "http://pandacoin.tech:3001/address/";
+          var explorer_block = "http://pandacoin.tech:3001/block/";
+          var explorer_api = "http://pandacoin.tech:3001/ext/getbalance/";
           console.log(host);
         }
           else {

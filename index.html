@@ -2797,8 +2797,8 @@
 			  document.getElementById("coinjs_priv").value = "0x5f";
 			  document.getElementById("coinjs_multisig").value = "0x53";
 			  document.getElementById("coinLogo").src = "images/logo/asafe2.webp";
-			  document.getElementById("bTtitle").textContent = "Allsafe";
-			  document.getElementById("bTtitle1").textContent = "Allsafe";
+			  document.getElementById("bTtitle").textContent = "Allsafe2";
+			  document.getElementById("bTtitle1").textContent = "Allsafe2";
 			  tickerCode = "ASAFE2";
 			}
 			else if (document.getElementById("customCoinName").value == "avn") {
@@ -4470,7 +4470,6 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="airx"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/airx.jpg" style="height:45px"><br><center>airx</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="alex" rel="0x00;0x80;0x05;0x488b21e;0x488ade4;coinexplorer_custom;coinexplorer_custom"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/alex.png" style="height:45px"><br><center>alex</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="allsafe2"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/allsafe2.webp" style="height:45px"><br><center>allsafe2</center></div>
-							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="allsafe"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/allsafe.webp" style="height:45px"><br><center>allsafe</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="apr"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/apr.png" style="height:45px"><br><center>apr</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="arco"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/arco.png" style="height:45px"><br><center>arco</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="arepa"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/arepa.png" style="height:45px"><br><center>arepa</center></div>
@@ -4488,7 +4487,7 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="bcc"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/bcc.png" style="height:45px"><br><center>bcc</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="bccx"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/bccx.png" style="height:45px"><br><center>bccx</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="bcf"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/bcf.png" style="height:45px"><br><center>bcf</center></div>
-							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="bcn"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/bcn.png" style="height:45px"><br><center>bcn</center></div>
+							<!--- <div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="bcn"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/bcn.png" style="height:45px"><br><center>bcn</center></div> --->
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="bcz"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/bcz.png" style="height:45px"><br><center>bcz</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="bdc"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/bdc.png" style="height:45px"><br><center>bdc</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="bean"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/bean.png" style="height:45px"><br><center>bean</center></div>
@@ -4940,6 +4939,7 @@ jQuery(document).ready(function($) {
 								<p class="text-muted">Select the network you wish to broadcast the transaction via</p>
 								<select class="form-control" id="coinjs_broadcast">
                   <option value="coinb.in">Pandacoin (mainnet)</option>
+									<option value="panda.tech">Pandacoin (.tech)</option>
                   <option value="cryptoid.info_zeitcoin">Zeitcoin (mainnet)</option>
                   <option value="blockcypher_litecoin"> Blockcypher.com (Litecoin)</option>
                   <option value="digiexplorer.info"> DigiExplorer.info (DigiByte)</option>
@@ -4965,6 +4965,7 @@ jQuery(document).ready(function($) {
 								<p class="text-muted">Select the network you wish to retreive your unspent inputs from</p>
 								<select class="form-control" id="coinjs_utxo">
 									<option value="coinb.in">Pandacoin (mainnet)</option>
+									<option value="panda.tech">Pandacoin (.tech)</option>
                                     <option value="cryptoid.info_zeitcoin">Zeitcoin (mainnet)</option>
                                     <option value="blockcypher_bitcoinmainnet"> Blockcypher.com (Bitcoin mainnet)</option>
                                     <option value="digiexplorer.info"> DigiExplorer.info (DigiByte)</option>
