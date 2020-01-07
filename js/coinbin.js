@@ -1749,10 +1749,35 @@ function listUnspentBlockcypher(redeem,network){
                       var value = item.value // /100000000;
                       //var value = ((item.value.text()*1)/100000000).toFixed(8);
                       //var confirms = item.confirmations;
-                      var script = item.txid;
-                      var addr = item.address;
-                      console.log(tx_hash, tx_ouput_n, script, value)
-                      addOutput(tx_hash, tx_ouput_n, script, value);
+                      console.log("listUnspentcoinexplorer");
+                      $.ajax ({
+                        type: "GET",
+                        url: "https://cors-anywhere.herokuapp.com/https://www.coinexplorer.net/api/v1/"+ customCoinName +"/address/unspent?address="+ redeem.addr +"",
+                        dataType: "JSON",
+                        error: function(data) {
+                          var url = "https://www.coinexplorer.net/api/v1/"+ customCoinName +"/transaction?txid="+ item.txid +"";
+                          console.log(r.json);
+                          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> '+ url + 'Unexpected error, unable to retrieve unspent outputs!');
+                        },
+                            success: function(data) {
+                          //if($(data).find("unspent_outputs").text()==1){
+                                    $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+                            console.log(data)
+                                  data.result.forEach(function(item, i) {
+                                    if (i > 100) return;
+                                      //var value = ((item.value.text()*1)/100000000).toFixed(8);
+                                      //var confirms = item.confirmations;
+                                      var script = item.txid;
+                                      var addr = item.address;
+                                      console.log(tx_hash, tx_ouput_n, script, value)
+                                      addOutput(tx_hash, tx_ouput_n, script, value);
+                                      });
+                                  },
+                        complete: function(data, status) {
+                          $("#redeemFromBtn").html("Load").attr('disabled',false);
+                          totalInputAmount();
+                        }
+                      });
                       });
                   },
         complete: function(data, status) {
