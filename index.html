@@ -3147,7 +3147,7 @@ jQuery(document).ready(function($) {
 							<span class="icon-bar"></span>
 						</button>
 						<a href="#home" class="navbar-brand" id="homeBtn"><img alt="" src="images/coinbin.gif" style="height:25px;margin-top:-5px"></a>
-						<a href="#allcoins"><img id="coinLogo" src="images/logo/pnd.png" class="coinLogo" alt="Logo for PandaCoin" style="height: 3em; margin-top: 0.5em;"></a>
+						<img id="coinLogo" src="images/logo/pnd.png" class="coinLogo" alt="Logo for PandaCoin" style="height: 3em; margin-top: 0.5em;">
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav">
@@ -3167,6 +3167,7 @@ jQuery(document).ready(function($) {
 							<li><a href="#sign" data-toggle="tab"><span class="glyphicon glyphicon-pencil"></span> Sign</a></li>
 							<li><a href="#broadcast" data-toggle="tab"><span class="glyphicon glyphicon-globe"></span> Broadcast</a></li>
 							<li><a href="#wallet" data-toggle="tab"><span class="glyphicon glyphicon-briefcase"></span> Wallet</a></li>
+							<li><a href="#allcoins" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Allcoins</a></li>
 							<li><a href="#Favorites" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Favorites</a></li>
 							<li><a href="#about" data-toggle="tab"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
 							<li><a href="#settings" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
@@ -3236,6 +3237,8 @@ jQuery(document).ready(function($) {
 					<div class="tab-pane tab-content" id="wallet">
 						<div class="row">
 							<div class="col-md-12">
+								<script src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js"></script>
+								<coingecko-coin-price-marquee-widget  coin-ids="bitcoin,ethereum,eos,ripple,litecoin,pandacoin" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget><br>
 								<h2>Open Wallet <small> browser based <span id="bTtitle">Pandacoin</span> wallet</small></h2>
 								<div id="openLogin">
 									<form class="form-signin" role="form" action="javascript:;">
@@ -3377,6 +3380,8 @@ jQuery(document).ready(function($) {
 								</div>
 							</div>
 						</div>
+						<br><br><script src="https://widgets.coingecko.com/coingecko-coin-market-ticker-list-widget.js"></script>
+<coingecko-coin-market-ticker-list-widget  coin-id="pandacoin" currency="usd" locale="en"></coingecko-coin-market-ticker-list-widget>
 					</div>
 
 					<div class="tab-pane tab-content" id="newAddress">
@@ -4423,7 +4428,7 @@ jQuery(document).ready(function($) {
 
 					<div class="tab-pane tab-content" id="about">
 						<h2>About <small>open source Pandacoin wallet</small></h2>
-						<p>Version 2.0.15</p>
+						<p>Version 2.0.16</p>
 						<p>Compatible with Pandacoin</p>
                         <p><a href="https://github.com/DigitalPandacoin/coinbin">https://github.com/DigitalPandacoin/coinbin</a></p>
 						<p>Forked from <a href="https://coinb.in">https://coinb.in"</a></p>
@@ -4486,6 +4491,7 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="bcc"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/bcc.png" style="height:45px"><br><center>bcc</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="bccx"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/bccx.png" style="height:45px"><br><center>bccx</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="bcf"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/bcf.png" style="height:45px"><br><center>bcf</center></div>
+							<!--- <div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="bcn"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/bcn.png" style="height:45px"><br><center>bcn</center></div> --->
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="bcz"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/bcz.png" style="height:45px"><br><center>bcz</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="bdc"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/bdc.png" style="height:45px"><br><center>bdc</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="bean"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/bean.png" style="height:45px"><br><center>bean</center></div>
@@ -5002,7 +5008,7 @@ jQuery(document).ready(function($) {
 
 		<div id="footer">
 			<div class="container text-right">
-	        		<p class="text-muted">Version  2.0.15</p>
+	        		<p class="text-muted">Version  2.0.16</p>
 			</div>
 		</div>
 

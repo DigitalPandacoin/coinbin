@@ -1,5 +1,10 @@
 var tickerCode;
 var customCoinName;
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 $(document).ready(function() {
 
     /* open wallet code */
@@ -21,10 +26,10 @@ console.log("coinbin.js customCoinName reset to pnd")
 	tickerCode = "PND";
 }
 
-                var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinName +"/tx.dws?";
-                var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinName +"/address.dws?";
-                var explorer_block = "https://chainz.cryptoid.info/"+ customCoinName +"/block.dws?";
-                var explorer_api = "https://chainz.cryptoid.info/"+ customCoinName +"/api.dws?q=getbalance&a=";
+                var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinName.toLowerCase() +"/tx.dws?";
+                var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinName.toLowerCase() +"/address.dws?";
+                var explorer_block = "https://chainz.cryptoid.info/"+ customCoinName.toLowerCase() +"/block.dws?";
+                var explorer_api = "https://chainz.cryptoid.info/"+ customCoinName.toLowerCase() +"/api.dws?q=getbalance&a=";
 
 
     var wallet_timer = false;
@@ -85,6 +90,7 @@ if(customCoinName == null){
 }
 var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinName +"/address.dws?";
 var host = $("#coinjs_broadcast option:selected").val();
+customCoinName = $('#customCoinName').val();
 if(host=='blockcypher_dogecoin'){
                 console.log(host)
                 explorer_tx = "https://dogechain.info/tx/";
@@ -103,8 +109,20 @@ else if(host=='panda.tech') {
 }
 
 else if(host=='coinexplorer_custom'){
-  explorer_addr = "https://www.coinexplorer.net/"+ customCoinName +"/address/";
+  var explorer_addr = "https://www.coinexplorer.net/"+ customCoinName +"/address/";
+  var explorer_api ="https://www.coinexplorer.net/api/v1/"+ customCoinName +"/address/balance?address=";
   customCoinName = $('#customCoinName').val();
+}
+
+else if(host=='cryptoid.custom') {
+  // change to customcoin for explorer
+  customCoinName = tickerCode;
+  var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinName.toLowerCase() +"/tx.dws?";
+  var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinName.toLowerCase() +"/address.dws?";
+  var explorer_block = "https://chainz.cryptoid.info/"+ customCoinName.toLowerCase() +"/block.dws?";
+  var explorer_api = "https://chainz.cryptoid.info/"+ customCoinName.toLowerCase() +"/api.dws?q=getbalance&a=";
+  var customCoinName = tickerCode.toLowerCase();
+  console.log(host);
 }
 					$("#walletHistory").attr('href',explorer_addr+address);
 
@@ -729,19 +747,23 @@ if(customCoinName == null){
         customCoinName = tickerCode.toLowerCase();
 }
 console.log(customCoinName);
-console.log(explorer_api);
 //configureGetUnspentTx();
-var explorer_api = "https://chainz.cryptoid.info/"+ customCoinName +"/api.dws?q=getbalance&a=";
-var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinName +"/address.dws?";
+var explorer_api = "https://cors-anywhere.herokuapp.com/https://chainz.cryptoid.info/"+ customCoinName.toLowerCase() +"/api.dws?q=getbalance&a=";
+var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinName.toLowerCase() +"/address.dws?";
 //configureGetUnspentTx();
 var host = $("#coinjs_broadcast option:selected").val();
 if(host=='blockcypher_dogecoin'){
                 console.log(host)
                 explorer_tx = "https://dogechain.info/tx/";
-                explorer_addr = "https://dogechain.info/address/";
                 explorer_block = "https://dogechain.info/block/";
+                explorer_addr = "https://dogechain.info/address/";
                 explorer_api = "https://dogechain.info/chain/Dogecoin/q/addressbalance/";
                 tickerCode = "DOGE";
+}
+else if(host=='coinexplorer_custom'){
+  var explorer_addr = "https://www.coinexplorer.net/"+ customCoinName +"/address/";
+  var explorer_api ="https://cors-anywhere.herokuapp.com/https://www.coinexplorer.net/api/v1/"+ customCoinName +"/address/balance?address=";
+  customCoinName = $('#customCoinName').val();
 }
 console.log(host);
 console.log(customCoinName);
@@ -750,10 +772,20 @@ console.log(explorer_api);
 		coinjs.addressBalance(explorer_api, $("#walletAddress").html(),function(data){
             // if($(data).find("result").text()==1){
             if (!isNaN(data)) {
+              if(host=='coinexplorer_custom'){
+                var v = data.result[$("#walletAddress").html()];
+                console.log("!------ Explorer Address & value of V")
+                console.log(v);
+                $("#walletBalance").html(v + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+              else {
                 var v = data;
-				$("#walletBalance").html(v + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+                console.log(customCoinName);
+                $("#walletBalance").html(v + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+//				$("#walletBalance").html(v + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
 			} else {
-				$("#walletBalance").html("0.00 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+				$("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
 			}
 
 
@@ -1727,22 +1759,21 @@ function listUnspentBlockcypher(redeem,network){
       });
 
     }
-    function listUnspentcoinexplorer(redeem) {
+    async function listUnspentcoinexplorer(redeem) {
       console.log("listUnspentcoinexplorer");
       $.ajax ({
         type: "GET",
         url: "https://cors-anywhere.herokuapp.com/https://www.coinexplorer.net/api/v1/"+ customCoinName +"/address/unspent?address="+ redeem.addr +"",
         dataType: "JSON",
         error: function(data) {
-          var url = "https://www.coinexplorer.net/api/v1/"+ customCoinName +"/address/unspent?address="+ redeem.addr +"";
-          console.log(r.json);
+          var url = "https://www.coinexplorer.net/api/v1/"+ customCoinName +"/address/unspent?address="+ redeem.addr;
           $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> '+ url + 'Unexpected error, unable to retrieve unspent outputs!');
         },
             success: function(data) {
           //if($(data).find("unspent_outputs").text()==1){
                     $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
             console.log(data)
-                  data.result.forEach(function(item, i) {
+                  data.result.forEach(async function(item, i) {
                     if (i > 100) return;
                       var tx_hash = item.txid;
                       var tx_ouput_n = item.vout;
@@ -1752,11 +1783,11 @@ function listUnspentBlockcypher(redeem,network){
                       console.log("listUnspentcoinexplorer");
                       $.ajax ({
                         type: "GET",
-                        url: "https://cors-anywhere.herokuapp.com/https://www.coinexplorer.net/api/v1/"+ customCoinName +"/address/unspent?address="+ redeem.addr +"",
+                        url: "https://cors-anywhere.herokuapp.com/https://www.coinexplorer.net/api/v1/"+ customCoinName +"/transaction?txid="+ item.txid,
                         dataType: "JSON",
+                        async: false, /* this may not work. -fury */
                         error: function(data) {
-                          var url = "https://www.coinexplorer.net/api/v1/"+ customCoinName +"/transaction?txid="+ item.txid +"";
-                          console.log(r.json);
+                          var url = "https://www.coinexplorer.net/api/v1/"+ customCoinName +"/transaction?txid="+ item.txid;
                           $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> '+ url + 'Unexpected error, unable to retrieve unspent outputs!');
                         },
                             success: function(data) {
@@ -1767,10 +1798,18 @@ function listUnspentBlockcypher(redeem,network){
                                     if (i > 100) return;
                                       //var value = ((item.value.text()*1)/100000000).toFixed(8);
                                       //var confirms = item.confirmations;
-                                      var script = item.txid;
-                                      var addr = item.address;
-                                      console.log(tx_hash, tx_ouput_n, script, value)
-                                      addOutput(tx_hash, tx_ouput_n, script, value);
+                                      var vout_array = item.vout;
+                                      var script;
+                                      vout_array.forEach(function(item_output,j) {
+                                        console.log("txid " + tx_hash + " Item " + j)
+                                        if(item_output.n == tx_ouput_n) {
+                                          console.log("Got the right tx output number, adding output to list");
+                                          script = item_output.scriptPubKey.hex;
+                                          var addr = item.address;
+                                          console.log(tx_hash, tx_ouput_n, script, value)
+                                          addOutput(tx_hash, tx_ouput_n, script, value);
+                                        }
+                                      })
                                       });
                                   },
                         complete: function(data, status) {
@@ -1778,7 +1817,14 @@ function listUnspentBlockcypher(redeem,network){
                           totalInputAmount();
                         }
                       });
-                      });
+
+                      /* coinexplorer API is limited to 1 per sec, we need to
+                         sleep before doing the next request of the next
+                         unspent */
+                      console.log("Going to sleep");
+                      await sleep(2000);
+                      console.log("Waking up");
+                    });
                   },
         complete: function(data, status) {
           $("#redeemFromBtn").html("Load").attr('disabled',false);
@@ -1972,7 +2018,7 @@ function listUnspentBlockcypher(redeem,network){
 	}
     function getPndBalance(pndAddress) {
 
-        var url = 'https://chainz.cryptoid.info/pnd/api.dws?q=getbalance&a='+address;
+        var url = explorer_api+address;
         var response = UrlFetchApp.fetch(url, {'muteHttpExceptions': true});
         var balance = response.getContentText();
         //Pause to not trigger API limit for multiple wallets
@@ -3085,10 +3131,13 @@ function rawSubmitDigiExplorer(thisbtn){
           var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinName +"/address.dws?";
           var explorer_block = "https://chainz.cryptoid.info/"+ customCoinName +"/block.dws?";
           var explorer_api = "https://chainz.cryptoid.info/"+ customCoinName +"/api.dws?q=getbalance&a=";
+          var customCoinName = tickerCode.toLowerCase();
           console.log(host);
         }
         else if(host=='coinexplorer_custom') {
           // change to customcoin for explorer
+          explorer_addr = "https://www.coinexplorer.net/"+ customCoinName +"/address/";
+          explorer_api ="https://www.coinexplorer.net/api/v1/"+ customCoinName +"/address/balance?address=";
           console.log(host);
         }
         else if(host=='panda.tech') {

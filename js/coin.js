@@ -322,6 +322,7 @@ console.log(tickerCode);
 console.log(customCoinName);
 console.log(explorer_api);
 console.log(address);
+console.log(explorer_api+address);
 //console.log(coinjs.explorer_api);
 
 		coinjs.ajax(explorer_api+address, callback, "GET");
