@@ -43,7 +43,7 @@
 
 		<script>
 		function myFunction(e) {
-		  if (document.getElementById("customCoinName").value == "ppc") {
+		  if (document.getElementById("customCoinTicker").value == "ppc") {
 		    document.getElementById("coinjs_pub").value = "0x37";
 		    document.getElementById("coinjs_priv").value = "0xb7";
 		    document.getElementById("coinjs_multisig").value = "0x75";
@@ -52,7 +52,7 @@
 		    document.getElementById("bTtitle1").textContent = "Peercoin";
 		    tickerCode = "PPC";
 		  }
-		  else if (document.getElementById("customCoinName").value == "vtc") {
+		  else if (document.getElementById("customCoinTicker").value == "vtc") {
 		    document.getElementById("coinjs_pub").value = "0x47";
 		    document.getElementById("coinjs_priv").value = "0xc7";
 		    document.getElementById("coinjs_multisig").value = "0x05";
@@ -60,8 +60,9 @@
 				document.getElementById("bTtitle1").textContent = "Vertcoin";
 			  document.getElementById("coinLogo").src = "images/logo/vtc.png";
 		    tickerCode = "VTC";
+				customCoinName = "vertcoin";
 		  }
-		  else if (document.getElementById("customCoinName").value == "pnd") {
+		  else if (document.getElementById("customCoinTicker").value == "pnd") {
 		    document.getElementById("coinjs_pub").value = "0x37";
 		    document.getElementById("coinjs_priv").value = "0xb7";
 		    document.getElementById("coinjs_multisig").value = "0x16";
@@ -69,8 +70,9 @@
 				document.getElementById("bTtitle1").textContent = "Pandacoin";
 		    document.getElementById("coinLogo").src = "images/logo/pnd.png";
 		    tickerCode = "PND";
+				customCoinName = "pandacoin";
 		  }
-		  else if (document.getElementById("customCoinName").value == "funk") {
+		  else if (document.getElementById("customCoinTicker").value == "funk") {
 		    document.getElementById("coinjs_pub").value = "0x1c";
 		    document.getElementById("coinjs_priv").value = "0x9c";
 		    document.getElementById("coinjs_multisig").value = "0x3f";
@@ -78,8 +80,9 @@
 				document.getElementById("bTtitle").textContent = "Cypherfunk";
 				document.getElementById("bTtitle1").textContent = "Cypherfunk";
 		    tickerCode = "FUNK";
+				customCoinName = "cypherfunk";
 		  }
-		  else if (document.getElementById("customCoinName").value == "zeit") {
+		  else if (document.getElementById("customCoinTicker").value == "zeit") {
 		    document.getElementById("coinjs_pub").value = "0x33";
 		    document.getElementById("coinjs_priv").value = "0xb3";
 		    document.getElementById("coinjs_multisig").value = "0x05";
@@ -87,8 +90,9 @@
 				document.getElementById("bTtitle").textContent = "Zeitcoin";
 				document.getElementById("bTtitle1").textContent = "Zeitcoin";
 		    tickerCode = "ZEIT";
+				customCoinName = "zeitcoin";
 		  }
-		  else if (document.getElementById("customCoinName").value == "ltc") {
+		  else if (document.getElementById("customCoinTicker").value == "ltc") {
 		    document.getElementById("coinjs_pub").value = "0x30";
 		    document.getElementById("coinjs_priv").value = "0xb0";
 		    document.getElementById("coinjs_multisig").value = "0x05";
@@ -96,8 +100,9 @@
 				document.getElementById("bTtitle").textContent = "Litecoin";
 				document.getElementById("bTtitle1").textContent = "Litecoin";
 		    tickerCode = "LTC";
+				customCoinName = "litecoin";
 		  }
-			else if (document.getElementById("customCoinName").value == "dash") {
+			else if (document.getElementById("customCoinTicker").value == "dash") {
 			  document.getElementById("coinjs_pub").value = "0x4c";
 			  document.getElementById("coinjs_priv").value = "0xcc";
 			  document.getElementById("coinjs_multisig").value = "0x10";
@@ -105,8 +110,9 @@
 				document.getElementById("bTtitle").textContent = "Dash";
 				document.getElementById("bTtitle1").textContent = "Dash";
 			  tickerCode = "DASH";
+				customCoinName = "dash";
 			}
-			else if (document.getElementById("customCoinName").value == "ftc") {
+			else if (document.getElementById("customCoinTicker").value == "ftc") {
 			  document.getElementById("coinjs_pub").value = "0xe";
 			  document.getElementById("coinjs_priv").value = "0x8e";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -114,8 +120,9 @@
 				document.getElementById("bTtitle").textContent = "Feathercoin";
 				document.getElementById("bTtitle1").textContent = "Feathercoin";
 			  tickerCode = "FTC";
+				customCoinName = "feathercoin";
 			}
-			else if (document.getElementById("customCoinName").value == "blk") {
+			else if (document.getElementById("customCoinTicker").value == "blk") {
 			  document.getElementById("coinjs_pub").value = "0x19";
 			  document.getElementById("coinjs_priv").value = "0x99";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -123,8 +130,9 @@
 				document.getElementById("bTtitle").textContent = "Blackcoin";
 				document.getElementById("bTtitle1").textContent = "Blackcoin";
 			  tickerCode = "BLK";
+				customCoinName = "blackcoin";
 			}
-			else if (document.getElementById("customCoinName").value == "via") {
+			else if (document.getElementById("customCoinTicker").value == "via") {
 			  document.getElementById("coinjs_pub").value = "0x47";
 			  document.getElementById("coinjs_priv").value = "0xc7";
 			  document.getElementById("coinjs_multisig").value = "0x21";
@@ -132,8 +140,9 @@
 				document.getElementById("bTtitle").textContent = "Viacoin";
 				document.getElementById("bTtitle1").textContent = "Viacoin";
 			  tickerCode = "VIA";
+				customCoinName = "viacoin";
 			}
-			else if (document.getElementById("customCoinName").value == "rby") {
+			else if (document.getElementById("customCoinTicker").value == "rby") {
 			  document.getElementById("coinjs_pub").value = "0x3d";
 			  document.getElementById("coinjs_priv").value = "0xbd";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -141,8 +150,9 @@
 				document.getElementById("bTtitle").textContent = "Rubycoin";
 				document.getElementById("bTtitle1").textContent = "Rubycoin";
 			  tickerCode = "RBY";
+				customCoinName = "rubycoin";
 			}
-			else if (document.getElementById("customCoinName").value == "grs") {
+			else if (document.getElementById("customCoinTicker").value == "grs") {
 			  document.getElementById("coinjs_pub").value = "0x24";
 			  document.getElementById("coinjs_priv").value = "0x80";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -150,8 +160,9 @@
 				document.getElementById("bTtitle").textContent = "Groestlcoin";
 				document.getElementById("bTtitle1").textContent = "Groestlcoin";
 			  tickerCode = "GRS";
+				customCoinName = "groestlcoin";
 			}
-			else if (document.getElementById("customCoinName").value == "dgc") {
+			else if (document.getElementById("customCoinTicker").value == "dgc") {
 			  document.getElementById("coinjs_pub").value = "0x1e";
 			  document.getElementById("coinjs_priv").value = "0x9e";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -159,8 +170,9 @@
 				document.getElementById("bTtitle").textContent = "Digitalcoin";
 				document.getElementById("bTtitle1").textContent = "Digitalcoin";
 			  tickerCode = "DGC";
+				customCoinName = "digitalcoin";
 			}
-			else if (document.getElementById("customCoinName").value == "ccn") {
+			else if (document.getElementById("customCoinTicker").value == "ccn") {
 			  document.getElementById("coinjs_pub").value = "0x1c";
 			  document.getElementById("coinjs_priv").value = "0x9c";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -168,8 +180,9 @@
 				document.getElementById("bTtitle").textContent = "Cannacoin";
 				document.getElementById("bTtitle1").textContent = "Cannacoin";
 			  tickerCode = "CCN";
+				customCoinName = "cannaCoin";
 			}
-			else if (document.getElementById("customCoinName").value == "mue") {
+			else if (document.getElementById("customCoinTicker").value == "mue") {
 			  document.getElementById("coinjs_pub").value = "0xf";
 			  document.getElementById("coinjs_priv").value = "0x8f";
 			  document.getElementById("coinjs_multisig").value = "0x9";
@@ -177,8 +190,9 @@
 				document.getElementById("bTtitle").textContent = "MonetaryUnit";
 				document.getElementById("bTtitle1").textContent = "MonetaryUnit";
 			  tickerCode = "MUE";
+				customCoinName = "monetaryunit";
 			}
-			else if (document.getElementById("customCoinName").value == "gcr") {
+			else if (document.getElementById("customCoinTicker").value == "gcr") {
 			  document.getElementById("coinjs_pub").value = "0x26";
 			  document.getElementById("coinjs_priv").value = "0x9a";
 			  document.getElementById("coinjs_multisig").value = "0x61";
@@ -186,8 +200,9 @@
 				document.getElementById("bTtitle").textContent = "Global Currency";
 				document.getElementById("bTtitle1").textContent = "Global Currency";
 			  tickerCode = "GCR";
+				customCoinName = "globalcurrency";
 			}
-			else if (document.getElementById("customCoinName").value == "dope") {
+			else if (document.getElementById("customCoinTicker").value == "dope") {
 			  document.getElementById("coinjs_pub").value = "0x8";
 			  document.getElementById("coinjs_priv").value = "0x88";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -195,8 +210,9 @@
 				document.getElementById("bTtitle").textContent = "Dopecoin";
 				document.getElementById("bTtitle1").textContent = "Dopecoin";
 				tickerCode = "DOPE";
+				customCoinName = "dopecoin";
 			}
-			else if (document.getElementById("customCoinName").value == "ok") {
+			else if (document.getElementById("customCoinTicker").value == "ok") {
 			  document.getElementById("coinjs_pub").value = "0x37";
 			  document.getElementById("coinjs_priv").value = "0xb7";
 			  document.getElementById("coinjs_multisig").value = "0x1c";
@@ -204,8 +220,9 @@
 				document.getElementById("bTtitle").textContent = "OKCash";
 				document.getElementById("bTtitle1").textContent = "OKCash";
 			  tickerCode = "OK";
+				customCoinName = "okcash";
 			}
-			else if (document.getElementById("customCoinName").value == "efl") {
+			else if (document.getElementById("customCoinTicker").value == "efl") {
 			  document.getElementById("coinjs_pub").value = "0x30";
 			  document.getElementById("coinjs_priv").value = "0xb0";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -213,8 +230,9 @@
 				document.getElementById("bTtitle").textContent = "e-Gulden";
 				document.getElementById("bTtitle1").textContent = "e-Gulden";
 			  tickerCode = "EFL";
+				customCoinName = "e-gulden";
 			}
-			else if (document.getElementById("customCoinName").value == "pot") {
+			else if (document.getElementById("customCoinTicker").value == "pot") {
 			  document.getElementById("coinjs_pub").value = "0x37";
 			  document.getElementById("coinjs_priv").value = "0xb7";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -222,8 +240,9 @@
 				document.getElementById("bTtitle").textContent = "Potcoin";
 				document.getElementById("bTtitle1").textContent = "Potcoin";
 			  tickerCode = "POT";
+				customCoinName = "potcoin";
 			}
-			else if (document.getElementById("customCoinName").value == "btcd") {
+			else if (document.getElementById("customCoinTicker").value == "btcd") {
 			  document.getElementById("coinjs_pub").value = "0x3c";
 			  document.getElementById("coinjs_priv").value = "0xbc";
 			  document.getElementById("coinjs_multisig").value = "0x7";
@@ -231,8 +250,9 @@
 				document.getElementById("bTtitle").textContent = "BitcoinDark";
 				document.getElementById("bTtitle1").textContent = "BitcoinDark";
 			  tickerCode = "BTCD";
+				customCoinName = "bitcoindark";
 			}
-			else if (document.getElementById("customCoinName").value == "2give") {
+			else if (document.getElementById("customCoinTicker").value == "2give") {
 				document.getElementById("coinjs_pub").value = "0x27";
 				document.getElementById("coinjs_priv").value = "0xa7";
 				document.getElementById("coinjs_multisig").value = "0x6";
@@ -240,8 +260,9 @@
 				document.getElementById("bTtitle").textContent = "2Give";
 				document.getElementById("bTtitle1").textContent = "2Give";
 				tickerCode = "2GIVE";
+				customCoinName = "2give";
 			}
-			else if (document.getElementById("customCoinName").value == "42") {
+			else if (document.getElementById("customCoinTicker").value == "42") {
 				document.getElementById("coinjs_pub").value = "0x8";
 				document.getElementById("coinjs_priv").value = "0x88";
 				document.getElementById("coinjs_multisig").value = "0x5";
@@ -249,8 +270,9 @@
 				document.getElementById("bTtitle").textContent = "42-Coin";
 				document.getElementById("bTtitle1").textContent = "42-Coin";
 				tickerCode = "42";
+				customCoinName = "42-coin";
 			}
-			else if (document.getElementById("customCoinName").value == "arco") {
+			else if (document.getElementById("customCoinTicker").value == "arco") {
 				document.getElementById("coinjs_pub").value = "0x17";
 				document.getElementById("coinjs_priv").value = "0x97";
 				document.getElementById("coinjs_multisig").value = "0x6";
@@ -258,8 +280,9 @@
 				document.getElementById("bTtitle").textContent = "Aquariuscoin";
 				document.getElementById("bTtitle1").textContent = "Aquariuscoin";
 				tickerCode = "ARCO";
+				customCoinName = "aquariusCoin";
 			}
-			else if (document.getElementById("customCoinName").value == "axe") {
+			else if (document.getElementById("customCoinTicker").value == "axe") {
 				document.getElementById("coinjs_pub").value = "0x37";
 				document.getElementById("coinjs_priv").value = "0xcc";
 				document.getElementById("coinjs_multisig").value = "0x10";
@@ -267,8 +290,9 @@
 				document.getElementById("bTtitle").textContent = "Axe";
 				document.getElementById("bTtitle1").textContent = "Axe";
 				tickerCode = "AXE";
+				customCoinName = "axe";
 			}
-			else if (document.getElementById("customCoinName").value == "bbp") {
+			else if (document.getElementById("customCoinTicker").value == "bbp") {
 				document.getElementById("coinjs_pub").value = "0x19";
 				document.getElementById("coinjs_priv").value = "0xb6";
 				document.getElementById("coinjs_multisig").value = "0x7";
@@ -276,17 +300,9 @@
 				document.getElementById("bTtitle").textContent = "Biblepay";
 				document.getElementById("bTtitle1").textContent = "Biblepay";
 				tickerCode = "BBP";
+				customCoinName = "biblepay";
 			}
-			else if (document.getElementById("customCoinName").value == "bbp") {
-				document.getElementById("coinjs_pub").value = "0x19";
-				document.getElementById("coinjs_priv").value = "0xb6";
-				document.getElementById("coinjs_multisig").value = "0x7";
-				document.getElementById("coinLogo").src = "images/logo/bbp.png";
-				document.getElementById("bTtitle").textContent = "Biblepay";
-				document.getElementById("bTtitle1").textContent = "Biblepay";
-				tickerCode = "BBP";
-			}
-			else if (document.getElementById("customCoinName").value == "btc") {
+			else if (document.getElementById("customCoinTicker").value == "btc") {
 				document.getElementById("coinjs_pub").value = "0x0";
 				document.getElementById("coinjs_priv").value = "0x80";
 				document.getElementById("coinjs_multisig").value = "0x5";
@@ -294,8 +310,9 @@
 				document.getElementById("bTtitle").textContent = "Bitcoin";
 				document.getElementById("bTtitle1").textContent = "Bitcoin";
 				tickerCode = "BTC";
+				customCoinName = "bitcoin";
 			}
-			else if (document.getElementById("customCoinName").value == "block") {
+			else if (document.getElementById("customCoinTicker").value == "block") {
 				document.getElementById("coinjs_pub").value = "0x1a";
 				document.getElementById("coinjs_priv").value = "0x9a";
 				document.getElementById("coinjs_multisig").value = "0x6";
@@ -303,8 +320,9 @@
 				document.getElementById("bTtitle").textContent = "Blocknet";
 				document.getElementById("bTtitle1").textContent = "Blocknet";
 				tickerCode = "BLOCK";
+				customCoinName = "blocknet";
 			}
-			else if (document.getElementById("customCoinName").value == "boli") {
+			else if (document.getElementById("customCoinTicker").value == "boli") {
 				document.getElementById("coinjs_pub").value = "0x55";
 				document.getElementById("coinjs_priv").value = "0xd5";
 				document.getElementById("coinjs_multisig").value = "0x8";
@@ -312,8 +330,9 @@
 				document.getElementById("bTtitle").textContent = "Bolivarcoin";
 				document.getElementById("bTtitle1").textContent = "Bolivarcoin";
 				tickerCode = "BOLI";
+				customCoinName = "bolivarcoin";
 			}
-			else if (document.getElementById("customCoinName").value == "cbx") {
+			else if (document.getElementById("customCoinTicker").value == "cbx") {
 				document.getElementById("coinjs_pub").value = "0xb";
 				document.getElementById("coinjs_priv").value = "0x8b";
 				document.getElementById("coinjs_multisig").value = "0x5";
@@ -321,8 +340,9 @@
 				document.getElementById("bTtitle").textContent = "Cryptobullion";
 				document.getElementById("bTtitle1").textContent = "Cryptobullion";
 				tickerCode = "CBX";
+				customCoinName = "cryptobullion";
 			}
-			else if (document.getElementById("customCoinName").value == "cdn") {
+			else if (document.getElementById("customCoinTicker").value == "cdn") {
 				document.getElementById("coinjs_pub").value = "0x1c";
 				document.getElementById("coinjs_priv").value = "0x9c";
 				document.getElementById("coinjs_multisig").value = "0x5";
@@ -330,8 +350,9 @@
 				document.getElementById("bTtitle").textContent = "Canadaecoin";
 				document.getElementById("bTtitle1").textContent = "Canadaecoin";
 				tickerCode = "CDN";
+				customCoinName = "canadaecoin";
 			}
-			else if (document.getElementById("customCoinName").value == "cann") {
+			else if (document.getElementById("customCoinTicker").value == "cann") {
 				document.getElementById("coinjs_pub").value = "0x1c";
 				document.getElementById("coinjs_priv").value = "0x9c";
 				document.getElementById("coinjs_multisig").value = "0x6";
@@ -339,8 +360,9 @@
 				document.getElementById("bTtitle").textContent = "Cannabiscoin";
 				document.getElementById("bTtitle1").textContent = "Cannabiscoin";
 				tickerCode = "CANN";
+				customCoinName = "cannabiscoin";
 			}
-			else if (document.getElementById("customCoinName").value == "cpc") {
+			else if (document.getElementById("customCoinTicker").value == "cpc") {
 				document.getElementById("coinjs_pub").value = "0x1c";
 				document.getElementById("coinjs_priv").value = "0x9c";
 				document.getElementById("coinjs_multisig").value = "0x6";
@@ -348,8 +370,9 @@
 				document.getElementById("bTtitle").textContent = "Capricoin";
 				document.getElementById("bTtitle1").textContent = "Capricoin";
 				tickerCode = "CPC";
+				customCoinName = "capricoin";
 			}
-			else if (document.getElementById("customCoinName").value == "clam") {
+			else if (document.getElementById("customCoinTicker").value == "clam") {
 				document.getElementById("coinjs_pub").value = "0x89";
 				document.getElementById("coinjs_priv").value = " ";
 				document.getElementById("coinjs_multisig").value = "0x85";
@@ -357,8 +380,9 @@
 				document.getElementById("bTtitle").textContent = "Clam";
 				document.getElementById("bTtitle1").textContent = "Clam";
 				tickerCode = "CLAM";
+				customCoinName = "clam";
 			}
-			else if (document.getElementById("customCoinName").value == "colx") {
+			else if (document.getElementById("customCoinTicker").value == "colx") {
 				document.getElementById("coinjs_pub").value = "0x1e";
 				document.getElementById("coinjs_priv").value = "0xd4";
 				document.getElementById("coinjs_multisig").value = "0x5";
@@ -366,8 +390,9 @@
 				document.getElementById("bTtitle").textContent = "Colossuscoinxt";
 				document.getElementById("bTtitle1").textContent = "Colossuscoinxt";
 				tickerCode = "COLX";
+				customCoinName = "colossuscoinnxt";
 			}
-			else if (document.getElementById("customCoinName").value == "corg") {
+			else if (document.getElementById("customCoinTicker").value == "corg") {
 				document.getElementById("coinjs_pub").value = "0x1c";
 				document.getElementById("coinjs_priv").value = "0x9c";
 				document.getElementById("coinjs_multisig").value = "0x6";
@@ -375,8 +400,9 @@
 				document.getElementById("bTtitle").textContent = "Corgicoin";
 				document.getElementById("bTtitle1").textContent = "Corgicoin";
 				tickerCode = "CORG";
+				customCoinName = "corgicoin";
 			}
-			else if (document.getElementById("customCoinName").value == "onion") {
+			else if (document.getElementById("customCoinTicker").value == "onion") {
 				document.getElementById("coinjs_pub").value = "0x1f";
 				document.getElementById("coinjs_priv").value = "0x9f";
 				document.getElementById("coinjs_multisig").value = "0x6";
@@ -384,8 +410,9 @@
 				document.getElementById("bTtitle").textContent = "Deeponion";
 				document.getElementById("bTtitle1").textContent = "Deeponion";
 				tickerCode = "ONION";
+				customCoinName = "deeponion";
 			}
-			else if (document.getElementById("customCoinName").value == "dvc") {
+			else if (document.getElementById("customCoinTicker").value == "dvc") {
 			  document.getElementById("coinjs_pub").value = "0x0";
 			  document.getElementById("coinjs_priv").value = "0x80";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -393,8 +420,9 @@
 			  document.getElementById("bTtitle").textContent = "Devcoin";
 			  document.getElementById("bTtitle1").textContent = "Devcoin";
 			  tickerCode = "DVC";
+				customCoinName = "devcoin";
 			}
-			else if (document.getElementById("customCoinName").value == "note") {
+			else if (document.getElementById("customCoinTicker").value == "note") {
 			  document.getElementById("coinjs_pub").value = "0x3f";
 			  document.getElementById("coinjs_priv").value = "0xbf";
 			  document.getElementById("coinjs_multisig").value = "0x7d";
@@ -402,8 +430,9 @@
 			  document.getElementById("bTtitle").textContent = "DNotes";
 			  document.getElementById("bTtitle1").textContent = "DNotes";
 			  tickerCode = "NOTE";
+				customCoinName = "dnotes";
 			}
-			else if (document.getElementById("customCoinName").value == "emd") {
+			else if (document.getElementById("customCoinTicker").value == "emd") {
 			  document.getElementById("coinjs_pub").value = "0x22";
 			  document.getElementById("coinjs_priv").value = "0xa2";
 			  document.getElementById("coinjs_multisig").value = "0x6";
@@ -411,8 +440,9 @@
 			  document.getElementById("bTtitle").textContent = "Emerald";
 			  document.getElementById("bTtitle1").textContent = "Emerald";
 			  tickerCode = "EMD";
+				customCoinName = "emerald";
 			}
-			else if (document.getElementById("customCoinName").value == "enrg") {
+			else if (document.getElementById("customCoinTicker").value == "enrg") {
 			  document.getElementById("coinjs_pub").value = "0x5c";
 			  document.getElementById("coinjs_priv").value = "0xdc";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -420,8 +450,9 @@
 			  document.getElementById("bTtitle").textContent = "Energycoin";
 			  document.getElementById("bTtitle1").textContent = "Energycoin";
 			  tickerCode = "ENRG";
+				customCoinName = "energycoin";
 			}
-			else if (document.getElementById("customCoinName").value == "xp") {
+			else if (document.getElementById("customCoinTicker").value == "xp") {
 			  document.getElementById("coinjs_pub").value = "0x4b";
 			  document.getElementById("coinjs_priv").value = "0xcb";
 			  document.getElementById("coinjs_multisig").value = "0x7";
@@ -429,8 +460,9 @@
 			  document.getElementById("bTtitle").textContent = "Experiance Points";
 			  document.getElementById("bTtitle1").textContent = "Experiance Points";
 			  tickerCode = "XP";
+				customCoinName = "experiancepoints";
 			}
-			else if (document.getElementById("customCoinName").value == "fjc") {
+			else if (document.getElementById("customCoinTicker").value == "fjc") {
 			  document.getElementById("coinjs_pub").value = "0x24";
 			  document.getElementById("coinjs_priv").value = "0xa4";
 			  document.getElementById("coinjs_multisig").value = "0x10";
@@ -438,8 +470,9 @@
 			  document.getElementById("bTtitle").textContent = "Fujicoin";
 			  document.getElementById("bTtitle1").textContent = "Fujicoin";
 			  tickerCode = "FJC";
+				customCoinName = "fujicoin";
 			}
-			else if (document.getElementById("customCoinName").value == "gun") {
+			else if (document.getElementById("customCoinTicker").value == "gun") {
 			  document.getElementById("coinjs_pub").value = "0x27";
 			  document.getElementById("coinjs_priv").value = "0xa7";
 			  document.getElementById("coinjs_multisig").value = "0x6";
@@ -447,8 +480,9 @@
 			  document.getElementById("bTtitle").textContent = "Guncoin";
 			  document.getElementById("bTtitle1").textContent = "Guncoin";
 			  tickerCode = "GUN";
+				customCoinName = "guncoin";
 			}
-			else if (document.getElementById("customCoinName").value == "html") {
+			else if (document.getElementById("customCoinTicker").value == "html") {
 			  document.getElementById("coinjs_pub").value = "0x29";
 			  document.getElementById("coinjs_priv").value = "0xa9";
 			  document.getElementById("coinjs_multisig").value = "0x6";
@@ -456,8 +490,9 @@
 			  document.getElementById("bTtitle").textContent = "HTMLcoin";
 			  document.getElementById("bTtitle1").textContent = "HTMLcoin";
 			  tickerCode = "HTML";
+				customCoinName = "htmlcoin";
 			}
-			else if (document.getElementById("customCoinName").value == "infx") {
+			else if (document.getElementById("customCoinTicker").value == "infx") {
 			  document.getElementById("coinjs_pub").value = "0x66";
 			  document.getElementById("coinjs_priv").value = "0xe6";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -465,8 +500,9 @@
 			  document.getElementById("bTtitle").textContent = "Influxcoin";
 			  document.getElementById("bTtitle1").textContent = "Influxcoin";
 			  tickerCode = "INFX";
+				customCoinName = "influxcoin";
 			}
-			else if (document.getElementById("customCoinName").value == "ixc") {
+			else if (document.getElementById("customCoinTicker").value == "ixc") {
 			  document.getElementById("coinjs_pub").value = "0x8a";
 			  document.getElementById("coinjs_priv").value = "0x80";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -474,8 +510,9 @@
 			  document.getElementById("bTtitle").textContent = "Ixcoin";
 			  document.getElementById("bTtitle1").textContent = "Ixcoin";
 			  tickerCode = "IXC";
+				customCoinName = "ixcoin";
 			}
-			else if (document.getElementById("customCoinName").value == "lana") {
+			else if (document.getElementById("customCoinTicker").value == "lana") {
 			  document.getElementById("coinjs_pub").value = "0x30";
 			  document.getElementById("coinjs_priv").value = "0xb0";
 			  document.getElementById("coinjs_multisig").value = "0x6";
@@ -483,8 +520,9 @@
 			  document.getElementById("bTtitle").textContent = "Lanacoin";
 			  document.getElementById("bTtitle1").textContent = "Lanacoin";
 			  tickerCode = "LANA";
+				customCoinName = "lanacoin";
 			}
-			else if (document.getElementById("customCoinName").value == "lynx") {
+			else if (document.getElementById("customCoinTicker").value == "lynx") {
 			  document.getElementById("coinjs_pub").value = "0x2d";
 			  document.getElementById("coinjs_priv").value = "0xad";
 			  document.getElementById("coinjs_multisig").value = "0x32";
@@ -492,8 +530,9 @@
 			  document.getElementById("bTtitle").textContent = "Lynx";
 			  document.getElementById("bTtitle1").textContent = "lynx";
 			  tickerCode = "LYNX";
+				customCoinName = "lynx";
 			}
-			else if (document.getElementById("customCoinName").value == "xmg") {
+			else if (document.getElementById("customCoinTicker").value == "xmg") {
 			  document.getElementById("coinjs_pub").value = "0x14";
 			  document.getElementById("coinjs_priv").value = "0x94";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -501,8 +540,9 @@
 			  document.getElementById("bTtitle").textContent = "Magicoin";
 			  document.getElementById("bTtitle1").textContent = "Magicoin";
 			  tickerCode = "XMG";
+				customCoinName = "magicoin";
 			}
-			else if (document.getElementById("customCoinName").value == "mzc") {
+			else if (document.getElementById("customCoinTicker").value == "mzc") {
 			  document.getElementById("coinjs_pub").value = "0x32";
 			  document.getElementById("coinjs_priv").value = "0xe0";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -510,8 +550,9 @@
 			  document.getElementById("bTtitle").textContent = "Mazacoin";
 			  document.getElementById("bTtitle1").textContent = "Mazacoin";
 			  tickerCode = "MZC";
+				customCoinName = "mazacoin";
 			}
-			else if (document.getElementById("customCoinName").value == "mec") {
+			else if (document.getElementById("customCoinTicker").value == "mec") {
 			  document.getElementById("coinjs_pub").value = "0x32";
 			  document.getElementById("coinjs_priv").value = "0xb2";
 			  document.getElementById("coinjs_multisig").value = "0x6";
@@ -519,8 +560,9 @@
 			  document.getElementById("bTtitle").textContent = "Megacoin";
 			  document.getElementById("bTtitle1").textContent = "Megacoin";
 			  tickerCode = "MEC";
+				customCoinName = "megacoin";
 			}
-			else if (document.getElementById("customCoinName").value == "mona") {
+			else if (document.getElementById("customCoinTicker").value == "mona") {
 			  document.getElementById("coinjs_pub").value = "0x32";
 			  document.getElementById("coinjs_priv").value = "0xb0";
 			  document.getElementById("coinjs_multisig").value = "0x37";
@@ -528,8 +570,9 @@
 			  document.getElementById("bTtitle").textContent = "Monacoin";
 			  document.getElementById("bTtitle1").textContent = "Monacoin";
 			  tickerCode = "MONA";
+				customCoinName = "monacoin";
 			}
-			else if (document.getElementById("customCoinName").value == "moon") {
+			else if (document.getElementById("customCoinTicker").value == "moon") {
 			  document.getElementById("coinjs_pub").value = "0x3";
 			  document.getElementById("coinjs_priv").value = "0x83";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -537,8 +580,9 @@
 			  document.getElementById("bTtitle").textContent = "Mooncoin";
 			  document.getElementById("bTtitle1").textContent = "Mooncoin";
 			  tickerCode = "MOON";
+				customCoinName = "mooncoin";
 			}
-			else if (document.getElementById("customCoinName").value == "xmy") {
+			else if (document.getElementById("customCoinTicker").value == "xmy") {
 			  document.getElementById("coinjs_pub").value = "0x32";
 			  document.getElementById("coinjs_priv").value = "0xb2";
 			  document.getElementById("coinjs_multisig").value = "0x9";
@@ -546,8 +590,9 @@
 			  document.getElementById("bTtitle").textContent = "Myriadcoin";
 			  document.getElementById("bTtitle1").textContent = "Myriadcoin";
 			  tickerCode = "XMY";
+				customCoinName = "myriadcoin";
 			}
-			else if (document.getElementById("customCoinName").value == "nmc") {
+			else if (document.getElementById("customCoinTicker").value == "nmc") {
 			  document.getElementById("coinjs_pub").value = "0x34";
 			  document.getElementById("coinjs_priv").value = "0xb4";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -555,8 +600,9 @@
 			  document.getElementById("bTtitle").textContent = "Namecoin";
 			  document.getElementById("bTtitle1").textContent = "Namecoin";
 			  tickerCode = "NMC";
+				customCoinName = "namecoin";
 			}
-			else if (document.getElementById("customCoinName").value == "nav") {
+			else if (document.getElementById("customCoinTicker").value == "nav") {
 			  document.getElementById("coinjs_pub").value = "0x35";
 			  document.getElementById("coinjs_priv").value = "0x96";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -564,8 +610,9 @@
 			  document.getElementById("bTtitle").textContent = "Navcoin";
 			  document.getElementById("bTtitle1").textContent = "Navcoin";
 			  tickerCode = "NAV";
+				customCoinName = "navcoin";
 			}
-			else if (document.getElementById("customCoinName").value == "neos") {
+			else if (document.getElementById("customCoinTicker").value == "neos") {
 			  document.getElementById("coinjs_pub").value = "0x35";
 			  document.getElementById("coinjs_priv").value = "0xb1";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -573,8 +620,9 @@
 			  document.getElementById("bTtitle").textContent = "Neoscoin";
 			  document.getElementById("bTtitle1").textContent = "Neoscoin";
 			  tickerCode = "NEOS";
+				customCoinName = "neoscoin";
 			}
-			else if (document.getElementById("customCoinName").value == "neva") {
+			else if (document.getElementById("customCoinTicker").value == "neva") {
 			  document.getElementById("coinjs_pub").value = "0x35";
 			  document.getElementById("coinjs_priv").value = "0xb1";
 			  document.getElementById("coinjs_multisig").value = "0x6";
@@ -582,8 +630,9 @@
 			  document.getElementById("bTtitle").textContent = "Nevacoin";
 			  document.getElementById("bTtitle1").textContent = "Nevacoin";
 			  tickerCode = "NEVA";
+				customCoinName = "nevacoin";
 			}
-			else if (document.getElementById("customCoinName").value == "nvc") {
+			else if (document.getElementById("customCoinTicker").value == "nvc") {
 			  document.getElementById("coinjs_pub").value = "0x8";
 			  document.getElementById("coinjs_priv").value = "0x88";
 			  document.getElementById("coinjs_multisig").value = "0x14";
@@ -591,8 +640,9 @@
 			  document.getElementById("bTtitle").textContent = "Novacoin";
 			  document.getElementById("bTtitle1").textContent = "Novacoin";
 			  tickerCode = "NVC";
+				customCoinName = "novacoin";
 			}
-			else if (document.getElementById("customCoinName").value == "nbt") {
+			else if (document.getElementById("customCoinTicker").value == "nbt") {
 			  document.getElementById("coinjs_pub").value = "0x3f";
 			  document.getElementById("coinjs_priv").value = "0xbf";
 			  document.getElementById("coinjs_multisig").value = "0x7d";
@@ -600,8 +650,9 @@
 			  document.getElementById("bTtitle").textContent = "Nubits";
 			  document.getElementById("bTtitle1").textContent = "Nubits";
 			  tickerCode = "NBT";
+				customCoinName = "nubits";
 			}
-			else if (document.getElementById("customCoinName").value == "pkb") {
+			else if (document.getElementById("customCoinTicker").value == "pkb") {
 			  document.getElementById("coinjs_pub").value = "0x37";
 			  document.getElementById("coinjs_priv").value = "0xb7";
 			  document.getElementById("coinjs_multisig").value = "0x1c";
@@ -609,8 +660,9 @@
 			  document.getElementById("bTtitle").textContent = "ParkByte";
 			  document.getElementById("bTtitle1").textContent = "ParkByte";
 			  tickerCode = "PKB";
+				customCoinName = "parkbyte";
 			}
-			else if (document.getElementById("customCoinName").value == "part") {
+			else if (document.getElementById("customCoinTicker").value == "part") {
 			  document.getElementById("coinjs_pub").value = "0x38";
 			  document.getElementById("coinjs_priv").value = "0x6c";
 			  document.getElementById("coinjs_multisig").value = "0x4";
@@ -618,8 +670,9 @@
 			  document.getElementById("bTtitle").textContent = "Particl";
 			  document.getElementById("bTtitle1").textContent = "Particl";
 			  tickerCode = "PART";
+				customCoinName = "patyicl";
 			}
-			else if (document.getElementById("customCoinName").value == "ptc") {
+			else if (document.getElementById("customCoinTicker").value == "ptc") {
 			  document.getElementById("coinjs_pub").value = "0x2f";
 			  document.getElementById("coinjs_priv").value = "0xaf";
 			  document.getElementById("coinjs_multisig").value = "0x6";
@@ -627,8 +680,9 @@
 			  document.getElementById("bTtitle").textContent = "Pesetacoin";
 			  document.getElementById("bTtitle1").textContent = "Pesetacoin";
 			  tickerCode = "PTC";
+				customCoinName = "pesetacoin";
 			}
-			else if (document.getElementById("customCoinName").value == "piggy") {
+			else if (document.getElementById("customCoinTicker").value == "piggy") {
 			  document.getElementById("coinjs_pub").value = "0x76";
 			  document.getElementById("coinjs_priv").value = "0xf6";
 			  document.getElementById("coinjs_multisig").value = "0x9";
@@ -636,8 +690,9 @@
 			  document.getElementById("bTtitle").textContent = "Piggycoin";
 			  document.getElementById("bTtitle1").textContent = "Piggycoin";
 			  tickerCode = "PIGGY";
+				customCoinName = "piggycoin";
 			}
-			else if (document.getElementById("customCoinName").value == "pink") {
+			else if (document.getElementById("customCoinTicker").value == "pink") {
 			  document.getElementById("coinjs_pub").value = "0x3";
 			  document.getElementById("coinjs_priv").value = "0x83";
 			  document.getElementById("coinjs_multisig").value = "0x1c";
@@ -645,8 +700,9 @@
 			  document.getElementById("bTtitle").textContent = "Pinkcoin";
 			  document.getElementById("bTtitle1").textContent = "Pinkcoin";
 			  tickerCode = "PINK";
+				customCoinName = "pinkcoin";
 			}
-			else if (document.getElementById("customCoinName").value == "pivx") {
+			else if (document.getElementById("customCoinTicker").value == "pivx") {
 			  document.getElementById("coinjs_pub").value = "0x1e";
 			  document.getElementById("coinjs_priv").value = "0xd4";
 			  document.getElementById("coinjs_multisig").value = "0xd";
@@ -654,8 +710,9 @@
 			  document.getElementById("bTtitle").textContent = "Pivx";
 			  document.getElementById("bTtitle1").textContent = "Pivx";
 			  tickerCode = "PIVX";
+				customCoinName = "pivx";
 			}
-			else if (document.getElementById("customCoinName").value == "xpm") {
+			else if (document.getElementById("customCoinTicker").value == "xpm") {
 			  document.getElementById("coinjs_pub").value = "0x17";
 			  document.getElementById("coinjs_priv").value = "0x97";
 			  document.getElementById("coinjs_multisig").value = "0x53";
@@ -663,8 +720,9 @@
 			  document.getElementById("bTtitle").textContent = "Primecoin";
 			  document.getElementById("bTtitle1").textContent = "Primecoin";
 			  tickerCode = "XPM";
+				customCoinName = "primecoin";
 			}
-			else if (document.getElementById("customCoinName").value == "qrk") {
+			else if (document.getElementById("customCoinTicker").value == "qrk") {
 			  document.getElementById("coinjs_pub").value = "0x3a";
 			  document.getElementById("coinjs_priv").value = "0xba";
 			  document.getElementById("coinjs_multisig").value = "0x7";
@@ -672,8 +730,9 @@
 			  document.getElementById("bTtitle").textContent = "Quark";
 			  document.getElementById("bTtitle1").textContent = "Quark";
 			  tickerCode = "QRK";
+				customCoinName = "quark";
 			}
-			else if (document.getElementById("customCoinName").value == "rdd") {
+			else if (document.getElementById("customCoinTicker").value == "rdd") {
 			  document.getElementById("coinjs_pub").value = "0x3d";
 			  document.getElementById("coinjs_priv").value = "0xbd";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -681,8 +740,9 @@
 			  document.getElementById("bTtitle").textContent = "Reddcoin";
 			  document.getElementById("bTtitle1").textContent = "Reddcoin";
 			  tickerCode = "RDD";
+				customCoinName = "reddcoin";
 			}
-			else if (document.getElementById("customCoinName").value == "ric") {
+			else if (document.getElementById("customCoinTicker").value == "ric") {
 			  document.getElementById("coinjs_pub").value = "0x3c";
 			  document.getElementById("coinjs_priv").value = "0x80";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -690,8 +750,9 @@
 			  document.getElementById("bTtitle").textContent = "Riecoin";
 			  document.getElementById("bTtitle1").textContent = "Riecoin";
 			  tickerCode = "RIC";
+				customCoinName = "riecoin";
 			}
-			else if (document.getElementById("customCoinName").value == "bcc") {
+			else if (document.getElementById("customCoinTicker").value == "bcc") {
 			  document.getElementById("coinjs_pub").value = "0x12";
 			  document.getElementById("coinjs_priv").value = "0x92";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -699,8 +760,9 @@
 			  document.getElementById("bTtitle").textContent = "BitConnect";
 			  document.getElementById("bTtitle1").textContent = "BitConnect";
 			  tickerCode = "BCC";
+				customCoinName = "bitconnect";
 			}
-			else if (document.getElementById("customCoinName").value == "dmd") {
+			else if (document.getElementById("customCoinTicker").value == "dmd") {
 			  document.getElementById("coinjs_pub").value = "0x5a";
 			  document.getElementById("coinjs_priv").value = "0xda";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -708,8 +770,9 @@
 			  document.getElementById("bTtitle").textContent = "Diamond";
 			  document.getElementById("bTtitle1").textContent = "Diamond";
 			  tickerCode = "DMD";
+				customCoinName = "diamond";
 			}
-			else if (document.getElementById("customCoinName").value == "xcp") {
+			else if (document.getElementById("customCoinTicker").value == "xcp") {
 			  document.getElementById("coinjs_pub").value = "0x0";
 			  document.getElementById("coinjs_priv").value = "0x80";
 			  document.getElementById("coinjs_multisig").value = "";
@@ -717,8 +780,9 @@
 			  document.getElementById("bTtitle").textContent = "CounterParty";
 			  document.getElementById("bTtitle1").textContent = "CounterParty";
 			  tickerCode = "XCP";
+				customCoinName = "counterparty";
 			}
-			else if (document.getElementById("customCoinName").value == "cloak") {
+			else if (document.getElementById("customCoinTicker").value == "cloak") {
 			  document.getElementById("coinjs_pub").value = "0x1b";
 			  document.getElementById("coinjs_priv").value = "0x9b";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -726,8 +790,9 @@
 			  document.getElementById("bTtitle").textContent = "CloakCoin";
 			  document.getElementById("bTtitle1").textContent = "CloakCoin";
 			  tickerCode = "CLOAK";
+				customCoinName = "cloakcoin";
 			}
-			else if (document.getElementById("customCoinName").value == "dgb") {
+			else if (document.getElementById("customCoinTicker").value == "dgb") {
 			  document.getElementById("coinjs_pub").value = "0x1e";
 			  document.getElementById("coinjs_priv").value = "0x80";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -735,8 +800,9 @@
 			  document.getElementById("bTtitle").textContent = "DigiBtyes";
 			  document.getElementById("bTtitle1").textContent = "DigiBtyes";
 			  tickerCode = "DGB";
+				customCoinName = "digibytes";
 			}
-			else if (document.getElementById("customCoinName").value == "dime") {
+			else if (document.getElementById("customCoinTicker").value == "dime") {
 			  document.getElementById("coinjs_pub").value = "0xf";
 			  document.getElementById("coinjs_priv").value = "0x8f";
 			  document.getElementById("coinjs_multisig").value = "0x9";
@@ -744,8 +810,9 @@
 			  document.getElementById("bTtitle").textContent = "Dimecoin";
 			  document.getElementById("bTtitle1").textContent = "Dimecoin";
 			  tickerCode = "DIME";
+				customCoinName = "dimecoin";
 			}
-			else if (document.getElementById("customCoinName").value == "xvg") {
+			else if (document.getElementById("customCoinTicker").value == "xvg") {
 			  document.getElementById("coinjs_pub").value = "0x1e";
 			  document.getElementById("coinjs_priv").value = "0x9e";
 			  document.getElementById("coinjs_multisig").value = "";
@@ -753,8 +820,9 @@
 			  document.getElementById("bTtitle").textContent = "Verge";
 			  document.getElementById("bTtitle1").textContent = "Verge";
 			  tickerCode = "XVG";
+				customCoinName = "verge";
 			}
-			else if (document.getElementById("customCoinName").value == "1337") {
+			else if (document.getElementById("customCoinTicker").value == "1337") {
 			  document.getElementById("coinjs_pub").value = "0x30";
 			  document.getElementById("coinjs_priv").value = "0xb0";
 			  document.getElementById("coinjs_multisig").value = "0x1c";
@@ -762,8 +830,9 @@
 			  document.getElementById("bTtitle").textContent = "Elite";
 			  document.getElementById("bTtitle1").textContent = "Elite";
 			  tickerCode = "1337";
+				customCoinName = "elite";
 			}
-			else if (document.getElementById("customCoinName").value == "eth") {
+			else if (document.getElementById("customCoinTicker").value == "eth") {
 			  document.getElementById("coinjs_pub").value = "";
 			  document.getElementById("coinjs_priv").value = "";
 			  document.getElementById("coinjs_multisig").value = "";
@@ -771,8 +840,9 @@
 			  document.getElementById("bTtitle").textContent = "Ethereum";
 			  document.getElementById("bTtitle1").textContent = "Ethereum";
 			  tickerCode = "ETH";
+				customCoinName = "ethereum";
 			}
-			else if (document.getElementById("customCoinName").value == "erc") {
+			else if (document.getElementById("customCoinTicker").value == "erc") {
 			  document.getElementById("coinjs_pub").value = "0x21";
 			  document.getElementById("coinjs_priv").value = "0xa1";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -780,8 +850,9 @@
 			  document.getElementById("bTtitle").textContent = "Europecoin";
 			  document.getElementById("bTtitle1").textContent = "Europecoin";
 			  tickerCode = "ERC";
+				customCoinName = "europecoin";
 			}
-			else if (document.getElementById("customCoinName").value == "btx") {
+			else if (document.getElementById("customCoinTicker").value == "btx") {
 			  document.getElementById("coinjs_pub").value = "0x03";
 			  document.getElementById("coinjs_priv").value = "0x80";
 			  document.getElementById("coinjs_multisig").value = "0x7d";
@@ -789,8 +860,9 @@
 			  document.getElementById("bTtitle").textContent = "BitCore";
 			  document.getElementById("bTtitle1").textContent = "BitCore";
 			  tickerCode = "BTX";
+				customCoinName = "bitcore";
 			}
-			else if (document.getElementById("customCoinName").value == "arg") {
+			else if (document.getElementById("customCoinTicker").value == "arg") {
 			  document.getElementById("coinjs_pub").value = "0x17";
 			  document.getElementById("coinjs_priv").value = "0x97";
 			  document.getElementById("coinjs_multisig").value = "0x05";
@@ -798,8 +870,9 @@
 			  document.getElementById("bTtitle").textContent = "Argentum";
 			  document.getElementById("bTtitle1").textContent = "Argentum";
 			  tickerCode = "ARG";
+				customCoinName = "argentum";
 			}
-			else if (document.getElementById("customCoinName").value == "utip") {
+			else if (document.getElementById("customCoinTicker").value == "utip") {
 			  document.getElementById("coinjs_pub").value = "0x17";
 			  document.getElementById("coinjs_priv").value = "0x8d";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -807,8 +880,9 @@
 			  document.getElementById("bTtitle").textContent = "uTipcoin";
 			  document.getElementById("bTtitle1").textContent = "uTipcoin";
 			  tickerCode = "UTIP";
+				customCoinName = "utipcoin";
 			}
-			else if (document.getElementById("customCoinName").value == "xqr") {
+			else if (document.getElementById("customCoinTicker").value == "xqr") {
 			  document.getElementById("coinjs_pub").value = "0x";
 			  document.getElementById("coinjs_priv").value = "0x";
 			  document.getElementById("coinjs_multisig").value = "0x";
@@ -816,8 +890,9 @@
 			  document.getElementById("bTtitle").textContent = "Qredit";
 			  document.getElementById("bTtitle1").textContent = "Qredit";
 			  tickerCode = "XQR";
+				customCoinName = "qredit";
 			}
-			else if (document.getElementById("customCoinName").value == "cache") {
+			else if (document.getElementById("customCoinTicker").value == "cache") {
 			  document.getElementById("coinjs_pub").value = "0x1c";
 			  document.getElementById("coinjs_priv").value = "0x9c";
 			  document.getElementById("coinjs_multisig").value = "0x57";
@@ -825,8 +900,9 @@
 			  document.getElementById("bTtitle").textContent = "CACHeCoin";
 			  document.getElementById("bTtitle1").textContent = "CACHeCoin";
 			  tickerCode = "CACHE";
+				customCoinName = "cachecoin";
 			}
-			else if (document.getElementById("customCoinName").value == "civ") {
+			else if (document.getElementById("customCoinTicker").value == "civ") {
 			  document.getElementById("coinjs_pub").value = "0x1c";
 			  document.getElementById("coinjs_priv").value = "0xd4";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -834,8 +910,9 @@
 			  document.getElementById("bTtitle").textContent = "Civitas";
 			  document.getElementById("bTtitle1").textContent = "Civitas";
 			  tickerCode = "CIV";
+				customCoinName = "civitas";
 			}
-			else if (document.getElementById("customCoinName").value == "ade") {
+			else if (document.getElementById("customCoinTicker").value == "ade") {
 			  document.getElementById("coinjs_pub").value = "0x17";
 			  document.getElementById("coinjs_priv").value = "0xc1";
 			  document.getElementById("coinjs_multisig").value = "0x10";
@@ -843,8 +920,9 @@
 			  document.getElementById("bTtitle").textContent = "Adeptio";
 			  document.getElementById("bTtitle1").textContent = "Adeptio";
 			  tickerCode = "ADE";
+				customCoinName = "adeptio";
 			}
-			else if (document.getElementById("customCoinName").value == "aeg") {
+			else if (document.getElementById("customCoinTicker").value == "aeg") {
 			  document.getElementById("coinjs_pub").value = "0x17";
 			  document.getElementById("coinjs_priv").value = "0x97";
 			  document.getElementById("coinjs_multisig").value = "0x53";
@@ -852,8 +930,9 @@
 			  document.getElementById("bTtitle").textContent = "Aegeus";
 			  document.getElementById("bTtitle1").textContent = "Aegeus";
 			  tickerCode = "AEG";
+				customCoinName = "aegeus";
 			}
-			else if (document.getElementById("customCoinName").value == "ac") {
+			else if (document.getElementById("customCoinTicker").value == "ac") {
 				document.getElementById("coinjs_pub").value = "0x17";
 			  document.getElementById("coinjs_priv").value = "0x97";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -861,8 +940,9 @@
 			  document.getElementById("bTtitle").textContent = "Asiacoin";
 			  document.getElementById("bTtitle1").textContent = "Asiacoin";
 			  tickerCode = "AC";
+				customCoinName = "asiacoin";
 			}
-			else if (document.getElementById("customCoinName").value == "btdx") {
+			else if (document.getElementById("customCoinTicker").value == "btdx") {
 			  document.getElementById("coinjs_pub").value = "0x99";
 			  document.getElementById("coinjs_priv").value = "0x19";
 			  document.getElementById("coinjs_multisig").value = "0x05";
@@ -870,8 +950,9 @@
 			  document.getElementById("bTtitle").textContent = "Bitcloud";
 			  document.getElementById("bTtitle1").textContent = "Bitcloud";
 			  tickerCode = "BTDX";
+				customCoinName = "bitcloud";
 			}
-			else if (document.getElementById("customCoinName").value == "bsd") {
+			else if (document.getElementById("customCoinTicker").value == "bsd") {
 			  document.getElementById("coinjs_pub").value = "0x66";
 			  document.getElementById("coinjs_priv").value = "0xcc";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -879,8 +960,9 @@
 			  document.getElementById("bTtitle").textContent = "BitSend";
 			  document.getElementById("bTtitle1").textContent = "BitSend";
 			  tickerCode = "BSD";
+				customCoinName = "bitsend";
 			}
-			else if (document.getElementById("customCoinName").value == "xch") {
+			else if (document.getElementById("customCoinTicker").value == "xch") {
 			  document.getElementById("coinjs_pub").value = "0xef";
 			  document.getElementById("coinjs_priv").value = "0x6f";
 			  document.getElementById("coinjs_multisig").value = "0xc4";
@@ -889,8 +971,9 @@
 			  document.getElementById("bTtitle1").textContent = "ClearingHouse";
 				document.getElementById("xfeeTicker").textContent = "XCH";
 			  tickerCode = "XCH";
+				customCoinName = "clearinghouse";
 			}
-			else if (document.getElementById("customCoinName").value == "jbs") {
+			else if (document.getElementById("customCoinTicker").value == "jbs") {
 			  document.getElementById("coinjs_pub").value = "0x2b";
 			  document.getElementById("coinjs_priv").value = "0xab";
 			  document.getElementById("coinjs_multisig").value = "0x69";
@@ -899,7 +982,7 @@
 			  document.getElementById("bTtitle1").textContent = "Jumbucks";
 			  tickerCode = "JBS";
 			}
-			else if (document.getElementById("customCoinName").value == "xmr") {
+			else if (document.getElementById("customCoinTicker").value == "xmr") {
 			  document.getElementById("coinjs_pub").value = "0x";
 			  document.getElementById("coinjs_priv").value = "0x";
 			  document.getElementById("coinjs_multisig").value = "0x";
@@ -908,7 +991,7 @@
 			  document.getElementById("bTtitle1").textContent = "Monero";
 			  tickerCode = "XMR";
 			}
-			else if (document.getElementById("customCoinName").value == "nsr)") {
+			else if (document.getElementById("customCoinTicker").value == "nsr)") {
 			  document.getElementById("coinjs_pub").value = "0x3f";
 			  document.getElementById("coinjs_priv").value = "0xbf";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -917,7 +1000,7 @@
 			  document.getElementById("bTtitle1").textContent = "Nushares";
 			  tickerCode = "NSR";
 			}
-			else if (document.getElementById("customCoinName").value == "nxt") {
+			else if (document.getElementById("customCoinTicker").value == "nxt") {
 			  document.getElementById("coinjs_pub").value = "0x";
 			  document.getElementById("coinjs_priv").value = "0x";
 			  document.getElementById("coinjs_multisig").value = "0x";
@@ -926,7 +1009,7 @@
 			  document.getElementById("bTtitle1").textContent = "Nxt";
 			  tickerCode = "NXT";
 			}
-			else if (document.getElementById("customCoinName").value == "xrp") {
+			else if (document.getElementById("customCoinTicker").value == "xrp") {
 			  document.getElementById("coinjs_pub").value = "0x";
 			  document.getElementById("coinjs_priv").value = "0x";
 			  document.getElementById("coinjs_multisig").value = "0x";
@@ -935,7 +1018,7 @@
 			  document.getElementById("bTtitle1").textContent = "Ripple";
 			  tickerCode = "XRP";
 			}
-			else if (document.getElementById("customCoinName").value == "sdc") {
+			else if (document.getElementById("customCoinTicker").value == "sdc") {
 			  document.getElementById("coinjs_pub").value = "0x3f";
 			  document.getElementById("coinjs_priv").value = "0xbf";
 			  document.getElementById("coinjs_multisig").value = "0xbf";
@@ -944,7 +1027,7 @@
 			  document.getElementById("bTtitle1").textContent = "Shadowcoin";
 			  tickerCode = "SDC";
 			}
-			else if (document.getElementById("customCoinName").value == "start") {
+			else if (document.getElementById("customCoinTicker").value == "start") {
 			  document.getElementById("coinjs_pub").value = "0x7d";
 			  document.getElementById("coinjs_priv").value = "0xfd";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -953,7 +1036,7 @@
 			  document.getElementById("bTtitle1").textContent = "Startcoin";
 			  tickerCode = "START";
 			}
-			else if (document.getElementById("customCoinName").value == "xtz") {
+			else if (document.getElementById("customCoinTicker").value == "xtz") {
 			  document.getElementById("coinjs_pub").value = "0x";
 			  document.getElementById("coinjs_priv").value = "0x";
 			  document.getElementById("coinjs_multisig").value = "0x";
@@ -962,7 +1045,7 @@
 			  document.getElementById("bTtitle1").textContent = "Tezos";
 			  tickerCode = "XTZ";
 			}
-			else if (document.getElementById("customCoinName").value == "tpc") {
+			else if (document.getElementById("customCoinTicker").value == "tpc") {
 			  document.getElementById("coinjs_pub").value = "0x41";
 			  document.getElementById("coinjs_priv").value = "0xc1";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -971,7 +1054,7 @@
 			  document.getElementById("bTtitle1").textContent = "TPCash";
 			  tickerCode = "TPC";
 			}
-			else if (document.getElementById("customCoinName").value == "vpn") {
+			else if (document.getElementById("customCoinTicker").value == "vpn") {
 			  document.getElementById("coinjs_pub").value = "0x47";
 			  document.getElementById("coinjs_priv").value = "0xc7";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -980,7 +1063,7 @@
 			  document.getElementById("bTtitle1").textContent = "Vpncoin";
 			  tickerCode = "VPN";
 			}
-			else if (document.getElementById("customCoinName").value == "zec") {
+			else if (document.getElementById("customCoinTicker").value == "zec") {
 			  document.getElementById("coinjs_pub").value = "0x1c";
 			  document.getElementById("coinjs_priv").value = "0x9c";
 			  document.getElementById("coinjs_multisig").value = "0x1c";
@@ -989,7 +1072,7 @@
 			  document.getElementById("bTtitle1").textContent = "zCash";
 			  tickerCode = "ZEC";
 			}
-			else if (document.getElementById("customCoinName").value == "zrc") {
+			else if (document.getElementById("customCoinTicker").value == "zrc") {
 			  document.getElementById("coinjs_pub").value = "0x50";
 			  document.getElementById("coinjs_priv").value = "0xd0";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -998,7 +1081,7 @@
 			  document.getElementById("bTtitle1").textContent = "Ziftrcoim";
 			  tickerCode = "ZRC";
 			}
-			else if (document.getElementById("customCoinName").value == "zoom") {
+			else if (document.getElementById("customCoinTicker").value == "zoom") {
 			  document.getElementById("coinjs_pub").value = "0x";
 			  document.getElementById("coinjs_priv").value = "0x";
 			  document.getElementById("coinjs_multisig").value = "0x";
@@ -1007,7 +1090,7 @@
 			  document.getElementById("bTtitle1").textContent = "Zoomcoin";
 			  tickerCode = "ZOOM";
 			}
-			else if (document.getElementById("customCoinName").value == "slg") {
+			else if (document.getElementById("customCoinTicker").value == "slg") {
 			  document.getElementById("coinjs_pub").value = "0x3f";
 			  document.getElementById("coinjs_priv").value = "0xbf";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -1016,7 +1099,7 @@
 			  document.getElementById("bTtitle1").textContent = "Sterlingcoin";
 			  tickerCode = "SLG";
 			}
-			else if (document.getElementById("customCoinName").value == "ldoge") {
+			else if (document.getElementById("customCoinTicker").value == "ldoge") {
 			  document.getElementById("coinjs_pub").value = "0x5a";
 			  document.getElementById("coinjs_priv").value = "0xda";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -1025,7 +1108,7 @@
 			  document.getElementById("bTtitle1").textContent = "LiteDoge";
 			  tickerCode = "LDOGE";
 			}
-			else if (document.getElementById("customCoinName").value == "mint") {
+			else if (document.getElementById("customCoinTicker").value == "mint") {
 			  document.getElementById("coinjs_pub").value = "0x33";
 			  document.getElementById("coinjs_priv").value = "0xb3";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -1034,7 +1117,7 @@
 			  document.getElementById("bTtitle1").textContent = "Mintcoin";
 			  tickerCode = "MINT";
 			}
-			else if (document.getElementById("customCoinName").value == "aias") {
+			else if (document.getElementById("customCoinTicker").value == "aias") {
 			  document.getElementById("coinjs_pub").value = "0x17";
 			  document.getElementById("coinjs_priv").value = "0x97";
 			  document.getElementById("coinjs_multisig").value = "0x53";
@@ -1043,7 +1126,7 @@
 			  document.getElementById("bTtitle1").textContent = "Aias";
 			  tickerCode = "AIAS";
 			}
-			else if (document.getElementById("customCoinName").value == "arepa") {
+			else if (document.getElementById("customCoinTicker").value == "arepa") {
 			  document.getElementById("coinjs_pub").value = "0x17";
 			  document.getElementById("coinjs_priv").value = "0x97";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -1052,7 +1135,7 @@
 			  document.getElementById("bTtitle1").textContent = "Arepacoin";
 			  tickerCode = "AREPA";
 			}
-			else if (document.getElementById("customCoinName").value == "agnt") {
+			else if (document.getElementById("customCoinTicker").value == "agnt") {
 			  document.getElementById("coinjs_pub").value = "0x17";
 			  document.getElementById("coinjs_priv").value = "0x97";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -1061,7 +1144,7 @@
 			  document.getElementById("bTtitle1").textContent = "ArgentumNT";
 			  tickerCode = "AGNT";
 			}
-			else if (document.getElementById("customCoinName").value == "ari") {
+			else if (document.getElementById("customCoinTicker").value == "ari") {
 			  document.getElementById("coinjs_pub").value = "0xb";
 			  document.getElementById("coinjs_priv").value = "0x8b";
 			  document.getElementById("coinjs_multisig").value = "0xc4";
@@ -1070,7 +1153,7 @@
 			  document.getElementById("bTtitle1").textContent = "Aricoin";
 			  tickerCode = "ARI";
 			}
-			else if (document.getElementById("customCoinName").value == "adc") {
+			else if (document.getElementById("customCoinTicker").value == "adc") {
 			  document.getElementById("coinjs_pub").value = "0x17";
 			  document.getElementById("coinjs_priv").value = "0x97";
 			  document.getElementById("coinjs_multisig").value = "0x7d";
@@ -1079,7 +1162,7 @@
 			  document.getElementById("bTtitle1").textContent = "Audiocoin";
 			  tickerCode = "ADC";
 			}
-			else if (document.getElementById("customCoinName").value == "b3") {
+			else if (document.getElementById("customCoinTicker").value == "b3") {
 			  document.getElementById("coinjs_pub").value = "0x3f";
 			  document.getElementById("coinjs_priv").value = "0x97";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -1088,7 +1171,7 @@
 			  document.getElementById("bTtitle1").textContent = "B3Coin";
 			  tickerCode = "B3";
 			}
-			else if (document.getElementById("customCoinName").value == "bzc") {
+			else if (document.getElementById("customCoinTicker").value == "bzc") {
 			  document.getElementById("coinjs_pub").value = "0x1c";
 			  document.getElementById("coinjs_priv").value = "0x1c";
 			  document.getElementById("coinjs_multisig").value = "0x80";
@@ -1097,7 +1180,7 @@
 			  document.getElementById("bTtitle1").textContent = "Bitzec";
 			  tickerCode = "bzc";
 			}
-			else if (document.getElementById("customCoinName").value == "bean") {
+			else if (document.getElementById("customCoinTicker").value == "bean") {
 			  document.getElementById("coinjs_pub").value = "0x3";
 			  document.getElementById("coinjs_priv").value = "0x55";
 			  document.getElementById("coinjs_multisig").value = "0x97";
@@ -1106,7 +1189,7 @@
 			  document.getElementById("bTtitle1").textContent = "Bean Cash";
 			  tickerCode = "BEAN";
 			}
-			else if (document.getElementById("customCoinName").value == "bnode") {
+			else if (document.getElementById("customCoinTicker").value == "bnode") {
 			  document.getElementById("coinjs_pub").value = "0x19";
 			  document.getElementById("coinjs_priv").value = "0x1b";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -1115,7 +1198,7 @@
 			  document.getElementById("bTtitle1").textContent = "Beenode";
 			  tickerCode = "BNODE";
 			}
-			else if (document.getElementById("customCoinName").value == "kng") {
+			else if (document.getElementById("customCoinTicker").value == "kng") {
 			  document.getElementById("coinjs_pub").value = "0x4b";
 			  document.getElementById("coinjs_priv").value = "0xcb";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -1124,7 +1207,7 @@
 			  document.getElementById("bTtitle1").textContent = "BetKings";
 			  tickerCode = "KNG";
 			}
-			else if (document.getElementById("customCoinName").value == "biid") {
+			else if (document.getElementById("customCoinTicker").value == "biid") {
 			  document.getElementById("coinjs_pub").value = "0x19";
 			  document.getElementById("coinjs_priv").value = "0x99";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -1133,7 +1216,7 @@
 			  document.getElementById("bTtitle1").textContent = "Biidcoin";
 			  tickerCode = "BIID";
 			}
-			else if (document.getElementById("customCoinName").value == "bay") {
+			else if (document.getElementById("customCoinTicker").value == "bay") {
 			  document.getElementById("coinjs_pub").value = "0x19";
 			  document.getElementById("coinjs_priv").value = "0x99";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -1142,7 +1225,7 @@
 			  document.getElementById("bTtitle1").textContent = "BitBay";
 			  tickerCode = "BAY";
 			}
-			else if (document.getElementById("customCoinName").value == "xbc") {
+			else if (document.getElementById("customCoinTicker").value == "xbc") {
 			  document.getElementById("coinjs_pub").value = "0x19";
 			  document.getElementById("coinjs_priv").value = "0x99";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -1151,7 +1234,7 @@
 			  document.getElementById("bTtitle1").textContent = "BitcoinPlus";
 			  tickerCode = "XBC";
 			}
-			else if (document.getElementById("customCoinName").value == "bzx") {
+			else if (document.getElementById("customCoinTicker").value == "bzx") {
 			  document.getElementById("coinjs_pub").value = "0x0";
 			  document.getElementById("coinjs_priv").value = "0x80";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -1160,7 +1243,7 @@
 			  document.getElementById("bTtitle1").textContent = "BitcoinZero";
 			  tickerCode = "BZX";
 			}
-			else if (document.getElementById("customCoinName").value == "bccx") {
+			else if (document.getElementById("customCoinTicker").value == "bccx") {
 			  document.getElementById("coinjs_pub").value = "0x4b";
 			  document.getElementById("coinjs_priv").value = "0xcb";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -1169,7 +1252,7 @@
 			  document.getElementById("bTtitle1").textContent = "Bitconnect X";
 			  tickerCode = "BCCX";
 			}
-			else if (document.getElementById("customCoinName").value == "marks") {
+			else if (document.getElementById("customCoinTicker").value == "marks") {
 			  document.getElementById("coinjs_pub").value = "0x55";
 			  document.getElementById("coinjs_priv").value = "0xd5";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -1178,7 +1261,7 @@
 			  document.getElementById("bTtitle1").textContent = "Bitmarks";
 			  tickerCode = "MARKS";
 			}
-			else if (document.getElementById("customCoinName").value == "bro") {
+			else if (document.getElementById("customCoinTicker").value == "bro") {
 			  document.getElementById("coinjs_pub").value = "0x1a";
 			  document.getElementById("coinjs_priv").value = "0x80";
 			  document.getElementById("coinjs_multisig").value = "0x66";
@@ -1187,7 +1270,7 @@
 			  document.getElementById("bTtitle1").textContent = "Bitradio";
 			  tickerCode = "BRO";
 			}
-			else if (document.getElementById("customCoinName").value == "bsx") {
+			else if (document.getElementById("customCoinTicker").value == "bsx") {
 			  document.getElementById("coinjs_pub").value = "0x19";
 			  document.getElementById("coinjs_priv").value = "0x99";
 			  document.getElementById("coinjs_multisig").value = "0x29";
@@ -1196,7 +1279,7 @@
 			  document.getElementById("bTtitle1").textContent = "Bitspace";
 			  tickerCode = "BSX";
 			}
-			else if (document.getElementById("customCoinName").value == "swift") {
+			else if (document.getElementById("customCoinTicker").value == "swift") {
 			  document.getElementById("coinjs_pub").value = "0x55";
 			  document.getElementById("coinjs_priv").value = "0xd5";
 			  document.getElementById("coinjs_multisig").value = "0x1c";
@@ -1205,7 +1288,7 @@
 			  document.getElementById("bTtitle1").textContent = "Bitswift";
 			  tickerCode = "SWIFT";
 			}
-			else if (document.getElementById("customCoinName").value == "bbtc") {
+			else if (document.getElementById("customCoinTicker").value == "bbtc") {
 			  document.getElementById("coinjs_pub").value = "0xf3";
 			  document.getElementById("coinjs_priv").value = "0x173";
 			  document.getElementById("coinjs_multisig").value = "0x7";
@@ -1214,7 +1297,7 @@
 			  document.getElementById("bTtitle1").textContent = "BlakeBitcoin";
 			  tickerCode = "BBTC";
 			}
-			else if (document.getElementById("customCoinName").value == "blc") {
+			else if (document.getElementById("customCoinTicker").value == "blc") {
 			  document.getElementById("coinjs_pub").value = "0x1a";
 			  document.getElementById("coinjs_priv").value = "0x9a";
 			  document.getElementById("coinjs_multisig").value = "0x7";
@@ -1223,7 +1306,7 @@
 			  document.getElementById("bTtitle1").textContent = "Blakecoin";
 			  tickerCode = "BLC";
 			}
-			else if (document.getElementById("customCoinName").value == "blitz") {
+			else if (document.getElementById("customCoinTicker").value == "blitz") {
 			  document.getElementById("coinjs_pub").value = "0x73";
 			  document.getElementById("coinjs_priv").value = "0xf3";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -1232,7 +1315,7 @@
 			  document.getElementById("bTtitle1").textContent = "Blitzcash";
 			  tickerCode = "BLITZ";
 			}
-			else if (document.getElementById("customCoinName").value == "blu") {
+			else if (document.getElementById("customCoinTicker").value == "blu") {
 			  document.getElementById("coinjs_pub").value = "0x1a";
 			  document.getElementById("coinjs_priv").value = "0xb0";
 			  document.getElementById("coinjs_multisig").value = "0x1c";
@@ -1241,7 +1324,7 @@
 			  document.getElementById("bTtitle1").textContent = "Bluecoin";
 			  tickerCode = "BLU";
 			}
-			else if (document.getElementById("customCoinName").value == "caps") {
+			else if (document.getElementById("customCoinTicker").value == "caps") {
 			  document.getElementById("coinjs_pub").value = "0x22";
 			  document.getElementById("coinjs_priv").value = "0xa2";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -1250,7 +1333,7 @@
 			  document.getElementById("bTtitle1").textContent = "BottleCapsPlus";
 			  tickerCode = "CAPS";
 			}
-			else if (document.getElementById("customCoinName").value == "talk") {
+			else if (document.getElementById("customCoinTicker").value == "talk") {
 			  document.getElementById("coinjs_pub").value = "0x1c";
 			  document.getElementById("coinjs_priv").value = "0x9c";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -1259,7 +1342,7 @@
 			  document.getElementById("bTtitle1").textContent = "BTCTalkCoin";
 			  tickerCode = "TALK";
 			}
-			else if (document.getElementById("customCoinName").value == "bzl") {
+			else if (document.getElementById("customCoinTicker").value == "bzl") {
 			  document.getElementById("coinjs_pub").value = "0x19";
 			  document.getElementById("coinjs_priv").value = "0x99";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -1268,7 +1351,7 @@
 			  document.getElementById("bTtitle1").textContent = "BZLCoin";
 			  tickerCode = "BZL";
 			}
-			else if (document.getElementById("customCoinName").value == "ari") {
+			else if (document.getElementById("customCoinTicker").value == "ari") {
 			  document.getElementById("coinjs_pub").value = "0xb";
 			  document.getElementById("coinjs_priv").value = "0x9e";
 			  document.getElementById("coinjs_multisig").value = "0x16";
@@ -1277,7 +1360,7 @@
 			  document.getElementById("bTtitle1").textContent = "Aricoin";
 			  tickerCode = "ARI";
 			}
-			else if (document.getElementById("customCoinName").value == "bcz") {
+			else if (document.getElementById("customCoinTicker").value == "bcz") {
 			  document.getElementById("coinjs_pub").value = "0x19";
 			  document.getElementById("coinjs_priv").value = "0xd2";
 			  document.getElementById("coinjs_multisig").value = "0x14";
@@ -1286,7 +1369,7 @@
 			  document.getElementById("bTtitle1").textContent = "Bczcoin";
 			  tickerCode = "BCZ";
 			}
-			else if (document.getElementById("customCoinName").value == "chbt") {
+			else if (document.getElementById("customCoinTicker").value == "chbt") {
 			  document.getElementById("coinjs_pub").value = "";
 			  document.getElementById("coinjs_priv").value = "";
 			  document.getElementById("coinjs_multisig").value = "";
@@ -1295,7 +1378,7 @@
 			  document.getElementById("bTtitle1").textContent = "CHBToken";
 			  tickerCode = "CHBT";
 			}
-			else if (document.getElementById("customCoinName").value == "cno") {
+			else if (document.getElementById("customCoinTicker").value == "cno") {
 			  document.getElementById("coinjs_pub").value = "0x44";
 			  document.getElementById("coinjs_priv").value = "0xc4";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -1304,7 +1387,7 @@
 			  document.getElementById("bTtitle1").textContent = "Coino";
 			  tickerCode = "CNO";
 			}
-			else if (document.getElementById("customCoinName").value == "cmm") {
+			else if (document.getElementById("customCoinTicker").value == "cmm") {
 			  document.getElementById("coinjs_pub").value = "0x1c";
 			  document.getElementById("coinjs_priv").value = "0x8c";
 			  document.getElementById("coinjs_multisig").value = "0x33";
@@ -1313,7 +1396,7 @@
 			  document.getElementById("bTtitle1").textContent = "Commercium";
 			  tickerCode = "CMM";
 			}
-			else if (document.getElementById("customCoinName").value == "crw") {
+			else if (document.getElementById("customCoinTicker").value == "crw") {
 				//base58Prefixes[PUBKEY_ADDRESS] = list_of(0x01)(0x75)(0x07).convert_to_container<std::vector<unsigned char> >();
 			  document.getElementById("coinjs_pub").value = "0x1c";
 			  //base58Prefixes[SCRIPT_ADDRESS] = list_of(0x01)(0x74)(0xF1).convert_to_container<std::vector<unsigned char> >();
@@ -1324,7 +1407,7 @@
 			  document.getElementById("bTtitle1").textContent = "Crown";
 			  tickerCode = "CRW";
 			}
-			else if (document.getElementById("customCoinName").value == "crypt") {
+			else if (document.getElementById("customCoinTicker").value == "crypt") {
 			  document.getElementById("coinjs_pub").value = "0x22";
 			  document.getElementById("coinjs_priv").value = "0xa2";
 			  document.getElementById("coinjs_multisig").value = "0x1c";
@@ -1333,7 +1416,7 @@
 			  document.getElementById("bTtitle1").textContent = "Cryptcoin";
 			  tickerCode = "CRYPT";
 			}
-			else if (document.getElementById("customCoinName").value == "buk2") {
+			else if (document.getElementById("customCoinTicker").value == "buk2") {
 			  document.getElementById("coinjs_pub").value = "0x5";
 			  document.getElementById("coinjs_priv").value = "0x85";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -1342,7 +1425,7 @@
 			  document.getElementById("bTtitle1").textContent = "CryptoBuck2";
 			  tickerCode = "BUK2";
 			}
-			else if (document.getElementById("customCoinName").value == "qbt") {
+			else if (document.getElementById("customCoinTicker").value == "qbt") {
 			  document.getElementById("coinjs_pub").value = "0x1c";
 			  document.getElementById("coinjs_priv").value = "0x9c";
 			  document.getElementById("coinjs_multisig").value = "0x35";
@@ -1351,7 +1434,7 @@
 			  document.getElementById("bTtitle1").textContent = "Cubits";
 			  tickerCode = "QBT";
 			}
-			else if (document.getElementById("customCoinName").value == "cure") {
+			else if (document.getElementById("customCoinTicker").value == "cure") {
 			  document.getElementById("coinjs_pub").value = "0x19";
 			  document.getElementById("coinjs_priv").value = "0x99";
 			  document.getElementById("coinjs_multisig").value = "0x1e";
@@ -1360,7 +1443,7 @@
 			  document.getElementById("bTtitle1").textContent = "Curecoin";
 			  tickerCode = "CURE";
 			}
-			else if (document.getElementById("customCoinName").value == "dal") {
+			else if (document.getElementById("customCoinTicker").value == "dal") {
 			  document.getElementById("coinjs_pub").value = "";
 			  document.getElementById("coinjs_priv").value = "";
 			  document.getElementById("coinjs_multisig").value = "";
@@ -1369,7 +1452,7 @@
 			  document.getElementById("bTtitle1").textContent = "Dallar";
 			  tickerCode = "DAL";
 			}
-			else if (document.getElementById("customCoinName").value == "ked") {
+			else if (document.getElementById("customCoinTicker").value == "ked") {
 			  document.getElementById("coinjs_pub").value = "0x1e";
 			  document.getElementById("coinjs_priv").value = "0x9e";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -1378,7 +1461,7 @@
 			  document.getElementById("bTtitle1").textContent = "Darsek";
 			  tickerCode = "KED";
 			}
-			else if (document.getElementById("customCoinName").value == "dtc") {
+			else if (document.getElementById("customCoinTicker").value == "dtc") {
 			  document.getElementById("coinjs_pub").value = "0x1e";
 			  document.getElementById("coinjs_priv").value = "0x9e";
 			  document.getElementById("coinjs_multisig").value = "0x5a";
@@ -1387,7 +1470,7 @@
 			  document.getElementById("bTtitle1").textContent = "Datacoin";
 			  tickerCode = "DTC";
 			}
-			else if (document.getElementById("customCoinName").value == "d") {
+			else if (document.getElementById("customCoinTicker").value == "d") {
 			  document.getElementById("coinjs_pub").value = "0x1e";
 			  document.getElementById("coinjs_priv").value = "0x9e";
 			  document.getElementById("coinjs_multisig").value = "0x5a";
@@ -1396,7 +1479,7 @@
 			  document.getElementById("bTtitle1").textContent = "Denarius";
 			  tickerCode = "D";
 			}
-			else if (document.getElementById("customCoinName").value == "dev") {
+			else if (document.getElementById("customCoinTicker").value == "dev") {
 			  document.getElementById("coinjs_pub").value = "0x81";
 			  document.getElementById("coinjs_priv").value = "0xef";
 			  document.getElementById("coinjs_multisig").value = "0xe";
@@ -1405,7 +1488,7 @@
 			  document.getElementById("bTtitle1").textContent = "Deviantcoin";
 			  tickerCode = "DEV";
 			}
-			else if (document.getElementById("customCoinName").value == "dmb") {
+			else if (document.getElementById("customCoinTicker").value == "dmb") {
 			  document.getElementById("coinjs_pub").value = "0x5a";
 			  document.getElementById("coinjs_priv").value = "0xda";
 			  document.getElementById("coinjs_multisig").value = "0x59";
@@ -1414,7 +1497,7 @@
 			  document.getElementById("bTtitle1").textContent = "DigitalMoneyBits";
 			  tickerCode = "DMB";
 			}
-			else if (document.getElementById("customCoinName").value == "dem") {
+			else if (document.getElementById("customCoinTicker").value == "dem") {
 			  document.getElementById("coinjs_pub").value = "0x35";
 			  document.getElementById("coinjs_priv").value = "0xb5";
 			  document.getElementById("coinjs_multisig").value = "0x1e";
@@ -1423,7 +1506,7 @@
 			  document.getElementById("bTtitle1").textContent = "eMark";
 			  tickerCode = "DEM";
 			}
-			else if (document.getElementById("customCoinName").value == "divi") {
+			else if (document.getElementById("customCoinTicker").value == "divi") {
 			  document.getElementById("coinjs_pub").value = "0x1e";
 			  document.getElementById("coinjs_priv").value = "0xd4";
 			  document.getElementById("coinjs_multisig").value = "0xd";
@@ -1432,7 +1515,7 @@
 			  document.getElementById("bTtitle1").textContent = "Divicoin";
 			  tickerCode = "DIVI";
 			}
-			else if (document.getElementById("customCoinName").value == "donu") {
+			else if (document.getElementById("customCoinTicker").value == "donu") {
 			  document.getElementById("coinjs_pub").value = "0x35";
 			  document.getElementById("coinjs_priv").value = "0xb1";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -1441,7 +1524,7 @@
 			  document.getElementById("bTtitle1").textContent = "Donu";
 			  tickerCode = "DONU";
 			}
-			else if (document.getElementById("customCoinName").value == "drz") {
+			else if (document.getElementById("customCoinTicker").value == "drz") {
 			  document.getElementById("coinjs_pub").value = "0xc";
 			  document.getElementById("coinjs_priv").value = "0x55";
 			  document.getElementById("coinjs_multisig").value = "0x8c";
@@ -1450,7 +1533,7 @@
 			  document.getElementById("bTtitle1").textContent = "Droidz";
 			  tickerCode = "DRZ";
 			}
-			else if (document.getElementById("customCoinName").value == "eac") {
+			else if (document.getElementById("customCoinTicker").value == "eac") {
 			  document.getElementById("coinjs_pub").value = "0x5d";
 			  document.getElementById("coinjs_priv").value = "0xdd";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -1459,7 +1542,7 @@
 			  document.getElementById("bTtitle1").textContent = "Earthcoin";
 			  tickerCode = "EAC";
 			}
-			else if (document.getElementById("customCoinName").value == "ecc") {
+			else if (document.getElementById("customCoinTicker").value == "ecc") {
 			  document.getElementById("coinjs_pub").value = "0x";
 			  document.getElementById("coinjs_priv").value = "0x";
 			  document.getElementById("coinjs_multisig").value = "0x";
@@ -1468,7 +1551,7 @@
 			  document.getElementById("bTtitle1").textContent = "ECCoin";
 			  tickerCode = "ECC";
 			}
-			else if (document.getElementById("customCoinName").value == "ec") {
+			else if (document.getElementById("customCoinTicker").value == "ec") {
 			  document.getElementById("coinjs_pub").value = "0x5d";
 			  document.getElementById("coinjs_priv").value = "0xff";
 			  document.getElementById("coinjs_multisig").value = "0xc4";
@@ -1477,7 +1560,7 @@
 			  document.getElementById("bTtitle1").textContent = "Eclipse";
 			  tickerCode = "EC";
 			}
-			else if (document.getElementById("customCoinName").value == "emc2") {
+			else if (document.getElementById("customCoinTicker").value == "emc2") {
 			  document.getElementById("coinjs_pub").value = "0x32";
 			  document.getElementById("coinjs_priv").value = "0xa1";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -1486,7 +1569,7 @@
 			  document.getElementById("bTtitle1").textContent = "Einsteinium";
 			  tickerCode = "EMC2";
 			}
-			else if (document.getElementById("customCoinName").value == "elt") {
+			else if (document.getElementById("customCoinTicker").value == "elt") {
 			  document.getElementById("coinjs_pub").value = "0x5c";
 			  document.getElementById("coinjs_priv").value = "0xdc";
 			  document.getElementById("coinjs_multisig").value = "0x7";
@@ -1495,7 +1578,7 @@
 			  document.getElementById("bTtitle1").textContent = "Electron";
 			  tickerCode = "ELT";
 			}
-			else if (document.getElementById("customCoinName").value == "eny") {
+			else if (document.getElementById("customCoinTicker").value == "eny") {
 			  document.getElementById("coinjs_pub").value = "0x21";
 			  document.getElementById("coinjs_priv").value = "0xa1";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -1504,7 +1587,7 @@
 			  document.getElementById("bTtitle1").textContent = "Emergencycoin";
 			  tickerCode = "ENY";
 			}
-			else if (document.getElementById("customCoinName").value == "eqt") {
+			else if (document.getElementById("customCoinTicker").value == "eqt") {
 			  document.getElementById("coinjs_pub").value = "0x21";
 			  document.getElementById("coinjs_priv").value = "0xa1";
 			  document.getElementById("coinjs_multisig").value = "0x14";
@@ -1513,7 +1596,7 @@
 			  document.getElementById("bTtitle1").textContent = "Equitrade";
 			  tickerCode = "EQT";
 			}
-			else if (document.getElementById("customCoinName").value == "ent") {
+			else if (document.getElementById("customCoinTicker").value == "ent") {
 			  document.getElementById("coinjs_pub").value = "0x21";
 			  document.getElementById("coinjs_priv").value = "0x65";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -1522,7 +1605,7 @@
 			  document.getElementById("bTtitle1").textContent = "Eternity";
 			  tickerCode = "ENT";
 			}
-			else if (document.getElementById("customCoinName").value == "egc") {
+			else if (document.getElementById("customCoinTicker").value == "egc") {
 			  document.getElementById("coinjs_pub").value = "0x21";
 			  document.getElementById("coinjs_priv").value = "0x65";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -1531,7 +1614,7 @@
 			  document.getElementById("bTtitle1").textContent = "EverGreenCoin";
 			  tickerCode = "EGC";
 			}
-			else if (document.getElementById("customCoinName").value == "excl") {
+			else if (document.getElementById("customCoinTicker").value == "excl") {
 			  document.getElementById("coinjs_pub").value = "0x21";
 			  document.getElementById("coinjs_priv").value = "0xa1";
 			  document.getElementById("coinjs_multisig").value = "0x89";
@@ -1540,7 +1623,7 @@
 			  document.getElementById("bTtitle1").textContent = "ExclusiveCoin";
 			  tickerCode = "EXCL";
 			}
-			else if (document.getElementById("customCoinName").value == "exo") {
+			else if (document.getElementById("customCoinTicker").value == "exo") {
 			  document.getElementById("coinjs_pub").value = "0x21";
 			  document.getElementById("coinjs_priv").value = "0x6f";
 			  document.getElementById("coinjs_multisig").value = "0x4";
@@ -1549,7 +1632,7 @@
 			  document.getElementById("bTtitle1").textContent = "Exosis";
 			  tickerCode = "EXO";
 			}
-			else if (document.getElementById("customCoinName").value == "gali") {
+			else if (document.getElementById("customCoinTicker").value == "gali") {
 			  document.getElementById("coinjs_pub").value = "0x44";
 			  document.getElementById("coinjs_priv").value = "0xc1";
 			  document.getElementById("coinjs_multisig").value = "0x10";
@@ -1558,7 +1641,7 @@
 			  document.getElementById("bTtitle1").textContent = "Galilel";
 			  tickerCode = "GALI";
 			}
-			else if (document.getElementById("customCoinName").value == "gap") {
+			else if (document.getElementById("customCoinTicker").value == "gap") {
 			  document.getElementById("coinjs_pub").value = "0x26";
 			  document.getElementById("coinjs_priv").value = "0x61";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -1567,7 +1650,7 @@
 			  document.getElementById("bTtitle1").textContent = "Gapcoin";
 			  tickerCode = "GAP";
 			}
-			else if (document.getElementById("customCoinName").value == "genx") {
+			else if (document.getElementById("customCoinTicker").value == "genx") {
 			  document.getElementById("coinjs_pub").value = "0x1c";
 			  document.getElementById("coinjs_priv").value = "0x30";
 			  document.getElementById("coinjs_multisig").value = "0x3f";
@@ -1576,7 +1659,7 @@
 			  document.getElementById("bTtitle1").textContent = "Genesis";
 			  tickerCode = "GENX";
 			}
-			else if (document.getElementById("customCoinName").value == "glt") {
+			else if (document.getElementById("customCoinTicker").value == "glt") {
 			  document.getElementById("coinjs_pub").value = "0x26";
 			  document.getElementById("coinjs_priv").value = "0xa6";
 			  document.getElementById("coinjs_multisig").value = "0x8d";
@@ -1585,7 +1668,7 @@
 			  document.getElementById("bTtitle1").textContent = "GlobalToken";
 			  tickerCode = "GLT";
 			}
-			else if (document.getElementById("customCoinName").value == "glc") {
+			else if (document.getElementById("customCoinTicker").value == "glc") {
 			  document.getElementById("coinjs_pub").value = "0x20";
 			  document.getElementById("coinjs_priv").value = "0xa0";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -1594,7 +1677,7 @@
 			  document.getElementById("bTtitle1").textContent = "Goldcoin";
 			  tickerCode = "GLC";
 			}
-			else if (document.getElementById("customCoinName").value == "gpl2") {
+			else if (document.getElementById("customCoinTicker").value == "gpl2") {
 			  document.getElementById("coinjs_pub").value = "0x23";
 			  document.getElementById("coinjs_priv").value = "0xa3";
 			  document.getElementById("coinjs_multisig").value = "0x8c";
@@ -1603,7 +1686,7 @@
 			  document.getElementById("bTtitle1").textContent = "Gold Pressed Latinum";
 			  tickerCode = "GPL2";
 			}
-			else if (document.getElementById("customCoinName").value == "grn") {
+			else if (document.getElementById("customCoinTicker").value == "grn") {
 			  document.getElementById("coinjs_pub").value = "0x26";
 			  document.getElementById("coinjs_priv").value = "0xa6";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -1612,7 +1695,7 @@
 			  document.getElementById("bTtitle1").textContent = "Granite";
 			  tickerCode = "GRN";
 			}
-			else if (document.getElementById("customCoinName").value == "gxx") {
+			else if (document.getElementById("customCoinTicker").value == "gxx") {
 			  document.getElementById("coinjs_pub").value = "0x28";
 			  document.getElementById("coinjs_priv").value = "0xd2";
 			  document.getElementById("coinjs_multisig").value = "0xa";
@@ -1621,7 +1704,7 @@
 			  document.getElementById("bTtitle1").textContent = "GravityCoin";
 			  tickerCode = "GXX";
 			}
-			else if (document.getElementById("customCoinName").value == "gwri") {
+			else if (document.getElementById("customCoinTicker").value == "gwri") {
 			  document.getElementById("coinjs_pub").value = "0x26";
 			  document.getElementById("coinjs_priv").value = "0x84";
 			  document.getElementById("coinjs_multisig").value = "0xab";
@@ -1630,7 +1713,7 @@
 			  document.getElementById("bTtitle1").textContent = "Growers";
 			  tickerCode = "GWRI";
 			}
-			else if (document.getElementById("customCoinName").value == "hbn") {
+			else if (document.getElementById("customCoinTicker").value == "hbn") {
 			  document.getElementById("coinjs_pub").value = "0x22";
 			  document.getElementById("coinjs_priv").value = "0xa2";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -1639,7 +1722,7 @@
 			  document.getElementById("bTtitle1").textContent = "HoboNickels";
 			  tickerCode = "HBN";
 			}
-			else if (document.getElementById("customCoinName").value == "html5") {
+			else if (document.getElementById("customCoinTicker").value == "html5") {
 			  document.getElementById("coinjs_pub").value = "0x28";
 			  document.getElementById("coinjs_priv").value = "0xa8";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -1648,7 +1731,7 @@
 			  document.getElementById("bTtitle1").textContent = "Html5coin";
 			  tickerCode = "HTML5";
 			}
-			else if (document.getElementById("customCoinName").value == "ioc") {
+			else if (document.getElementById("customCoinTicker").value == "ioc") {
 			  document.getElementById("coinjs_pub").value = "0x67";
 			  document.getElementById("coinjs_priv").value = "0xe7";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -1657,7 +1740,7 @@
 			  document.getElementById("bTtitle1").textContent = "I/O Coin";
 			  tickerCode = "IOC";
 			}
-			else if (document.getElementById("customCoinName").value == "i0c") {
+			else if (document.getElementById("customCoinTicker").value == "i0c") {
 			  document.getElementById("coinjs_pub").value = "0x69";
 			  document.getElementById("coinjs_priv").value = "0x80";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -1666,7 +1749,7 @@
 			  document.getElementById("bTtitle1").textContent = "I/0 Coin";
 			  tickerCode = "I0C";
 			}
-			else if (document.getElementById("customCoinName").value == "icn") {
+			else if (document.getElementById("customCoinTicker").value == "icn") {
 			  document.getElementById("coinjs_pub").value = "0x1a";
 			  document.getElementById("coinjs_priv").value = "0x9a";
 			  document.getElementById("coinjs_multisig").value = "0x16";
@@ -1675,7 +1758,7 @@
 			  document.getElementById("bTtitle1").textContent = "iCoin";
 			  tickerCode = "ICN";
 			}
-			else if (document.getElementById("customCoinName").value == "ic") {
+			else if (document.getElementById("customCoinTicker").value == "ic") {
 			  document.getElementById("coinjs_pub").value = "0x67";
 			  document.getElementById("coinjs_priv").value = "0x8a";
 			  document.getElementById("coinjs_multisig").value = "0x27";
@@ -1684,7 +1767,7 @@
 			  document.getElementById("bTtitle1").textContent = "Ignition Coin";
 			  tickerCode = "IC";
 			}
-			else if (document.getElementById("customCoinName").value == "img") {
+			else if (document.getElementById("customCoinTicker").value == "img") {
 			  document.getElementById("coinjs_pub").value = "0x33";
 			  document.getElementById("coinjs_priv").value = "0xcc";
 			  document.getElementById("coinjs_multisig").value = "0x10";
@@ -1693,7 +1776,7 @@
 			  document.getElementById("bTtitle1").textContent = "ImageCoin";
 			  tickerCode = "IMG";
 			}
-			else if (document.getElementById("customCoinName").value == "imx") {
+			else if (document.getElementById("customCoinTicker").value == "imx") {
 			  document.getElementById("coinjs_pub").value = "0x4c";
 			  document.getElementById("coinjs_priv").value = "0xcc";
 			  document.getElementById("coinjs_multisig").value = "0x8d";
@@ -1702,7 +1785,7 @@
 			  document.getElementById("bTtitle1").textContent = "Impact";
 			  tickerCode = "IMX";
 			}
-			else if (document.getElementById("customCoinName").value == "ifc") {
+			else if (document.getElementById("customCoinTicker").value == "ifc") {
 			  document.getElementById("coinjs_pub").value = "0x66";
 			  document.getElementById("coinjs_priv").value = "0xe6";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -1711,7 +1794,7 @@
 			  document.getElementById("bTtitle1").textContent = "Infinitecoin";
 			  tickerCode = "IFC";
 			}
-			else if (document.getElementById("customCoinName").value == "iflt") {
+			else if (document.getElementById("customCoinTicker").value == "iflt") {
 			  document.getElementById("coinjs_pub").value = "0x66";
 			  document.getElementById("coinjs_priv").value = "0xe6";
 			  document.getElementById("coinjs_multisig").value = "0x7";
@@ -1720,7 +1803,7 @@
 			  document.getElementById("bTtitle1").textContent = "Inflationcoin";
 			  tickerCode = "IFLT";
 			}
-			else if (document.getElementById("customCoinName").value == "info") {
+			else if (document.getElementById("customCoinTicker").value == "info") {
 			  document.getElementById("coinjs_pub").value = "0x66";
 			  document.getElementById("coinjs_priv").value = "0x40";
 			  document.getElementById("coinjs_multisig").value = "0x43";
@@ -1729,7 +1812,7 @@
 			  document.getElementById("bTtitle1").textContent = "Infocoin";
 			  tickerCode = "INFO";
 			}
-			else if (document.getElementById("customCoinName").value == "insn") {
+			else if (document.getElementById("customCoinTicker").value == "insn") {
 			  document.getElementById("coinjs_pub").value = "0x66";
 			  document.getElementById("coinjs_priv").value = "0x37";
 			  document.getElementById("coinjs_multisig").value = "0x39";
@@ -1738,7 +1821,7 @@
 			  document.getElementById("bTtitle1").textContent = "Insanecoin";
 			  tickerCode = "INSN";
 			}
-			else if (document.getElementById("customCoinName").value == "ion") {
+			else if (document.getElementById("customCoinTicker").value == "ion") {
 			  document.getElementById("coinjs_pub").value = "0x";
 			  document.getElementById("coinjs_priv").value = "0x";
 			  document.getElementById("coinjs_multisig").value = "0x";
@@ -1747,7 +1830,7 @@
 			  document.getElementById("bTtitle1").textContent = "Ioncoin";
 			  tickerCode = "ION";
 			}
-			else if (document.getElementById("customCoinName").value == "j") {
+			else if (document.getElementById("customCoinTicker").value == "j") {
 			  document.getElementById("coinjs_pub").value = "0x2b";
 			  document.getElementById("coinjs_priv").value = "0xb2";
 			  document.getElementById("coinjs_multisig").value = "0x9";
@@ -1756,7 +1839,7 @@
 			  document.getElementById("bTtitle1").textContent = "Joincoin";
 			  tickerCode = "J";
 			}
-			else if (document.getElementById("customCoinName").value == "xjo") {
+			else if (document.getElementById("customCoinTicker").value == "xjo") {
 			  document.getElementById("coinjs_pub").value = "0x2b";
 			  document.getElementById("coinjs_priv").value = "0x8f";
 			  document.getElementById("coinjs_multisig").value = "0xb";
@@ -1765,7 +1848,7 @@
 			  document.getElementById("bTtitle1").textContent = "Joulecoin";
 			  tickerCode = "XJO";
 			}
-			else if (document.getElementById("customCoinName").value == "klks") {
+			else if (document.getElementById("customCoinTicker").value == "klks") {
 			  document.getElementById("coinjs_pub").value = "0x2e";
 			  document.getElementById("coinjs_priv").value = "0xae";
 			  document.getElementById("coinjs_multisig").value = "0xd";
@@ -1774,7 +1857,7 @@
 			  document.getElementById("bTtitle1").textContent = "Kalkulus";
 			  tickerCode = "KLKS";
 			}
-			else if (document.getElementById("customCoinName").value == "kobo") {
+			else if (document.getElementById("customCoinTicker").value == "kobo") {
 			  document.getElementById("coinjs_pub").value = "0x23";
 			  document.getElementById("coinjs_priv").value = "0xa3";
 			  document.getElementById("coinjs_multisig").value = "0x1c";
@@ -1783,7 +1866,7 @@
 			  document.getElementById("bTtitle1").textContent = "Kobocoin";
 			  tickerCode = "KOBO";
 			}
-			else if (document.getElementById("customCoinName").value == "kore") {
+			else if (document.getElementById("customCoinTicker").value == "kore") {
 			  document.getElementById("coinjs_pub").value = "0x2d";
 			  document.getElementById("coinjs_priv").value = "0xad";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -1792,7 +1875,7 @@
 			  document.getElementById("bTtitle1").textContent = "KoreCoin";
 			  tickerCode = "KORE";
 			}
-			else if (document.getElementById("customCoinName").value == "kum") {
+			else if (document.getElementById("customCoinTicker").value == "kum") {
 			  document.getElementById("coinjs_pub").value = "0x2e";
 			  document.getElementById("coinjs_priv").value = "0xae";
 			  document.getElementById("coinjs_multisig").value = "0xd";
@@ -1801,7 +1884,7 @@
 			  document.getElementById("bTtitle1").textContent = "Krium";
 			  tickerCode = "KUM";
 			}
-			else if (document.getElementById("customCoinName").value == "vgs") {
+			else if (document.getElementById("customCoinTicker").value == "vgs") {
 			  document.getElementById("coinjs_pub").value = "0x46";
 			  document.getElementById("coinjs_priv").value = "0xd4";
 			  document.getElementById("coinjs_multisig").value = "0xd";
@@ -1810,7 +1893,7 @@
 			  document.getElementById("bTtitle1").textContent = "LasVegasCoin";
 			  tickerCode = "VGS";
 			}
-			else if (document.getElementById("customCoinName").value == "linx") {
+			else if (document.getElementById("customCoinTicker").value == "linx") {
 			  document.getElementById("coinjs_pub").value = "0x4b";
 			  document.getElementById("coinjs_priv").value = "0xcb";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -1819,7 +1902,7 @@
 			  document.getElementById("bTtitle1").textContent = "Linx";
 			  tickerCode = "LINX";
 			}
-			else if (document.getElementById("customCoinName").value == "lcc") {
+			else if (document.getElementById("customCoinTicker").value == "lcc") {
 			  document.getElementById("coinjs_pub").value = "0x1c";
 			  document.getElementById("coinjs_priv").value = "0xb0";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -1828,7 +1911,7 @@
 			  document.getElementById("bTtitle1").textContent = "Litecoin Cash";
 			  tickerCode = "LCC";
 			}
-			else if (document.getElementById("customCoinName").value == "lit") {
+			else if (document.getElementById("customCoinTicker").value == "lit") {
 			  document.getElementById("coinjs_pub").value = "0x13";
 			  document.getElementById("coinjs_priv").value = "0x93";
 			  document.getElementById("coinjs_multisig").value = "0x7";
@@ -1837,7 +1920,7 @@
 			  document.getElementById("bTtitle1").textContent = "Lithium";
 			  tickerCode = "LIT";
 			}
-			else if (document.getElementById("customCoinName").value == "lux") {
+			else if (document.getElementById("customCoinTicker").value == "lux") {
 			  document.getElementById("coinjs_pub").value = "0x30";
 			  document.getElementById("coinjs_priv").value = "0x9b";
 			  document.getElementById("coinjs_multisig").value = "0x3f";
@@ -1846,7 +1929,7 @@
 			  document.getElementById("bTtitle1").textContent = "LUXCoin";
 			  tickerCode = "LUX";
 			}
-			else if (document.getElementById("customCoinName").value == "manna") {
+			else if (document.getElementById("customCoinTicker").value == "manna") {
 			  document.getElementById("coinjs_pub").value = "0x26";
 			  document.getElementById("coinjs_priv").value = "0xa6";
 			  document.getElementById("coinjs_multisig").value = "0x61";
@@ -1855,7 +1938,7 @@
 			  document.getElementById("bTtitle1").textContent = "Manna";
 			  tickerCode = "MANNA";
 			}
-			else if (document.getElementById("customCoinName").value == "mscn") {
+			else if (document.getElementById("customCoinTicker").value == "mscn") {
 			  document.getElementById("coinjs_pub").value = "0x7d";
 			  document.getElementById("coinjs_priv").value = "0xfd";
 			  document.getElementById("coinjs_multisig").value = "0x14";
@@ -1864,7 +1947,7 @@
 			  document.getElementById("bTtitle1").textContent = "Master Swiscoin";
 			  tickerCode = "MSCN";
 			}
-			else if (document.getElementById("customCoinName").value == "mrc") {
+			else if (document.getElementById("customCoinTicker").value == "mrc") {
 			  document.getElementById("coinjs_pub").value = "0x32";
 			  document.getElementById("coinjs_priv").value = "0xb2";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -1873,7 +1956,7 @@
 			  document.getElementById("bTtitle1").textContent = "Meritcoin";
 			  tickerCode = "MRC";
 			}
-			else if (document.getElementById("customCoinName").value == "mfc") {
+			else if (document.getElementById("customCoinTicker").value == "mfc") {
 			  document.getElementById("coinjs_pub").value = "0x33";
 			  document.getElementById("coinjs_priv").value = "0xb3";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -1882,7 +1965,7 @@
 			  document.getElementById("bTtitle1").textContent = "MFCoin";
 			  tickerCode = "MFC";
 			}
-			else if (document.getElementById("customCoinName").value == "mic") {
+			else if (document.getElementById("customCoinTicker").value == "mic") {
 			  document.getElementById("coinjs_pub").value = "0x";
 			  document.getElementById("coinjs_priv").value = "0x";
 			  document.getElementById("coinjs_multisig").value = "0x";
@@ -1891,7 +1974,7 @@
 			  document.getElementById("bTtitle1").textContent = "Mindexcoin";
 			  tickerCode = "MIC";
 			}
-			else if (document.getElementById("customCoinName").value == "mst") {
+			else if (document.getElementById("customCoinTicker").value == "mst") {
 			  document.getElementById("coinjs_pub").value = "0x30";
 			  document.getElementById("coinjs_priv").value = "0xb0";
 			  document.getElementById("coinjs_multisig").value = "0x1c";
@@ -1900,7 +1983,7 @@
 			  document.getElementById("bTtitle1").textContent = "Mustang Coin";
 			  tickerCode = "MST";
 			}
-			else if (document.getElementById("customCoinName").value == "nacho") {
+			else if (document.getElementById("customCoinTicker").value == "nacho") {
 			  document.getElementById("coinjs_pub").value = "0x0";
 			  document.getElementById("coinjs_priv").value = "0x80";
 			  document.getElementById("coinjs_multisig").value = "0x1";
@@ -1909,7 +1992,7 @@
 			  document.getElementById("bTtitle1").textContent = "NachoCoin";
 			  tickerCode = "NACHO";
 			}
-			else if (document.getElementById("customCoinName").value == "n8v") {
+			else if (document.getElementById("customCoinTicker").value == "n8v") {
 			  document.getElementById("coinjs_pub").value = "0x35";
 			  document.getElementById("coinjs_priv").value = "0x70";
 			  document.getElementById("coinjs_multisig").value = "0x7a";
@@ -1918,17 +2001,7 @@
 			  document.getElementById("bTtitle1").textContent = "NativeCoin";
 			  tickerCode = "N8V";
 			}
-			else if (document.getElementById("customCoinName").value == "nav") {
-				// Come Back
-			  document.getElementById("coinjs_pub").value = "0x";
-			  document.getElementById("coinjs_priv").value = "0x";
-			  document.getElementById("coinjs_multisig").value = "0x";
-			  document.getElementById("coinLogo").src = "images/logo/nav.png";
-			  document.getElementById("bTtitle").textContent = "Navcoin";
-			  document.getElementById("bTtitle1").textContent = "Navcoin";
-			  tickerCode = "NAV";
-			}
-			else if (document.getElementById("customCoinName").value == "netko") {
+			else if (document.getElementById("customCoinTicker").value == "netko") {
 			  document.getElementById("coinjs_pub").value = "0x35";
 			  document.getElementById("coinjs_priv").value = "0xb1";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -1937,7 +2010,7 @@
 			  document.getElementById("bTtitle1").textContent = "NetkoCoin";
 			  tickerCode = "NETKO";
 			}
-			else if (document.getElementById("customCoinName").value == "nro") {
+			else if (document.getElementById("customCoinTicker").value == "nro") {
 			  document.getElementById("coinjs_pub").value = "0x35";
 			  document.getElementById("coinjs_priv").value = "0xb5";
 			  document.getElementById("coinjs_multisig").value = "0x75";
@@ -1946,7 +2019,7 @@
 			  document.getElementById("bTtitle1").textContent = "Neurocoin";
 			  tickerCode = "NRO";
 			}
-			else if (document.getElementById("customCoinName").value == "nix") {
+			else if (document.getElementById("customCoinTicker").value == "nix") {
 			  document.getElementById("coinjs_pub").value = "0x26";
 			  document.getElementById("coinjs_priv").value = "0x80";
 			  document.getElementById("coinjs_multisig").value = "0x35";
@@ -1955,7 +2028,7 @@
 			  document.getElementById("bTtitle1").textContent = "NixCore";
 			  tickerCode = "NIX";
 			}
-			else if (document.getElementById("customCoinName").value == "nobl") {
+			else if (document.getElementById("customCoinTicker").value == "nobl") {
 			  document.getElementById("coinjs_pub").value = "0x15";
 			  document.getElementById("coinjs_priv").value = "0x95";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -1964,7 +2037,7 @@
 			  document.getElementById("bTtitle1").textContent = "Noblecoin";
 			  tickerCode = "NOBL";
 			}
-			else if (document.getElementById("customCoinName").value == "nor") {
+			else if (document.getElementById("customCoinTicker").value == "nor") {
 			  document.getElementById("coinjs_pub").value = "0x50";
 			  document.getElementById("coinjs_priv").value = "0xd0";
 			  document.getElementById("coinjs_multisig").value = "0x7";
@@ -1973,7 +2046,7 @@
 			  document.getElementById("bTtitle1").textContent = "Noir";
 			  tickerCode = "NOR";
 			}
-			else if (document.getElementById("customCoinName").value == "nort") {
+			else if (document.getElementById("customCoinTicker").value == "nort") {
 			  document.getElementById("coinjs_pub").value = "0x35";
 			  document.getElementById("coinjs_priv").value = "0x38";
 			  document.getElementById("coinjs_multisig").value = "0x6";
@@ -1982,7 +2055,7 @@
 			  document.getElementById("bTtitle1").textContent = "Northern";
 			  tickerCode = "NORT";
 			}
-			else if (document.getElementById("customCoinName").value == "npc") {
+			else if (document.getElementById("customCoinTicker").value == "npc") {
 			  document.getElementById("coinjs_pub").value = "0x35";
 			  document.getElementById("coinjs_priv").value = "0xb5";
 			  document.getElementById("coinjs_multisig").value = "0x36";
@@ -1991,7 +2064,7 @@
 			  document.getElementById("bTtitle1").textContent = "NPCcoin";
 			  tickerCode = "NPC";
 			}
-			else if (document.getElementById("customCoinName").value == "orb") {
+			else if (document.getElementById("customCoinTicker").value == "orb") {
 			  document.getElementById("coinjs_pub").value = "0x73";
 			  document.getElementById("coinjs_priv").value = "0xf3";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -2000,7 +2073,7 @@
 			  document.getElementById("bTtitle1").textContent = "Orbitcoin";
 			  tickerCode = "ORB";
 			}
-			else if (document.getElementById("customCoinName").value == "ozc") {
+			else if (document.getElementById("customCoinTicker").value == "ozc") {
 			  document.getElementById("coinjs_pub").value = "0x73";
 			  document.getElementById("coinjs_priv").value = "0xf3";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -2009,7 +2082,7 @@
 			  document.getElementById("bTtitle1").textContent = "Ozziecoin";
 			  tickerCode = "OZC";
 			}
-			else if (document.getElementById("customCoinName").value == "pak") {
+			else if (document.getElementById("customCoinTicker").value == "pak") {
 			  document.getElementById("coinjs_pub").value = "0x37";
 			  document.getElementById("coinjs_priv").value = "0xb0";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -2018,7 +2091,7 @@
 			  document.getElementById("bTtitle1").textContent = "Pakcoin";
 			  tickerCode = "PAK";
 			}
-			else if (document.getElementById("customCoinName").value == "pcn") {
+			else if (document.getElementById("customCoinTicker").value == "pcn") {
 			  document.getElementById("coinjs_pub").value = "0x37";
 			  document.getElementById("coinjs_priv").value = "0xb7";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -2027,7 +2100,7 @@
 			  document.getElementById("bTtitle1").textContent = "PeepCoin";
 			  tickerCode = "PCN";
 			}
-			else if (document.getElementById("customCoinName").value == "phr") {
+			else if (document.getElementById("customCoinTicker").value == "phr") {
 			  document.getElementById("coinjs_pub").value = "0x37";
 			  document.getElementById("coinjs_priv").value = "0xd4";
 			  document.getElementById("coinjs_multisig").value = "0xd";
@@ -2036,7 +2109,7 @@
 			  document.getElementById("bTtitle1").textContent = "Phore";
 			  tickerCode = "PHR";
 			}
-			else if (document.getElementById("customCoinName").value == "pho") {
+			else if (document.getElementById("customCoinTicker").value == "pho") {
 			  document.getElementById("coinjs_pub").value = "0x1a";
 			  document.getElementById("coinjs_priv").value = "0x9a";
 			  document.getElementById("coinjs_multisig").value = "0x7";
@@ -2045,7 +2118,7 @@
 			  document.getElementById("bTtitle1").textContent = "Photon";
 			  tickerCode = "PHO";
 			}
-			else if (document.getElementById("customCoinName").value == "pura") {
+			else if (document.getElementById("customCoinTicker").value == "pura") {
 			  document.getElementById("coinjs_pub").value = "0x37";
 			  document.getElementById("coinjs_priv").value = "0x96";
 			  document.getElementById("coinjs_multisig").value = "0x10";
@@ -2054,7 +2127,7 @@
 			  document.getElementById("bTtitle1").textContent = "Pura";
 			  tickerCode = "PURA";
 			}
-			else if (document.getElementById("customCoinName").value == "put") {
+			else if (document.getElementById("customCoinTicker").value == "put") {
 			  document.getElementById("coinjs_pub").value = "0x37";
 			  document.getElementById("coinjs_priv").value = "0xb7";
 			  document.getElementById("coinjs_multisig").value = "0x14";
@@ -2063,7 +2136,7 @@
 			  document.getElementById("bTtitle1").textContent = "Putincoin";
 			  tickerCode = "PUT";
 			}
-			else if (document.getElementById("customCoinName").value == "qac") {
+			else if (document.getElementById("customCoinTicker").value == "qac") {
 			  document.getElementById("coinjs_pub").value = "0x3a";
 			  document.getElementById("coinjs_priv").value = "0xcc";
 			  document.getElementById("coinjs_multisig").value = "0x78";
@@ -2072,7 +2145,7 @@
 			  document.getElementById("bTtitle1").textContent = "Quasar";
 			  tickerCode = "QAC";
 			}
-			else if (document.getElementById("customCoinName").value == "qub") {
+			else if (document.getElementById("customCoinTicker").value == "qub") {
 			  document.getElementById("coinjs_pub").value = "0x3a";
 			  document.getElementById("coinjs_priv").value = "0x99";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -2081,7 +2154,7 @@
 			  document.getElementById("bTtitle1").textContent = "QubeNet";
 			  tickerCode = "QUB";
 			}
-			else if (document.getElementById("customCoinName").value == "rads") {
+			else if (document.getElementById("customCoinTicker").value == "rads") {
 			  document.getElementById("coinjs_pub").value = "0x4c";
 			  document.getElementById("coinjs_priv").value = "0x79";
 			  document.getElementById("coinjs_multisig").value = "0x3a";
@@ -2090,7 +2163,7 @@
 			  document.getElementById("bTtitle1").textContent = "Radium";
 			  tickerCode = "RADS";
 			}
-			else if (document.getElementById("customCoinName").value == "rpc") {
+			else if (document.getElementById("customCoinTicker").value == "rpc") {
 			  document.getElementById("coinjs_pub").value = "0x3c";
 			  document.getElementById("coinjs_priv").value = "0xbc";
 			  document.getElementById("coinjs_multisig").value = "0x3";
@@ -2099,7 +2172,7 @@
 			  document.getElementById("bTtitle1").textContent = "RonPaulCoin";
 			  tickerCode = "RPC";
 			}
-			else if (document.getElementById("customCoinName").value == "scol") {
+			else if (document.getElementById("customCoinTicker").value == "scol") {
 			  document.getElementById("coinjs_pub").value = "0x3f";
 			  document.getElementById("coinjs_priv").value = "0xbf";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -2108,7 +2181,7 @@
 			  document.getElementById("bTtitle1").textContent = "Scolcoin";
 			  tickerCode = "SCOL";
 			}
-			else if (document.getElementById("customCoinName").value == "scribe") {
+			else if (document.getElementById("customCoinTicker").value == "scribe") {
 			  document.getElementById("coinjs_pub").value = "0x3c";
 			  document.getElementById("coinjs_priv").value = "0x6e";
 			  document.getElementById("coinjs_multisig").value = "0x7d";
@@ -2117,7 +2190,7 @@
 			  document.getElementById("bTtitle1").textContent = "scribe";
 			  tickerCode = "SCRIBE";
 			}
-			else if (document.getElementById("customCoinName").value == "lyra") {
+			else if (document.getElementById("customCoinTicker").value == "lyra") {
 			  document.getElementById("coinjs_pub").value = "0x30";
 			  document.getElementById("coinjs_priv").value = "0xae";
 			  document.getElementById("coinjs_multisig").value = "0xd";
@@ -2126,7 +2199,7 @@
 			  document.getElementById("bTtitle1").textContent = "Scrypta";
 			  tickerCode = "LYRA";
 			}
-			else if (document.getElementById("customCoinName").value == "sxc") {
+			else if (document.getElementById("customCoinTicker").value == "sxc") {
 			  document.getElementById("coinjs_pub").value = "0x3e";
 			  document.getElementById("coinjs_priv").value = "0xbe";
 			  document.getElementById("coinjs_multisig").value = "0x45";
@@ -2135,7 +2208,7 @@
 			  document.getElementById("bTtitle1").textContent = "Sexcoin";
 			  tickerCode = "SXC";
 			}
-			else if (document.getElementById("customCoinName").value == "sha") {
+			else if (document.getElementById("customCoinTicker").value == "sha") {
 			  document.getElementById("coinjs_pub").value = "0x3f";
 			  document.getElementById("coinjs_priv").value = "0xbf";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -2144,7 +2217,7 @@
 			  document.getElementById("bTtitle1").textContent = "SHACoin";
 			  tickerCode = "SHA";
 			}
-			else if (document.getElementById("customCoinName").value == "skc") {
+			else if (document.getElementById("customCoinTicker").value == "skc") {
 			  document.getElementById("coinjs_pub").value = "0x";
 			  document.getElementById("coinjs_priv").value = "0x";
 			  document.getElementById("coinjs_multisig").value = "0x";
@@ -2153,7 +2226,7 @@
 			  document.getElementById("bTtitle1").textContent = "Skeincoin";
 			  tickerCode = "SKC";
 			}
-			else if (document.getElementById("customCoinName").value == "slx") {
+			else if (document.getElementById("customCoinTicker").value == "slx") {
 			  document.getElementById("coinjs_pub").value = "0x7d";
 			  document.getElementById("coinjs_priv").value = "0x8c";
 			  document.getElementById("coinjs_multisig").value = "0x12";
@@ -2162,7 +2235,7 @@
 			  document.getElementById("bTtitle1").textContent = "Slate";
 			  tickerCode = "SLX";
 			}
-			else if (document.getElementById("customCoinName").value == "slm") {
+			else if (document.getElementById("customCoinTicker").value == "slm") {
 			  document.getElementById("coinjs_pub").value = "0x3f";
 			  document.getElementById("coinjs_priv").value = "0xbf";
 			  document.getElementById("coinjs_multisig").value = "0x7d";
@@ -2171,7 +2244,7 @@
 			  document.getElementById("bTtitle1").textContent = "Slimcoin";
 			  tickerCode = "SLM";
 			}
-			else if (document.getElementById("customCoinName").value == "smly") {
+			else if (document.getElementById("customCoinTicker").value == "smly") {
 			  document.getElementById("coinjs_pub").value = "0x19";
 			  document.getElementById("coinjs_priv").value = "0x99";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -2180,7 +2253,7 @@
 			  document.getElementById("bTtitle1").textContent = "Smileycoin";
 			  tickerCode = "SMLY";
 			}
-			else if (document.getElementById("customCoinName").value == "slr") {
+			else if (document.getElementById("customCoinTicker").value == "slr") {
 			  document.getElementById("coinjs_pub").value = "0x12";
 			  document.getElementById("coinjs_priv").value = "0x92";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -2189,7 +2262,7 @@
 			  document.getElementById("bTtitle1").textContent = "SolarCoin";
 			  tickerCode = "SLR";
 			}
-			else if (document.getElementById("customCoinName").value == "xlr") {
+			else if (document.getElementById("customCoinTicker").value == "xlr") {
 			  document.getElementById("coinjs_pub").value = "0x3f";
 			  document.getElementById("coinjs_priv").value = "0xd4";
 			  document.getElementById("coinjs_multisig").value = "0xd";
@@ -2198,7 +2271,7 @@
 			  document.getElementById("bTtitle1").textContent = "Solaris";
 			  tickerCode = "XLR";
 			}
-			else if (document.getElementById("customCoinName").value == "xspec") {
+			else if (document.getElementById("customCoinTicker").value == "xspec") {
 			  document.getElementById("coinjs_pub").value = "0x3f";
 			  document.getElementById("coinjs_priv").value = "0xb3";
 			  document.getElementById("coinjs_multisig").value = "0x88";
@@ -2207,7 +2280,7 @@
 			  document.getElementById("bTtitle1").textContent = "Spectrecoin";
 			  tickerCode = "XSPEC";
 			}
-			else if (document.getElementById("customCoinName").value == "sphx") {
+			else if (document.getElementById("customCoinTicker").value == "sphx") {
 			  document.getElementById("coinjs_pub").value = "0x39";
 			  document.getElementById("coinjs_priv").value = "0x99";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -2216,7 +2289,7 @@
 			  document.getElementById("bTtitle1").textContent = "Sphinxcoin";
 			  tickerCode = "SPHX";
 			}
-			else if (document.getElementById("customCoinName").value == "sprts") {
+			else if (document.getElementById("customCoinTicker").value == "sprts") {
 			  document.getElementById("coinjs_pub").value = "0x3f";
 			  document.getElementById("coinjs_priv").value = "0xbf";
 			  document.getElementById("coinjs_multisig").value = "0x7d";
@@ -2225,7 +2298,7 @@
 			  document.getElementById("bTtitle1").textContent = "Sprouts";
 			  tickerCode = "SPRTS";
 			}
-			else if (document.getElementById("customCoinName").value == "stk") {
+			else if (document.getElementById("customCoinTicker").value == "stk") {
 			  document.getElementById("coinjs_pub").value = "0x2b";
 			  document.getElementById("coinjs_priv").value = "0xab";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -2234,7 +2307,7 @@
 			  document.getElementById("bTtitle1").textContent = "Stakecoin";
 			  tickerCode = "STK";
 			}
-			else if (document.getElementById("customCoinName").value == "xst") {
+			else if (document.getElementById("customCoinTicker").value == "xst") {
 			  document.getElementById("coinjs_pub").value = "0x3e";
 			  document.getElementById("coinjs_priv").value = "0xbe";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -2243,7 +2316,7 @@
 			  document.getElementById("bTtitle1").textContent = "Steathcoin";
 			  tickerCode = "XST";
 			}
-			else if (document.getElementById("customCoinName").value == "strat") {
+			else if (document.getElementById("customCoinTicker").value == "strat") {
 			  document.getElementById("coinjs_pub").value = "0x3f";
 			  document.getElementById("coinjs_priv").value = "0xbf";
 			  document.getElementById("coinjs_multisig").value = "0x7d";
@@ -2252,7 +2325,7 @@
 			  document.getElementById("bTtitle1").textContent = "Stratis";
 			  tickerCode = "STRAT";
 			}
-			else if (document.getElementById("customCoinName").value == "super") {
+			else if (document.getElementById("customCoinTicker").value == "super") {
 			  document.getElementById("coinjs_pub").value = "0x3f";
 			  document.getElementById("coinjs_priv").value = "0xbf";
 			  document.getElementById("coinjs_multisig").value = "0x1c";
@@ -2261,7 +2334,7 @@
 			  document.getElementById("bTtitle1").textContent = "Supercoin";
 			  tickerCode = "SUPER";
 			}
-			else if (document.getElementById("customCoinName").value == "swing") {
+			else if (document.getElementById("customCoinTicker").value == "swing") {
 			  document.getElementById("coinjs_pub").value = "0xef";
 			  document.getElementById("coinjs_priv").value = "0xbf";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -2270,7 +2343,7 @@
 			  document.getElementById("bTtitle1").textContent = "SwingCoin";
 			  tickerCode = "SWING";
 			}
-			else if (document.getElementById("customCoinName").value == "sys") {
+			else if (document.getElementById("customCoinTicker").value == "sys") {
 			  document.getElementById("coinjs_pub").value = "0x3f";
 			  document.getElementById("coinjs_priv").value = "0x80";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -2279,7 +2352,7 @@
 			  document.getElementById("bTtitle1").textContent = "Syscoin";
 			  tickerCode = "SYS";
 			}
-			else if (document.getElementById("customCoinName").value == "taj") {
+			else if (document.getElementById("customCoinTicker").value == "taj") {
 			  document.getElementById("coinjs_pub").value = "0x41";
 			  document.getElementById("coinjs_priv").value = "0x6f";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -2288,7 +2361,7 @@
 			  document.getElementById("bTtitle1").textContent = "Tajcoin";
 			  tickerCode = "TAJ";
 			}
-			else if (document.getElementById("customCoinName").value == "tpwr") {
+			else if (document.getElementById("customCoinTicker").value == "tpwr") {
 			  document.getElementById("coinjs_pub").value = "0x41";
 			  document.getElementById("coinjs_priv").value = "0xc1";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -2297,7 +2370,7 @@
 			  document.getElementById("bTtitle1").textContent = "Talonpower";
 			  tickerCode = "TPWR";
 			}
-			else if (document.getElementById("customCoinName").value == "tao") {
+			else if (document.getElementById("customCoinTicker").value == "tao") {
 			  document.getElementById("coinjs_pub").value = "0x42";
 			  document.getElementById("coinjs_priv").value = "0x4c";
 			  document.getElementById("coinjs_multisig").value = "0x3";
@@ -2306,7 +2379,7 @@
 			  document.getElementById("bTtitle1").textContent = "Tao";
 			  tickerCode = "TAO";
 			}
-			else if (document.getElementById("customCoinName").value == "tes") {
+			else if (document.getElementById("customCoinTicker").value == "tes") {
 			  document.getElementById("coinjs_pub").value = "0xb";
 			  document.getElementById("coinjs_priv").value = "0x8b";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -2315,7 +2388,7 @@
 			  document.getElementById("bTtitle1").textContent = "Teslacoin";
 			  tickerCode = "TES";
 			}
-			else if (document.getElementById("customCoinName").value == "toa") {
+			else if (document.getElementById("customCoinTicker").value == "toa") {
 			  document.getElementById("coinjs_pub").value = "0x";
 			  document.getElementById("coinjs_priv").value = "0x";
 			  document.getElementById("coinjs_multisig").value = "0x";
@@ -2324,7 +2397,7 @@
 			  document.getElementById("bTtitle1").textContent = "Toacoin";
 			  tickerCode = "TOA";
 			}
-			else if (document.getElementById("customCoinName").value == "tx") {
+			else if (document.getElementById("customCoinTicker").value == "tx") {
 			  document.getElementById("coinjs_pub").value = "0x42";
 			  document.getElementById("coinjs_priv").value = "0x99";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -2333,7 +2406,7 @@
 			  document.getElementById("bTtitle1").textContent = "TransferCoin";
 			  tickerCode = "TX";
 			}
-			else if (document.getElementById("customCoinName").value == "tzc") {
+			else if (document.getElementById("customCoinTicker").value == "tzc") {
 			  document.getElementById("coinjs_pub").value = "0x42";
 			  document.getElementById("coinjs_priv").value = "0xc2";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -2342,7 +2415,7 @@
 			  document.getElementById("bTtitle1").textContent = "Trezacoin";
 			  tickerCode = "TZC";
 			}
-			else if (document.getElementById("customCoinName").value == "troll") {
+			else if (document.getElementById("customCoinTicker").value == "troll") {
 			  document.getElementById("coinjs_pub").value = "0x42";
 			  document.getElementById("coinjs_priv").value = "0x99";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -2351,7 +2424,7 @@
 			  document.getElementById("bTtitle1").textContent = "Trollcoin";
 			  tickerCode = "TROLL";
 			}
-			else if (document.getElementById("customCoinName").value == "trump") {
+			else if (document.getElementById("customCoinTicker").value == "trump") {
 			  document.getElementById("coinjs_pub").value = "0x41";
 			  document.getElementById("coinjs_priv").value = "0xc1";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -2360,7 +2433,7 @@
 			  document.getElementById("bTtitle1").textContent = "Trumpcoin";
 			  tickerCode = "TRUMP";
 			}
-			else if (document.getElementById("customCoinName").value == "xtp") {
+			else if (document.getElementById("customCoinTicker").value == "xtp") {
 			  document.getElementById("coinjs_pub").value = "0x41";
 			  document.getElementById("coinjs_priv").value = "0xc1";
 			  document.getElementById("coinjs_multisig").value = "0x1c";
@@ -2369,7 +2442,7 @@
 			  document.getElementById("bTtitle1").textContent = "Trustplus";
 			  tickerCode = "XTP";
 			}
-			else if (document.getElementById("customCoinName").value == "ufo") {
+			else if (document.getElementById("customCoinTicker").value == "ufo") {
 			  document.getElementById("coinjs_pub").value = "0x27";
 			  document.getElementById("coinjs_priv").value = "0x44";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -2378,7 +2451,7 @@
 			  document.getElementById("bTtitle1").textContent = "Ufo";
 			  tickerCode = "UFO";
 			}
-			else if (document.getElementById("customCoinName").value == "scifi") {
+			else if (document.getElementById("customCoinTicker").value == "scifi") {
 			  document.getElementById("coinjs_pub").value = "0x3f";
 			  document.getElementById("coinjs_priv").value = "0xbf";
 			  document.getElementById("coinjs_multisig").value = "0xf";
@@ -2387,7 +2460,7 @@
 			  document.getElementById("bTtitle1").textContent = "UnitedSciFicoin";
 			  tickerCode = "SCIFI";
 			}
-			else if (document.getElementById("customCoinName").value == "umo") {
+			else if (document.getElementById("customCoinTicker").value == "umo") {
 			  document.getElementById("coinjs_pub").value = "0x82";
 			  document.getElementById("coinjs_priv").value = "0x102";
 			  document.getElementById("coinjs_multisig").value = "0x7";
@@ -2396,7 +2469,7 @@
 			  document.getElementById("bTtitle1").textContent = "UniversalMolecule";
 			  tickerCode = "UMO";
 			}
-			else if (document.getElementById("customCoinName").value == "uno") {
+			else if (document.getElementById("customCoinTicker").value == "uno") {
 			  document.getElementById("coinjs_pub").value = "0x82";
 			  document.getElementById("coinjs_priv").value = "0xe0";
 			  document.getElementById("coinjs_multisig").value = "0x1e";
@@ -2405,7 +2478,7 @@
 			  document.getElementById("bTtitle1").textContent = "Unobtanium";
 			  tickerCode = "UNO";
 			}
-			else if (document.getElementById("customCoinName").value == "vcn") {
+			else if (document.getElementById("customCoinTicker").value == "vcn") {
 			  document.getElementById("coinjs_pub").value = "0x46";
 			  document.getElementById("coinjs_priv").value = "0xe0";
 			  document.getElementById("coinjs_multisig").value = "0x1e";
@@ -2414,7 +2487,7 @@
 			  document.getElementById("bTtitle1").textContent = "Vcoin";
 			  tickerCode = "VCN";
 			}
-			else if (document.getElementById("customCoinName").value == "veil") {
+			else if (document.getElementById("customCoinTicker").value == "veil") {
 			  document.getElementById("coinjs_pub").value = "0x46";
 			  document.getElementById("coinjs_priv").value = "0x80";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -2423,7 +2496,7 @@
 			  document.getElementById("bTtitle1").textContent = "Veil";
 			  tickerCode = "VEIL";
 			}
-			else if (document.getElementById("customCoinName").value == "vls") {
+			else if (document.getElementById("customCoinTicker").value == "vls") {
 			  document.getElementById("coinjs_pub").value = "0x";
 			  document.getElementById("coinjs_priv").value = "0x";
 			  document.getElementById("coinjs_multisig").value = "0x";
@@ -2432,7 +2505,7 @@
 			  document.getElementById("bTtitle1").textContent = "Veles";
 			  tickerCode = "VLS";
 			}
-			else if (document.getElementById("customCoinName").value == "vrc") {
+			else if (document.getElementById("customCoinTicker").value == "vrc") {
 			  document.getElementById("coinjs_pub").value = "0x46";
 			  document.getElementById("coinjs_priv").value = "0xc6";
 			  document.getElementById("coinjs_multisig").value = "0x84";
@@ -2441,7 +2514,7 @@
 			  document.getElementById("bTtitle1").textContent = "Vericoin";
 			  tickerCode = "VRC";
 			}
-			else if (document.getElementById("customCoinName").value == "vrm") {
+			else if (document.getElementById("customCoinTicker").value == "vrm") {
 			  document.getElementById("coinjs_pub").value = "0x45";
 			  document.getElementById("coinjs_priv").value = "0xc6";
 			  document.getElementById("coinjs_multisig").value = "0x84";
@@ -2450,7 +2523,7 @@
 			  document.getElementById("bTtitle1").textContent = "Verium";
 			  tickerCode = "VRM";
 			}
-			else if (document.getElementById("customCoinName").value == "vestx2") {
+			else if (document.getElementById("customCoinTicker").value == "vestx2") {
 			  document.getElementById("coinjs_pub").value = "0x43";
 			  document.getElementById("coinjs_priv").value = "0xc3";
 			  document.getElementById("coinjs_multisig").value = "0x4c";
@@ -2459,7 +2532,7 @@
 			  document.getElementById("bTtitle1").textContent = "Vestx";
 			  tickerCode = "VESTX2";
 			}
-			else if (document.getElementById("customCoinName").value == "xvp") {
+			else if (document.getElementById("customCoinTicker").value == "xvp") {
 			  document.getElementById("coinjs_pub").value = "0x46";
 			  document.getElementById("coinjs_priv").value = "0xc6";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -2468,7 +2541,7 @@
 			  document.getElementById("bTtitle1").textContent = "VirtacoinPlus";
 			  tickerCode = "XVP";
 			}
-			else if (document.getElementById("customCoinName").value == "wgr") {
+			else if (document.getElementById("customCoinTicker").value == "wgr") {
 			  document.getElementById("coinjs_pub").value = "0x49";
 			  document.getElementById("coinjs_priv").value = "0xc7";
 			  document.getElementById("coinjs_multisig").value = "0x3f";
@@ -2477,7 +2550,7 @@
 			  document.getElementById("bTtitle1").textContent = "Wagerr";
 			  tickerCode = "WGR";
 			}
-			else if (document.getElementById("customCoinName").value == "wex") {
+			else if (document.getElementById("customCoinTicker").value == "wex") {
 			  document.getElementById("coinjs_pub").value = "0x4c";
 			  document.getElementById("coinjs_priv").value = "0xcc";
 			  document.getElementById("coinjs_multisig").value = "0x23";
@@ -2486,7 +2559,7 @@
 			  document.getElementById("bTtitle1").textContent = "Wexcoin";
 			  tickerCode = "WEX";
 			}
-			else if (document.getElementById("customCoinName").value == "wc") {
+			else if (document.getElementById("customCoinTicker").value == "wc") {
 			  document.getElementById("coinjs_pub").value = "0x4e";
 			  document.getElementById("coinjs_priv").value = "0xce";
 			  document.getElementById("coinjs_multisig").value = "0x57";
@@ -2495,7 +2568,7 @@
 			  document.getElementById("bTtitle1").textContent = "Wincoin";
 			  tickerCode = "WC";
 			}
-			else if (document.getElementById("customCoinName").value == "wdc") {
+			else if (document.getElementById("customCoinTicker").value == "wdc") {
 			  document.getElementById("coinjs_pub").value = "0x49";
 			  document.getElementById("coinjs_priv").value = "0xc9";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -2504,7 +2577,7 @@
 			  document.getElementById("bTtitle1").textContent = "Worldcoin";
 			  tickerCode = "WDC";
 			}
-			else if (document.getElementById("customCoinName").value == "xc") {
+			else if (document.getElementById("customCoinTicker").value == "xc") {
 			  document.getElementById("coinjs_pub").value = "0x4b";
 			  document.getElementById("coinjs_priv").value = "0xcb";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -2513,7 +2586,7 @@
 			  document.getElementById("bTtitle1").textContent = "XCurrency";
 			  tickerCode = "XC";
 			}
-			else if (document.getElementById("customCoinName").value == "xde2") {
+			else if (document.getElementById("customCoinTicker").value == "xde2") {
 			  document.getElementById("coinjs_pub").value = "0x4b";
 			  document.getElementById("coinjs_priv").value = "0x99";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -2522,7 +2595,7 @@
 			  document.getElementById("bTtitle1").textContent = "XDE2";
 			  tickerCode = "XDE2";
 			}
-			else if (document.getElementById("customCoinName").value == "xzc") {
+			else if (document.getElementById("customCoinTicker").value == "xzc") {
 			  document.getElementById("coinjs_pub").value = "0x52";
 			  document.getElementById("coinjs_priv").value = "0xd2";
 			  document.getElementById("coinjs_multisig").value = "0x7";
@@ -2531,7 +2604,7 @@
 			  document.getElementById("bTtitle1").textContent = "Zcoin";
 			  tickerCode = "XZC";
 			}
-			else if (document.getElementById("customCoinName").value == "x0z") {
+			else if (document.getElementById("customCoinTicker").value == "x0z") {
 			  document.getElementById("coinjs_pub").value = "0x1c";
 			  document.getElementById("coinjs_priv").value = "0x9c";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -2540,7 +2613,7 @@
 			  document.getElementById("bTtitle1").textContent = "Zerozed";
 			  tickerCode = "X0Z";
 			}
-			else if (document.getElementById("customCoinName").value == "zet") {
+			else if (document.getElementById("customCoinTicker").value == "zet") {
 			  document.getElementById("coinjs_pub").value = "0x50";
 			  document.getElementById("coinjs_priv").value = "0xe0";
 			  document.getElementById("coinjs_multisig").value = "0x9";
@@ -2549,7 +2622,7 @@
 			  document.getElementById("bTtitle1").textContent = "Zetacoin";
 			  tickerCode = "ZET";
 			}
-			else if (document.getElementById("customCoinName").value == "zln") {
+			else if (document.getElementById("customCoinTicker").value == "zln") {
 			  document.getElementById("coinjs_pub").value = "0x51";
 			  document.getElementById("coinjs_priv").value = "0xd1";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -2558,7 +2631,7 @@
 			  document.getElementById("bTtitle1").textContent = "Zillioncoin";
 			  tickerCode = "ZLN";
 			}
-			else if (document.getElementById("customCoinName").value == "404") {
+			else if (document.getElementById("customCoinTicker").value == "404") {
 			  document.getElementById("coinjs_pub").value = "0x1c";
 			  document.getElementById("coinjs_priv").value = "0x9c";
 			  document.getElementById("coinjs_multisig").value = "0x38";
@@ -2567,7 +2640,7 @@
 			  document.getElementById("bTtitle1").textContent = "404Coin";
 			  tickerCode = "404";
 			}
-			else if (document.getElementById("customCoinName").value == "monk") {
+			else if (document.getElementById("customCoinTicker").value == "monk") {
 			  document.getElementById("coinjs_pub").value = "0x33";
 			  document.getElementById("coinjs_priv").value = "0x37";
 			  document.getElementById("coinjs_multisig").value = "0x1c";
@@ -2576,7 +2649,7 @@
 			  document.getElementById("bTtitle1").textContent = "Monkey";
 			  tickerCode = "MONK";
 			}
-			else if (document.getElementById("customCoinName").value == "ugd") {
+			else if (document.getElementById("customCoinTicker").value == "ugd") {
 			  document.getElementById("coinjs_pub").value = "0x28";
 			  document.getElementById("coinjs_priv").value = "0x99";
 			  document.getElementById("coinjs_multisig").value = "0x64";
@@ -2585,7 +2658,7 @@
 			  document.getElementById("bTtitle1").textContent = "UNIGRID";
 			  tickerCode = "ugd";
 			}
-			else if (document.getElementById("customCoinName").value == "alex") {
+			else if (document.getElementById("customCoinTicker").value == "alex") {
 			  document.getElementById("coinjs_pub").value = "0x52";
 			  document.getElementById("coinjs_priv").value = "0xd2";
 			  document.getElementById("coinjs_multisig").value = "0x43";
@@ -2594,7 +2667,7 @@
 			  document.getElementById("bTtitle1").textContent = "Alexandrite";
 			  tickerCode = "ALEX";
 			}
-			else if (document.getElementById("customCoinName").value == "safe") {
+			else if (document.getElementById("customCoinTicker").value == "safe") {
 			  document.getElementById("coinjs_pub").value = "0x3d";
 			  document.getElementById("coinjs_priv").value = "0xbd";
 			  document.getElementById("coinjs_multisig").value = "0x56";
@@ -2603,7 +2676,7 @@
 			  document.getElementById("bTtitle1").textContent = "Safecoin";
 			  tickerCode = "SAFE";
 			}
-			else if (document.getElementById("customCoinName").value == "boat") {
+			else if (document.getElementById("customCoinTicker").value == "boat") {
 			  document.getElementById("coinjs_pub").value = "0x19";
 			  document.getElementById("coinjs_priv").value = "0x99";
 			  document.getElementById("coinjs_multisig").value = "0x32";
@@ -2612,7 +2685,7 @@
 			  document.getElementById("bTtitle1").textContent = "Boat";
 			  tickerCode = "BOAT";
 			}
-			else if (document.getElementById("customCoinName").value == "bost") {
+			else if (document.getElementById("customCoinTicker").value == "bost") {
 			  document.getElementById("coinjs_pub").value = "0x19";
 			  document.getElementById("coinjs_priv").value = "0x99";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -2621,7 +2694,7 @@
 			  document.getElementById("bTtitle1").textContent = "Boostcoin";
 			  tickerCode = "BOST";
 			}
-			else if (document.getElementById("customCoinName").value == "esp") {
+			else if (document.getElementById("customCoinTicker").value == "esp") {
 			  document.getElementById("coinjs_pub").value = "0x";
 			  document.getElementById("coinjs_priv").value = "0x";
 			  document.getElementById("coinjs_multisig").value = "0x";
@@ -2630,7 +2703,7 @@
 			  document.getElementById("bTtitle1").textContent = "Espers";
 			  tickerCode = "ESP";
 			}
-			else if (document.getElementById("customCoinName").value == "fair") {
+			else if (document.getElementById("customCoinTicker").value == "fair") {
 			  document.getElementById("coinjs_pub").value = "0x5f";
 			  document.getElementById("coinjs_priv").value = "0xdf";
 			  document.getElementById("coinjs_multisig").value = "0x24";
@@ -2639,7 +2712,7 @@
 			  document.getElementById("bTtitle1").textContent = "FairCoin";
 			  tickerCode = "FAIR";
 			}
-			else if (document.getElementById("customCoinName").value == "flt") {
+			else if (document.getElementById("customCoinTicker").value == "flt") {
 			  document.getElementById("coinjs_pub").value = "0x23";
 			  document.getElementById("coinjs_priv").value = "0xa3";
 			  document.getElementById("coinjs_multisig").value = "0x14";
@@ -2648,7 +2721,7 @@
 			  document.getElementById("bTtitle1").textContent = "Fluttercoin";
 			  tickerCode = "FLT";
 			}
-			else if (document.getElementById("customCoinName").value == "grc") {
+			else if (document.getElementById("customCoinTicker").value == "grc") {
 			  document.getElementById("coinjs_pub").value = "0x3e";
 			  document.getElementById("coinjs_priv").value = "0xbe";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -2657,7 +2730,7 @@
 			  document.getElementById("bTtitle1").textContent = "Gridcoin";
 			  tickerCode = "GRC";
 			}
-			else if (document.getElementById("customCoinName").value == "grwi") {
+			else if (document.getElementById("customCoinTicker").value == "grwi") {
 			  document.getElementById("coinjs_pub").value = "0x62";
 			  document.getElementById("coinjs_priv").value = "0xef";
 			  document.getElementById("coinjs_multisig").value = "0xc4";
@@ -2666,7 +2739,7 @@
 			  document.getElementById("bTtitle1").textContent = "GrowersCoin";
 			  tickerCode = "GRWI";
 			}
-			else if (document.getElementById("customCoinName").value == "hpc") {
+			else if (document.getElementById("customCoinTicker").value == "hpc") {
 			  document.getElementById("coinjs_pub").value = "0x29";
 			  document.getElementById("coinjs_priv").value = "0xa9";
 			  document.getElementById("coinjs_multisig").value = "0x14";
@@ -2675,7 +2748,7 @@
 			  document.getElementById("bTtitle1").textContent = "HappyCoin";
 			  tickerCode = "HPC";
 			}
-			else if (document.getElementById("customCoinName").value == "xhi") {
+			else if (document.getElementById("customCoinTicker").value == "xhi") {
 			  document.getElementById("coinjs_pub").value = "0x28";
 			  document.getElementById("coinjs_priv").value = "0xa8";
 			  document.getElementById("coinjs_multisig").value = "0x26";
@@ -2684,7 +2757,7 @@
 			  document.getElementById("bTtitle1").textContent = "HICoin";
 			  tickerCode = "XHI";
 			}
-			else if (document.getElementById("customCoinName").value == "hyp") {
+			else if (document.getElementById("customCoinTicker").value == "hyp") {
 			  document.getElementById("coinjs_pub").value = "0x75";
 			  document.getElementById("coinjs_priv").value = "0xf5";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -2693,7 +2766,7 @@
 			  document.getElementById("bTtitle1").textContent = "HyperStake";
 			  tickerCode = "HYP";
 			}
-			else if (document.getElementById("customCoinName").value == "nka") {
+			else if (document.getElementById("customCoinTicker").value == "nka") {
 			  document.getElementById("coinjs_pub").value = "0x35";
 			  document.getElementById("coinjs_priv").value = "0xb5";
 			  document.getElementById("coinjs_multisig").value = "0x1e";
@@ -2702,7 +2775,7 @@
 			  document.getElementById("bTtitle1").textContent = "IncaKoin";
 			  tickerCode = "NKA";
 			}
-			else if (document.getElementById("customCoinName").value == "jmc") {
+			else if (document.getElementById("customCoinTicker").value == "jmc") {
 			  document.getElementById("coinjs_pub").value = "0x1c";
 			  document.getElementById("coinjs_priv").value = "0x9c";
 			  document.getElementById("coinjs_multisig").value = "0x38";
@@ -2711,7 +2784,7 @@
 			  document.getElementById("bTtitle1").textContent = "Junson Ming Chan Coin";
 			  tickerCode = "JMC";
 			}
-			else if (document.getElementById("customCoinName").value == "luna") {
+			else if (document.getElementById("customCoinTicker").value == "luna") {
 			  document.getElementById("coinjs_pub").value = "0x";
 			  document.getElementById("coinjs_priv").value = "0x";
 			  document.getElementById("coinjs_multisig").value = "0x";
@@ -2720,7 +2793,7 @@
 			  document.getElementById("bTtitle1").textContent = "LunaCoin";
 			  tickerCode = "LUNA";
 			}
-			else if (document.getElementById("customCoinName").value == "moin") {
+			else if (document.getElementById("customCoinTicker").value == "moin") {
 			  document.getElementById("coinjs_pub").value = "0x32";
 			  document.getElementById("coinjs_priv").value = "0xb2";
 			  document.getElementById("coinjs_multisig").value = "0x21";
@@ -2729,7 +2802,7 @@
 			  document.getElementById("bTtitle1").textContent = "Moin";
 			  tickerCode = "MOIN";
 			}
-			else if (document.getElementById("customCoinName").value == "net") {
+			else if (document.getElementById("customCoinTicker").value == "net") {
 			  document.getElementById("coinjs_pub").value = "0x70";
 			  document.getElementById("coinjs_priv").value = "0xf0";
 			  document.getElementById("coinjs_multisig").value = "0x5";
@@ -2738,7 +2811,7 @@
 			  document.getElementById("bTtitle1").textContent = "NetCoin";
 			  tickerCode = "NET";
 			}
-			else if (document.getElementById("customCoinName").value == "nxs") {
+			else if (document.getElementById("customCoinTicker").value == "nxs") {
 			  document.getElementById("coinjs_pub").value = "0x";
 			  document.getElementById("coinjs_priv").value = "0x";
 			  document.getElementById("coinjs_multisig").value = "0x";
@@ -2747,7 +2820,7 @@
 			  document.getElementById("bTtitle1").textContent = "Nexus";
 			  tickerCode = "NXS";
 			}
-			else if (document.getElementById("customCoinName").value == "nlc2") {
+			else if (document.getElementById("customCoinTicker").value == "nlc2") {
 			  document.getElementById("coinjs_pub").value = "0x35";
 			  document.getElementById("coinjs_priv").value = "0xb5";
 			  document.getElementById("coinjs_multisig").value = "0x55";
@@ -2756,7 +2829,7 @@
 			  document.getElementById("bTtitle1").textContent = "NoLimitCoin";
 			  tickerCode = "NLC2";
 			}
-			else if (document.getElementById("customCoinName").value == "odn") {
+			else if (document.getElementById("customCoinTicker").value == "odn") {
 			  document.getElementById("coinjs_pub").value = "0x4b";
 			  document.getElementById("coinjs_priv").value = "0xcb";
 			  document.getElementById("coinjs_multisig").value = "0x7d";
@@ -2765,7 +2838,7 @@
 			  document.getElementById("bTtitle1").textContent = "Obsidian";
 			  tickerCode = "ODN";
 			}
-			else if (document.getElementById("customCoinName").value == "pac") {
+			else if (document.getElementById("customCoinTicker").value == "pac") {
 			  document.getElementById("coinjs_pub").value = "0x37";
 			  document.getElementById("coinjs_priv").value = "0xcc";
 			  document.getElementById("coinjs_multisig").value = "0xa";
@@ -2774,7 +2847,7 @@
 			  document.getElementById("bTtitle1").textContent = "Paccoin";
 			  tickerCode = "PAC";
 			}
-			else if (document.getElementById("customCoinName").value == "rbt") {
+			else if (document.getElementById("customCoinTicker").value == "rbt") {
 			  document.getElementById("coinjs_pub").value = "0x3c";
 			  document.getElementById("coinjs_priv").value = "0xbc";
 			  document.getElementById("coinjs_multisig").value = "0x7a";
@@ -2783,7 +2856,7 @@
 			  document.getElementById("bTtitle1").textContent = "Rimbit";
 			  tickerCode = "RBT";
 			}
-			else if (document.getElementById("customCoinName").value == "rupx") {
+			else if (document.getElementById("customCoinTicker").value == "rupx") {
 			  document.getElementById("coinjs_pub").value = "0x3c";
 			  document.getElementById("coinjs_priv").value = "0x37";
 			  document.getElementById("coinjs_multisig").value = "0xf";
@@ -2792,7 +2865,7 @@
 			  document.getElementById("bTtitle1").textContent = "Rupaya";
 			  tickerCode = "RUPX";
 			}
-			else if (document.getElementById("customCoinName").value == "asafe2") {
+			else if (document.getElementById("customCoinTicker").value == "asafe2") {
 			  document.getElementById("coinjs_pub").value = "0x7d";
 			  document.getElementById("coinjs_priv").value = "0x5f";
 			  document.getElementById("coinjs_multisig").value = "0x53";
@@ -2801,7 +2874,7 @@
 			  document.getElementById("bTtitle1").textContent = "Allsafe2";
 			  tickerCode = "ASAFE2";
 			}
-			else if (document.getElementById("customCoinName").value == "avn") {
+			else if (document.getElementById("customCoinTicker").value == "avn") {
 			  document.getElementById("coinjs_pub").value = "0x17";
 			  document.getElementById("coinjs_priv").value = "0x97";
 			  document.getElementById("coinjs_multisig").value = "0x29";
@@ -2810,7 +2883,7 @@
 			  document.getElementById("bTtitle1").textContent = "Avantage";
 			  tickerCode = "AVN";
 			}
-			else if (document.getElementById("customCoinName").value == "bcf") {
+			else if (document.getElementById("customCoinTicker").value == "bcf") {
 			  document.getElementById("coinjs_pub").value = "0x19";
 			  document.getElementById("coinjs_priv").value = "0x99";
 			  document.getElementById("coinjs_multisig").value = "0x8";
@@ -2819,7 +2892,7 @@
 			  document.getElementById("bTtitle1").textContent = "Bitcoin Fast";
 			  tickerCode = "BCF";
 			}
-			else if (document.getElementById("customCoinName").value == "bell") {
+			else if (document.getElementById("customCoinTicker").value == "bell") {
 	document.getElementById("coinjs_pub").value = "0x19";
 	document.getElementById("coinjs_priv").value = "0x80";
 	document.getElementById("coinjs_multisig").value = "0x55";
@@ -2828,7 +2901,7 @@
 	document.getElementById("bTtitle1").textContent = "Bellcoin";
 	tickerCode = "BELL";
 }
-else if (document.getElementById("customCoinName").value == "bynd") {
+else if (document.getElementById("customCoinTicker").value == "bynd") {
 	document.getElementById("coinjs_pub").value = "0x19";
 	document.getElementById("coinjs_priv").value = "0x19";
 	document.getElementById("coinjs_multisig").value = "0x5";
@@ -2837,7 +2910,7 @@ else if (document.getElementById("customCoinName").value == "bynd") {
 	document.getElementById("bTtitle1").textContent = "Beyondcoin";
 	tickerCode = "BYND";
 }
-else if (document.getElementById("customCoinName").value == "bnb") {
+else if (document.getElementById("customCoinTicker").value == "bnb") {
 	document.getElementById("coinjs_pub").value = "0x";
 	document.getElementById("coinjs_priv").value = "0x";
 	document.getElementById("coinjs_multisig").value = "0x";
@@ -2846,7 +2919,7 @@ else if (document.getElementById("customCoinName").value == "bnb") {
 	document.getElementById("bTtitle1").textContent = "Binance Coin";
 	tickerCode = "BNB";
 }
-else if (document.getElementById("customCoinName").value == "bis") {
+else if (document.getElementById("customCoinTicker").value == "bis") {
 	document.getElementById("coinjs_pub").value = "0x";
 	document.getElementById("coinjs_priv").value = "0x";
 	document.getElementById("coinjs_multisig").value = "0x";
@@ -2855,7 +2928,7 @@ else if (document.getElementById("customCoinName").value == "bis") {
 	document.getElementById("bTtitle1").textContent = "Bismuth";
 	tickerCode = "BIS";
 }
-else if (document.getElementById("customCoinName").value == "btg") {
+else if (document.getElementById("customCoinTicker").value == "btg") {
 	document.getElementById("coinjs_pub").value = "0x26";
 	document.getElementById("coinjs_priv").value = "0x80";
 	document.getElementById("coinjs_multisig").value = "0x17";
@@ -2864,7 +2937,7 @@ else if (document.getElementById("customCoinName").value == "btg") {
 	document.getElementById("bTtitle1").textContent = "Bitcoin Gold";
 	tickerCode = "BTG";
 }
-else if (document.getElementById("customCoinName").value == "btcs") {
+else if (document.getElementById("customCoinTicker").value == "btcs") {
 	document.getElementById("coinjs_pub").value = "0x0";
 	document.getElementById("coinjs_priv").value = "0x80";
 	document.getElementById("coinjs_multisig").value = "0x5";
@@ -2873,7 +2946,7 @@ else if (document.getElementById("customCoinName").value == "btcs") {
 	document.getElementById("bTtitle1").textContent = "Bitcoin Scrypt";
 	tickerCode = "btcs";
 }
-else if (document.getElementById("customCoinName").value == "bfl") {
+else if (document.getElementById("customCoinTicker").value == "bfl") {
 	document.getElementById("coinjs_pub").value = "0x0";
 	document.getElementById("coinjs_priv").value = "0x80";
 	document.getElementById("coinjs_multisig").value = "0x5";
@@ -2882,7 +2955,7 @@ else if (document.getElementById("customCoinName").value == "bfl") {
 	document.getElementById("bTtitle1").textContent = "Bitflate";
 	tickerCode = "BFL";
 }
-else if (document.getElementById("customCoinName").value == "bdc") {
+else if (document.getElementById("customCoinTicker").value == "bdc") {
 	document.getElementById("coinjs_pub").value = "0x";
 	document.getElementById("coinjs_priv").value = "0x";
 	document.getElementById("coinjs_multisig").value = "0x";
@@ -2891,7 +2964,7 @@ else if (document.getElementById("customCoinName").value == "bdc") {
 	document.getElementById("bTtitle1").textContent = "BollywoodCoin";
 	tickerCode = "BDC";
 }
-else if (document.getElementById("customCoinName").value == "brix") {
+else if (document.getElementById("customCoinTicker").value == "brix") {
 	document.getElementById("coinjs_pub").value = "0x1a";
 	document.getElementById("coinjs_priv").value = "0xcc";
 	document.getElementById("coinjs_multisig").value = "0x10";
@@ -2900,7 +2973,7 @@ else if (document.getElementById("customCoinName").value == "brix") {
 	document.getElementById("bTtitle1").textContent = "BrixCoin";
 	tickerCode = "BRIX";
 }
-else if (document.getElementById("customCoinName").value == "byt") {
+else if (document.getElementById("customCoinTicker").value == "byt") {
 	document.getElementById("coinjs_pub").value = "0x";
 	document.getElementById("coinjs_priv").value = "0x";
 	document.getElementById("coinjs_multisig").value = "0x";
@@ -2909,7 +2982,7 @@ else if (document.getElementById("customCoinName").value == "byt") {
 	document.getElementById("bTtitle1").textContent = "Bytecoin";
 	tickerCode = "BYT";
 }
-else if (document.getElementById("customCoinName").value == "doge") {
+else if (document.getElementById("customCoinTicker").value == "doge") {
 	document.getElementById("coinjs_pub").value = "0x1e";
 	document.getElementById("coinjs_priv").value = "0x9e";
 	document.getElementById("coinjs_multisig").value = "0x16";
@@ -2918,7 +2991,7 @@ else if (document.getElementById("customCoinName").value == "doge") {
 	document.getElementById("bTtitle1").textContent = "Dogecoin";
 	tickerCode = "DOGE";
 }
-else if (document.getElementById("customCoinName").value == "dc") {
+else if (document.getElementById("customCoinTicker").value == "dc") {
   document.getElementById("coinjs_pub").value = "0x7f";
   document.getElementById("coinjs_priv").value = "0xef";
   document.getElementById("coinjs_multisig").value = "0xc4";
@@ -2927,7 +3000,7 @@ else if (document.getElementById("customCoinName").value == "dc") {
   document.getElementById("bTtitle1").textContent = "Ducat-Coin";
   tickerCode = "DC";
 }
-else if (document.getElementById("customCoinName").value == "eddie") {
+else if (document.getElementById("customCoinTicker").value == "eddie") {
   document.getElementById("coinjs_pub").value = "0x21";
   document.getElementById("coinjs_priv").value = "0xa1";
   document.getElementById("coinjs_multisig").value = "0x55";
@@ -2936,7 +3009,7 @@ else if (document.getElementById("customCoinName").value == "eddie") {
   document.getElementById("bTtitle1").textContent = "EddieCoin";
   tickerCode = "EDDIE";
 }
-else if (document.getElementById("customCoinName").value == "bidx") {
+else if (document.getElementById("customCoinTicker").value == "bidx") {
   document.getElementById("coinjs_pub").value = "0x4b";
   document.getElementById("coinjs_priv").value = "0xcb";
   document.getElementById("coinjs_multisig").value = "0x89";
@@ -2945,7 +3018,7 @@ else if (document.getElementById("customCoinName").value == "bidx") {
   document.getElementById("bTtitle1").textContent = "Bidx";
   tickerCode = "BIDX";
 }
-else if (document.getElementById("customCoinName").value == "corn") {
+else if (document.getElementById("customCoinTicker").value == "corn") {
   document.getElementById("coinjs_pub").value = "0x1c";
   document.getElementById("coinjs_priv").value = "0x35";
   document.getElementById("coinjs_multisig").value = "0x3c";
@@ -2954,7 +3027,7 @@ else if (document.getElementById("customCoinName").value == "corn") {
   document.getElementById("bTtitle1").textContent = "Bitcorn";
   tickerCode = "CORN";
 }
-else if (document.getElementById("customCoinName").value == "bitg") {
+else if (document.getElementById("customCoinTicker").value == "bitg") {
   document.getElementById("coinjs_pub").value = "0x26";
   document.getElementById("coinjs_priv").value = "0x2e";
   document.getElementById("coinjs_multisig").value = "0x6";
@@ -2963,7 +3036,7 @@ else if (document.getElementById("customCoinName").value == "bitg") {
   document.getElementById("bTtitle1").textContent = "BitGreen";
   tickerCode = "BITG";
 }
-else if (document.getElementById("customCoinName").value == "bnd") {
+else if (document.getElementById("customCoinTicker").value == "bnd") {
   document.getElementById("coinjs_pub").value = "0x19";
   document.getElementById("coinjs_priv").value = "0x2e";
   document.getElementById("coinjs_multisig").value = "0x3f";
@@ -2972,7 +3045,7 @@ else if (document.getElementById("customCoinName").value == "bnd") {
   document.getElementById("bTtitle1").textContent = "Blocknode";
   tickerCode = "BND";
 }
-else if (document.getElementById("customCoinName").value == "cheese") {
+else if (document.getElementById("customCoinTicker").value == "cheese") {
   document.getElementById("coinjs_pub").value = "0x1c";
   document.getElementById("coinjs_priv").value = "0x99";
   document.getElementById("coinjs_multisig").value = "0x55";
@@ -2981,7 +3054,7 @@ else if (document.getElementById("customCoinName").value == "cheese") {
   document.getElementById("bTtitle1").textContent = "Cheesecoin";
   tickerCode = "CHEESE";
 }
-else if (document.getElementById("customCoinName").value == "cir") {
+else if (document.getElementById("customCoinTicker").value == "cir") {
   document.getElementById("coinjs_pub").value = "0x1c";
   document.getElementById("coinjs_priv").value = "0x9c";
   document.getElementById("coinjs_multisig").value = "0x57";
@@ -2990,7 +3063,7 @@ else if (document.getElementById("customCoinName").value == "cir") {
   document.getElementById("bTtitle1").textContent = "Ciredo";
   tickerCode = "CIR";
 }
-else if (document.getElementById("customCoinName").value == "crave") {
+else if (document.getElementById("customCoinTicker").value == "crave") {
   document.getElementById("coinjs_pub").value = "0x46";
   document.getElementById("coinjs_priv").value = "0x99";
   document.getElementById("coinjs_multisig").value = "0x55";
@@ -2999,7 +3072,7 @@ else if (document.getElementById("customCoinName").value == "crave") {
   document.getElementById("bTtitle1").textContent = "Crave";
   tickerCode = "CRAVE";
 }
-else if (document.getElementById("customCoinName").value == "cdzc") {
+else if (document.getElementById("customCoinTicker").value == "cdzc") {
   document.getElementById("coinjs_pub").value = "0x1e";
   document.getElementById("coinjs_priv").value = "0xc7";
   document.getElementById("coinjs_multisig").value = "0x3f";
@@ -3008,7 +3081,7 @@ else if (document.getElementById("customCoinName").value == "cdzc") {
   document.getElementById("bTtitle1").textContent = "CryptoDezireCash";
   tickerCode = "CDZC";
 }
-else if (document.getElementById("customCoinName").value == "cj") {
+else if (document.getElementById("customCoinTicker").value == "cj") {
   document.getElementById("coinjs_pub").value = "0x1c";
   document.getElementById("coinjs_priv").value = "0x9c";
   document.getElementById("coinjs_multisig").value = "0x55";
@@ -3017,7 +3090,7 @@ else if (document.getElementById("customCoinName").value == "cj") {
   document.getElementById("bTtitle1").textContent = "Cryptojacks";
   tickerCode = "CJ";
 }
-else if (document.getElementById("customCoinName").value == "dvt") {
+else if (document.getElementById("customCoinTicker").value == "dvt") {
   document.getElementById("coinjs_pub").value = "0x";
   document.getElementById("coinjs_priv").value = "0x";
   document.getElementById("coinjs_multisig").value = "0x";
@@ -3026,7 +3099,7 @@ else if (document.getElementById("customCoinName").value == "dvt") {
   document.getElementById("bTtitle1").textContent = "DeVault";
   tickerCode = "DVT";
 }
-else if (document.getElementById("customCoinName").value == "ext") {
+else if (document.getElementById("customCoinTicker").value == "ext") {
   document.getElementById("coinjs_pub").value = "0x21";
   document.getElementById("coinjs_priv").value = "0x99";
   document.getElementById("coinjs_multisig").value = "0x14";
@@ -3035,7 +3108,7 @@ else if (document.getElementById("customCoinName").value == "ext") {
   document.getElementById("bTtitle1").textContent = "Exsolution";
   tickerCode = "EXT";
 }
-else if (document.getElementById("customCoinName").value == "hwi") {
+else if (document.getElementById("customCoinTicker").value == "hwi") {
   document.getElementById("coinjs_pub").value = "0x29";
   document.getElementById("coinjs_priv").value = "0xd7";
   document.getElementById("coinjs_multisig").value = "0x78";
@@ -3044,7 +3117,7 @@ else if (document.getElementById("customCoinName").value == "hwi") {
   document.getElementById("bTtitle1").textContent = "Hawaii Coin";
   tickerCode = "HWI";
 }
-else if (document.getElementById("customCoinName").value == "pos") {
+else if (document.getElementById("customCoinTicker").value == "pos") {
   document.getElementById("coinjs_pub").value = "0x37";
   document.getElementById("coinjs_priv").value = "0xb7";
   document.getElementById("coinjs_multisig").value = "0x55";
@@ -3053,7 +3126,7 @@ else if (document.getElementById("customCoinName").value == "pos") {
   document.getElementById("bTtitle1").textContent = "POS Coin";
   tickerCode = "POS";
 }
-else if (document.getElementById("customCoinName").value == "scriv") {
+else if (document.getElementById("customCoinTicker").value == "scriv") {
   document.getElementById("coinjs_pub").value = "0x7d";
   document.getElementById("coinjs_priv").value = "0xcc";
   document.getElementById("coinjs_multisig").value = "0x10";
@@ -3062,7 +3135,7 @@ else if (document.getElementById("customCoinName").value == "scriv") {
   document.getElementById("bTtitle1").textContent = "Scriv";
   tickerCode = "SCRIV";
 }
-else if (document.getElementById("customCoinName").value == "scc") {
+else if (document.getElementById("customCoinTicker").value == "scc") {
   document.getElementById("coinjs_pub").value = "0x7d";
   document.getElementById("coinjs_priv").value = "0xfd";
   document.getElementById("coinjs_multisig").value = "0x75";
@@ -3071,7 +3144,7 @@ else if (document.getElementById("customCoinName").value == "scc") {
   document.getElementById("bTtitle1").textContent = "StakeCubeCoin";
   tickerCode = "SCC";
 }
-else if (document.getElementById("customCoinName").value == "shmn") {
+else if (document.getElementById("customCoinTicker").value == "shmn") {
   document.getElementById("coinjs_pub").value = "0x32";
   document.getElementById("coinjs_priv").value = "0xd4";
   document.getElementById("coinjs_multisig").value = "0xb";
@@ -3080,7 +3153,7 @@ else if (document.getElementById("customCoinName").value == "shmn") {
   document.getElementById("bTtitle1").textContent = "StrongHands Masternode";
   tickerCode = "SHMN";
 }
-else if (document.getElementById("customCoinName").value == "trbo") {
+else if (document.getElementById("customCoinTicker").value == "trbo") {
   document.getElementById("coinjs_pub").value = "0x41";
   document.getElementById("coinjs_priv").value = "0x37";
   document.getElementById("coinjs_multisig").value = "0x3";
@@ -3089,7 +3162,7 @@ else if (document.getElementById("customCoinName").value == "trbo") {
   document.getElementById("bTtitle1").textContent = "TRBO";
   tickerCode = "TRBO";
 }
-else if (document.getElementById("customCoinName").value == "varius") {
+else if (document.getElementById("customCoinTicker").value == "varius") {
   document.getElementById("coinjs_pub").value = "0x46";
   document.getElementById("coinjs_priv").value = "0xc6";
   document.getElementById("coinjs_multisig").value = "0x55";
@@ -3099,10 +3172,10 @@ else if (document.getElementById("customCoinName").value == "varius") {
   tickerCode = "VARIUS";
 }
 	  else {
-				document.getElementById("xfeeTicker").textContent = document.getElementById("customCoinName").value
-				console.log(document.getElementById("customCoinName").value);
-				tickerCode = document.getElementById("customCoinName").value.toUpperCase();
-				document.getElementById("coinLogo").src = `images/logo/${ document.getElementById("customCoinName").value}.png`;
+				document.getElementById("xfeeTicker").textContent = document.getElementById("customCoinTicker").value
+				console.log(document.getElementById("customCoinTicker").value);
+				tickerCode = document.getElementById("customCoinTicker").value.toUpperCase();
+				document.getElementById("coinLogo").src = `images/logo/${ document.getElementById("customCoinTicker").value}.png`;
 
 			}
 		}
@@ -3127,7 +3200,7 @@ else if (document.getElementById("customCoinName").value == "varius") {
 
 jQuery(document).ready(function($) {
 
-  sortSelectOptions('#customCoinName', true);
+  sortSelectOptions('#customCoinTicker', true);
 
 });
 		</script>
@@ -3238,7 +3311,7 @@ jQuery(document).ready(function($) {
 						<div class="row">
 							<div class="col-md-12">
 								<script src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js"></script>
-								<coingecko-coin-price-marquee-widget  coin-ids="bitcoin,ethereum,eos,ripple,litecoin,pandacoin" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget><br>
+								<coingecko-coin-price-marquee-widget  coin-ids="bitcoin,ethereum,eos,ripple,litecoin,pandacoin,dogecoin" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget><br>
 								<h2>Open Wallet <small> browser based <span id="bTtitle">Pandacoin</span> wallet</small></h2>
 								<div id="openLogin">
 									<form class="form-signin" role="form" action="javascript:;">
@@ -3381,7 +3454,7 @@ jQuery(document).ready(function($) {
 							</div>
 						</div>
 						<br><br><script src="https://widgets.coingecko.com/coingecko-coin-market-ticker-list-widget.js"></script>
-<coingecko-coin-market-ticker-list-widget  coin-id="pandacoin" currency="usd" locale="en"></coingecko-coin-market-ticker-list-widget>
+<coingecko-coin-market-ticker-list-widget  coin-id="pandacoin" currency="usd" locale="en"></coingecko-coin-market-ticker-list-widget> <!-- Easy Find #1 -->
 					</div>
 
 					<div class="tab-pane tab-content" id="newAddress">
@@ -4868,7 +4941,7 @@ jQuery(document).ready(function($) {
 									<b>HD Pub</b>: <br>
 									<input type="text" class="form-control coinjssetting" id="coinjs_hdpub"><br>
 									<b>Select Supported Coins</b>: <br>
-									<select name="cCoinName" id="customCoinName" onchange="myFunction(event)">
+									<select name="cCoinName" id="customCoinTicker" onchange="myFunction(event)">
 										<option selected disabled>Optional</option>
 <option value="42">42-coin (42)*</option><option value="1337">Elite (1337)*</option><option value="2give">2Give (2give)*</option><option value="adc">AudioCoin (adc)*</option><option value="ade">Adeptio (ade)*</option><option value="aeg">Aegeus (aeg)*</option><option value="agnt">ArgentumNT (agnt)*</option>
 <option value="aias">Aias (aias)*</option><option value="arco">AquariusCoin (arco)*</option><option value="arepa">Arepacoin (arepa)*</option><option value="arg">Argentum (arg)*</option><option value="ari">Aricoin (ari)*</option><option value="axe">Axe (axe)*</option><option value="b3">B3Coin (b3)*</option>

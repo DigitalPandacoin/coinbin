@@ -319,7 +319,7 @@
 	coinjs.addressBalance = function(explorer_api, address, callback){
 console.log(coinjs.host);
 console.log(tickerCode);
-console.log(customCoinName);
+console.log(customCoinTicker);
 console.log(explorer_api);
 console.log(address);
 console.log(explorer_api+address);
