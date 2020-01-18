@@ -2250,7 +2250,7 @@ function listUnspentBlockcypher(redeem,network){
         success: function(data) {
           console.log(data);
           if(data){
-            $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: ' + data.responseText);
+            $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: ' + data);
           } else {
             $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
           }
@@ -2271,6 +2271,7 @@ function listUnspentBlockcypher(redeem,network){
           data: $("#rawTransaction").val(),
           error: function(data) {
             console.log(data);
+            console.log("Error");
             var obj = data.responseText;
             var r = ' ';
             r += (obj) ? ' '+obj : '';
@@ -2278,9 +2279,10 @@ function listUnspentBlockcypher(redeem,network){
             $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
           },
           success: function(data) {
-            console.log(data);
+            console.log(data.responseText);
+            console.log*("Success");
             if(data){
-              $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: ' + data.txid);
+              $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: ' + data);
             } else {
               $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
             }
