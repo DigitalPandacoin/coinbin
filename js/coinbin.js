@@ -1,6 +1,6 @@
 var tickerCode;
 var customCoinTicker;
-var coingeckoCoinName;
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -19,20 +19,19 @@ if(customCoinTicker == null){
         customCoinTicker = tickerCode.toLowerCase();
 
 }
+
 if(customCoinTicker == null){
 console.log("coinbin.js customCoinTicker reset to pnd")
         customCoinTicker = "pnd";
 	tickerCode = "PND";
-  var coingeckoCoinName = "pandacoin";
 }
 
                 var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/tx.dws?";
                 var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/address.dws?";
                 var explorer_block = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/block.dws?";
                 var explorer_api = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/api.dws?q=getbalance&a=";
-                var coingeckoCoinName = "pandacoin";
 
-console.log(coingeckoCoinName);
+
     var wallet_timer = false;
 
 
@@ -99,8 +98,6 @@ if(host=='blockcypher_dogecoin'){
                 explorer_block = "https://dogechain.info/block/";
                 explorer_api = "https://dogechain.info/chain/Dogecoin/q/addressbalance/";
                 tickerCode = "DOGE";
-                coingeckoCoinName = window.coingeckoCoinName;
-                console.log(coingeckoCoinName);
 }
 else if(host=='panda.tech') {
   // change to customcoin for explorer
@@ -108,8 +105,6 @@ else if(host=='panda.tech') {
   var explorer_addr = "http://pandacoin.tech:3001/address/";
   var explorer_block = "http://pandacoin.tech:3001/block/";
   var explorer_api = "http://pandacoin.tech:3001/ext/getbalance/";
-  coingeckoCoinName = window.coingeckoCoinName;
-console.log(coingeckoCoinName);
   console.log(host);
 }
 
@@ -117,8 +112,6 @@ else if(host=='coinexplorer_custom'){
   var explorer_addr = "https://www.coinexplorer.net/"+ customCoinTicker +"/address/";
   var explorer_api ="https://www.coinexplorer.net/api/v1/"+ customCoinTicker +"/address/balance?address=";
   customCoinTicker = $('#customCoinTicker').val();
-  coingeckoCoinName = window.coingeckoCoinName;
-  console.log(coingeckoCoinName);
 }
 
 else if(host=='cryptoid.custom') {
@@ -129,15 +122,13 @@ else if(host=='cryptoid.custom') {
   var explorer_block = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/block.dws?";
   var explorer_api = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/api.dws?q=getbalance&a=";
   var customCoinTicker = tickerCode.toLowerCase();
-  coingeckoCoinName = window.coingeckoCoinName;
-  console.log(coingeckoCoinName);
   console.log(host);
 }
 					$("#walletHistory").attr('href',explorer_addr+address);
 
 					$("#walletQrCode").html("");
 					var qrcode = new QRCode("walletQrCode");
-					qrcode.makeCode(coingeckoCoinName+":"+address);
+          qrcode.makeCode(coingeckoCoinName+":"+address);
 
 					$("#walletKeys .privkey").val(wif);
 					$("#walletKeys .pubkey").val(pubkey);
@@ -536,7 +527,7 @@ else if(host=='cryptoid.custom') {
 
 		$("#walletQrCode").html("");
 		var qrcode = new QRCode("walletQrCode");
-		qrcode.makeCode(coingeckoCoinName+":");
+	   qrcode.makeCode(coingeckoCoinName+":"+address);
 
 		$("#walletKeys .privkey").val("");
 		$("#walletKeys .pubkey").val("");
@@ -755,7 +746,6 @@ console.log("coinbin.js customCoinTicker reset to pnd")
 if(customCoinTicker == null){
         customCoinTicker = tickerCode.toLowerCase();
 }
-
 console.log(customCoinTicker);
 //configureGetUnspentTx();
 var explorer_api = "https://cors-anywhere.herokuapp.com/https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/api.dws?q=getbalance&a=";
@@ -2271,7 +2261,6 @@ function listUnspentBlockcypher(redeem,network){
           data: $("#rawTransaction").val(),
           error: function(data) {
             console.log(data);
-            console.log("Error");
             var obj = data.responseText;
             var r = ' ';
             r += (obj) ? ' '+obj : '';
@@ -2279,8 +2268,7 @@ function listUnspentBlockcypher(redeem,network){
             $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
           },
           success: function(data) {
-            console.log(data.responseText);
-            console.log*("Success");
+            console.log(data);
             if(data){
               $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: ' + data);
             } else {
@@ -2311,7 +2299,7 @@ function rawSubmitzeitcoin(thisbtn){
 			},
 			success: function(data) {
 				if(data){
-					$("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: ' + data.txid);
+					$("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: ' + data);
 				} else {
 					$("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
 				}
@@ -2938,8 +2926,6 @@ function rawSubmitDigiExplorer(thisbtn){
 
       customCoinTicker = $('#customCoinTicker').val();
       console.log(customCoinTicker);
-      console.log(coingeckoCoinName);
-
 
 			$("#statusSettings").addClass("alert-success").removeClass("hidden").html("<span class=\"glyphicon glyphicon-ok\"></span> Settings updates successfully").fadeOut().fadeIn();
 		} else {
@@ -2986,7 +2972,7 @@ function rawSubmitDigiExplorer(thisbtn){
   $("#allcoinsSubmitButtonIDHere").click(function() {
     $("#coinjs_coin").val("custom").trigger("change");
     $("#customCoinTicker").val($("#allcoinsFormIDHere input[type='radio']:checked").val()).trigger("change");
-    if (($("#allcoinsFormIDHere input[type='radio']:checked").val() == "alex") || (($("#allcoinsFormIDHere input[type='radio']:checked").val() == "dc") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "pivx") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "emc") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "bitg") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "scc") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "shnd") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "monk") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "peng") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "aem") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "vulc") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "abet") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "shmn") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "apr") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "scriv") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "arion") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "dvt") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "trbo") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "VARIUS")) {
+    if (($("#allcoinsFormIDHere input[type='radio']:checked").val() == "alex") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "dc") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "pivx") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "emc") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "bitg") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "scc") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "shnd") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "monk") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "peng") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "aem") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "vulc") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "abet") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "shmn") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "apr") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "scriv") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "arion") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "dvt") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "trbo") || ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "VARIUS")) {
       $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
       $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
     }
@@ -3072,6 +3058,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 tickerCode = "FUNK";
                 customCoinTicker = "funk";
                 coingeckoCoinName = "the-cypherfunks";
+                coingecko = "true";
                 document.getElementById("coinLogo").src = "images/logo/funk.png";
                 document.getElementById("bTtitle").textContent = "Cypherfunk";
                 document.getElementById("bTtitle1").textContent = "Cypherfunk";
@@ -3084,6 +3071,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 tickerCode = "ZEIT";
                 customCoinTicker = "zeit";
                 coingeckoCoinName = "zeitcoin";
+                coingecko = "true";
                 document.getElementById("coinLogo").src = "images/logo/zeit.png";
                 document.getElementById("bTtitle").textContent = "Zeitcoin";
                 document.getElementById("bTtitle1").textContent = "Zeitcoin";
@@ -3096,6 +3084,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 tickerCode = "DOGE";
                 customCoinTicker = "doge";
                 coingeckoCoinName = "dogecoin";
+                coingecko = "true";
                 document.getElementById("bTtitle").textContent = "Dogecoin";
                 document.getElementById("bTtitle1").textContent = "Dogecoin";
                 document.getElementById("coinLogo").src = "images/logo/dogecoin.png";
@@ -3106,6 +3095,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_block = "https://dogechain.info/block/";
                 explorer_api = "https://dogechain.info/chain/Dogecoin/q/addressbalance/";
                 tickerCode = "DOGE";
+                coingecko = "true";
                 coingeckoCoinName = "dogecoin";
                 document.getElementById("bTtitle").textContent = "Dogecoin";
                 document.getElementById("bTtitle1").textContent = "Dogecoin";
@@ -3118,6 +3108,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_api = "https://dogechain.info/chain/Dogecoin/q/addressbalance/";
                 tickerCode = "DOGE";
                 coingeckoCoinName = "dogecoin";
+                coingecko = "true";
                 document.getElementById("bTtitle").textContent = "Dogecoin";
                 document.getElementById("bTtitle1").textContent = "Dogecoin";
                 document.getElementById("coinLogo").src = "images/logo/dogecoin.png";
