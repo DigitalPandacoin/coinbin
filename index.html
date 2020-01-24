@@ -2114,7 +2114,7 @@
 			  document.getElementById("bTtitle").textContent = "Ioncoin";
 			  document.getElementById("bTtitle1").textContent = "Ioncoin";
 			  tickerCode = "ION";
-				coingeckoCoinName = "ioncoin";
+				coingeckoCoinName = "ion";
 				coinGecko = "false";
 			}
 			else if (document.getElementById("customCoinTicker").value == "j") {
@@ -2323,7 +2323,7 @@
 			  document.getElementById("bTtitle").textContent = "NativeCoin";
 			  document.getElementById("bTtitle1").textContent = "NativeCoin";
 			  tickerCode = "N8V";
-				coingeckoCoinName = "nativecoin";
+				coingeckoCoinName = "wearesatoshi";
 				coinGecko = "true";
 			}
 			else if (document.getElementById("customCoinTicker").value == "netko") {
@@ -2345,8 +2345,8 @@
 			  document.getElementById("bTtitle").textContent = "Neurocoin";
 			  document.getElementById("bTtitle1").textContent = "Neurocoin";
 			  tickerCode = "NRO";
-				coingeckoCoinName = "neurocoin";
-				coinGecko = "false";
+				coingeckoCoinName = "neuro";
+				coinGecko = "true";
 			}
 			else if (document.getElementById("customCoinTicker").value == "nix") {
 			  document.getElementById("coinjs_pub").value = "0x26";
@@ -2499,7 +2499,7 @@
 			  document.getElementById("bTtitle").textContent = "Quasar";
 			  document.getElementById("bTtitle1").textContent = "Quasar";
 			  tickerCode = "QAC";
-				coingeckoCoinName = "quasar";
+				coingeckoCoinName = "quasarcoin";
 				coinGecko = "true";
 			}
 			else if (document.getElementById("customCoinTicker").value == "qub") {
@@ -3753,7 +3753,7 @@ else if (document.getElementById("customCoinTicker").value == "trbo") {
   			document.getElementById("bTtitle").textContent = "TRBO";
   			document.getElementById("bTtitle1").textContent = "TRBO";
   			tickerCode = "TRBO";
-				coingeckoCoinName = "trbo";
+				coingeckoCoinName = "turbostake";
 				coinGecko = "true";
 }
 else if (document.getElementById("customCoinTicker").value == "varius") {
@@ -3765,6 +3765,28 @@ else if (document.getElementById("customCoinTicker").value == "varius") {
   			document.getElementById("bTtitle1").textContent = "Varius";
   			tickerCode = "VARIUS";
 				coingeckoCoinName = "varius";
+				coinGecko = "true";
+}
+else if (document.getElementById("customCoinTicker").value == "vulc") {
+  			document.getElementById("coinjs_pub").value = "0x46";
+  			document.getElementById("coinjs_priv").value = "0xd4";
+  			document.getElementById("coinjs_multisig").value = "0x12";
+  			document.getElementById("coinLogo").src = "images/logo/vulcano.webp";
+  			document.getElementById("bTtitle").textContent = "Vulcano";
+  			document.getElementById("bTtitle1").textContent = "Vulcano";
+  			tickerCode = "VULC";
+				coingeckoCoinName = "vulcano";
+				coinGecko = "true";
+}
+else if (document.getElementById("customCoinTicker").value == "emc") {
+  			document.getElementById("coinjs_pub").value = "0x21";
+  			document.getElementById("coinjs_priv").value = "0x80";
+  			document.getElementById("coinjs_multisig").value = "0x5c";
+  			document.getElementById("coinLogo").src = "images/logo/emercoin.webp";
+  			document.getElementById("bTtitle").textContent = "EmerCoin";
+  			document.getElementById("bTtitle1").textContent = "EmerCoin";
+  			tickerCode = "EMC";
+				coingeckoCoinName = "emercoin";
 				coinGecko = "true";
 }
 	  else {
@@ -5103,7 +5125,7 @@ jQuery(document).ready(function($) {
 
 					<div class="tab-pane tab-content" id="about">
 						<h2>About <small>open source Pandacoin wallet</small></h2>
-						<p>Version 2.0.18</p>
+						<p>Version 2.0.19</p>
 						<p>Compatible with Pandacoin</p>
                         <p><a href="https://github.com/DigitalPandacoin/coinbin">https://github.com/DigitalPandacoin/coinbin</a></p>
 						<p>Forked from <a href="https://coinb.in">https://coinb.in"</a></p>
@@ -5255,6 +5277,7 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="efl"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/efl.png" style="height:45px"><br><center>efl</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="egc"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/egc.png" style="height:45px"><br><center>egc</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="elt"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/elt.png" style="height:45px"><br><center>elt</center></div>
+							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="emc"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/emercoin.webp" style="height:45px"><br><center>emc</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="emc2"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/emc2.png" style="height:45px"><br><center>emc2</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="emd"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/emd.png" style="height:45px"><br><center>emd</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="enrg"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/enrg.png" style="height:45px"><br><center>enrg</center></div>
@@ -5457,6 +5480,7 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="vrc"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/vrc.png" style="height:45px"><br><center>vrc</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="vrm"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/vrm.png" style="height:45px"><br><center>vrm</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="vtc"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/vtc.png" style="height:45px"><br><center>vtc</center></div>
+							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="vulc"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/vulcano.webp" style="height:45px"><br><center>vulc</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="wc"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/wc.png" style="height:45px"><br><center>wc</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="wdc"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/wdc.png" style="height:45px"><br><center>wdc</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="wex"></center><br><img alt="" src="https://cryptodepot.org/coinbin/images/logo/wex.png" style="height:45px"><br><center>wex</center></div>
@@ -5594,7 +5618,7 @@ jQuery(document).ready(function($) {
 <option value="crave">Crave (CRAVE)</option><option value="bitg">Bitgreen (BITG)*</option><option value="scc">StakeCubeCoin (SCC)*</option><option value="corn">Bitcorn (CORN)*</option><option value="dc">Ducat Coin (DC)*</option><option value="ext">Exsolution (EXT)*</option><option value="eddie">EddieCoin (EDDIE)*</option>
 <option value="bidx">BIDX (BIDX)*</option><option value="varius">VARIUS (VARIUS)*</option><option value="hwi">Hawaii Coin (HWI)*</option><option value="bnd">Blocknode (BND)*</option>
 <option value="pos">POS COIN (POS)*</option><options value="lpc">LightPayCoin (LPC)*</option><option value="trbo">TRBO (TRBO)*</option><option value="dvt">DeVault (DVT)*</option>
-<option value="apr">APR Coin (APR)*</option><option value="scriv">SCRIV (SCRIV)*</option><option value="shmn">StrongHands Masternode (SHMN)*</option><option value="spn">SpartanCoin</option>
+<option value="apr">APR Coin (APR)*</option><option value="scriv">SCRIV (SCRIV)*</option><option value="shmn">StrongHands Masternode (SHMN)*</option><option value="spn">SpartanCoin</option><option value="vulc">Vulcano (VULC)</option><option value="emc">EmerCoin (EMC)</option>
 									</select>
 								</div>
 
@@ -5682,7 +5706,7 @@ jQuery(document).ready(function($) {
 
 		<div id="footer">
 			<div class="container text-right">
-	        		<p class="text-muted">Version  2.0.18</p>
+	        		<p class="text-muted">Version  2.0.19</p>
 			</div>
 		</div>
 
