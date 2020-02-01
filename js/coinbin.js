@@ -100,6 +100,8 @@ if(host=='blockcypher_dogecoin'){
                 explorer_block = "https://dogechain.info/block/";
                 explorer_api = "https://dogechain.info/chain/Dogecoin/q/addressbalance/";
                 tickerCode = "DOGE";
+                coingeckoCoinName = "dogecoin";
+                coingecko = "true";
 }
 else if(host=='panda.tech') {
   // change to customcoin for explorer
@@ -761,6 +763,8 @@ if(host=='blockcypher_dogecoin'){
                 explorer_addr = "https://dogechain.info/address/";
                 explorer_api = "https://dogechain.info/chain/Dogecoin/q/addressbalance/";
                 tickerCode = "DOGE";
+                coingeckoCoinName = "dogecoin";
+                coingecko = "true";
 }
 else if(host=='coinexplorer_custom'){
   var explorer_addr = "https://www.coinexplorer.net/"+ customCoinTicker +"/address/";
@@ -2976,6 +2980,7 @@ function rawSubmitDigiExplorer(thisbtn){
     $("#customCoinTicker").val($("#allcoinsFormIDHere input[type='radio']:checked").val()).trigger("change");
     if (($("#allcoinsFormIDHere input[type='radio']:checked").val() == "alex") ||
         ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "dc") ||
+        ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "boat") ||
         ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "emc") ||
         ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "pivx") ||
         ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "emc") ||
@@ -2996,6 +3001,10 @@ function rawSubmitDigiExplorer(thisbtn){
         ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "VARIUS")) {
       $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
       $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "doge")) {
+      $("#coinjs_broadcast").val("blockcypher_dogecoin").trigger("change");
+      $("#coinjs_utxo").val("blockchair_dogecoin").trigger("change");
     }
     $("#settingsBtn").trigger("click");
     return false;
