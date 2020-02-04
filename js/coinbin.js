@@ -1130,7 +1130,6 @@ console.log(explorer_api);
 	});
 
 	$("#transactionBtn").click(function(){
-    debugger;
 		var tx = coinjs.transaction();
 		var estimatedTxSize = 10; // <4:version><1:txInCount><1:txOutCount><4:nLockTime>
 
@@ -1230,7 +1229,6 @@ console.log(explorer_api);
 	$("#feesestnewtx").click(function(){
 		$(this).attr('est','y');
 		$("#transactionBtn").click();
-    debugger;
 	});
 
 	$("#feesestwallet").click(function(){
@@ -2125,7 +2123,7 @@ function listUnspentBlockcypher(redeem,network){
 				if(!isNaN($(o).val())){
 					f += $(o).val()*1;
 				}
-				$("#totalInput").html((($("#totalInput").html()*1) + (1*1)).toFixed(8));
+				$("#totalInput").html((($("#totalInput").html()*1) + (f*1)).toFixed(8));
 			}
 		});
 		totalFee();
@@ -2202,7 +2200,6 @@ function listUnspentBlockcypher(redeem,network){
             });
 } // broadcast transaction via cryptoid
 	function rawSubmitcryptoid_Carboncoin(thisbtn) {
-    debugger;
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
 		$.ajax ({
 			type: "POST",
@@ -2318,7 +2315,6 @@ function rawSubmitzeitcoin(thisbtn){
 	}
 
 function rawSubmitDigiExplorer(thisbtn){
-  debugger;
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
 		$.ajax ({
 			type: "POST",
@@ -2349,7 +2345,6 @@ function rawSubmitDigiExplorer(thisbtn){
 
 	// broadcast transaction via chain.so (mainnet)
 	function rawSubmitChainso(thisbtn, network){
-    debugger;
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
 		$.ajax ({
 			type: "POST",
@@ -2379,7 +2374,6 @@ function rawSubmitDigiExplorer(thisbtn){
 
 	// broadcast transaction via blockcypher.com (mainnet)
 	function rawSubmitblockcypher(thisbtn, network){
-    debugger;
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
 		$.ajax ({
 			type: "POST",
@@ -2439,7 +2433,6 @@ function rawSubmitDigiExplorer(thisbtn){
   	}
 
   /* function rawSubmitblockchair(thisbtn, network){
-    debugger;
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
                 $.ajax ({
                         type: "POST",
@@ -2808,7 +2801,6 @@ function rawSubmitDigiExplorer(thisbtn){
 	if(_getBroadcast[0]){
 		$("#rawTransaction").val(_getBroadcast[0]);
 		$("#rawSubmitBtn").click();
-    debugger;
 		window.location.hash = "#broadcast";
 	}
 
