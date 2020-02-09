@@ -4198,6 +4198,61 @@ else if (document.getElementById("customCoinTicker").value == "scap") {
   coingeckoCoinName = "safecapital";
   coinGecko = "true";
 }
+else if (document.getElementById("customCoinTicker").value == "zer") {
+  document.getElementById("coinjs_pub").value = "0x1c";
+  document.getElementById("coinjs_priv").value = "0x80";
+  document.getElementById("coinjs_multisig").value = "0x1c";
+  document.getElementById("coinLogo").src = "images/logo/zer.png";
+  document.getElementById("bTtitle").textContent = "Zero";
+  document.getElementById("bTtitle1").textContent = "Zero";
+  tickerCode = "ZER";
+  coingeckoCoinName = "zero";
+  coinGecko = "true";
+}
+else if (document.getElementById("customCoinTicker").value == "zcl") {
+  document.getElementById("coinjs_pub").value = "0x1c";
+  document.getElementById("coinjs_priv").value = "0x80";
+  document.getElementById("coinjs_multisig").value = "0x1c";
+  document.getElementById("coinLogo").src = "images/logo/zcl.png";
+  document.getElementById("bTtitle").textContent = "ZClassic";
+  document.getElementById("bTtitle1").textContent = "ZClassic";
+  tickerCode = "ZCL";
+  coingeckoCoinName = "zclassic";
+  coinGecko = "true";
+}
+else if (document.getElementById("customCoinTicker").value == "mrx") {
+  document.getElementById("coinjs_pub").value = "0x30";
+  document.getElementById("coinjs_priv").value = "0x99";
+  document.getElementById("coinjs_multisig").value = "0x55";
+  document.getElementById("coinLogo").src = "images/logo/mrx.png";
+  document.getElementById("bTtitle").textContent = "Metrix Coin";
+  document.getElementById("bTtitle1").textContent = "Metrix Coin";
+  tickerCode = "MRX";
+  coingeckoCoinName = "linda";
+  coinGecko = "true";
+}
+else if (document.getElementById("customCoinTicker").value == "telos") {
+  document.getElementById("coinjs_pub").value = "0x26";
+  document.getElementById("coinjs_priv").value = "0x62";
+  document.getElementById("coinjs_multisig").value = "0x8a";
+  document.getElementById("coinLogo").src = "images/logo/telos.png";
+  document.getElementById("bTtitle").textContent = "Teloscoin";
+  document.getElementById("bTtitle1").textContent = "Teloscoin";
+  tickerCode = "TELOS";
+  coingeckoCoinName = "telos-coin";
+  coinGecko = "true";
+}
+else if (document.getElementById("customCoinTicker").value == "nsd") {
+  document.getElementById("coinjs_pub").value = "0x35";
+  document.getElementById("coinjs_priv").value = "0xb5";
+  document.getElementById("coinjs_multisig").value = "0x14";
+  document.getElementById("coinLogo").src = "images/logo/nsd.png";
+  document.getElementById("bTtitle").textContent = "Nasdacoin";
+  document.getElementById("bTtitle1").textContent = "Nasdacoin";
+  tickerCode = "NSD";
+  coingeckoCoinName = "";
+  coinGecko = "";
+}
 <!-- END OF IF -->
 	  else {
 				document.getElementById("xfeeTicker").textContent = document.getElementById("customCoinTicker").value
@@ -5535,7 +5590,7 @@ jQuery(document).ready(function($) {
 
 					<div class="tab-pane tab-content" id="about">
 						<h2>About <small>open source Pandacoin wallet</small></h2>
-						<p>Version 2.0.21</p>
+						<p>Version 2.0.22</p>
 						<p>Compatible with Pandacoin</p>
                         <p><a href="https://github.com/DigitalPandacoin/coinbin">https://github.com/DigitalPandacoin/coinbin</a></p>
 						<p>Forked from <a href="https://coinb.in">https://coinb.in"</a></p>
@@ -5754,7 +5809,6 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="lcc"></center><br><img alt="" src="images/logo/lcc.png" style="height:45px"><br><center>lcc</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="ldoge"></center><br><img alt="" src="images/logo/ldoge.png" style="height:45px"><br><center>ldoge</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="linx"></center><br><img alt="" src="images/logo/linx.png" style="height:45px"><br><center>linx</center></div>
-							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="litecoin"></center><br><img alt="" src="images/logo/litecoin.png" style="height:45px"><br><center>litecoin</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="lit"></center><br><img alt="" src="images/logo/lit.png" style="height:45px"><br><center>lit</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="lpc"></center><br><img alt="" src="images/logo/lpc.png" style="height:45px"><br><center>lpc</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="ltc"></center><br><img alt="" src="images/logo/ltc.png" style="height:45px"><br><center>ltc</center></div>
@@ -5774,6 +5828,7 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="monk"></center><br><img alt="" src="images/logo/monk.png" style="height:45px"><br><center>monk</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="moon"></center><br><img alt="" src="images/logo/moon.png" style="height:45px"><br><center>moon</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="mrc"></center><br><img alt="" src="images/logo/mrc.png" style="height:45px"><br><center>mrc</center></div>
+							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="mrx"></center><br><img alt="" src="images/logo/mrx.png" style="height:45px"><br><center>mrx</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="mscn"></center><br><img alt="" src="images/logo/mscn.png" style="height:45px"><br><center>mscn</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="mst"></center><br><img alt="" src="images/logo/mst.png" style="height:45px"><br><center>mst</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="mue"></center><br><img alt="" src="images/logo/mue.png" style="height:45px"><br><center>mue</center></div>
@@ -5797,6 +5852,7 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="note"></center><br><img alt="" src="images/logo/note.png" style="height:45px"><br><center>note</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="npc"></center><br><img alt="" src="images/logo/npc.png" style="height:45px"><br><center>npc</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="nro"></center><br><img alt="" src="images/logo/nro.png" style="height:45px"><br><center>nro</center></div>
+							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="nsd"></center><br><img alt="" src="images/logo/nsd.png" style="height:45px"><br><center>nsd</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="nsr"></center><br><img alt="" src="images/logo/nsr.png" style="height:45px"><br><center>nsr</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="nvc"></center><br><img alt="" src="images/logo/nvc.png" style="height:45px"><br><center>nvc</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="nxs"></center><br><img alt="" src="images/logo/nxs.png" style="height:45px"><br><center>nxs</center></div>
@@ -5877,6 +5933,7 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="taj"></center><br><img alt="" src="images/logo/taj.png" style="height:45px"><br><center>taj</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="talk"></center><br><img alt="" src="images/logo/talk.png" style="height:45px"><br><center>talk</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="tao"></center><br><img alt="" src="images/logo/tao.png" style="height:45px"><br><center>tao</center></div>
+							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="telos"></center><br><img alt="" src="images/logo/telos.png" style="height:45px"><br><center>telos</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="tes"></center><br><img alt="" src="images/logo/tes.png" style="height:45px"><br><center>tes</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="toa"></center><br><img alt="" src="images/logo/toa.png" style="height:45px"><br><center>toa</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="tpc"></center><br><img alt="" src="images/logo/tpc.png" style="height:45px"><br><center>tpc</center></div>
@@ -5933,7 +5990,9 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="xvg"></center><br><img alt="" src="images/logo/xvg.png" style="height:45px"><br><center>xvg</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="xvp"></center><br><img alt="" src="images/logo/xvp.png" style="height:45px"><br><center>xvp</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="xzc"></center><br><img alt="" src="images/logo/xzc.png" style="height:45px"><br><center>xzc</center></div>
+							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="zcl"></center><br><img alt="" src="images/logo/zcl.png" style="height:45px"><br><center>zcl</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="zec"></center><br><img alt="" src="images/logo/zec.png" style="height:45px"><br><center>zec</center></div>
+							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="zer"></center><br><img alt="" src="images/logo/zer.png" style="height:45px"><br><center>zer</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="zeit"></center><br><img alt="" src="images/logo/zeit.png" style="height:45px"><br><center>zeit</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="zet"></center><br><img alt="" src="images/logo/zet.png" style="height:45px"><br><center>zet</center></div>
 							<div style="float: left; margin-right: 10px;"><center><input type="radio" name="setting" value="zln"></center><br><img alt="" src="images/logo/zln.png" style="height:45px"><br><center>zln</center></div>
@@ -6053,7 +6112,8 @@ jQuery(document).ready(function($) {
 <option value="cvcc">CryptoVerificationCoin (CVCC)</option><option value="arrr">Pirate Chain (ARRR)</option><option value="xbrt">BitRewards (XBRT)</option><option value="polis">Polis (POLIS)</option>
 <option value="sls">SaluS (SLS)</option><option value="nlg">Gulden (NLG)</option><option value="xsn">Stakenet (XSN)</option><option value="smart">SmartCash (SMART)</option><option value="flo">Flo (FLO)</option>
 <option value="eca">Electra (ECA)</option><option value="rstr">Ondori (RSTR)</option><option value="vips">Vipstar Coin (VIPS)</option><option value="pgn">Pigeoncoin (PGN)</option><option value="daps">DAPS Coin (DAPS)</option>
-<option value="gcc">Global Cryptocurrency (GCC)</option><option value="scap">SafeCapital (SCAP)</option>
+<option value="gcc">Global Cryptocurrency (GCC)</option><option value="scap">SafeCapital (SCAP)</option><option value="zer">Zero (ZER)</option><option value="zcl">ZClassic (ZCL)</option><option value="mrx">Metrix Coin (MRX)</option>
+<option value="telos">Teloscoin (TELOS)</option><option value="nsd">Nasdacoin (NSD)</option>
 <!-- settings area1 -->
 									</select>
 								</div>
@@ -6142,7 +6202,7 @@ jQuery(document).ready(function($) {
 
 		<div id="footer">
 			<div class="container text-right">
-	        		<p class="text-muted">Version  2.0.21</p>
+	        		<p class="text-muted">Version  2.0.22</p>
 			</div>
 		</div>
 
