@@ -140,368 +140,6 @@ else if(host=='cryptoid.custom') {
 
 					$("#openLogin").hide();
 					$("#openWallet").removeClass("hidden").show();
-          //start listunspent
-          /* if(host=='chain.so_bitcoinmainnet'){
-            $.ajax ({
-              type: "GET",
-              url: "https://chain.so/api/v2/get_tx_unspent/btc/"+address,
-              dataType: "json",
-              error: function(data) {
-                $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs! doge test');
-              },
-              success: function(data) {
-                if((data.status && data.data) && data.status=='success'){
-                  $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+address+'" target="_blank">'+address+'</a>');
-                  for(var i in data.data.txs){
-                    var o = data.data.txs[i];
-                    var tx = ((""+o.txid).match(/.{1,2}/g).reverse()).join("")+'';
-                    if(tx.match(/^[a-f0-9]+$/)){
-                      var n = o.output_no;
-                      var script = (redeem.redeemscript==true) ? redeem.decodedRs : o.script_hex;
-                      var amount = o.value;
-                      addOutput(tx, n, script, amount);
-                    }
-                  }
-                } else {
-                  $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs. doge test');
-                }
-              },
-              complete: function(data, status) {
-                $("#redeemFromBtn").html("Load").attr('disabled',false);
-                totalInputAmount();
-              }
-            });
-          } else if(host=='chain.so_litecoin'){
-            $.ajax ({
-              type: "GET",
-              url: "https://chain.so/api/v2/get_tx_unspent/ltc/"+address,
-              dataType: "json",
-              error: function(data) {
-                $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs! doge test');
-              },
-              success: function(data) {
-                if((data.status && data.data) && data.status=='success'){
-                  $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+address+'" target="_blank">'+address+'</a>');
-                  for(var i in data.data.txs){
-                    var o = data.data.txs[i];
-                    var tx = ((""+o.txid).match(/.{1,2}/g).reverse()).join("")+'';
-                    if(tx.match(/^[a-f0-9]+$/)){
-                      var n = o.output_no;
-                      var script = (redeem.redeemscript==true) ? redeem.decodedRs : o.script_hex;
-                      var amount = o.value;
-                      addOutput(tx, n, script, amount);
-                    }
-                  }
-                } else {
-                  $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs. doge test');
-                }
-              },
-              complete: function(data, status) {
-                $("#redeemFromBtn").html("Load").attr('disabled',false);
-                totalInputAmount();
-              }
-            });
-          } else if(host=='digiexplorer.info'){
-            $.ajax ({
-              type: "GET",
-              url: "https://digiexplorer.info/api/addr/"+address+"/utxo",
-              dataType: "json",
-              error: function(data) {
-                $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
-              },
-              success: function(data) {
-                if(data && data.length){
-                  $("#redeemFromAddress").removeClass('hidden').html(
-                    '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+address+'" target="_blank">'+address+'</a>');
-                    for(var i in data){
-                      var o = data[i];
-                      var tx = o.txid;
-                      var n = o.vout;
-                      var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
-                      var amount = o.amount;
-                      addOutput(tx, n, script, amount);
-                    }
-                } else {
-                  $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
-                }
-              },
-              complete: function(data, status) {
-                $("#redeemFromBtn").html("Load").attr('disabled',false);
-                totalInputAmount();
-              }
-            });
-          } else if(host=='blockcypher_bitcoinmainnet'){
-            $.ajax ({
-              type: "GET",
-              url: "https://api.blockcypher.com/v1/btc/main/addrs/"+address+"?includeScript=true&unspentOnly=true",
-              dataType: "json",
-              error: function(data) {
-                $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
-              },
-              success: function(data) {
-                if (data.address) { // address field will always be present, txrefs is only present if there are UTXOs
-                  $("#redeemFromAddress").removeClass('hidden').html(
-                    '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+address+'" target="_blank">'+address+'</a>');
-                  for(var i in data.txrefs){
-                                var o = data.txrefs[i]
-                    var tx = ((""+o.tx_hash).match(/.{1,2}/g).reverse()).join("")+'';
-                    if(tx.match(/^[a-f0-9]+$/)){
-                      var n = o.tx_output_n;
-                      var script = (redeem.redeemscript==true) ? redeem.decodedRs : o.script;
-                      var amount = ((o.value.toString()*1)/100000000).toFixed(8);
-                      addOutput(tx, n, script, amount);
-                    }
-                  }
-                } else {
-                  $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
-                }
-              },
-              complete: function(data, status) {
-                $("#redeemFromBtn").html("Load").attr('disabled',false);
-                totalInputAmount();
-              }
-            });
-          } else if(host=='blockcypher_litecoin'){
-            $.ajax ({
-              type: "GET",
-              url: "https://api.blockcypher.com/v1/ltc/main/addrs/"+address+"?includeScript=true&unspentOnly=true",
-              dataType: "json",
-              error: function(data) {
-                $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
-              },
-              success: function(data) {
-                if (data.address) { // address field will always be present, txrefs is only present if there are UTXOs
-                  $("#redeemFromAddress").removeClass('hidden').html(
-                    '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+address+'" target="_blank">'+address+'</a>');
-                  for(var i in data.txrefs){
-                                var o = data.txrefs[i]
-                    var tx = ((""+o.tx_hash).match(/.{1,2}/g).reverse()).join("")+'';
-                    if(tx.match(/^[a-f0-9]+$/)){
-                      var n = o.tx_output_n;
-                      var script = (redeem.redeemscript==true) ? redeem.decodedRs : o.script;
-                      var amount = ((o.value.toString()*1)/100000000).toFixed(8);
-                      addOutput(tx, n, script, amount);
-                    }
-                  }
-                } else {
-                  $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
-                }
-              },
-              complete: function(data, status) {
-                $("#redeemFromBtn").html("Load").attr('disabled',false);
-                totalInputAmount();
-              }
-            });
-          } else if(host=='blockcypher_dogecoin'){
-            $.ajax ({
-              type: "GET",
-              url: "https://api.blockcypher.com/v1/doge/main/addrs/"+address+"?includeScript=true&unspentOnly=true",
-              dataType: "json",
-              error: function(data) {
-                $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
-              },
-              success: function(data) {
-                if (data.address) { // address field will always be present, txrefs is only present if there are UTXOs
-                  $("#redeemFromAddress").removeClass('hidden').html(
-                    '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+address+'" target="_blank">'+address+'</a>');
-                  for(var i in data.txrefs){
-                                var o = data.txrefs[i]
-                    var tx = ((""+o.tx_hash).match(/.{1,2}/g).reverse()).join("")+'';
-                    if(tx.match(/^[a-f0-9]+$/)){
-                      var n = o.tx_output_n;
-                      var script = (redeem.redeemscript==true) ? redeem.decodedRs : o.script;
-                      var amount = ((o.value.toString()*1)/100000000).toFixed(8);
-                      addOutput(tx, n, script, amount);
-                    }
-                  }
-                } else {
-                  $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
-                }
-              },
-              complete: function(data, status) {
-                $("#redeemFromBtn").html("Load").attr('disabled',false);
-                totalInputAmount();
-              }
-            });
-          } else if(host=='blockchair_bitcoinmainnet'){
-          } else if(host=='blockchair_litecoin'){
-          } else if(host=='cryptoid.info_carboncoin'){
-            $.ajax ({
-              type: "POST",
-              url: "https://coinb.in/api/",
-              data: 'uid='+coinjs.uid+'&key='+coinjs.key+'&setmodule=carboncoin&request=listunspent&address='+address,
-              dataType: "xml",
-              error: function() {
-                $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs! carbon test');
-              },
-                                success: function(data) {
-
-                if($(data).find("result").text()==1){
-                  $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+address+'" target="_blank">'+address+'</a>');
-                  $.each($(data).find("unspent").children(), function(i,o){
-                    var tx = $(o).find("tx_hash").text();
-                    var n = $(o).find("tx_output_n").text();
-                    var script = (redeem.redeemscript==true) ? redeem.decodedRs : o.script_hex;
-                    var amount = (($(o).find("value").text()*1)/100000000).toFixed(8);
-                                addOutput(tx, n, script, amount);
-                  });
-                } else {
-                  $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs. carbon test');
-                }
-              },
-              complete: function(data, status) {
-                $("#redeemFromBtn").html("Load").attr('disabled',false);
-                totalInputAmount();
-              }
-            });
-          } else if(host=='cryptoid.info_pandacoin'){
-            $.ajax ({
-              type: "GET",
-              url: "https://chainz.cryptoid.info/pnd/api.dws?q=unspent&key=1a9c92c7492b&active="+ address + "",
-              dataType: "json",
-              error: function() {
-                $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> '+ url + 'Unexpected error, unable to retrieve unspent outputs! pnd test function error');
-              },
-
-              success: function(data) {
-                $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+address+'" target="_blank">'+address+'</a>');
-                data.unspent_outputs.forEach(function(item, i) {
-                  var tx_hash = item.tx_hash;
-                  var tx_ouput_n = item.tx_ouput_n;
-                  var value = item.value /100000000;
-                  var confirms = item.confirmations;
-                  var script = item.script;
-                  var addr = item.addr;
-                  addOutput(tx_hash, tx_ouput_n, script, value);
-                });
-              },
-
-              complete: function(data, status) {
-                $("#redeemFromBtn").html("Load").attr('disabled',false);
-                totalInputAmount();
-              }
-            });
-          } else if(host=='cryptoid.info_cypherfunk'){
-            $.ajax ({
-              type: "GET",
-              url: "https://chainz.cryptoid.info/funk/api.dws?q=unspent&active="+ address + "&key=1a9c92c7492b",
-              dataType: "json",
-              error: function(data) {
-                $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
-              },
-              success: function(data) {
-                        console.log(data)
-                  $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+address+'" target="_blank">'+address+'</a>');
-                data.unspent_outputs.forEach(function(item, i) {
-                            var tx_hash = item.tx_hash;
-                            var tx_ouput_n = item.tx_ouput_n;
-                            var value = item.value /100000000;
-                            var confirms = item.confirmations;
-                            console.log(confirms)
-                            var script = item.script;
-                            var addr = item.addr;
-                            console.log(addr)
-                            console.log(tx_hash, tx_ouput_n, script, value)
-                            addOutput(tx_hash, tx_ouput_n, script, value);
-                            });
-              },
-              complete: function(data, status) {
-                $("#redeemFromBtn").html("Load").attr('disabled',false);
-                totalInputAmount();
-              }
-            });
-          } else if(host=='cryptoid.info_zeitcoin'){
-            $.ajax ({
-              type: "GET",
-              url: "https://chainz.cryptoid.info/zeit/api.dws?q=unspent&active="+ address + "&key=1a9c92c7492b",
-              dataType: "json",
-              error: function(data) {
-                $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
-              },
-              success: function(data) {
-                        console.log(data)
-                  $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+address+'" target="_blank">'+address+'</a>');
-                data.unspent_outputs.forEach(function(item, i) {
-                            var tx_hash = item.tx_hash;
-                            var tx_ouput_n = item.tx_ouput_n;
-                            var value = item.value /100000000;
-                            var confirms = item.confirmations;
-                            console.log(confirms)
-                            var script = item.script;
-                            var addr = item.addr;
-                            console.log(addr)
-                            console.log(tx_hash, tx_ouput_n, script, value)
-                            addOutput(tx_hash, tx_ouput_n, script, value);
-                            });
-              },
-              complete: function(data, status) {
-                $("#redeemFromBtn").html("Load").attr('disabled',false);
-                totalInputAmount();
-              }
-            });
-          } else {
-            $.ajax ({
-              type: "GET",
-              url: "https://chainz.cryptoid.info/pnd/api.dws?q=unspent&key=1a9c92c7492b&active="+ address + "",
-              dataType: "json",
-              error: function() {
-                $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> '+ url + 'Unexpected error, unable to retrieve unspent outputs! pnd test function error');
-              },
-
-              success: function(data) {
-                $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+address+'" target="_blank">'+address+'</a>');
-                data.unspent_outputs.forEach(function(item, i) {
-                  var tx_hash = item.tx_hash;
-                  var tx_ouput_n = item.tx_ouput_n;
-                  var value = item.value /100000000;
-                  var confirms = item.confirmations;
-                  var script = item.script;
-                  var addr = item.addr;
-                  addOutput(tx_hash, tx_ouput_n, script, value);
-                });
-              },
-
-              complete: function(data, status) {
-                $("#redeemFromBtn").html("Load").attr('disabled',false);
-                totalInputAmount();
-              }
-            });
-          } */
-
-          /*
-           $.ajax ({
-            type: "GET",
-            url: "https://chainz.cryptoid.info/pnd/api.dws?q=unspent&key=1a9c92c7492b&active="+ address + "",
-                  //data: 'q=unspent&active='+ redeem.addr + '&key=1a9c92c7492b',
-            dataType: "json",
-            error: function() {
-              $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> '+ url + 'Unexpected error, unable to retrieve unspent outputs! pnd test function error');
-            },
-
-                  success: function(data) {
-              //if($(data).find("unspent_outputs").text()==1){
-                        $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+address+'" target="_blank">'+address+'</a>');
-                console.log(data)
-                      data.unspent_outputs.forEach(function(item, i) {
-                          var tx_hash = item.tx_hash;
-                          var tx_ouput_n = item.tx_ouput_n;
-                          var value = item.value /100000000;
-                          //var value = ((item.value.text()*1)/100000000).toFixed(8);
-                          var confirms = item.confirmations;
-                          console.log(confirms)
-                          var script = item.script;
-                          var addr = item.addr;
-                          console.log(addr)
-                          console.log(tx_hash, tx_ouput_n, script, value)
-                          addOutput(tx_hash, tx_ouput_n, script, value);
-                          });
-                      },
-            complete: function(data, status) {
-              $("#redeemFromBtn").html("Load").attr('disabled',false);
-              totalInputAmount();
-            }
-          }); // end listunspent
-          */
 
 					walletBalance();
 					checkBalanceLoop();
@@ -1130,7 +768,6 @@ console.log(explorer_api);
 	});
 
 	$("#transactionBtn").click(function(){
-    debugger;
 		var tx = coinjs.transaction();
 		var estimatedTxSize = 10; // <4:version><1:txInCount><1:txOutCount><4:nLockTime>
 
@@ -1230,7 +867,6 @@ console.log(explorer_api);
 	$("#feesestnewtx").click(function(){
 		$(this).attr('est','y');
 		$("#transactionBtn").click();
-    debugger;
 	});
 
 	$("#feesestwallet").click(function(){
@@ -1608,40 +1244,7 @@ console.log(explorer_api);
 	}
 
 
-	/* retrieve unspent data from chainso for litecoin */
- /*	function listUnspentBlockcypher(redeem,network){
-		$.ajax ({
-			type: "GET",
-			url: "https://api.blockcypher.com/v1/"+network+"/main/addrs/"+redeem.addr+"?includeScript=true&unspentOnly=true",
-			dataType: "json",
-			error: function(data) {
-				$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs! ltc test');
-			},
-			success: function(data) {
-				if(data.txrefs) {
-					$("#redeemFromAddress").removeClass('hidden').html(
-						'<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
-					for(var i in data.txrefs){
-                        var o = data.txrefs[i]
-                        var o = data.txrefs[i]
-						if(txrefs.match(/^[a-f0-9]+$/)){
-						var n = o.tx_output_n;
-                        var script = (redeem.redeemscript==true) ? redeem.decodedRs : o.script;
-                        var amount = ((o.value.toString()*1)/100000000).toFixed(8);
-                        addOutput(tx, n, script, amount);
-						}
-					}
-				} else {
-					$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs. ltc test');
-				}
-			},
-			complete: function(data, status) {
-				$("#redeemFromBtn").html("Load").attr('disabled',false);
-				totalInputAmount();
-			}
-		});
-	}
-*/
+
 function listUnspentBlockcypher(redeem,network){
 		$.ajax ({
 			type: "GET",
@@ -1675,34 +1278,7 @@ function listUnspentBlockcypher(redeem,network){
 		});
 	}
 
-// Get list of coins and populate select box
-/* function populateCoinSelectBox() {
-  $.ajax ({
-    type: "GET",
-    url: "https://chainz.cryptoid.info/explorer/api.dws?q=summary",
-    error: function() {
-      console.log(data);
-    },
-    success: function(data) {
-      console.log(data);
-    },
-    complete: function(data, status) {
-      console.log(data);
-      console.log(status);
 
-      var jsonDoc = JSON.parse(data);
-
-      // https://stackoverflow.com/a/26514334
-
-      var listitems = '';
-      $.each(jsonDoc, function(key, value){
-          listitems += '<option value=' + key + '>' + value.name + '</option>';
-      });
-      $('#customCoinTicker').append(listitems);
-    },
-  });
-
-} */
 
 	/* retrieve unspent data from chain.so for carboncoin */
 	function listUnspentCryptoidinfo_Carboncoin(redeem) {
@@ -2125,7 +1701,7 @@ function listUnspentBlockcypher(redeem,network){
 				if(!isNaN($(o).val())){
 					f += $(o).val()*1;
 				}
-				$("#totalInput").html((($("#totalInput").html()*1) + (1*1)).toFixed(8));
+				$("#totalInput").html((($("#totalInput").html()*1) + (f*1)).toFixed(8));
 			}
 		});
 		totalFee();
@@ -2202,7 +1778,6 @@ function listUnspentBlockcypher(redeem,network){
             });
 } // broadcast transaction via cryptoid
 	function rawSubmitcryptoid_Carboncoin(thisbtn) {
-    debugger;
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
 		$.ajax ({
 			type: "POST",
@@ -2318,7 +1893,6 @@ function rawSubmitzeitcoin(thisbtn){
 	}
 
 function rawSubmitDigiExplorer(thisbtn){
-  debugger;
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
 		$.ajax ({
 			type: "POST",
@@ -2349,7 +1923,6 @@ function rawSubmitDigiExplorer(thisbtn){
 
 	// broadcast transaction via chain.so (mainnet)
 	function rawSubmitChainso(thisbtn, network){
-    debugger;
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
 		$.ajax ({
 			type: "POST",
@@ -2379,7 +1952,6 @@ function rawSubmitDigiExplorer(thisbtn){
 
 	// broadcast transaction via blockcypher.com (mainnet)
 	function rawSubmitblockcypher(thisbtn, network){
-    debugger;
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
 		$.ajax ({
 			type: "POST",
@@ -2437,44 +2009,6 @@ function rawSubmitDigiExplorer(thisbtn){
                           }
                   });
   	}
-
-  /* function rawSubmitblockchair(thisbtn, network){
-    debugger;
-		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
-                $.ajax ({
-                        type: "POST",
-                        url: "https://api.blockchair.com/"+network+"/push/transaction",
-            			data: {"data":$("#rawTransaction").val()},
-                        dataType: "json",
-                        error: function(data) {
-				var obj = $.parseJSON(data);
-        console.log(obj);
-        var r = ' ';
-				r += (obj.data.tx_hex) ? ' '+obj.data.tx_hex : '';
-				r = (r!='') ? r : ' Failed to broadcast'; // build response
-				$("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
-			//	console.error(JSON.stringify(data, null, 4));
-                        },
-                        success: function(data) {
-			//	console.info(JSON.stringify(data, null, 4));
-								if((data.context && data.data) && data.context.code=='200'){
-					$("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden")
-
-                    .html(' TXID: ' + data.data.transaction_hash + '<br> <a href="https://blockchair.com/'+network+'/transaction/' + data.data.transaction_hash + '" target="_blank">View on Blockchain Explorer</a>');
-
-				} else {
-					$("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
-				}
-			},
-			complete: function(data, status) {
-				$("#rawTransactionStatus").fadeOut().fadeIn();
-				$(thisbtn).val('Submit').attr('disabled',false);
-                        }
-                });
-	} */
-
-
-
 
 	/* verify script code */
 
@@ -2808,7 +2342,6 @@ function rawSubmitDigiExplorer(thisbtn){
 	if(_getBroadcast[0]){
 		$("#rawTransaction").val(_getBroadcast[0]);
 		$("#rawSubmitBtn").click();
-    debugger;
 		window.location.hash = "#broadcast";
 	}
 
