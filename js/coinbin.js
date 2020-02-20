@@ -114,7 +114,7 @@ else if(host=='panda.tech') {
 
 else if(host=='coinexplorer_custom'){
   var explorer_addr = "https://www.coinexplorer.net/"+ customCoinTicker +"/address/";
-  var explorer_api = "https://cors-anywhere.herokuapp.com/https://www.coinexplorer.net/api/v1/"+ customCoinTicker +"/address/balance?address=";
+  var explorer_api = "https://cryptodepot.org:8083/coinexplorer/balance/"+ customCoinTicker +"/";
   customCoinTicker = $('#customCoinTicker').val();
 }
 
@@ -405,10 +405,10 @@ if(host=='blockcypher_dogecoin'){
                 coingecko = "true";
 }
 else if(host=='coinexplorer_custom'){
+  var host = "coinexplorer_custom";
   var explorer_addr = "https://www.coinexplorer.net/"+ customCoinTicker +"/address/";
-  var explorer_api = "https://cors-anywhere.herokuapp.com/https://www.coinexplorer.net/api/v1/"+ customCoinTicker +"/address/balance?address=";
+  var explorer_api = "https://cryptodepot.org:8083/coinexplorer/balance/"+ customCoinTicker +"/";
   customCoinTicker = $('#customCoinTicker').val();
-
 }
 else if(host=='panda.tech') {
   // change to customcoin for explorer
@@ -416,28 +416,32 @@ else if(host=='panda.tech') {
   var explorer_addr = "http://pandacoin.tech:3001/address/";
   var explorer_block = "http://pandacoin.tech:3001/block/";
   var explorer_api = " https://cors-anywhere.herokuapp.com/http://pandacoin.tech:3001/ext/getbalance/";
-
-  console.log(host);
 }
-console.log(host);
-console.log(customCoinTicker);
-console.log(explorer_api);
+
+
 		$("#walletLoader").removeClass("hidden");
 		coinjs.addressBalance(explorer_api, $("#walletAddress").html(),function(data){
             // if($(data).find("result").text()==1){
-            if (!isNaN(data)) {
-              if(host=='coinexplorer_custom'){
-                var v = data.result[$("#walletAddress").html()];
-                console.log("!------ Explorer Address & value of V")
-                console.log(v);
+            console.log(host);
+            console.log(data);
+            console.log(typeof data)
+            console.log(JSON.stringify(data))
+            console.log(console);
+            if (data) {
+            if(host=='coinexplorer_custom'){
+                var parsed = JSON.parse(data)
+                var v = parsed.result[$("#walletAddress").html()];
+                console.log("coinexplorer result");
                 $("#walletBalance").html(v + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
               }
               else {
                 var v = data;
+                console.log("default result");
                 $("#walletBalance").html(v + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
               }
 //				$("#walletBalance").html(v + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
 			} else {
+        console.log("else result");
 				$("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
 			}
 
@@ -1897,7 +1901,7 @@ function rawSubmitDigiExplorer(thisbtn){
 		$.ajax ({
 			type: "POST",
 			url: "https://digiexplorer.info/api/tx/send",
-			data: JSON.stringify({ "rawtx": $("#rawTransaction").val() }),
+      data: JSON.stringify({ "rawtx": $("#rawTransaction").val() }),
 			dataType : "json",
 			contentType: "application/json",
       error: function(data) {
@@ -2732,7 +2736,7 @@ function rawSubmitDigiExplorer(thisbtn){
         else if(host=='coinexplorer_custom') {
           // change to customcoin for explorer
           explorer_addr = "https://www.coinexplorer.net/"+ customCoinTicker +"/address/";
-          explorer_api = "https://cors-anywhere.herokuapp.com/https://www.coinexplorer.net/api/v1/"+ customCoinTicker +"/address/balance?address=";
+          explorer_api = "https://cryptodepot.org:8083/coinexplorer/balance/"+ customCoinTicker +"/";
           console.log(host);
           console.log(coingeckoCoinName);
 

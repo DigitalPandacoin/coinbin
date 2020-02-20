@@ -1913,11 +1913,14 @@ console.log(explorer_api+address);
 		var x = false;
 		try{
 			x = new ActiveXObject('Msxml2.XMLHTTP')
+			//x.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 		} catch(e) {
 			try {
 				x = new ActiveXObject('Microsoft.XMLHTTP')
+				//x.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 			} catch(e) {
 				x = new XMLHttpRequest()
+				//x.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 			}
 		}
 
@@ -1926,6 +1929,7 @@ console.log(explorer_api+address);
 		}
 
 		x.open(m, u, true);
+		x.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 		x.onreadystatechange=function(){
 			if((x.readyState==4) && f)
 				f(x.responseText);
