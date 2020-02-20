@@ -430,10 +430,15 @@ else if(host=='panda.tech') {
             if (data) {
             if(host=='coinexplorer_custom'){
                 var parsed = JSON.parse(data)
+                if(parsed.type = "error") {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
                 var v = parsed.result[$("#walletAddress").html()];
                 console.log("coinexplorer result");
                 $("#walletBalance").html(v + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
               }
+            }
               else {
                 var v = data;
                 console.log("default result");
