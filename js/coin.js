@@ -1040,7 +1040,7 @@ console.log(explorer_api+address);
 		/* list unspent transactions */
 		r.listUnspent = function(address, callback) {
 			console.log("no");
-			coinjs.ajax('https://chainz.cryptoid.info/pnd/api.dws?q=unspent&active='+ address +'&key=1a9c92c7492b', callback, "GET");
+			coinjs.ajax('https://cryptodepot.org:8083/chainz/listunspent/pnd/'+ address +'&key=1a9c92c7492b', callback, "GET");
 		}
 
 		/* add unspent to transaction */

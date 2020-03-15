@@ -8,6 +8,13 @@ function sleep(ms) {
 }
 
 $(document).ready(function() {
+  var cUrl = new URL(window.location.href).searchParams.get('c');
+  console.log(cUrl);
+  var eUrl = new URL(window.location.href).searchParams.get('e');
+  console.log(eUrl);
+  var pUrl = new URL(window.location.href).searchParams.get('p');
+  console.log(pUrl);
+
 
     /* open wallet code */
 
@@ -35,7 +42,6 @@ console.log("coinbin.js customCoinTicker reset to pnd")
 
 
     var wallet_timer = false;
-
 
 
 	$("#openBtn").click(function(){
@@ -81,6 +87,7 @@ console.log("coinbin.js customCoinTicker reset to pnd")
 					}
 
 					$("#walletAddress").html(address);
+
 if(tickerCode == null){
         tickerCode = "PND";
 console.log("coinbin.js customCoinTicker reset to pnd")
@@ -422,11 +429,7 @@ else if(host=='panda.tech') {
 		$("#walletLoader").removeClass("hidden");
 		coinjs.addressBalance(explorer_api, $("#walletAddress").html(),function(data){
             // if($(data).find("result").text()==1){
-            console.log(host);
-            console.log(data);
-            console.log(typeof data)
-            console.log(JSON.stringify(data))
-            console.log(console);
+
             if (data) {
             if(host=='coinexplorer_custom'){
                 var parsed = JSON.parse(data)
@@ -434,18 +437,15 @@ else if(host=='panda.tech') {
                   $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
                 } else {
                 var v = parsed.result[$("#walletAddress").html()];
-                console.log("coinexplorer result");
                 $("#walletBalance").html(v + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
               }
             }
               else {
                 var v = data;
-                console.log("default result");
                 $("#walletBalance").html(v + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
               }
 //				$("#walletBalance").html(v + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
 			} else {
-        console.log("else result");
 				$("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
 			}
 
@@ -2550,7 +2550,25 @@ function rawSubmitDigiExplorer(thisbtn){
     $("#settingsBtn").trigger("click");
     return false;
   });
+  if (cUrl == null) { }
+  else {
 
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("cryptoid.custom").trigger("change");
+    $("#coinjs_utxo").val("cryptoid.custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  if (eUrl == null) { }
+  else {
+    document.getElementById("openEmail").value = eUrl;
+  }
+  if (pUrl == null) { }
+  else {
+    document.getElementById("openPass").value = pUrl;
+    document.getElementById("openPassConfirm").value = pUrl;
+
+  }
 	function configureBroadcast(){
 		var host = $("#coinjs_broadcast option:selected").val();
 		$("#rawSubmitBtn").unbind("");

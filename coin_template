@@ -1,0 +1,11 @@
+else if (document.getElementById("customCoinTicker").value == "") {
+  document.getElementById("coinjs_pub").value = "0x";
+  document.getElementById("coinjs_priv").value = "0x";
+  document.getElementById("coinjs_multisig").value = "0x";
+  document.getElementById("coinLogo").src = "images/logo/.png";
+  document.getElementById("bTtitle").textContent = "";
+  document.getElementById("bTtitle1").textContent = "";
+  tickerCode = "";
+  coingeckoCoinName = "";
+  coinGecko = "";
+}
