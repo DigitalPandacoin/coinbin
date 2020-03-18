@@ -1040,7 +1040,7 @@ console.log(explorer_api+address);
 		/* list unspent transactions */
 		r.listUnspent = function(address, callback) {
 			console.log("no");
-			coinjs.ajax('https://chainz.cryptoid.info/pnd/api.dws?q=unspent&active='+ address +'&key=1a9c92c7492b', callback, "GET");
+			coinjs.ajax('https://cryptodepot.org:8083/chainz/listunspent/pnd/'+ address +'&key=1a9c92c7492b', callback, "GET");
 		}
 
 		/* add unspent to transaction */
@@ -1913,11 +1913,14 @@ console.log(explorer_api+address);
 		var x = false;
 		try{
 			x = new ActiveXObject('Msxml2.XMLHTTP')
+			//x.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 		} catch(e) {
 			try {
 				x = new ActiveXObject('Microsoft.XMLHTTP')
+				//x.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 			} catch(e) {
 				x = new XMLHttpRequest()
+				//x.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 			}
 		}
 
@@ -1926,6 +1929,7 @@ console.log(explorer_api+address);
 		}
 
 		x.open(m, u, true);
+		x.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 		x.onreadystatechange=function(){
 			if((x.readyState==4) && f)
 				f(x.responseText);
