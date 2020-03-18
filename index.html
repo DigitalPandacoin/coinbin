@@ -40,6 +40,7 @@
 		<script src="js/coinbin.js"></script>
 		<!-- Added -->
     <script src="js/bin2hex-patch.js"></script>
+		<script src="js/clipboard.min.js"></script>
 
 		<script>
 		function myFunction(e) {
@@ -4929,11 +4930,13 @@ jQuery(document).ready(function($) {
 													<div class="walletSegWitRS hidden">
 														<label>Redeem Script <i>(SegWit)</i></label>
 														<input class="form-control" type="text" readonly>
+
 													</div>
 
 													<label>Private key</label>
 													<div class="input-group">
-														<input class="form-control privkey" type="password" readonly>
+														<input class="form-control privkey" id="keycopy" type="password" readonly><br>
+														<button class="btn" data-clipboard-action="copy" data-clipboard-target="#keycopy" style="float:right;">Copy</button>
 
 														<span class="input-group-btn">
 															<button class="showKey btn btn-default" type="button">Show</button>
@@ -4942,6 +4945,10 @@ jQuery(document).ready(function($) {
 
 													<label>Private Key (AES256 encrypted key)</label>
 													<input class="form-control privkeyaes" type="text" readonly>
+
+													<label>Gift This Wallet</label>
+													<input class="form-control giftlink" id="giftlinkinput" type="text" readonly>
+													<button class="btn" data-clipboard-action="copy" data-clipboard-target="#giftlinkinput" style="float:right;">Copy</button>
 												</div>
 
 												<div id="walletSpend" class="hidden">
@@ -5473,12 +5480,14 @@ jQuery(document).ready(function($) {
 						<div id="transactionCreate" class="alert alert-success hidden">
 							<label>Transaction</label>
 							<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode" style="float:right;"><span class="glyphicon glyphicon-qrcode"></span></button>
+							<button class="btn" data-clipboard-action="copy" data-clipboard-target="#newT" style="float:right;">Copy</button>
 
 							<p>The transaction below has been generated and encoded. It can be broadcasted once it has been signed.</p>
 							<br>
-			                                <textarea class="form-control" style="height:150px" readonly></textarea>
+			                                <textarea class="form-control" id="newT" style="height:150px" readonly></textarea>
 
 							<p class="text-muted">Size: <span class="txSize">0</span> <i>bytes</i></p>
+
 						</div>
 
 						<input type="button" value="Submit" class="btn btn-primary" id="transactionBtn">
@@ -6012,9 +6021,10 @@ jQuery(document).ready(function($) {
 						<div class="alert alert-success hidden" id="signedData">
 							<label>Signed transaction</label>
 							<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode" style="float:right;"><span class="glyphicon glyphicon-qrcode"></span></button>
+							<button class="btn" data-clipboard-action="copy" data-clipboard-target="#signedT" style="float:right;">Copy</button>
 							<p>The above transaction has been signed:</p>
 
-                        				<textarea class="form-control script" style="height:160px" readonly></textarea>
+                        				<textarea class="form-control script" id="signedT" style="height:160px" readonly></textarea>
 
 							<p class="text-muted">Size: <span class="txSize">0</span> <i>bytes</i></p>
 						</div>
@@ -6043,7 +6053,7 @@ jQuery(document).ready(function($) {
 
 					<div class="tab-pane tab-content" id="about">
 						<h2>About <small>open source Pandacoin wallet</small></h2>
-						<p>Version 2.0.24</p>
+						<p>Version 2.0.25</p>
 						<p>Compatible with Pandacoin</p>
                         <p><a href="https://github.com/DigitalPandacoin/coinbin">https://github.com/DigitalPandacoin/coinbin</a></p>
 						<p>Forked from <a href="https://coinb.in">https://coinb.in"</a></p>
@@ -6705,7 +6715,7 @@ jQuery(document).ready(function($) {
 
 		<div id="footer">
 			<div class="container text-right">
-	        		<p class="text-muted">Version  2.0.24</p>
+	        		<p class="text-muted">Version  2.0.25</p>
 			</div>
 		</div>
 

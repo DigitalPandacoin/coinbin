@@ -16,6 +16,7 @@ $(document).ready(function() {
   console.log(pUrl);
 
 
+
     /* open wallet code */
 
 //                var customCoinTicker;
@@ -45,6 +46,9 @@ console.log("coinbin.js customCoinTicker reset to pnd")
 
 
 	$("#openBtn").click(function(){
+      console.log(document.getElementById("openEmail").value);
+      console.log(openPass)
+    document.getElementById("giftlinkinput").value = "https://cryptodepot.org/coinbin-test/?c=" + customCoinTicker + "&e=" + document.getElementById("openEmail").value + "&p=" + document.getElementById("openPass").value + "#wallet";
 		var email = $("#openEmail").val().toLowerCase();
 		if(email.match(/[\s\w\d]+@[\s\w\d]+/g)){
 			if($("#openPass").val().length>=10){
@@ -2567,8 +2571,10 @@ function rawSubmitDigiExplorer(thisbtn){
   else {
     document.getElementById("openPass").value = pUrl;
     document.getElementById("openPassConfirm").value = pUrl;
-
   }
+  //var eMailAddress = "test@test.com";
+  //var passWordValue = "0123456789";
+
 	function configureBroadcast(){
 		var host = $("#coinjs_broadcast option:selected").val();
 		$("#rawSubmitBtn").unbind("");
@@ -3046,6 +3052,15 @@ function rawSubmitDigiExplorer(thisbtn){
 		return true;
 	};
 
+  var clipboard = new ClipboardJS('.btn');
+
+  clipboard.on('success', function(e) {
+      console.log(e);
+  });
+
+  clipboard.on('error', function(e) {
+      console.log(e);
+  });
 
   // populate coin select box with supported coins
   // populateCoinSelectBox();
