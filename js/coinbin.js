@@ -39,7 +39,7 @@ console.log("coinbin.js customCoinTicker reset to pnd")
                 var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/tx.dws?";
                 var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/address.dws?";
                 var explorer_block = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/block.dws?";
-                var explorer_api = "https://cors-anywhere.herokuapp.com/https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/api.dws?q=getbalance&a=";
+                var explorer_api = "https://cryptodepot.org:8083/chainz/balance/"+ customCoinTicker.toLowerCase() +"/";
 
 
     var wallet_timer = false;
@@ -48,7 +48,7 @@ console.log("coinbin.js customCoinTicker reset to pnd")
 	$("#openBtn").click(function(){
       console.log(document.getElementById("openEmail").value);
       console.log(openPass)
-    document.getElementById("giftlinkinput").value = "https://cryptodepot.org/coinbin-test/?c=" + customCoinTicker + "&e=" + document.getElementById("openEmail").value + "&p=" + document.getElementById("openPass").value + "#wallet";
+    document.getElementById("giftlinkinput").value = "https://cryptodepot.org/coinbin/?c=" + tickerCode.toLowerCase() + "&e=" + document.getElementById("openEmail").value + "&p=" + document.getElementById("openPass").value + "#wallet";
 		var email = $("#openEmail").val().toLowerCase();
 		if(email.match(/[\s\w\d]+@[\s\w\d]+/g)){
 			if($("#openPass").val().length>=10){
@@ -123,9 +123,9 @@ else if(host=='panda.tech') {
   console.log(host);
 }
 
-else if(host=='coinexplorer_custom'){
+else if(host=='chainz_custom'){
   var explorer_addr = "https://www.coinexplorer.net/"+ customCoinTicker +"/address/";
-  var explorer_api = "https://cryptodepot.org:8083/coinexplorer/balance/"+ customCoinTicker +"/";
+  var explorer_api = "https://cryptodepot.org:8083/chainz/balance/"+ customCoinTicker +"/";
   customCoinTicker = $('#customCoinTicker').val();
 }
 
@@ -135,7 +135,7 @@ else if(host=='cryptoid.custom') {
   var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/tx.dws?";
   var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/address.dws?";
   var explorer_block = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/block.dws?";
-  var explorer_api = "https://cors-anywhere.herokuapp.com/https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/api.dws?q=getbalance&a=";
+  var explorer_api = "https://cryptodepot.org:8083/chainz/balance/"+ customCoinTicker.toLowerCase() +"/";
   var customCoinTicker = tickerCode.toLowerCase();
   console.log(host);
 }
@@ -144,6 +144,9 @@ else if(host=='cryptoid.custom') {
 					$("#walletQrCode").html("");
 					var qrcode = new QRCode("walletQrCode");
           qrcode.makeCode(coingeckoCoinName+":"+address);
+          $("#giftQrCode").html("");
+					var qrcode = new QRCode("giftQrCode");
+          qrcode.makeCode("https://cryptodepot.org/coinbin/?c=" + tickerCode.toLowerCase() + "&e=" + document.getElementById("openEmail").value + "&p=" + document.getElementById("openPass").value + "#wallet");
 
 					$("#walletKeys .privkey").val(wif);
 					$("#walletKeys .pubkey").val(pubkey);
@@ -401,7 +404,7 @@ if(customCoinTicker == null){
 }
 console.log(customCoinTicker);
 //configureGetUnspentTx();
-var explorer_api = "https://cors-anywhere.herokuapp.com/https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/api.dws?q=getbalance&a=";
+var explorer_api = "https://cryptodepot.org:8083/chainz/balance/"+ customCoinTicker.toLowerCase() +"/";
 var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/address.dws?";
 //configureGetUnspentTx();
 var host = $("#coinjs_broadcast option:selected").val();
@@ -426,7 +429,7 @@ else if(host=='panda.tech') {
   var explorer_tx = "http://pandacoin.tech:3001/tx/";
   var explorer_addr = "http://pandacoin.tech:3001/address/";
   var explorer_block = "http://pandacoin.tech:3001/block/";
-  var explorer_api = " https://cors-anywhere.herokuapp.com/http://pandacoin.tech:3001/ext/getbalance/";
+  var explorer_api = "http://pandacoin.tech:3001/ext/getbalance/";
 }
 
 
@@ -1366,7 +1369,7 @@ function listUnspentBlockcypher(redeem,network){
       console.log("listUnspentcoinexplorer");
       $.ajax ({
         type: "GET",
-        url: "https://cors-anywhere.herokuapp.com/https://www.coinexplorer.net/api/v1/"+ customCoinTicker +"/address/unspent?address="+ redeem.addr +"",
+        url: "https://cryptodepot.org:8083/coinexplorer/listunspent/"+ customCoinTicker +"/"+ redeem.addr +"",
         dataType: "JSON",
         error: function(data) {
           var url = "https://www.coinexplorer.net/api/v1/"+ customCoinTicker +"/address/unspent?address="+ redeem.addr;
@@ -1386,7 +1389,7 @@ function listUnspentBlockcypher(redeem,network){
                       console.log("listUnspentcoinexplorer");
                       $.ajax ({
                         type: "GET",
-                        url: "https://cors-anywhere.herokuapp.com/https://www.coinexplorer.net/api/v1/"+ customCoinTicker +"/transaction?txid="+ item.txid,
+                        url: "https://www.coinexplorer.net/api/v1/"+ customCoinTicker +"/transaction?txid="+ item.txid,
                         dataType: "JSON",
                         async: false, /* this may not work. -fury */
                         error: function(data) {
@@ -2649,7 +2652,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_tx = "https://chainz.cryptoid.info/funk/tx.dws?";
                 explorer_addr = "https://chainz.cryptoid.info/funk/address.dws?";
                 explorer_block = "https://chainz.cryptoid.info/funk/block.dws?";
-                explorer_api = "https://cors-anywhere.herokuapp.com/https://chainz.cryptoid.info/funk/api.dws?q=getbalance&a=";
+                explorer_api = "https://cryptodepot.org:8083/chainz/balance/funk/";
                 tickerCode = "FUNK";
                 customCoinTicker = "funk";
                 coingeckoCoinName = "the-cypherfunks";
@@ -2663,7 +2666,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_tx = "https://chainz.cryptoid.info/zeit/tx.dws?";
                 explorer_addr = "https://chainz.cryptoid.info/zeit/address.dws?";
                 explorer_block = "https://chainz.cryptoid.info/zeit/block.dws?";
-                explorer_api = "https://cors-anywhere.herokuapp.com/https://chainz.cryptoid.info/zeit/api.dws?q=getbalance&a=";
+                explorer_api = "https://cryptodepot.org:8083/chainz/balance/zeit/";
                 tickerCode = "ZEIT";
                 customCoinTicker = "zeit";
                 coingeckoCoinName = "zeitcoin";
@@ -2757,7 +2760,7 @@ function rawSubmitDigiExplorer(thisbtn){
           var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinTicker +"/tx.dws?";
           var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinTicker +"/address.dws?";
           var explorer_block = "https://chainz.cryptoid.info/"+ customCoinTicker +"/block.dws?";
-          var explorer_api = "https://cors-anywhere.herokuapp.com/https://chainz.cryptoid.info/"+ customCoinTicker +"/api.dws?q=getbalance&a=";
+          var explorer_api = "https://cryptodepot.org:8083/chainz/balance/"+ customCoinTicker +"/";
           var customCoinTicker = tickerCode.toLowerCase();
           console.log(host);
         }
@@ -2784,7 +2787,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_tx = "https://chainz.cryptoid.info/pnd/tx.dws?";
                 explorer_addr = "https://chainz.cryptoid.info/pnd/address.dws?";
                 explorer_block = "https://chainz.cryptoid.info/pnd/block.dws?";
-                explorer_api = "https://cors-anywhere.herokuapp.com/https://chainz.cryptoid.info/pnd/api.dws?q=getbalance&a=";
+                explorer_api = "https://cryptodepot.org:8083/chainz/balance/pnd/";
                 tickerCode = "PND";
                 customCoinTicker = "pnd";
                 coingeckoCoinName = "pandacoin";
