@@ -4901,7 +4901,7 @@ jQuery(document).ready(function($) {
 											<div>
 												<span id="walletLoader" class="hidden"><img alt="" src="images/loader.gif"></span>
 												<span id="walletAddress"></span>
-
+												<button class="btn" data-clipboard-action="copy" data-clipboard-target="#walletAddress">Copy</button>
 												<div class="btn-group">
 													<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" id="walletToLegacy">Legacy <span class="caret"></span></button>
 													<ul class="dropdown-menu">
@@ -4949,6 +4949,8 @@ jQuery(document).ready(function($) {
 													<label>Gift This Wallet</label>
 													<input class="form-control giftlink" id="giftlinkinput" type="text" readonly>
 													<button class="btn" data-clipboard-action="copy" data-clipboard-target="#giftlinkinput" style="float:right;">Copy</button>
+													<div id="giftQrCode"></div>
+
 												</div>
 
 												<div id="walletSpend" class="hidden">
@@ -6053,7 +6055,7 @@ jQuery(document).ready(function($) {
 
 					<div class="tab-pane tab-content" id="about">
 						<h2>About <small>open source Pandacoin wallet</small></h2>
-						<p>Version 2.0.25</p>
+						<p>Version 2.0.27</p>
 						<p>Compatible with Pandacoin</p>
                         <p><a href="https://github.com/DigitalPandacoin/coinbin">https://github.com/DigitalPandacoin/coinbin</a></p>
 						<p>Forked from <a href="https://coinb.in">https://coinb.in"</a></p>
@@ -6715,7 +6717,7 @@ jQuery(document).ready(function($) {
 
 		<div id="footer">
 			<div class="container text-right">
-	        		<p class="text-muted">Version  2.0.25</p>
+	        		<p class="text-muted">Version  2.0.27</p>
 			</div>
 		</div>
 
