@@ -2619,14 +2619,16 @@ function rawSubmitDigiExplorer(thisbtn){
       $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
       $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
     }
-    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "ltc")) {
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "dgb")) {
+      $("#coinjs_coin").val("digibyte_mainnet").trigger("change");
+      $("#coinjs_broadcast").val("digiexplorer.info").trigger("change");
+      $("#coinjs_utxo").val("digiexplorer.info").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val()) == "ltc") {
       $("#coinjs_coin").val("litecoin_mainnet").trigger("change");
       $("#coinjs_broadcast").val("blockchair_litecoin").trigger("change");
       $("#coinjs_utxo").val("blockchair_litecoin").trigger("change");
-    }
-    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "dgb")) {
-      $("#coinjs_broadcast").val("digiexplorer.info").trigger("change");
-      $("#coinjs_utxo").val("digiexplorer.info").trigger("change");
+      var customCoinTicker = "ltc";
     }
     else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "doge")) {
       $("#coinjs_broadcast").val("blockcypher_dogecoin").trigger("change");
@@ -2859,6 +2861,12 @@ function rawSubmitDigiExplorer(thisbtn){
           console.log(host);
           coingeckoCoinName = "pandacoin";
           console.log("Pandacoin tech IF");
+        }
+        else if(host=='blockchair_litecoin') {
+          tickerCode = "LTC";
+          customCoinTicker = "ltc";
+          coingeckoCoinName = "litecoin";
+          console.log("litecoin");
         }
           else {
                 console.log(host)

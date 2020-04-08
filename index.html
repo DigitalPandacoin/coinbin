@@ -99,17 +99,7 @@
 				coingeckoCoinName = "zeitcoin";
 				coinGecko = "true";
 		  }
-		  else if (document.getElementById("customCoinTicker").value == "ltc") {
-		    document.getElementById("coinjs_pub").value = "0x30";
-		    document.getElementById("coinjs_priv").value = "0xb0";
-		    document.getElementById("coinjs_multisig").value = "0x32";
-		    document.getElementById("coinLogo").src = "images/logo/litecoin.png";
-				document.getElementById("bTtitle").textContent = "Litecoin";
-				document.getElementById("bTtitle1").textContent = "Litecoin";
-		    tickerCode = "LTC";
-				coingeckoCoinName = "litecoin";
-				coinGecko = "true";
-		  }
+
 			else if (document.getElementById("customCoinTicker").value == "dash") {
 			  document.getElementById("coinjs_pub").value = "0x4c";
 			  document.getElementById("coinjs_priv").value = "0xcc";
@@ -882,6 +872,17 @@
 				coingeckoCoinName = "digibyte";
 				coinGecko = "true";
 			}
+			else if (document.getElementById("customCoinTicker").value == "ltc") {
+		    document.getElementById("coinjs_pub").value = "0x30";
+		    document.getElementById("coinjs_priv").value = "0xb0";
+		    document.getElementById("coinjs_multisig").value = "0x32";
+		    document.getElementById("coinLogo").src = "images/logo/litecoin.png";
+				document.getElementById("bTtitle").textContent = "Litecoin";
+				document.getElementById("bTtitle1").textContent = "Litecoin";
+		    tickerCode = "LTC";
+				coingeckoCoinName = "litecoin";
+				coinGecko = "true";
+		  }
 			else if (document.getElementById("customCoinTicker").value == "dime") {
 			  document.getElementById("coinjs_pub").value = "0xf";
 			  document.getElementById("coinjs_priv").value = "0x8f";
@@ -3430,7 +3431,7 @@
 else if (document.getElementById("customCoinTicker").value == "bynd") {
 				document.getElementById("coinjs_pub").value = "0x19";
 				document.getElementById("coinjs_priv").value = "0xb0";
-				document.getElementById("coinjs_multisig").value = "0x5";
+				document.getElementById("coinjs_multisig").value = "0x1a";
 				document.getElementById("coinLogo").src = "images/logo/bynd.png";
 				document.getElementById("bTtitle").textContent = "Beyondcoin";
 				document.getElementById("bTtitle1").textContent = "Beyondcoin";
