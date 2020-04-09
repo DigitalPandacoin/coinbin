@@ -1,4 +1,4 @@
-var tickerCode;
+var sequence = 0xffffffff-1;var tickerCode;
 var customCoinTicker;
 var address;
 var coingeckoCoinName;
@@ -268,7 +268,7 @@ else if(host=='cryptoid.custom') {
 			script = sw.redeemscript;
 		}
 
-		var sequence = false;
+    var sequence = 0xffffffff-1;
 		if($("#walletRBF").is(":checked")){
 			sequence = 0xffffffff-2;
 		}
@@ -806,7 +806,7 @@ else if(host=='panda.tech') {
 			}
 
 			if(!$(o).hasClass("has-error")){
-				var seq = null;
+			     var seq = 0xffffffff-1;
 				if($("#txRBF").is(":checked")){
 					seq = 0xffffffff-2;
 				}
@@ -2484,7 +2484,7 @@ function rawSubmitDigiExplorer(thisbtn){
 
 	$('a[data-toggle="tab"]').on('click', function(e) {
 		e.preventDefault();
-		if(e.target){
+		if(e.target && $(e.target).attr('href')) {
 			history.pushState(null, null, '#'+$(e.target).attr('href').substr(1));
 		}
 	});
@@ -2618,6 +2618,17 @@ function rawSubmitDigiExplorer(thisbtn){
         ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "VARIUS")) {
       $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
       $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "dgb")) {
+      $("#coinjs_coin").val("digibyte_mainnet").trigger("change");
+      $("#coinjs_broadcast").val("digiexplorer.info").trigger("change");
+      $("#coinjs_utxo").val("digiexplorer.info").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val()) == "ltc") {
+      $("#coinjs_coin").val("litecoin_mainnet").trigger("change");
+      $("#coinjs_broadcast").val("blockchair_litecoin").trigger("change");
+      $("#coinjs_utxo").val("blockchair_litecoin").trigger("change");
+      var customCoinTicker = "ltc";
     }
     else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "doge")) {
       $("#coinjs_broadcast").val("blockcypher_dogecoin").trigger("change");
@@ -2850,6 +2861,12 @@ function rawSubmitDigiExplorer(thisbtn){
           console.log(host);
           coingeckoCoinName = "pandacoin";
           console.log("Pandacoin tech IF");
+        }
+        else if(host=='blockchair_litecoin') {
+          tickerCode = "LTC";
+          customCoinTicker = "ltc";
+          coingeckoCoinName = "litecoin";
+          console.log("litecoin");
         }
           else {
                 console.log(host)
