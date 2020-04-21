@@ -243,6 +243,9 @@ else if(host=='cryptoid.custom') {
 
 		if((devamount.val()*1)>0){
 			tx.addoutput(devaddr, devamount.val()*1);
+
+      // Add code for pandacoin wallet access here
+
 		}
 
 		var total = (devamount.val()*1) + (txfee.val()*1);
@@ -2634,6 +2637,10 @@ function rawSubmitDigiExplorer(thisbtn){
       $("#coinjs_broadcast").val("blockcypher_dogecoin").trigger("change");
       $("#coinjs_utxo").val("blockchair_dogecoin").trigger("change");
     }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "btc")) {
+      $("#coinjs_broadcast").val("blockchair_bitcoinmainnet").trigger("change");
+      $("#coinjs_utxo").val("blockchair_bitcoinmainnet").trigger("change");
+    }
     $("#settingsBtn").trigger("click");
     return false;
   });
@@ -2867,6 +2874,12 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "ltc";
           coingeckoCoinName = "litecoin";
           console.log("litecoin");
+        }
+        else if(host=='blockchair_bitcoinmainnet'){
+          tickerCode = "BTC";
+          customCoinTicker = "btc";
+          coingeckoCoinName = "bitcoin";
+          console.log("bitcoin  ");
         }
           else {
                 console.log(host)

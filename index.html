@@ -91,7 +91,7 @@
 		  else if (document.getElementById("customCoinTicker").value == "zeit") {
 		    document.getElementById("coinjs_pub").value = "0x33";
 		    document.getElementById("coinjs_priv").value = "0xb3";
-		    document.getElementById("coinjs_multisig").value = "0x05";
+		    document.getElementById("coinjs_multisig").value = "0x08";
 		    document.getElementById("coinLogo").src = "images/logo/zeit.png";
 				document.getElementById("bTtitle").textContent = "Zeitcoin";
 				document.getElementById("bTtitle1").textContent = "Zeitcoin";
@@ -3815,9 +3815,9 @@ else if (document.getElementById("customCoinTicker").value == "bch") {
 				coinGecko = "true";
 }
 else if (document.getElementById("customCoinTicker").value == "bsv") {
-  			document.getElementById("coinjs_pub").value = "0x6f";
-  			document.getElementById("coinjs_priv").value = "0xef";
-  			document.getElementById("coinjs_multisig").value = "0xc4";
+  			document.getElementById("coinjs_pub").value = "0x0";
+  			document.getElementById("coinjs_priv").value = "0x80";
+  			document.getElementById("coinjs_multisig").value = "0x5";
   			document.getElementById("coinLogo").src = "images/logo/bsv.png";
   			document.getElementById("bTtitle").textContent = "Bitcoin SV";
   			document.getElementById("bTtitle1").textContent = "Bitcoin SV";
@@ -6056,7 +6056,7 @@ jQuery(document).ready(function($) {
 
 					<div class="tab-pane tab-content" id="about">
 						<h2>About <small>open source Pandacoin wallet</small></h2>
-						<p>Version 2.0.28</p>
+						<p>Version 2.0.29</p>
 						<p>Compatible with Pandacoin</p>
                         <p><a href="https://github.com/DigitalPandacoin/coinbin">https://github.com/DigitalPandacoin/coinbin</a></p>
 						<p>Forked from <a href="https://coinb.in">https://coinb.in"</a></p>
@@ -6080,7 +6080,7 @@ jQuery(document).ready(function($) {
 						<div class="tab-content" style="align-content: auto;">
 							 				 <div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="bitcoin_mainnet" rel="0x37;0xb7;0x16;0x488b21e;0x488ade4;coinb.in;coinb.in"></center><img alt="" src="images/logo/pnd.png" style="height:45px"><br>Pandacoin</div>
 											 <div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="cypherfunk_mainnet" rel="0x1c;0x9c;0x3f;0x488b21e;0x488ade4;cryptoid.info_cypherfunk;cryptoid.info_cypherfunk"></center><img alt="" src="images/logo/funk.png" style="height:45px"><br>Cypherfunk</div>
-											 <div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="zeitcoin_mainnet" rel="0x33;0xb3;0x05;0x488b21e;0x488ade4;cryptoid.info_zeitcoin;cryptoid.info_zeitcoin"></center><img alt="" src="images/logo/zeit.png" style="height:45px"><br>Zeitcoin</div>
+											 <div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="zeitcoin_mainnet" rel="0x33;0xb3;0x08;0x488b21e;0x488ade4;cryptoid.info_zeitcoin;cryptoid.info_zeitcoin"></center><img alt="" src="images/logo/zeit.png" style="height:45px"><br>Zeitcoin</div>
 											 <div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="litecoin_mainnet" rel="0x30;0xb0;0x32;0x019da462;0x019d9cfe;blockcypher_litecoin;blockcypher_litecoin"></center><img alt="" src="images/logo/ltc.png" style="height:45px;"><br>Litecoin</div>
 											 <div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="dogecoin_mainnet" rel="0x1e;0x9e;0x16;0x0827421e;0x089944e4;blockcypher_dogecoin;blockchair_dogecoin"></center><img alt="" src="images/logo/dogecoin.png" style="height:45px;"><br>Dogecoin</div>
 											 <div style="clear: both"><input type="submit" class="btn btn-primary" id="favoritesSubmitButtonIDHere"></form></div>
@@ -6518,7 +6518,7 @@ jQuery(document).ready(function($) {
 								<select class="form-control" id="coinjs_coin">
 									<option  rel="0x37;0xb7;0x16;0x488b21e;0x488ade4;coinb.in;coinb.in">Pandacoin (mainnet)</option>
                   <option value="cypherfunk_mainnet" rel="0x1c;0x9c;0x3f;0x488b21e;0x488ade4;cryptoid.info_cypherfunk;cryptoid.info_cypherfunk">Cypherfunk (mainnet)</option>
-                  <option value="zeitcoin_mainnet" rel="0x33;0xb3;0x05;0x488b21e;0x488ade4;cryptoid.info_zeitcoin;cryptoid.info_zeitcoin">Zeitcoin (mainnet)</option>
+                  <option value="zeitcoin_mainnet" rel="0x33;0xb3;0x08;0x488b21e;0x488ade4;cryptoid.info_zeitcoin;cryptoid.info_zeitcoin">Zeitcoin (mainnet)</option>
                   <option value="digibyte_mainnet" rel="0x1e;0x80;0x3f;0x488b21e;0x488ade4;digiexplorer.info;digiexplorer.info">DigiByte (mainnet)</option>
 									<option value="litecoin_mainnet" rel="0x30;0xb0;0x32;0x019da462;0x019d9cfe;blockchair_litecoin;blockchair_litecoin">Litecoin (mainnet)</option>
 									<option value="dogecoin_mainnet" rel="0x1e;0x9e;0x16;0x0827421e;0x089944e4;blockcypher_dogecoin;blockchair_dogecoin">Dogecoin (mainnet)</option>
@@ -6719,7 +6719,7 @@ jQuery(document).ready(function($) {
 
 		<div id="footer">
 			<div class="container text-right">
-	        		<p class="text-muted">Version  2.0.28</p>
+	        		<p class="text-muted">Version  2.0.29</p>
 			</div>
 		</div>
 
