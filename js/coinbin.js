@@ -139,6 +139,9 @@ else if(host=='cryptoid.custom') {
   var customCoinTicker = tickerCode.toLowerCase();
   console.log(host);
 }
+else if(host=='bsv.host') {
+  explorer_api = "https://api.blockchair.com/bitcoin-sv/address/";
+}
 					$("#walletHistory").attr('href',explorer_addr+address);
 
 					$("#walletQrCode").html("");
@@ -1106,6 +1109,12 @@ else if(host=='panda.tech') {
     else if(host=='blockchair_litecoin'){
 			listUnspentBlockchair(redeem, "litecoin");
 		}
+    else if(host=='bch.host'){
+			listUnspentBlockchair(redeem, "bitcoin-cash");
+		}
+    else if(host=='bsv.host'){
+      listUnspentBlockchair(redeem, "bitcoin-sv");
+    }
     else if(host=='cryptoid.info_carboncoin'){
 			listUnspentCryptoidinfo_Carboncoin(redeem);
 		}
@@ -2641,6 +2650,19 @@ function rawSubmitDigiExplorer(thisbtn){
       $("#coinjs_broadcast").val("blockchair_bitcoinmainnet").trigger("change");
       $("#coinjs_utxo").val("blockchair_bitcoinmainnet").trigger("change");
     }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "bch")) {
+      $("#coinjs_broadcast").val("bch.host").trigger("change");
+      $("#coinjs_utxo").val("bch.host").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "bsv")) {
+      $("#coinjs_broadcast").val("bsv.host").trigger("change");
+      $("#coinjs_utxo").val("bsv.host").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "dash")) {
+      $("#coinjs_broadcast").val("dash.host").trigger("change");
+      $("#coinjs_utxo").val("dash.host").trigger("change");
+    }
+
     $("#settingsBtn").trigger("click");
     return false;
   });
@@ -2692,6 +2714,14 @@ function rawSubmitDigiExplorer(thisbtn){
 			$("#rawSubmitBtn").click(function(){
 				rawSubmitblockchair(this, "dogecoin");
 			});
+		} else if(host=="bsv.host"){
+			$("#rawSubmitBtn").click(function(){
+				rawSubmitblockchair(this, "bitcoin-sv");
+			});
+		} else if(host=="dash.host"){
+			$("#rawSubmitBtn").click(function(){
+				rawSubmitblockchair(this, "dash");
+			});
 		} else if(host=="blockchair_bitcoinmainnet"){
 			$("#rawSubmitBtn").click(function(){
 				rawSubmitblockchair(this, "bitcoin");
@@ -2703,6 +2733,14 @@ function rawSubmitDigiExplorer(thisbtn){
 		} else if(host=="blockchair_dogecoin"){
 			$("#rawSubmitBtn").click(function(){
 				rawSubmitblockchair(this, "dogecoin");
+            });
+		} else if(host=="bch.host"){
+			$("#rawSubmitBtn").click(function(){
+				rawSubmitblockchair(this, "bitcoin-cash");
+            });
+		} else if(host=="dash.host"){
+			$("#rawSubmitBtn").click(function(){
+				rawSubmitblockchair(this, "dash");
             });
 		} else if(host=="cryptoid.info_carboncoin"){
 			$("#rawSubmitBtn").click(function(){
@@ -2880,6 +2918,24 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "btc";
           coingeckoCoinName = "bitcoin";
           console.log("bitcoin  ");
+        }
+        else if(host=='bch.host'){
+          tickerCode = "BCH";
+          customCoinTicker = "bch";
+          coingeckoCoinName = "bitcoin-cash";
+          console.log("bitcoin-cash");
+        }
+        else if(host=='bsv.host') {
+          tickerCode = "BSV";
+          customCoinTicker = "BSV";
+          coingeckoCoinName = "bitcoin-cash-sv";
+          console.log("bitcoin-cash-sv");
+        }
+        else if(host=='dash.host') {
+          tickerCode = "DASH";
+          customCoinTicker = "dash";
+          coingeckoCoinName = "dash";
+          console.log("dash");
         }
           else {
                 console.log(host)
