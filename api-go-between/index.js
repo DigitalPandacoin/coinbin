@@ -72,11 +72,28 @@ console.log(req.params.address);
           }
         )
       });
+
+      app.get('/blockchair/balance/:coinname/:address', (req, res) => {
+      console.log(req.params.coinname);
+      console.log(req.params.address);
+        request(
+          { url: 'https://api.blockchair.com/'+ req.params.coinname +'/dashboards/address/'+ req.params.address +''},
+          (error, response, body) => {
+            if (error || response.statusCode !== 200) {
+              return res.status(500).json({ type: 'error', message: error });
+            }
+            var your_address = req.params.address;
+            const result = JSON.parse(body);
+            res.send(JSON.stringify(JSON.parse(result.data[your_address].address.balance), null, 2));
+
+            }
+          )
+        });
   const PORT = process.env.PORT || 5555;
   app.listen(PORT, () => console.log(`listening on ${PORT}`));
   https.createServer({
-    key: fs.readFileSync('key.pem'), // Create a key and cert for yourself
-    cert: fs.readFileSync('cert.pem') // change filename as needed.
+    key: fs.readFileSync(''), //change me
+    cert: fs.readFileSync('') //change me
   }, app).listen(8083, function () {
    require('dns').lookup(require('os').hostname(), function (err, add, fam) {
      console.log('HTTPS running on http://%s:8083', add);

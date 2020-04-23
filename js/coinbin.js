@@ -140,7 +140,13 @@ else if(host=='cryptoid.custom') {
   console.log(host);
 }
 else if(host=='bsv.host') {
-  explorer_api = "https://api.blockchair.com/bitcoin-sv/address/";
+  explorer_addr = "https://blockchair.com/bitcoin-sv/address/";
+}
+else if(host=='dash.host') {
+  explorer_addr = "https://blockchair.com/dash/address/";
+}
+else if(host=='bch.host') {
+  explorer_addr = "https://blockchair.com/bitcoin-cash/address/";
 }
 					$("#walletHistory").attr('href',explorer_addr+address);
 
@@ -437,7 +443,18 @@ else if(host=='panda.tech') {
   var explorer_block = "http://pandacoin.tech:3001/block/";
   var explorer_api = "http://pandacoin.tech:3001/ext/getbalance/";
 }
-
+else if(host=='bsv.host') {
+  explorer_addr = "https://blockchair.com/bitcoin-sv/address/";
+  explorer_api = "https://cryptodepot.org:8083/blockchair/balance/bitcoin-sv/";
+}
+else if(host=='dash.host') {
+  explorer_addr = "https://blockchair.com/dash/address/";
+  explorer_api = "https://cryptodepot.org:8083/blockchair/balance/dash/"
+}
+else if(host=='bch.host') {
+  explorer_addr = "https://blockchair.com/bitcoin-cash/address/";
+  explorer_api = "https://cryptodepot.org:8083/blockchair/balance/bitcoin-cash/";
+}
 
 		$("#walletLoader").removeClass("hidden");
 		coinjs.addressBalance(explorer_api, $("#walletAddress").html(),function(data){
@@ -448,9 +465,65 @@ else if(host=='panda.tech') {
                 var parsed = JSON.parse(data)
                 if(parsed.type==='error') {
                   $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
-                } else {
+                }
+                else {
                 var v = parsed.result[$("#walletAddress").html()];
                 $("#walletBalance").html(v + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='bsv.host'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='bch.host'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='dash.host'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='blockchair_bitcoinmainnet'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='blockchair_litecoin'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
               }
             }
               else {
@@ -1255,7 +1328,7 @@ else if(host=='panda.tech') {
 		tx.listUnspent(redeem.addr, function(data){
 			if(redeem.addr) {
 				$("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
-
+        console.log(host);
 				$.each($(data).find("unspent").children(), function(i,o){
 					var tx = $(o).find("tx_hash").text();
 					var n = $(o).find("tx_output_n").text();
@@ -2667,6 +2740,41 @@ function rawSubmitDigiExplorer(thisbtn){
     return false;
   });
   if (cUrl == null) { }
+  else if(cUrl == 'bsv') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("bsv.host").trigger("change");
+    $("#coinjs_utxo").val("bsv.host").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'bch') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("bch.host").trigger("change");
+    $("#coinjs_utxo").val("bch.host").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'dash') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("dash.host").trigger("change");
+    $("#coinjs_utxo").val("dash.host").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'btc') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("blockchair_bitcoinmainnet").trigger("change");
+    $("#coinjs_utxo").val("blockchair_bitcoinmainnet").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'ltc') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("blockchair_litecoin").trigger("change");
+    $("#coinjs_utxo").val("blockchair_litecoin").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
   else {
 
     $("#coinjs_coin").val("custom").trigger("change");
@@ -2911,30 +3019,42 @@ function rawSubmitDigiExplorer(thisbtn){
           tickerCode = "LTC";
           customCoinTicker = "ltc";
           coingeckoCoinName = "litecoin";
+          explorer_addr = "https://blockchair.com/litecoin/address/";
+          explorer_api = "https://cryptodepot.org:8083/blockchair/balance/litecoin";
+          explorer_api = "https://cryptodepot.org:8083/blockchair/balance/litecoin/";
           console.log("litecoin");
         }
         else if(host=='blockchair_bitcoinmainnet'){
           tickerCode = "BTC";
           customCoinTicker = "btc";
           coingeckoCoinName = "bitcoin";
+          explorer_addr = "https://blockchair.com/bitcoin/address/";
+          explorer_api = "https://cryptodepot.org:8083/blockchair/balance/bitcoin";
+          explorer_api = "https://cryptodepot.org:8083/blockchair/balance/bitcoin/";
           console.log("bitcoin  ");
         }
         else if(host=='bch.host'){
           tickerCode = "BCH";
           customCoinTicker = "bch";
           coingeckoCoinName = "bitcoin-cash";
+          explorer_addr = "https://blockchair.com/bitcoin-cash/address/";
+          explorer_api = "https://cryptodepot.org:8083/blockchair/balance/bitcoin-cash/";
           console.log("bitcoin-cash");
         }
         else if(host=='bsv.host') {
           tickerCode = "BSV";
           customCoinTicker = "BSV";
           coingeckoCoinName = "bitcoin-cash-sv";
+          explorer_addr = "https://blockchair.com/bitcoin-sv/address/";
+          explorer_api = "https://cryptodepot.org:8083/blockchair/balance/bitcoin-sv/";
           console.log("bitcoin-cash-sv");
         }
         else if(host=='dash.host') {
           tickerCode = "DASH";
           customCoinTicker = "dash";
           coingeckoCoinName = "dash";
+          explorer_addr = "https://blockchair.com/dash/address/";
+          explorer_api = "https://cryptodepot.org:8083/blockchair/balance/dash/";
           console.log("dash");
         }
           else {
