@@ -4002,17 +4002,6 @@ else if (document.getElementById("customCoinTicker").value == "bun") {
   coingeckoCoinName = "bunnycoin";
   coinGecko = "true";
 }
-else if (document.getElementById("customCoinTicker").value == "carbon") {
-  document.getElementById("coinjs_pub").value = "0x2f";
-  document.getElementById("coinjs_priv").value = "0xaf";
-  document.getElementById("coinjs_multisig").value = "0x5";
-  document.getElementById("coinLogo").src = "images/logo/carboncoin.png";
-  document.getElementById("bTtitle").textContent = "Carboncoin";
-  document.getElementById("bTtitle1").textContent = "Carboncoin";
-  tickerCode = "CARBON";
-  coingeckoCoinName = "carboncoin";
-  coinGecko = "true";
-}
 else if (document.getElementById("customCoinTicker").value == "") {
   document.getElementById("coinjs_pub").value = "0x";
   document.getElementById("coinjs_priv").value = "0x";
@@ -6167,7 +6156,6 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="cache"></center><img alt="" src="images/logo/cache.png" style="height:45px"><br><center>cache</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="cann"></center><img alt="" src="images/logo/cann.png" style="height:45px"><br><center>cann</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="caps"></center><img alt="" src="images/logo/caps.png" style="height:45px"><br><center>caps</center></div>
-							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="carbon"></center><img alt="" src="images/logo/carboncoin.png" style="height:45px"><br><center>carboncoin</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="cbx"></center><img alt="" src="images/logo/cbx.png" style="height:45px"><br><center>cbx</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="ccn"></center><img alt="" src="images/logo/ccn.png" style="height:45px"><br><center>ccn</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="cdn"></center><img alt="" src="images/logo/cdn.png" style="height:45px"><br><center>cdn</center></div>
@@ -6258,10 +6246,9 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="gxx"></center><img alt="" src="images/logo/gxx.png" style="height:45px"><br><center>gxx</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="hbn"></center><img alt="" src="images/logo/hbn.png" style="height:45px"><br><center>hbn</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="hpc"></center><img alt="" src="images/logo/hpc.png" style="height:45px"><br><center>hpc</center></div>
+							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="html"></center><img alt="" src="images/logo/html.png" style="height:45px"><br><center>html</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="html5"></center><img alt="" src="images/logo/html5.png" style="height:45px"><br><center>html5</center></div>
-							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="html"></center><img alt="" src="images/logo/html.png" style="height:45px"><br><center>html</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="hwi"></center><img alt="" src="images/logo/hwi.png" style="height:45px"><br><center>hwi</center></div>
-							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="html"></center><img alt="" src="images/logo/html.png" style="height:45px"><br><center>html</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="hush"></center><img alt="" src="images/logo/hush.png" style="height:45px"><br><center>hush</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="hyp"></center><img alt="" src="images/logo/hyp.png" style="height:45px"><br><center>hyp</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="i0c"></center><img alt="" src="images/logo/i0c.png" style="height:45px"><br><center>i0c</center></div>
@@ -6522,7 +6509,6 @@ jQuery(document).ready(function($) {
                   <option value="digibyte_mainnet" rel="0x1e;0x80;0x3f;0x488b21e;0x488ade4;digiexplorer.info;digiexplorer.info">DigiByte (mainnet)</option>
 									<option value="litecoin_mainnet" rel="0x30;0xb0;0x32;0x019da462;0x019d9cfe;blockchair_litecoin;blockchair_litecoin">Litecoin (mainnet)</option>
 									<option value="dogecoin_mainnet" rel="0x1e;0x9e;0x16;0x0827421e;0x089944e4;blockcypher_dogecoin;blockchair_dogecoin">Dogecoin (mainnet)</option>
-									<option value="carboncoin_mainnet" rel="0x2f;0xaf;0x05;0x488b21e;0x488ade4;cryptoid.info_carboncoin;cryptoid.info_carboncoin">Carboncoin (mainnet)</option>
 									<option value="shadowcash_mainnet" rel="0x3f;0xbf;0x7d;0xee80286a;0xee8031e8;shadowcash.host;shadowcash.host">ShadowCash (mainnet)</option>
 									<option value="custom" rel="0x00;0x80;0x05;0x488b21e;0x488ade4;cryptoid.custom;cryptoid.custom">Custom</option>
 								</select>
@@ -6614,7 +6600,7 @@ jQuery(document).ready(function($) {
 <option value="abbc">ABBC Coin (ABBC)</option><option value="bst">BlockStamp (BST)</option><option value="ilc">ILCoin (ILC)</option><option value="pai">Project Pai (PAI)</option>
 <option value="cnx">Cryptonex (CNX)</option><option value="btc2">Bitcoin 2 (BTC2)</option><option value="plc">PLATINCOIN (PLC)</option><option value="vitae">Vitae (VITAE)</option>
 <option value="nye">NewYork Exchange (NYE)</option><option value="lbtc">Lightning Bitcoin (LBTC)</option><option value="mbc">MicroBitcoin (MBC)</option><option value="oto">OTOCASH (OTO)</option>
-<option value="btcs">Bitcoin Scrypt (BTCS)</option><option value="btg">Bitcoin Gold (BTG)</option><option value="bun">Bunnycoin (BUN)</option><option value="carbon">Carboncoin (CARBON)</option>
+<option value="btcs">Bitcoin Scrypt (BTCS)</option><option value="btg">Bitcoin Gold (BTG)</option><option value="bun">Bunnycoin (BUN)</option>
 <option value="cvcc">CryptoVerificationCoin (CVCC)</option><option value="arrr">Pirate Chain (ARRR)</option><option value="xbrt">BitRewards (XBRT)</option><option value="polis">Polis (POLIS)</option>
 <option value="sls">SaluS (SLS)</option><option value="nlg">Gulden (NLG)</option><option value="xsn">Stakenet (XSN)</option><option value="smart">SmartCash (SMART)</option><option value="flo">Flo (FLO)</option>
 <option value="eca">Electra (ECA)</option><option value="rstr">Ondori (RSTR)</option><option value="vips">Vipstar Coin (VIPS)</option><option value="pgn">Pigeoncoin (PGN)</option><option value="daps">DAPS Coin (DAPS)</option>
@@ -6665,7 +6651,6 @@ jQuery(document).ready(function($) {
 									<option value="chain.so_bitcoinmainnet"> Chain.so (Bitcoin mainnet)</option>
 									<option value="cryptoid.info_cypherfunk"> Cryptoid.info (Cypherfunk)</option>
 									<option value="chain.so_litecoin"> Chain.so (Litecoin)</option>
-									<option value="cryptoid.info_carboncoin"> Cryptoid.info (Carboncoin)</option>
 									<option value="shadowcash.host"> ShadowCash</option>
 									<option value="bch.host">Bitcoin Cash</option>
 									<option value="bsv.host">Bitcoin SV</option>
@@ -6673,6 +6658,11 @@ jQuery(document).ready(function($) {
 									<option value="grs.host">Groestlcoin</option>
 									<option value="zcash.host">Zcash</option>
 									<option value="ripple.host">Ripple</options>
+									<option value="custom_particl">Particl</options>
+									<option value="custom_aurora">AuroraCoin</options>
+									<option value="custom_htmlcoin">Htmlcoin</options>
+									<option value="custom_safecoin">SafeCoin</options>
+									<option value="custom_rdd">Reddcoin</options>
 									<option value="cryptoid.custom">Chainz Cryptoid (Custom)</option>
 									<option value="coinexplorer_custom">Coin Explorer (Custom)</option>
 								</select>
@@ -6688,17 +6678,16 @@ jQuery(document).ready(function($) {
 								<select class="form-control" id="coinjs_utxo">
 									<option value="coinb.in">Pandacoin (mainnet)</option>
 									<option value="panda.tech">Pandacoin (.tech)</option>
-                                    <option value="cryptoid.info_zeitcoin">Zeitcoin (mainnet)</option>
-                                    <option value="blockcypher_bitcoinmainnet"> Blockcypher.com (Bitcoin mainnet)</option>
-                                    <option value="digiexplorer.info"> DigiExplorer.info (DigiByte)</option>
+                  <option value="cryptoid.info_zeitcoin">Zeitcoin (mainnet)</option>
+                  <option value="blockcypher_bitcoinmainnet"> Blockcypher.com (Bitcoin mainnet)</option>
+                  <option value="digiexplorer.info"> DigiExplorer.info (DigiByte)</option>
 									<option value="blockcypher_litecoin"> Blockcypher.com (Litecoin)</option>
 									<option value="blockchair_bitcoinmainnet"> Blockchair.com (Bitcoin mainnet)</option>
 									<option value="blockchair_litecoin"> Blockchair.com (Litecoin)</option>
 									<option value="blockchair_dogecoin"> Blockchair.com (Dogecoin)</option>
 									<option value="chain.so_bitcoinmainnet"> Chain.so (Bitcoin mainnet)</option>
-                                    <option value="cryptoid.info_cypherfunk">Cryptoid.info (Cypherfunk)</option>
+                  <option value="cryptoid.info_cypherfunk">Cryptoid.info (Cypherfunk)</option>
 									<option value="chain.so_litecoin"> Chain.so (Litecoin)</option>
-									<option value="cryptoid.info_carboncoin"> Cryptoid.info (Carboncoin)</option>
 									<option value="shadowcash.host"> ShadowCash</option>
 									<option value="bch.host">Bitcoin Cash</option>
 									<option value="bsv.host">Bitcoin SV</option>
@@ -6706,6 +6695,11 @@ jQuery(document).ready(function($) {
 									<option value="grs.host">Groestlcoin</option>
 									<option value="zcash.host">Zcash</option>
 									<option value="ripple.host">Ripple</options>
+									<option value="custom_particl">Particl</options>
+									<option value="custom_aurora">AuroraCoin</options>
+									<option value="custom_htmlcoin">Htmlcoin</options>
+									<option value="custom_safecoin">SafeCoin</options>
+									<option value="custom_rdd">Reddcoin</options>
 									<option value="cryptoid.custom">Chainz Cryptoid (Custom)</option>
 									<option value="coinexplorer_custom">Coin Explorer (Custom)</option>
 								</select>
