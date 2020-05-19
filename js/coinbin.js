@@ -2183,7 +2183,7 @@ function rawSubmitdogechain(thisbtn){
             console.log(txhex);
                 $.ajax({
                     type: "POST",
-                    url: "http://insight.auroracoin.is/api/tx/send",
+                    url: "https://cryptodepot.org:8083/aurora/broadcast/",
                     data: $("#rawTransaction").val(),
                     error: function(data) {
                         var r = ' Failed to Broadcast.'; // this wants a preceding space
@@ -2211,8 +2211,8 @@ function rawSubmitdogechain(thisbtn){
                     console.log(txhex);
                         $.ajax({
                             type: "POST",
-                            url: "https://explorer.htmlcoin.com/api/tx/send",
-                            data: $("#rawTransaction").val(),
+                            url: "https://cryptodepot.org:8083/htmlcoin/broadcast/" + txhex +"",
+                            //data: $("#rawTransaction").val(),
                             error: function(data) {
                                 var r = ' Failed to Broadcast.'; // this wants a preceding space
                                 $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
@@ -2240,7 +2240,7 @@ function rawSubmitrdd(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "POST",
-                url: "https://live.reddcoin.com/api/tx/send/",
+                url: "https://cryptodepot.org:8083/rdd/broadcast/",
                 data: $("#rawTransaction").val(),
                 error: function(data) {
                     var r = ' Failed to Broadcast.'; // this wants a preceding space
@@ -3265,6 +3265,10 @@ function rawSubmitDigiExplorer(thisbtn){
 		} else if(host=="custom_rdd"){
 			$("#rawSubmitBtn").click(function(){
 				rawSubmitrdd(this);
+			});
+		} else if(host=="custom_htmlcoin"){
+			$("#rawSubmitBtn").click(function(){
+				rawSubmithtml(this);
 			});
 		} else if(host=="dash.host"){
 			$("#rawSubmitBtn").click(function(){

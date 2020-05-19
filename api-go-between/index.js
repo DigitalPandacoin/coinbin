@@ -193,10 +193,65 @@ console.log(req.params.address);
                             }
                           )
                         });
-      app.get('/digiexplorer/broadcast/:txhex', (req, res) => {
+      app.get('/rdd/broadcast/:txhex', (req, res) => {
+        console.log(req.params.txhex);
+        request.post({
+            url: 'https://live.reddcoin.com/api/tx/send',
+            body: {rawtx: req.params.txhex},
+            json: true
+          }, function(error, response, body){
+            console.log(body);
+            res.send(body);
 
+          });
       });
+      app.get('/aurora/broadcast/:txhex', (req, res) => {
+        console.log(req.params.txhex);
+        request.post({
+            url: 'http://insight.auroracoin.is/api/tx/send',
+            body: {rawtx: req.params.txhex},
+            json: true
+          }, function(error, response, body){
+            console.log(body);
+            res.send(body);
 
+          });
+      });
+      app.get('/htmlcoin/broadcast/:txhex', (req, res) => {
+        console.log(req.params.txhex);
+        request.post({
+            url: 'https://explorer.htmlcoin.com/api/tx/send',
+            body: {rawtx: req.params.txhex},
+            json: true
+          }, function(error, response, body){
+            console.log(body);
+            res.send(body);
+
+          });
+      });
+      app.get('/safecoin/broadcast/:txhex', (req, res) => {
+        console.log(req.params.txhex);
+        request.post({
+            url: 'https://explorer.safecoin.org/api/tx/send',
+            body: {rawtx: req.params.txhex},
+            json: true
+          }, function(error, response, body){
+            console.log(body);
+            res.send(body);
+
+          });
+      });
+      app.get('/pandacoin/broadcast/:txhex', (req, res) => {
+        console.log(req.params.txhex);
+        request.post({
+            url: 'https://chainz.cryptoid.info/pnd/api.dws?q=pushtx',
+            data: req.params.txhex,
+          //  json: true
+          }, function(error, response, body){
+            console.log(body);
+            res.send(body);
+          });
+      });
   const PORT = process.env.PORT || 5555;
   app.listen(PORT, () => console.log(`listening on ${PORT}`));
   https.createServer({
