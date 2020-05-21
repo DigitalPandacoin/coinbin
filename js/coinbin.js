@@ -621,17 +621,6 @@ else if(host=='custom_particl') {
                 $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
               }
             }
-            else if(host=='blockchair_bitcoinmainnet'){
-                var parsed = JSON.parse(data)
-                console.log(parsed);
-                if(parsed.type==='error') {
-                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
-                }
-                else {
-                  console.log(parsed);
-                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
-              }
-            }
             else if(host=='blockchair_litecoin'){
                 var parsed = JSON.parse(data)
                 console.log(parsed);
@@ -640,7 +629,7 @@ else if(host=='custom_particl') {
                 }
                 else {
                   console.log(parsed);
-                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+                $("#walletBalance").html(parsed + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
               }
             }
               else {
@@ -2182,7 +2171,7 @@ function rawSubmitdogechain(thisbtn){
             txhex = $("#rawTransaction").val().trim();
             console.log(txhex);
                 $.ajax({
-                    type: "POST",
+                    type: "GET",
                     url: "https://cryptodepot.org:8083/aurora/broadcast/",
                     data: $("#rawTransaction").val(),
                     error: function(data) {
@@ -2191,7 +2180,7 @@ function rawSubmitdogechain(thisbtn){
                     },
                     success: function(data) {
                         if(data){
-                            var txid = data; // is this right?
+                            var txid = JSON.stringify(data.txid);  // is this right?
                             $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'">' + txid + '</a>');
                         } else {
                             $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
@@ -2210,7 +2199,7 @@ function rawSubmitdogechain(thisbtn){
                     txhex = $("#rawTransaction").val().trim();
                     console.log(txhex);
                         $.ajax({
-                            type: "POST",
+                            type: "GET",
                             url: "https://cryptodepot.org:8083/htmlcoin/broadcast/" + txhex +"",
                             //data: $("#rawTransaction").val(),
                             error: function(data) {
@@ -2219,7 +2208,8 @@ function rawSubmitdogechain(thisbtn){
                             },
                             success: function(data) {
                                 if(data){
-                                    var txid = data; // is this right?
+                                    console.log(JSON.stringify(data));
+                                    var txid = JSON.stringify(data.txid); // is this right?
                                     $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'">' + txid + '</a>');
                                 } else {
                                     $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
@@ -2239,7 +2229,7 @@ function rawSubmitrdd(thisbtn){
         txhex = $("#rawTransaction").val().trim();
         console.log(txhex);
             $.ajax({
-                type: "POST",
+                type: "GET",
                 url: "https://cryptodepot.org:8083/rdd/broadcast/",
                 data: $("#rawTransaction").val(),
                 error: function(data) {
@@ -2248,7 +2238,7 @@ function rawSubmitrdd(thisbtn){
                 },
                 success: function(data) {
                     if(data){
-                        var txid = data; // is this right?
+                        var txid = JSON.stringify(data.txid);  // is this right?
                         $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'">' + txid + '</a>');
                     } else {
                         $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
@@ -2267,7 +2257,7 @@ function rawSubmitrdd(thisbtn){
                     txhex = $("#rawTransaction").val().trim();
                     console.log(txhex);
                         $.ajax({
-                            type: "POST",
+                            type: "GET",
                             url: "http://insight.auroracoin.is/api/tx/send",
                             data: $("#rawTransaction").val(),
                             error: function(data) {
@@ -2276,7 +2266,7 @@ function rawSubmitrdd(thisbtn){
                             },
                             success: function(data) {
                                 if(data){
-                                    var txid = data; // is this right?
+                                    var txid = JSON.stringify(data.txid);  // is this right?
                                     $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'">' + txid + '</a>');
                                 } else {
                                     $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
@@ -3228,7 +3218,7 @@ function rawSubmitDigiExplorer(thisbtn){
 			});
 		} else if(host=="chain.so_litecoin"){
 			$("#rawSubmitBtn").click(function(){
-                rawSubmitchainso(this, "LTC");
+        rawSubmitchainso(this, "LTC");
 			});
 		} else if(host=="chain.so_dogecoin"){
 			$("#rawSubmitBtn").click(function(){
@@ -3236,7 +3226,7 @@ function rawSubmitDigiExplorer(thisbtn){
 			});
 		} else if(host=="blockcypher_bitcoinmainnet"){
 			$("#rawSubmitBtn").click(function(){
-                rawSubmitblockcypher(this, "btc");
+        rawSubmitblockcypher(this, "btc");
 			});
         } else if(host=="blockcypher_litecoin"){
 			$("#rawSubmitBtn").click(function(){
