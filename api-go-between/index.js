@@ -72,11 +72,191 @@ console.log(req.params.address);
           }
         )
       });
+
+      app.get('/blockchair/balance/:coinname/:address', (req, res) => {
+      console.log(req.params.coinname);
+      console.log(req.params.address);
+        request(
+          { url: 'https://api.blockchair.com/'+ req.params.coinname +'/dashboards/address/'+ req.params.address +''},
+          (error, response, body) => {
+            if (error || response.statusCode !== 200) {
+              return res.status(500).json({ type: 'error', message: error });
+            }
+            var your_address = req.params.address;
+            const result = JSON.parse(body);
+            res.send(JSON.stringify(JSON.parse(result.data[your_address].address.balance), null, 2));
+
+            }
+          )
+        });
+        app.get('/auroracoin/balance/:address', (req, res) => {
+        console.log(req.params.address);
+          request(
+            { url: 'http://insight.auroracoin.is/api/addr/'+ req.params.address +'/balance'},
+            (error, response, body) => {
+              if (error || response.statusCode !== 200) {
+                return res.status(500).json({ type: 'error', message: error });
+              }
+              res.send(JSON.stringify(JSON.parse(body), null, 2));
+
+              }
+            )
+          });
+          app.get('/auroracoin/listunspent/:address', (req, res) => {
+          console.log(req.params.address);
+            request(
+              { url: 'http://insight.auroracoin.is/api/addr/'+ req.params.address +'/utxo'},
+              (error, response, body) => {
+                if (error || response.statusCode !== 200) {
+                  return res.status(500).json({ type: 'error', message: error });
+                }
+                res.send(JSON.stringify(JSON.parse(body), null, 2));
+
+                }
+              )
+            });
+            app.get('/htmlcoin/balance/:address', (req, res) => {
+            console.log(req.params.address);
+              request(
+                { url: 'https://explorer.htmlcoin.com/api/addr/'+ req.params.address +'/balance'},
+                (error, response, body) => {
+                  if (error || response.statusCode !== 200) {
+                    return res.status(500).json({ type: 'error', message: error });
+                  }
+                  res.send(JSON.stringify(JSON.parse(body), null, 2));
+
+                  }
+                )
+              });
+              app.get('/htmlcoin/listunspent/:address', (req, res) => {
+              console.log(req.params.address);
+                request(
+                  { url: 'https://explorer.htmlcoin.com/api/addr/'+ req.params.address +'/utxo'},
+                  (error, response, body) => {
+                    if (error || response.statusCode !== 200) {
+                      return res.status(500).json({ type: 'error', message: error });
+                    }
+                    res.send(JSON.stringify(JSON.parse(body), null, 2));
+
+                    }
+                  )
+                });
+                app.get('/safecoin/balance/:address', (req, res) => {
+                console.log(req.params.address);
+                  request(
+                    { url: 'https://explorer.safecoin.org/api/addr/'+ req.params.address +'/balance'},
+                    (error, response, body) => {
+                      if (error || response.statusCode !== 200) {
+                        return res.status(500).json({ type: 'error', message: error });
+                      }
+                      res.send(JSON.stringify(JSON.parse(body), null, 2));
+
+                      }
+                    )
+                  });
+                  app.get('/safecoin/listunspent/:address', (req, res) => {
+                  console.log(req.params.address);
+                    request(
+                      { url: 'https://explorer.safecoin.org/api/addr/'+ req.params.address +'/utxo'},
+                      (error, response, body) => {
+                        if (error || response.statusCode !== 200) {
+                          return res.status(500).json({ type: 'error', message: error });
+                        }
+                        res.send(JSON.stringify(JSON.parse(body), null, 2));
+
+                        }
+                      )
+                    });
+                    app.get('/rdd/balance/:address', (req, res) => {
+                    console.log(req.params.address);
+                      request(
+                        { url: 'https://live.reddcoin.com/api/addr/'+ req.params.address +'/balance'},
+                        (error, response, body) => {
+                          if (error || response.statusCode !== 200) {
+                            return res.status(500).json({ type: 'error', message: error });
+                          }
+                          res.send(JSON.stringify(JSON.parse(body), null, 2));
+
+                          }
+                        )
+                      });
+                      app.get('/rdd/listunspent/:address', (req, res) => {
+                      console.log(req.params.address);
+                        request(
+                          { url: 'https://live.reddcoin.com/api/addr/'+ req.params.address +'/utxo'},
+                          (error, response, body) => {
+                            if (error || response.statusCode !== 200) {
+                              return res.status(500).json({ type: 'error', message: error });
+                            }
+                            res.send(JSON.stringify(JSON.parse(body), null, 2));
+
+                            }
+                          )
+                        });
+      app.get('/rdd/broadcast/:txhex', (req, res) => {
+        console.log(req.params.txhex);
+        request.post({
+            url: 'https://live.reddcoin.com/api/tx/send',
+            body: {rawtx: req.params.txhex},
+            json: true
+          }, function(error, response, body){
+            console.log(body);
+            res.send(body);
+
+          });
+      });
+      app.get('/aurora/broadcast/:txhex', (req, res) => {
+        console.log(req.params.txhex);
+        request.post({
+            url: 'http://insight.auroracoin.is/api/tx/send',
+            body: {rawtx: req.params.txhex},
+            json: true
+          }, function(error, response, body){
+            console.log(body);
+            res.send(body);
+
+          });
+      });
+      app.get('/htmlcoin/broadcast/:txhex', (req, res) => {
+        console.log(req.params.txhex);
+        request.post({
+            url: 'https://explorer.htmlcoin.com/api/tx/send',
+            body: {rawtx: req.params.txhex},
+            json: true
+          }, function(error, response, body){
+            console.log(body);
+            res.send(body);
+
+          });
+      });
+      app.get('/safecoin/broadcast/:txhex', (req, res) => {
+        console.log(req.params.txhex);
+        request.post({
+            url: 'https://explorer.safecoin.org/api/tx/send',
+            body: {rawtx: req.params.txhex},
+            json: true
+          }, function(error, response, body){
+            console.log(body);
+            res.send(body);
+
+          });
+      });
+      app.get('/pandacoin/broadcast/:txhex', (req, res) => {
+        console.log(req.params.txhex);
+        request.post({
+            url: 'https://chainz.cryptoid.info/pnd/api.dws?q=pushtx',
+            data: req.params.txhex,
+          //  json: true
+          }, function(error, response, body){
+            console.log(body);
+            res.send(body);
+          });
+      });
   const PORT = process.env.PORT || 5555;
   app.listen(PORT, () => console.log(`listening on ${PORT}`));
   https.createServer({
-    key: fs.readFileSync('key.pem'), // Create a key and cert for yourself
-    cert: fs.readFileSync('cert.pem') // change filename as needed.
+    key: fs.readFileSync(''), //change me
+    cert: fs.readFileSync('') //change me
   }, app).listen(8083, function () {
    require('dns').lookup(require('os').hostname(), function (err, add, fam) {
      console.log('HTTPS running on http://%s:8083', add);
