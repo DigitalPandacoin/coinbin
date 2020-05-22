@@ -2180,8 +2180,8 @@ function rawSubmitdogechain(thisbtn){
                     },
                     success: function(data) {
                         if(data){
-                            var txid = JSON.stringify(data.txid);  // is this right?
-                            $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'">' + txid + '</a>');
+                            var txid = data.txid;  // is this right?
+                            $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://insight.auroracoin.is/tx/'+ txid +'">' + txid + '</a>');
                         } else {
                             $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
                         }
@@ -2209,8 +2209,8 @@ function rawSubmitdogechain(thisbtn){
                             success: function(data) {
                                 if(data){
                                     console.log(JSON.stringify(data));
-                                    var txid = JSON.stringify(data.txid); // is this right?
-                                    $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'">' + txid + '</a>');
+                                    var txid = data.txid; // is this right?
+                                    $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="https://explorer.htmlcoin.com/tx/'+ txid +'">' + txid + '</a>');
                                 } else {
                                     $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
                                 }
@@ -2238,8 +2238,8 @@ function rawSubmitrdd(thisbtn){
                 },
                 success: function(data) {
                     if(data){
-                        var txid = JSON.stringify(data.txid);  // is this right?
-                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'">' + txid + '</a>');
+                        var txid = data.txid;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="https://live.reddcoin.com/tx/'+ txid +'">' + txid + '</a>');
                     } else {
                         $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
                     }
@@ -2266,7 +2266,7 @@ function rawSubmitrdd(thisbtn){
                             },
                             success: function(data) {
                                 if(data){
-                                    var txid = JSON.stringify(data.txid);  // is this right?
+                                    var txid = data.txid;  // is this right?
                                     $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'">' + txid + '</a>');
                                 } else {
                                     $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
@@ -3093,6 +3093,10 @@ function rawSubmitDigiExplorer(thisbtn){
     else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "rdd")) {
       $("#coinjs_broadcast").val("custom_rdd").trigger("change");
       $("#coinjs_utxo").val("custom_rdd").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "html")) {
+      $("#coinjs_broadcast").val("custom_htmlcoin").trigger("change");
+      $("#coinjs_utxo").val("custom_htmlcoin").trigger("change");
     }
     $("#settingsBtn").trigger("click");
     return false;
