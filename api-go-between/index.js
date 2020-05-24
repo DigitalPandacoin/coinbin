@@ -193,10 +193,50 @@ console.log(req.params.address);
                             }
                           )
                         });
+
+                        app.get('/feathercoin/balance/:address', (req, res) => {
+                        console.log(req.params.address);
+                          request(
+                            { url: 'http://explorer.feathercoin.com/api/addr/'+ req.params.address +'/balance'},
+                            (error, response, body) => {
+                              if (error || response.statusCode !== 200) {
+                                return res.status(500).json({ type: 'error', message: error });
+                              }
+                              res.send(JSON.stringify(JSON.parse(body), null, 2));
+
+                              }
+                            )
+                          });
+                          app.get('/feathercoin/listunspent/:address', (req, res) => {
+                          console.log(req.params.address);
+                            request(
+                              { url: 'http://explorer.feathercoin.com/api/addr/'+ req.params.address +'/utxo'},
+                              (error, response, body) => {
+                                if (error || response.statusCode !== 200) {
+                                  return res.status(500).json({ type: 'error', message: error });
+                                }
+                                res.send(JSON.stringify(JSON.parse(body), null, 2));
+
+                                }
+                              )
+                            });
+
       app.get('/rdd/broadcast/:txhex', (req, res) => {
         console.log(req.params.txhex);
         request.post({
             url: 'https://live.reddcoin.com/api/tx/send',
+            body: {rawtx: req.params.txhex},
+            json: true
+          }, function(error, response, body){
+            console.log(body);
+            res.send(body);
+
+          });
+      });
+      app.get('/feathercoin/broadcast/:txhex', (req, res) => {
+        console.log(req.params.txhex);
+        request.post({
+            url: 'http://explorer.feathercoin.com/api/tx/send',
             body: {rawtx: req.params.txhex},
             json: true
           }, function(error, response, body){

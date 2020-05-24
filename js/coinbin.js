@@ -160,6 +160,9 @@ else if(host=='zcash.host') {
 else if(host=='custom_rdd') {
   explorer_addr = "https://live.reddcoin.com/address/";
 }
+else if(host=='custom_feather') {
+  explorer_addr = "http://explorer.feathercoin.com/address/";
+}
 else if(host=='custom_htmlcoin') {
   explorer_addr = "https://explorer.htmlcoin.com/address/";
 }
@@ -487,6 +490,10 @@ else if(host=='custom_rdd') {
   explorer_api = "https://cryptodepot.org:8083/rdd/balance/";
   explorer_addr = "https://live.reddcoin.com/address/";
 }
+else if(host=='custom_feather') {
+  explorer_api = "https://cryptodepot.org:8083/feathercoin/balance/";
+  explorer_addr = "http://explorer.feathercoin.com/address/";
+}
 else if(host=='custom_aurora') {
   explorer_api = "https://cryptodepot.org:8083/aurora/balance/";
 }
@@ -545,6 +552,17 @@ else if(host=='custom_particl') {
               }
             }
             else if(host=='custom_rdd'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='custom_feather'){
                 var parsed = JSON.parse(data)
                 console.log(parsed);
                 if(parsed.type==='error') {
@@ -1303,6 +1321,9 @@ else if(host=='custom_particl') {
     else if(host=='custom_rdd'){
 			listUnspentrdd(redeem);
 		}
+    else if(host=='custom_feather'){
+			listUnspentfeather(redeem);
+		}
     else if(host=='custom_aurora'){
 			listUnspentaurora(redeem);
 		}
@@ -1968,6 +1989,36 @@ function listUnspentBlockcypher(redeem,network){
 			}
 		});
 	}
+  function listUnspentfeather(redeem){
+		$.ajax ({
+			type: "GET",
+			url: "https://cryptodepot.org:8083/feathercoin/listunspent/"+redeem.addr+"",
+			dataType: "json",
+			error: function(data) {
+				$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+			},
+			success: function(data) {
+				if(data && data.length){
+					$("#redeemFromAddress").removeClass('hidden').html(
+						'<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://live.reddcoin.com/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+						for(var i in data){
+							var o = data[i];
+							var tx = o.txid;
+							var n = o.vout;
+							var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+							var amount = o.amount;
+							addOutput(tx, n, script, amount);
+						}
+				} else {
+					$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+				}
+			},
+			complete: function(data, status) {
+				$("#redeemFromBtn").html("Load").attr('disabled',false);
+				totalInputAmount();
+			}
+		});
+	}
 
     function getPndBalance(pndAddress) {
 
@@ -2172,11 +2223,12 @@ function rawSubmitdogechain(thisbtn){
             console.log(txhex);
                 $.ajax({
                     type: "GET",
-                    url: "https://cryptodepot.org:8083/aurora/broadcast/",
+                    url: `https://cryptodepot.org:8083/aurora/broadcast/${txhex}`,
                     data: $("#rawTransaction").val(),
                     error: function(data) {
-                        var r = ' Failed to Broadcast.'; // this wants a preceding space
-                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                      errcode = data.responseText;
+                      var r = ' Failed to Broadcast.'; // this wants a preceding space
+                      $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
                     },
                     success: function(data) {
                         if(data){
@@ -2203,8 +2255,9 @@ function rawSubmitdogechain(thisbtn){
                             url: "https://cryptodepot.org:8083/htmlcoin/broadcast/" + txhex +"",
                             //data: $("#rawTransaction").val(),
                             error: function(data) {
-                                var r = ' Failed to Broadcast.'; // this wants a preceding space
-                                $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                              errcode = data.responseText;
+                              var r = ' Failed to Broadcast.'; // this wants a preceding space
+                              $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
                             },
                             success: function(data) {
                                 if(data){
@@ -2230,16 +2283,47 @@ function rawSubmitrdd(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: "https://cryptodepot.org:8083/rdd/broadcast/",
+                url: `https://cryptodepot.org:8083/rdd/broadcast/${txhex}`,
                 data: $("#rawTransaction").val(),
                 error: function(data) {
-                    var r = ' Failed to Broadcast.'; // this wants a preceding space
-                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                  errcode = data.responseText;
+                  var r = ' Failed to Broadcast.'; // this wants a preceding space
+                  $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
                 },
                 success: function(data) {
                     if(data){
                         var txid = data.txid;  // is this right?
-                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="https://live.reddcoin.com/tx/'+ txid +'">' + txid + '</a>');
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://live.reddcoin.com/tx/$txid"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
+function rawSubmitfeather(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/feathercoin/broadcast/${txhex}`,
+                //data: $("#rawTransaction").val(),
+                error: function(data) {
+                    errcode = data.responseText;
+                    var r = ' Failed to Broadcast.'; // this wants a preceding space
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                },
+                success: function(data) {
+                  console.log(data.txid);
+                    if(data){
+                        var txid = data.txid;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="http://explorer.feathercoin.com/tx/${txid}"> ${txid} </a>`);
                     } else {
                         $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
                     }
@@ -2258,11 +2342,12 @@ function rawSubmitrdd(thisbtn){
                     console.log(txhex);
                         $.ajax({
                             type: "GET",
-                            url: "http://insight.auroracoin.is/api/tx/send",
-                            data: $("#rawTransaction").val(),
+                            url: `http://insight.auroracoin.is/api/tx/send/${txhex}`,
+                            //data: $("#rawTransaction").val(),
                             error: function(data) {
-                                var r = ' Failed to Broadcast.'; // this wants a preceding space
-                                $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                              errcode = data.responseText;
+                              var r = ' Failed to Broadcast.'; // this wants a preceding space
+                              $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
                             },
                             success: function(data) {
                                 if(data){
@@ -3094,6 +3179,10 @@ function rawSubmitDigiExplorer(thisbtn){
       $("#coinjs_broadcast").val("custom_rdd").trigger("change");
       $("#coinjs_utxo").val("custom_rdd").trigger("change");
     }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "ftc")) {
+      $("#coinjs_broadcast").val("custom_feather").trigger("change");
+      $("#coinjs_utxo").val("custom_feather").trigger("change");
+    }
     else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "html")) {
       $("#coinjs_broadcast").val("custom_htmlcoin").trigger("change");
       $("#coinjs_utxo").val("custom_htmlcoin").trigger("change");
@@ -3193,6 +3282,13 @@ function rawSubmitDigiExplorer(thisbtn){
     $("#coinjs_utxo").val("custom_rdd").trigger("change");
     $("#settingsBtn").trigger("click");
   }
+  else if(cUrl == 'ftc') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("custom_feather").trigger("change");
+    $("#coinjs_utxo").val("custom_feather").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
   else {
 
     $("#coinjs_coin").val("custom").trigger("change");
@@ -3259,6 +3355,10 @@ function rawSubmitDigiExplorer(thisbtn){
 		} else if(host=="custom_rdd"){
 			$("#rawSubmitBtn").click(function(){
 				rawSubmitrdd(this);
+			});
+		} else if(host=="custom_feather"){
+			$("#rawSubmitBtn").click(function(){
+				rawSubmitfeather(this);
 			});
 		} else if(host=="custom_htmlcoin"){
 			$("#rawSubmitBtn").click(function(){
@@ -3553,6 +3653,14 @@ function rawSubmitDigiExplorer(thisbtn){
           coingeckoCoinName = "reddcoin";
           explorer_addr = "https://live.reddcoin.com/address/";
           explorer_api = "https://cryptodepot.org:8083/rdd/balance/";
+          console.log("Reddcoin");
+        }
+        else if(host=='custom_feather') {
+          tickerCode = "FTC";
+          customCoinTicker = "ftc";
+          coingeckoCoinName = "feathercoin";
+          explorer_addr = "http://explorer.feathercoin.com/";
+          explorer_api = "https://cryptodepot.org:8083/feathercoin/balance/";
           console.log("Reddcoin");
         }
           else {
