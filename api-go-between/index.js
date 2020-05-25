@@ -367,7 +367,7 @@ console.log(req.params.address);
                                       request(
                                         { url: 'https://explorer.capricoin.org/api/addr/'+ req.params.address +'/balance'},
                                         (error, response, body) => {
-                                          if (error || response.statusCodhttps://explorer.capricoin.org/api/ 200) {
+                                          if (error || response.statusCode !== 200) {
                                             return res.status(500).json({ type: 'error', message: error });
                                           }
                                           res.send(JSON.stringify(JSON.parse(body), null, 2));
@@ -405,7 +405,7 @@ console.log(req.params.address);
                                           request(
                                             { url: 'https://zecblockexplorer.com/api/addr/'+ req.params.address +'/balance'},
                                             (error, response, body) => {
-                                              if (error || response.statusCodhttps://explorer.capricoin.org/api/ 200) {
+                                                if (error || response.statusCode !== 200) {
                                                 return res.status(500).json({ type: 'error', message: error });
                                               }
                                               res.send(JSON.stringify(JSON.parse(body), null, 2));
@@ -443,7 +443,7 @@ console.log(req.params.address);
                                               request(
                                                 { url: 'https://explorer.commercium.net/api/addr/'+ req.params.address +'/balance'},
                                                 (error, response, body) => {
-                                                  if (error || response.statusCodhttps://explorer.capricoin.org/api/ 200) {
+                                                    if (error || response.statusCode !== 200) {
                                                     return res.status(500).json({ type: 'error', message: error });
                                                   }
                                                   res.send(JSON.stringify(JSON.parse(body), null, 2));
@@ -482,7 +482,7 @@ console.log(req.params.address);
                                                   request(
                                                     { url: 'https://explorer.globaltoken.org/api/addr/'+ req.params.address +'/balance'},
                                                     (error, response, body) => {
-                                                      if (error || response.statusCodhttps://explorer.capricoin.org/api/ 200) {
+                                                        if (error || response.statusCode !== 200) {
                                                         return res.status(500).json({ type: 'error', message: error });
                                                       }
                                                       res.send(JSON.stringify(JSON.parse(body), null, 2));
@@ -521,7 +521,7 @@ console.log(req.params.address);
                                                       request(
                                                         { url: 'https://explorer.zcoin.io/api/addr/'+ req.params.address +'/balance'},
                                                         (error, response, body) => {
-                                                          if (error || response.statusCodhttps://explorer.capricoin.org/api/ 200) {
+                                                            if (error || response.statusCode !== 200) {
                                                             return res.status(500).json({ type: 'error', message: error });
                                                           }
                                                           res.send(JSON.stringify(JSON.parse(body), null, 2));
@@ -560,7 +560,7 @@ console.log(req.params.address);
                                                           request(
                                                             { url: 'https://explorer.qtum.org/insight-api/addr/'+ req.params.address +'/balance'},
                                                             (error, response, body) => {
-                                                              if (error || response.statusCodhttps://explorer.capricoin.org/api/ 200) {
+                                                                if (error || response.statusCode !== 200) {
                                                                 return res.status(500).json({ type: 'error', message: error });
                                                               }
                                                               res.send(JSON.stringify(JSON.parse(body), null, 2));
@@ -599,7 +599,7 @@ console.log(req.params.address);
                                                               request(
                                                                 { url: 'https://ilcoinexplorer.com/api/addr/'+ req.params.address +'/balance'},
                                                                 (error, response, body) => {
-                                                                  if (error || response.statusCodhttps://explorer.capricoin.org/api/ 200) {
+                                                                  if (error || response.statusCode !== 200) {
                                                                     return res.status(500).json({ type: 'error', message: error });
                                                                   }
                                                                   res.send(JSON.stringify(JSON.parse(body), null, 2));
@@ -638,7 +638,7 @@ console.log(req.params.address);
                                                                   request(
                                                                     { url: 'https://explorer.smartcash.cc/api/addr/'+ req.params.address +'/balance'},
                                                                     (error, response, body) => {
-                                                                      if (error || response.statusCodhttps://explorer.capricoin.org/api/ 200) {
+                                                                      if (error || response.statusCode !== 200) {
                                                                         return res.status(500).json({ type: 'error', message: error });
                                                                       }
                                                                       res.send(JSON.stringify(JSON.parse(body), null, 2));
@@ -671,6 +671,45 @@ console.log(req.params.address);
 
                                                                         });
                                                                     });
+
+                                                                    app.get('/terracoin/balance/:address', (req, res) => {
+                                                                    console.log(req.params.address);
+                                                                      request(
+                                                                        { url: 'https://insight.terracoin.io/api/addr/'+ req.params.address +'/balance'},
+                                                                        (error, response, body) => {
+                                                                          if (error || response.statusCode !== 200) {
+                                                                            return res.status(500).json({ type: 'error', message: error });
+                                                                          }
+                                                                          res.send(JSON.stringify(JSON.parse(body), null, 2));
+
+                                                                          }
+                                                                        )
+                                                                      });
+                                                                      app.get('/terracoin/listunspent/:address', (req, res) => {
+                                                                      console.log(req.params.address);
+                                                                        request(
+                                                                          { url: 'https://insight.terracoin.io/api/addr/'+ req.params.address +'/utxo'},
+                                                                          (error, response, body) => {
+                                                                            if (error || response.statusCode !== 200) {
+                                                                              return res.status(500).json({ type: 'error', message: error });
+                                                                            }
+                                                                            res.send(JSON.stringify(JSON.parse(body), null, 2));
+
+                                                                            }
+                                                                          )
+                                                                        });
+                                                                        app.get('/terracoin/broadcast/:txhex', (req, res) => {
+                                                                          console.log(req.params.txhex);
+                                                                          request.post({
+                                                                                url: 'https://insight.terracoin.io/api/tx/send',
+                                                                              body: {rawtx: req.params.txhex},
+                                                                              json: true
+                                                                            }, function(error, response, body){
+                                                                              console.log(body);
+                                                                              res.send(body);
+
+                                                                            });
+                                                                        });
       app.get('/pandacoin/broadcast/:txhex', (req, res) => {
         console.log(req.params.txhex);
         request.post({
@@ -686,7 +725,7 @@ console.log(req.params.address);
   app.listen(PORT, () => console.log(`listening on ${PORT}`));
   https.createServer({
     key: fs.readFileSync(''), //change me
-    cert: fs.readFileSync('') //change me
+   cert: fs.readFileSync('') //change me
   }, app).listen(8083, function () {
    require('dns').lookup(require('os').hostname(), function (err, add, fam) {
      console.log('HTTPS running on http://%s:8083', add);
