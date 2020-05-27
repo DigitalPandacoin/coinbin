@@ -5140,7 +5140,7 @@ else if (document.getElementById("customCoinTicker").value == "kmd") {
 coingeckoCoinName = coingeckoCoinName;
 			if (coinGecko === "true") {
 				document.getElementById("market-ticker").innerHTML = `<coingecko-coin-market-ticker-list-widget  coin-id="${coingeckoCoinName}" currency="usd" locale="en"></coingecko-coin-market-ticker-list-widget>`;
-				document.getElementById("coin-tick").innerHTML = `<coingecko-coin-price-marquee-widget  coin-ids="bitcoin,ethereum,eos,ripple,litecoin,pandacoin,dogecoin,${coingeckoCoinName}" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget>`;
+				document.getElementById("coin-tick").innerHTML = `<coingecko-coin-price-marquee-widget  coin-ids="bitcoin,litecoin,pandacoin,dogecoin,dash,qtum,the-cypherfunks,viacoin,${coingeckoCoinName}" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget>`;
 				document.getElementById("coingeckoinfo").innerHTML = `<center><a href="https://www.coingecko.com/en/coins/${coingeckoCoinName}">Coin Info</a></center>`;
 			}
 		}
@@ -5276,7 +5276,7 @@ jQuery(document).ready(function($) {
 						<div class="row">
 							<div class="col-md-12">
 								<script src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js"></script>
-								<div id="coin-tick"><coingecko-coin-price-marquee-widget  coin-ids="bitcoin,ethereum,eos,ripple,litecoin,pandacoin,dogecoin" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget></div><br>
+								<div id="coin-tick"><coingecko-coin-price-marquee-widget  coin-ids="bitcoin,litecoin,pandacoin,dogecoin,dash,qtum,the-cypherfunks,viacoin" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget></div><br>
 								<h2>Open Wallet <small> browser based <span id="bTtitle">Pandacoin</span> wallet</small></h2>
 								<div id="openLogin">
 									<form class="form-signin" role="form" action="javascript:;">
@@ -6530,7 +6530,7 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="arepa"></center><img alt="" src="images/logo/arepa.png" style="height:45px"><br><center>arepa</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="arg"></center><img alt="" src="images/logo/arg.png" style="height:45px"><br><center>arg</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="ari"></center><img alt="" src="images/logo/ari.png" style="height:45px"><br><center>ari</center></div>
-							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="arrr"></center><img alt="" src="images/logo/arrr.png" style="height:45px"><br><center>arrr</center></div>
+							<!-- <div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="arrr"></center><img alt="" src="images/logo/arrr.png" style="height:45px"><br><center>arrr</center></div> -->
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="aur"></center><img alt="" src="images/logo/aur.png" style="height:45px"><br><center>aur</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="avn"></center><img alt="" src="images/logo/avn.png" style="height:45px"><br><center>avn</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="axe"></center><img alt="" src="images/logo/axe.png" style="height:45px"><br><center>axe</center></div>
@@ -6808,7 +6808,7 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="rdd"></center><img alt="" src="images/logo/rdd.png" style="height:45px"><br><center>rdd</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="ric"></center><img alt="" src="images/logo/ric.png" style="height:45px"><br><center>ric</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="rpd"></center><img alt="" src="images/logo/rpd.png" style="height:45px"><br><center>rpd</center></div>
-							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="xrp"></center><img alt="" src="images/logo/xrp.png" style="height:45px"><br><center>xrp</center></div>
+							<!-- <div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="xrp"></center><img alt="" src="images/logo/xrp.png" style="height:45px"><br><center>xrp</center></div> -->
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="rpc"></center><img alt="" src="images/logo/rpc.png" style="height:45px"><br><center>rpc</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="rstr"></center><img alt="" src="images/logo/rstr.png" style="height:45px"><br><center>rstr</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="rupx"></center><img alt="" src="images/logo/rupx.png" style="height:45px"><br><center>rupx</center></div>
@@ -6916,7 +6916,7 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="xwc"></center><img alt="" src="images/logo/xwc.png" style="height:45px"><br><center>xwc</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="xzc"></center><img alt="" src="images/logo/xzc.png" style="height:45px"><br><center>xzc</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="zcl"></center><img alt="" src="images/logo/zcl.png" style="height:45px"><br><center>zcl</center></div>
-							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="zec"></center><img alt="" src="images/logo/zec.png" style="height:45px"><br><center>zec</center></div>
+							<!-- <div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="zec"></center><img alt="" src="images/logo/zec.png" style="height:45px"><br><center>zec</center></div> -->
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="zer"></center><img alt="" src="images/logo/zer.png" style="height:45px"><br><center>zer</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="zeit"></center><img alt="" src="images/logo/zeit.png" style="height:45px"><br><center>zeit</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="zet"></center><img alt="" src="images/logo/zet.png" style="height:45px"><br><center>zet</center></div>
