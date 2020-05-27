@@ -1227,13 +1227,13 @@ coingeckoCoinName = "ripple";
 			  document.getElementById("coinjs_pub").value = "0x3f";
 			  document.getElementById("coinjs_priv").value = "0xbf";
 			  document.getElementById("coinjs_multisig").value = "0xbf";
-			  document.getElementById("coinLogo").src = "images/logo/sdc.png";
+			  document.getElementById("coinLogo").src = "images/logo/shadowcash.png";
 			  document.getElementById("bTtitle").textContent = "Shadowcoin";
 			  document.getElementById("bTtitle1").textContent = "Shadowcoin";
 			  tickerCode = "SDC";
 				document.getElementById("xfeeTicker").textContent = tickerCode;
 coingeckoCoinName = "shadowcoin";
-				coinGecko = "false";
+				coinGecko = "true";
 			}
 			else if (document.getElementById("customCoinTicker").value == "start") {
 			  document.getElementById("coinjs_pub").value = "0x7d";
@@ -5116,6 +5116,18 @@ else if (document.getElementById("customCoinTicker").value == "aya") {
 coingeckoCoinName = "aryacoin";
   coinGecko = "true";
 }
+else if (document.getElementById("customCoinTicker").value == "kmd") {
+  document.getElementById("coinjs_pub").value = "0x3c";
+  document.getElementById("coinjs_priv").value = "0xbc";
+  document.getElementById("coinjs_multisig").value = "0x55";
+  document.getElementById("coinLogo").src = "images/logo/kmd.png";
+  document.getElementById("bTtitle").textContent = "Komodo";
+  document.getElementById("bTtitle1").textContent = "Komodo";
+  tickerCode = "KMD";
+  coingeckoCoinName = "komodo";
+  coinGecko = "true";
+}
+
 <!-- END OF IF -->
 	  else {
 				document.getElementById("xfeeTicker").textContent = document.getElementById("customCoinTicker").value
@@ -6691,6 +6703,7 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="j"></center><img alt="" src="images/logo/j.png" style="height:45px"><br><center>j</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="ked"></center><img alt="" src="images/logo/ked.png" style="height:45px"><br><center>ked</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="klks"></center><img alt="" src="images/logo/klks.png" style="height:45px"><br><center>klks</center></div>
+							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="kmd"></center><img alt="" src="images/logo/kmd.png" style="height:45px"><br><center>kmd</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="kng"></center><img alt="" src="images/logo/kng.png" style="height:45px"><br><center>kng</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="kobo"></center><img alt="" src="images/logo/kobo.png" style="height:45px"><br><center>kobo</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="kore"></center><img alt="" src="images/logo/kore.png" style="height:45px"><br><center>kore</center></div>
@@ -6807,8 +6820,7 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="scol"></center><img alt="" src="images/logo/scol.png" style="height:45px"><br><center>scol</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="scribe"></center><img alt="" src="images/logo/scribe.png" style="height:45px"><br><center>scribe</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="scriv"></center><img alt="" src="images/logo/scriv.png" style="height:45px"><br><center>scriv</center></div>
-							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="sdc"></center><img alt="" src="images/logo/sdc.png" style="height:45px"><br><center>sdc</center></div>
-							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="shadowcash"></center><img alt="" src="images/logo/shadowcash.png" style="height:45px"><br><center>shadowcash</center></div>
+							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="sdc"></center><img alt="" src="images/logo/shadowcash.png" style="height:45px"><br><center>sdc</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="sha"></center><img alt="" src="images/logo/sha.png" style="height:45px"><br><center>sha</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="shnd"></center><img alt="" src="images/logo/shnd.png" style="height:45px"><br><center>shnd</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="sib"></center><img alt="" src="images/logo/sib.png" style="height:45px"><br><center>sib</center></div>
@@ -7036,7 +7048,7 @@ jQuery(document).ready(function($) {
 <option value="lobs">Lobstex (LOBS)</option><option value="iop">Internet of People (IOP)</option><option value="twins">win.win (TWINS)</option><option value="tips">FedoraCoin (TIPS)</option>
 <option value="erk">Eureka Coin (ERK)</option><option value="vites">Vites (VITES)</option><option value="trtt">Trittium (TRTT)</option><option value="ebst">eBoost (EBST)</option>
 <option value="owc">ODUWA (OWC)</option><option value="gbx">GoByte (GBX)</option><option value="xwc">Whitecoin (XWC)</option><option value="2x2">2X2 (2X2)</option>
-<option value="xlm">Stellar (XLM)</option><option value="1x2">1X2 COIN (1X2)</option><option value="aya">Aryacoin (AYA)</option>
+<option value="xlm">Stellar (XLM)</option><option value="1x2">1X2 COIN (1X2)</option><option value="aya">Aryacoin (AYA)</option><option value="kmd">Komodo (KMD)</option>
 <!-- settings area1 -->
 									</select>
 								</div>
@@ -7086,6 +7098,11 @@ jQuery(document).ready(function($) {
 									<option value="custom_rdd">Reddcoin</options>
 									<option value="custom_feather">feathercoin</options>
 									<option value="custom_viacoin">Viacoin</options>
+									<option value="custom_komodo">Komodo</options>
+									<option value="custom_piratechain">Pirate-Chain</options>
+									<option value="custom_experiencechain">eXPerience Chain</options>
+									<option value="custom_eureka">Eureka Coin</options>
+									<option value="custom_gobyte">GoByte</options>
 									<option value="custom_axecore">Axecore</options>
 									<option value="custom_capricoin">Capricoin</options>
 									<option value="custom_zcash">zCash</options>
@@ -7135,6 +7152,11 @@ jQuery(document).ready(function($) {
 									<option value="custom_rdd">Reddcoin</options>
 									<option value="custom_feather">feathercoin</options>
 									<option value="custom_viacoin">Viacoin</options>
+									<option value="custom_komodo">Komodo</options>
+									<option value="custom_experiencechain">eXPerience Chain</options>
+									<option value="custom_piratechain">Pirate-Chain</options>
+									<option value="custom_eureka">Eureka Coin</options>
+									<option value="custom_gobyte">GoByte</options>
 									<option value="custom_axecore">Axecore</options>
 									<option value="custom_capricoin">Capricoin</options>
 									<option value="custom_zcash">zCash</options>
