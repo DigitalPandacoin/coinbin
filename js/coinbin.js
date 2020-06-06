@@ -4552,10 +4552,6 @@ function rawSubmitDigiExplorer(thisbtn){
       $("#coinjs_broadcast").val("blockcypher_dogecoin").trigger("change");
       $("#coinjs_utxo").val("blockchair_dogecoin").trigger("change");
     }
-    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "btc")) {
-      $("#coinjs_broadcast").val("blockchair_bitcoinmainnet").trigger("change");
-      $("#coinjs_utxo").val("blockchair_bitcoinmainnet").trigger("change");
-    }
     else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "bch")) {
       $("#coinjs_broadcast").val("bch.host").trigger("change");
       $("#coinjs_utxo").val("bch.host").trigger("change");
