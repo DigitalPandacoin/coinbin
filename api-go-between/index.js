@@ -903,11 +903,32 @@ console.log(req.params.address);
         });
     });
 
+    app.get('/syscoin/broadcast/:txhex', (req, res) => {
+      console.log(req.params.txhex);
+      request.get({
+        url: `https://sys1.bcfn.ca/api/v2/sendtx/${req.params.txhex}`,
+        json: true
+      }, function(error, response, body){
+        console.log(body.result);
+        res.send(body.result);
+        });
+    });
+    app.get('/peercoin/broadcast/:txhex', (req, res) => {
+      console.log(req.params.txhex);
+      request.get({
+        url: `https://blockbook.peercoin.net/api/v2/sendtx/${req.params.txhex}`,
+        json: true
+      }, function(error, response, body){
+        console.log(body.result);
+        res.send(body.result);
+        });
+    });
+
   const PORT = process.env.PORT || 5555;
   app.listen(PORT, () => console.log(`listening on ${PORT}`));
   https.createServer({
     key: fs.readFileSync(''), //change me
-    cert: fs.readFileSync('') //change me
+      cert: fs.readFileSync('') //change me
   }, app).listen(8083, function () {
    require('dns').lookup(require('os').hostname(), function (err, add, fam) {
      console.log('HTTPS running on http://%s:8083', add);

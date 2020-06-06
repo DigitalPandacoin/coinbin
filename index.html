@@ -1572,13 +1572,25 @@ coingeckoCoinName = "bitspace";
 				coinGecko = "true";
 			}
 			else if (document.getElementById("customCoinTicker").value == "swift") {
-			  document.getElementById("coinjs_pub").value = "0x55";
-			  document.getElementById("coinjs_priv").value = "0xd5";
-			  document.getElementById("coinjs_multisig").value = "0x1c";
-			  document.getElementById("coinLogo").src = "images/logo/swift.png";
-			  document.getElementById("bTtitle").textContent = "Bitswift";
-			  document.getElementById("bTtitle1").textContent = "Bitswift";
+			  document.getElementById("coinjs_pub").value = "0x3f";
+			  document.getElementById("coinjs_priv").value = "0x98";
+			  document.getElementById("coinjs_multisig").value = "0x12";
+			  document.getElementById("coinLogo").src = "images/logo/swiftcash.png";
+			  document.getElementById("bTtitle").textContent = "Swiftcash";
+			  document.getElementById("bTtitle1").textContent = "Swiftcash";
 			  tickerCode = "SWIFT";
+				document.getElementById("xfeeTicker").textContent = tickerCode;
+coingeckoCoinName = "bitswift";
+				coinGecko = "true";
+			}
+			else if (document.getElementById("customCoinTicker").value == "bits") {
+				document.getElementById("coinjs_pub").value = "0x55";
+				document.getElementById("coinjs_priv").value = "0xd5";
+				document.getElementById("coinjs_multisig").value = "0x1c";
+				document.getElementById("coinLogo").src = "images/logo/swift.png";
+				document.getElementById("bTtitle").textContent = "Bitswift";
+				document.getElementById("bTtitle1").textContent = "Bitswift";
+				tickerCode = "BITS";
 				document.getElementById("xfeeTicker").textContent = tickerCode;
 coingeckoCoinName = "bitswift";
 				coinGecko = "true";
@@ -5140,7 +5152,7 @@ else if (document.getElementById("customCoinTicker").value == "kmd") {
 coingeckoCoinName = coingeckoCoinName;
 			if (coinGecko === "true") {
 				document.getElementById("market-ticker").innerHTML = `<coingecko-coin-market-ticker-list-widget  coin-id="${coingeckoCoinName}" currency="usd" locale="en"></coingecko-coin-market-ticker-list-widget>`;
-				document.getElementById("coin-tick").innerHTML = `<coingecko-coin-price-marquee-widget  coin-ids="bitcoin,litecoin,pandacoin,dogecoin,dash,qtum,the-cypherfunks,viacoin,${coingeckoCoinName}" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget>`;
+				document.getElementById("coin-tick").innerHTML = `<coingecko-coin-price-marquee-widget  coin-ids="bitcoin,litecoin,pandacoin,dogecoin,dash,qtum,the-cypherfunks,viacoin,digibyte,htmlcoin,${coingeckoCoinName}" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget>`;
 				document.getElementById("coingeckoinfo").innerHTML = `<center><a href="https://www.coingecko.com/en/coins/${coingeckoCoinName}">Coin Info</a></center>`;
 			}
 		}
@@ -5276,7 +5288,7 @@ jQuery(document).ready(function($) {
 						<div class="row">
 							<div class="col-md-12">
 								<script src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js"></script>
-								<div id="coin-tick"><coingecko-coin-price-marquee-widget  coin-ids="bitcoin,litecoin,pandacoin,dogecoin,dash,qtum,the-cypherfunks,viacoin" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget></div><br>
+								<div id="coin-tick"><coingecko-coin-price-marquee-widget  coin-ids="bitcoin,litecoin,pandacoin,dogecoin,dash,qtum,the-cypherfunks,viacoin,digibyte,htmlcoin" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget></div><br>
 								<h2>Open Wallet <small> browser based <span id="bTtitle">Pandacoin</span> wallet</small></h2>
 								<div id="openLogin">
 									<form class="form-signin" role="form" action="javascript:;">
@@ -5427,7 +5439,7 @@ jQuery(document).ready(function($) {
 						</div>
 						<br><br>
 						<script src="https://widgets.coingecko.com/coingecko-coin-market-ticker-list-widget.js"></script>
-<div id="market-ticker"><coingecko-coin-market-ticker-list-widget  coin-id="pandacoin" currency="usd" locale="en"></coingecko-coin-market-ticker-list-widget></div>
+						<div id="market-ticker"><coingecko-coin-market-ticker-list-widget  coin-id="pandacoin" currency="usd" locale="en"></coingecko-coin-market-ticker-list-widget></div>
 					</div>
 
 					<div class="tab-pane tab-content" id="newAddress">
@@ -6477,11 +6489,11 @@ jQuery(document).ready(function($) {
 
 					<div class="tab-pane tab-content" id="about">
 						<h2>About <small>open source Pandacoin wallet</small></h2>
-						<p>Version 2.0.30</p>
+						<p>Version 2.0.31</p>
 						<p>Compatible with Pandacoin</p>
                         <p><a href="https://github.com/DigitalPandacoin/coinbin">https://github.com/DigitalPandacoin/coinbin</a></p>
-						<p>Forked from <a href="https://coinb.in">https://coinb.in"</a></p>
-                        <p>Github <a href="https://github.com/OutCast3k/coinbin/">https://github.com/OutCast3k/coinbin/</a></p>
+						<p>Forked from <a href="https://coinb.in">https://coinb.in</a></p>
+                        <p>Github <a href="https://github.com/DigitalPandacoin/coinbin">https://github.com/DigitalPandacoin/coinbin</a></p>
 						<p>TOR <a href="http://4zpinp6gdkjfplhk.onion">4zpinp6gdkjfplhk.onion</a></p>
 						<h3>What is Pandacoin?</h3>
 						<p>Pandacoin is a type of digital currency in which encryption techniques are used to regulate the generation of units of currency and verify the transfer of funds, operating independently of a central bank. See <a href="https://pandacoin.tech/" target="_blank">https://pandacoin.tech/</a>, <a href="https://digitalpandacoin.org/" target="_blank">https://digitalpandacoin.org/</a> for more information.</p>
@@ -6494,7 +6506,7 @@ jQuery(document).ready(function($) {
 						<h3>Support</h3>
 						<p>We recommend that you first check our <a href="https://status.coinb.in/" target="_blank">service status</a> page and then <a href="https://blog.coinb.in/" target="_blank">blog</a> page which has multiple <a href="https://blog.coinb.in/guides" target="_blank">guides</a>. However if the problem persists you can contact us by emailing support{at}coinb.in.</p>
 						<h3>Donate</h3>
-						<p>Please donate to <a href="bitcoin:3K1oFZMks41C7qDYBsr72SYjapLqDuSYuN">3K1oFZMks41C7qDYBsr72SYjapLqDuSYuN</a> if you found this project useful or want to see more features!</p>
+						<p>Please donate to <a href="bitcoin:3GZkU3jHiYUdPZC325zouQwbFyhDpRD7SK">3GZkU3jHiYUdPZC325zouQwbFyhDpRD7SK</a> if you found this project useful or want to see more features!</p>
 					</div>
 					<div class="tab-pane tab-content" id="Favorites">
 						<form id="favoritesFormIDHere">
@@ -6554,6 +6566,7 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="bio"></center><img alt="" src="images/logo/bio.png" style="height:45px"><br><center>bio</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="bis"></center><img alt="" src="images/logo/bis.png" style="height:45px"><br><center>bis</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="bitg"></center><img alt="" src="images/logo/bitg.png" style="height:45px"><br><center>bitg</center></div>
+							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="bits"></center><img alt="" src="images/logo/swift.png" style="height:45px"><br><center>bits</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="blc"></center><img alt="" src="images/logo/blc.png" style="height:45px"><br><center>blc</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="blitz"></center><img alt="" src="images/logo/blitz.png" style="height:45px"><br><center>blitz</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="blk"></center><img alt="" src="images/logo/blk.png" style="height:45px"><br><center>blk</center></div>
@@ -6840,7 +6853,7 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="stk"></center><img alt="" src="images/logo/stk.png" style="height:45px"><br><center>stk</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="strat"></center><img alt="" src="images/logo/strat.png" style="height:45px"><br><center>strat</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="super"></center><img alt="" src="images/logo/super.png" style="height:45px"><br><center>super</center></div>
-							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="swift"></center><img alt="" src="images/logo/swift.png" style="height:45px"><br><center>swift</center></div>
+							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="swift"></center><img alt="" src="images/logo/swiftcash.png" style="height:45px"><br><center>Swift</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="swing"></center><img alt="" src="images/logo/swing.png" style="height:45px"><br><center>swing</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="sxc"></center><img alt="" src="images/logo/sxc.png" style="height:45px"><br><center>sxc</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="sys"></center><img alt="" src="images/logo/sys.png" style="height:45px"><br><center>sys</center></div>
@@ -6935,13 +6948,39 @@ jQuery(document).ready(function($) {
 								<b>Network</b>: <br>
 								<p class="text-muted">Select which network you'd like to use for key pair generation.</p>
 								<select class="form-control" id="coinjs_coin">
-									<option  rel="0x37;0xb7;0x16;0x488b21e;0x488ade4;coinb.in;coinb.in">Pandacoin (mainnet)</option>
+									<option value="pandacoin_mainnet" rel="0x37;0xb7;0x16;0x488b21e;0x488ade4;coinb.in;coinb.in">Pandacoin (mainnet)</option>
                   <option value="cypherfunk_mainnet" rel="0x1c;0x9c;0x3f;0x488b21e;0x488ade4;cryptoid.info_cypherfunk;cryptoid.info_cypherfunk">Cypherfunk (mainnet)</option>
                   <option value="zeitcoin_mainnet" rel="0x33;0xb3;0x08;0x488b21e;0x488ade4;cryptoid.info_zeitcoin;cryptoid.info_zeitcoin">Zeitcoin (mainnet)</option>
                   <option value="digibyte_mainnet" rel="0x1e;0x80;0x3f;0x488b21e;0x488ade4;digiexplorer.info;digiexplorer.info">DigiByte (mainnet)</option>
 									<option value="litecoin_mainnet" rel="0x30;0xb0;0x32;0x019da462;0x019d9cfe;blockchair_litecoin;blockchair_litecoin">Litecoin (mainnet)</option>
 									<option value="dogecoin_mainnet" rel="0x1e;0x9e;0x16;0x0827421e;0x089944e4;blockcypher_dogecoin;blockchair_dogecoin">Dogecoin (mainnet)</option>
-									<option value="shadowcash_mainnet" rel="0x3f;0xbf;0x7d;0xee80286a;0xee8031e8;shadowcash.host;shadowcash.host">ShadowCash (mainnet)</option>
+									<option value="bch.host" rel="0x0;0x80;0x5;0xee80286a;0xee8031e8;bch.host;bch.host">Bitcoin Cash</option>
+									<option value="bsv.host" rel="0x0;0x80;0x5;0xee80286a;0xee8031e8;bsv.host;bsv.host">Bitcoin SV</option>
+									<option value="dash.host" rel="0x4c;0xcc;0x10;0xee80286a;0xee8031e8;dash.host;dash.host">Dash</option>
+									<option value="grs.host" rel="0x24;0x80;0x5;0xee80286a;0xee8031e8;grs.host;grs.host">Groestlcoin</option>
+									<option value="zcash.host" rel="0x1c;0x9c;0x1c;0xee80286a;0xee8031e8;zcash.host;zcash.host">Zcash (Blockchair)</option>
+									<option value="custom_particl" rel="0x38;0x6c;0x4;0xee80286a;0xee8031e8;custom_particl;custom_particl">Particl</options>
+									<option value="custom_aurora" rel="0x17;0xb0;0x5;0xee80286a;0xee8031e8;custom_aurora;custom_aurora">AuroraCoin</options>
+									<option value="custom_htmlcoin" rel="0x29;0xa9;0x6;0xee80286a;0xee8031e8;custom_htmlcoin;custom_htmlcoin">Htmlcoin</options>
+									<option value="custom_safecoin" rel="0x3d;0xbd;0x56;0xee80286a;0xee8031e8;custom_safecoin;custom_safecoin">SafeCoin</options>
+									<option value="custom_rdd" rel="0x3d;0xbd;0x5;0xee80286a;0xee8031e8;custom_rdd;custom_rdd">Reddcoin</options>
+									<option value="custom_feather" rel="0xe;0x8e;0x5;0xee80286a;0xee8031e8;custom_feather;custom_feather">feathercoin</options>
+									<option value="custom_viacoin" rel="0x47;0xc7;0x21;0xee80286a;0xee8031e8;custom_viacoin;custom_viacoin">Viacoin</options>
+									<option value="custom_komodo" rel="0x3c;0xbc;0x55;0xee80286a;0xee8031e8;custom_komodo;custom_komodo">Komodo</options>
+									<option value="custom_experiencechain" rel="0x4c;0x80;0x1c;0xee80286a;0xee8031e8;custom_experiencechain;custom_experiencechain">eXPerience Chain</options>
+									<option value="custom_piratechain" rel="0x3c;0xbc;0x55;0xee80286a;0xee8031e8;custom_piratechain;custom_piratechain">Pirate-Chain</options>
+									<option value="custom_eureka" rel="0x21;0x3a;0x23;0xee80286a;0xee8031e8;custom_eureka;custom_eureka">Eureka Coin</options>
+									<option value="custom_gobyte" rel="0x26;0xc6;0xa;0xee80286a;0xee8031e8;custom_gobyte;custom_gobyte">GoByte</options>
+									<option value="custom_axecore" rel="0x37;0xcc;0x10;0xee80286a;0xee8031e8;custom_axecore;custom_axecore">Axecore</options>
+									<option value="custom_capricoin" rel="0x12;0x92;0x32;0xee80286a;0xee8031e8;custom_capricoin;custom_capricoin">Capricoin</options>
+									<option value="custom_zcash" rel="0x1c;0x9c;0x1c;0xee80286a;0xee8031e8;custom_zcash;custom_zcash">zCash</options>
+									<option value="custom_commercium" rel="0x1c;0x8c;0x33;0xee80286a;0xee8031e8;custom_commercium;custom_commercium">Commercium</options>
+									<option value="custom_globaltoken" rel="0x26;0xa6;0x8d;0xee80286a;0xee8031e8;custom_globaltoken;custom_globaltoken">GlobalToken</options>
+									<option value="custom_zcoin" rel="0x52;0xd2;0x7;0xee80286a;0xee8031e8;custom_zcoin;custom_zcoin">zCoin</options>
+									<option value="custom_qtum" rel="0x3a;0x80;0x32;0xee80286a;0xee8031e8;custom_qtum;custom_qtum">qtum</options>
+									<option value="custom_ilcoin" rel="0x0;0x80;0x5;0xee80286a;0xee8031e8;custom_ilcoin;custom_ilcoin">ILCoin</options>
+									<option value="custom_terracoin" rel="0x0;0x80;0x5;0xee80286a;0xee8031e8;custom_terracoin;custom_terracoin">Terracoin</options>
+									<option value="custom_syscoin" rel="0x3f;0xbf;0x7d;0xee80286a;0xee8031e8;custom_syscoin;custom_syscoin">Syscoin</options>
 									<!-- <option value="" rel="0x3f;0xbf;0x7d;0xee80286a;0xee8031e8;x;x"></option> -->
 									<option value="custom" rel="0x00;0x80;0x05;0x488b21e;0x488ade4;cryptoid.custom;cryptoid.custom">Custom</option>
 								</select>
@@ -7004,8 +7043,8 @@ jQuery(document).ready(function($) {
 <option value="ptc">Pesetacoin (ptc)*</option><option value="pura">PURA (pura)*</option><option value="put">PutinCoin (put)*</option><option value="qac">Quasar (qac)*</option><option value="qbt">Cubits (qbt)*</option><option value="qrk">Quark (qrk)*</option><option value="qub">QubeNet (qub)*</option>
 <option value="rads">Radium (rads)*</option><option value="rby">Rubycoin (rby)*</option><option value="ric">Riecoin (ric)*</option><option value="rpc">RonPaulCoin (rpc)*</option><option value="scifi">UnitedSciFi (scifi)*</option><option value="scol">Scolcoin (scol)*</option><option value="scribe">Scribe (scribe)*</option>
 <option value="sha">SHACoin (sha)*</option><option value="skc">Skeincoin (skc)*</option><option value="slg">Sterlingcoin (slg)*</option><option value="slm">Slimcoin (slm)*</option><option value="slr">SolarCoin (slr)*</option><option value="slx">SLATE (slx)*</option><option value="smly">Smileycoin (smly)*</option>
-<option value="sphx">Sphinxcoin Core (sphx)*</option><option value="sprts">Sprouts (sprts)*</option><option value="stk">Stakecoin (stk)*</option><option value="strat">Stratis (strat)*</option><option value="super">SuperCoin (super)*</option><option value="swift">Bitswift (swift)*</option>
-<option value="swing">Swing (swing)*</option><option value="sxc">SexCoin (sxc)*</option><option value="sys">Syscoin (sys)*</option><option value="taj">TajCoin (taj)*</option><option value="talk">BTCTalkCoin (talk)*</option>
+<option value="sphx">Sphinxcoin Core (sphx)*</option><option value="sprts">Sprouts (sprts)*</option><option value="stk">Stakecoin (stk)*</option><option value="strat">Stratis (strat)*</option><option value="super">SuperCoin (super)*</option><option value="swift">Swiftcash (SWIFT)*</option>
+<option value="swing">Swing (swing)*</option><option value="sxc">SexCoin (sxc)*</option><option value="sys">Syscoin (sys)*</option><option value="taj">TajCoin (taj)*</option><option value="talk">BTCTalkCoin (talk)*</option><option value="bits">Bitswift (BITS)*</option>
 <option value="tao">Tao (tao)*</option><option value="tes">Teslacoin (tes)*</option><option value="toa">ToaCoin (toa)*</option><option value="tpwr">TalonPower (tpwr)*</option><option value="troll">Trollcoin (troll)*</option><option value="trump">TrumpCoin (trump)*</option>
 <option value="tx">Transfercoin (tx)*</option><option value="tzc">Trezarcoin (tzc)*</option><option value="ufo">UFO (ufo)*</option><option value="umo">UniversalMolecule (umo)*</option><option value="uno">Unobtanium (uno)*</option><option value="vcn">Vcoin (vcn)*</option><option value="veil">Veil (veil)*</option>
 <option value="vls">Veles (vls)*</option><option value="vgs">LasVegasCoin (vgs)*</option><option value="vestx2">VESTX v2 (vestx2)*</option><option value="via">Viacoin (via)*</option><option value="vrc">VeriCoin (vrc)*</option><option value="vrm">Verium (vrm)*</option><option value="vtc">Vertcoin (vtc)*</option>
@@ -7113,6 +7152,7 @@ jQuery(document).ready(function($) {
 									<option value="custom_ilcoin">ILCoin</options>
 									<option value="custom_smartcash">SmartCash</options>
 									<option value="custom_terracoin">Terracoin</options>
+									<option value="custom_syscoin">Syscoin</options>
 									<option value="cryptoid.custom">Chainz Cryptoid (Custom)</option>
 									<option value="coinexplorer_custom">Coin Explorer (Custom)</option>
 								</select>
@@ -7167,6 +7207,7 @@ jQuery(document).ready(function($) {
 									<option value="custom_ilcoin">ILCoin</options>
 									<option value="custom_smartcash">SmartCash</options>
 									<option value="custom_terracoin">Terracoin</options>
+									<option value="custom_syscoin">Syscoin</options>
 									<option value="cryptoid.custom">Chainz Cryptoid (Custom)</option>
 									<option value="coinexplorer_custom">Coin Explorer (Custom)</option>
 								</select>
@@ -7192,7 +7233,7 @@ jQuery(document).ready(function($) {
 
 		<div id="footer">
 			<div class="container text-right">
-	        		<p class="text-muted">Version  2.0.30</p>
+	        		<p class="text-muted">Version  2.0.31</p>
 			</div>
 		</div>
 
