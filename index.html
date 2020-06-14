@@ -1045,7 +1045,7 @@ coingeckoCoinName = "argentum";
 			}
 			else if (document.getElementById("customCoinTicker").value == "utip") {
 			  document.getElementById("coinjs_pub").value = "0x17";
-			  document.getElementById("coinjs_priv").value = "0x8d";
+			  document.getElementById("coinjs_priv").value = "0x97";
 			  document.getElementById("coinjs_multisig").value = "0x55";
 			  document.getElementById("coinLogo").src = "images/logo/utip.png";
 			  document.getElementById("bTtitle").textContent = "uTipcoin";
@@ -6489,7 +6489,7 @@ jQuery(document).ready(function($) {
 
 					<div class="tab-pane tab-content" id="about">
 						<h2>About <small>open source Pandacoin wallet</small></h2>
-						<p>Version 2.0.31</p>
+						<p>Version 2.0.32</p>
 						<p>Compatible with Pandacoin</p>
                         <p><a href="https://github.com/DigitalPandacoin/coinbin">https://github.com/DigitalPandacoin/coinbin</a></p>
 						<p>Forked from <a href="https://coinb.in">https://coinb.in</a></p>
@@ -6935,6 +6935,7 @@ jQuery(document).ready(function($) {
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="zet"></center><img alt="" src="images/logo/zet.png" style="height:45px"><br><center>zet</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="zln"></center><img alt="" src="images/logo/zln.png" style="height:45px"><br><center>zln</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="zoom"></center><img alt="" src="images/logo/zoom.png" style="height:45px"><br><center>zoom</center></div>
+							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="zcr"></center><img alt="" src="images/logo/zcr.webp" style="height:45px"><br><center>zcr</center></div>
 							<div style="float: left; margin-bottom: 20px; margin-right: 10px;"><center><input type="radio" name="setting" value="zrc"></center><img alt="" src="images/logo/zrc.png" style="height:45px"><br><center>zrc</center></div>
 							<div style="clear: both"><input type="submit" class="btn btn-primary" id="allcoinsSubmitButtonIDHere"></form></div>
 						</div></center>
@@ -6949,6 +6950,7 @@ jQuery(document).ready(function($) {
 								<p class="text-muted">Select which network you'd like to use for key pair generation.</p>
 								<select class="form-control" id="coinjs_coin">
 									<option value="pandacoin_mainnet" rel="0x37;0xb7;0x16;0x488b21e;0x488ade4;coinb.in;coinb.in">Pandacoin (mainnet)</option>
+									<option value="pandacoin_mainnet" rel="0x37;0xb7;0x16;0x488b21e;0x488ade4;pndcoin_server1;pndcoin_server1">Pandacoin (server1)</option>
                   <option value="cypherfunk_mainnet" rel="0x1c;0x9c;0x3f;0x488b21e;0x488ade4;cryptoid.info_cypherfunk;cryptoid.info_cypherfunk">Cypherfunk (mainnet)</option>
                   <option value="zeitcoin_mainnet" rel="0x33;0xb3;0x08;0x488b21e;0x488ade4;cryptoid.info_zeitcoin;cryptoid.info_zeitcoin">Zeitcoin (mainnet)</option>
                   <option value="digibyte_mainnet" rel="0x1e;0x80;0x3f;0x488b21e;0x488ade4;digiexplorer.info;digiexplorer.info">DigiByte (mainnet)</option>
@@ -7088,6 +7090,7 @@ jQuery(document).ready(function($) {
 <option value="erk">Eureka Coin (ERK)</option><option value="vites">Vites (VITES)</option><option value="trtt">Trittium (TRTT)</option><option value="ebst">eBoost (EBST)</option>
 <option value="owc">ODUWA (OWC)</option><option value="gbx">GoByte (GBX)</option><option value="xwc">Whitecoin (XWC)</option><option value="2x2">2X2 (2X2)</option>
 <option value="xlm">Stellar (XLM)</option><option value="1x2">1X2 COIN (1X2)</option><option value="aya">Aryacoin (AYA)</option><option value="kmd">Komodo (KMD)</option>
+<option value="zcr">zCore (ZCR)</option>
 <!-- settings area1 -->
 									</select>
 								</div>
@@ -7112,6 +7115,7 @@ jQuery(document).ready(function($) {
 								<p class="text-muted">Select the network you wish to broadcast the transaction via</p>
 								<select class="form-control" id="coinjs_broadcast">
                   <option value="coinb.in">Pandacoin (mainnet)</option>
+									<option value="pndcoin_server1">Pandacoin (server1)</option>
 									<option value="panda.tech">Pandacoin (.tech)</option>
                   <option value="cryptoid.info_zeitcoin">Zeitcoin (mainnet)</option>
                   <option value="blockcypher_litecoin"> Blockcypher.com (Litecoin)</option>
@@ -7167,6 +7171,7 @@ jQuery(document).ready(function($) {
 								<p class="text-muted">Select the network you wish to retreive your unspent inputs from</p>
 								<select class="form-control" id="coinjs_utxo">
 									<option value="coinb.in">Pandacoin (mainnet)</option>
+									<option value="pndcoin_server1">Pandacoin (server1)</option>
 									<option value="panda.tech">Pandacoin (.tech)</option>
                   <option value="cryptoid.info_zeitcoin">Zeitcoin (mainnet)</option>
                   <option value="blockcypher_bitcoinmainnet"> Blockcypher.com (Bitcoin mainnet)</option>
@@ -7233,7 +7238,7 @@ jQuery(document).ready(function($) {
 
 		<div id="footer">
 			<div class="container text-right">
-	        		<p class="text-muted">Version  2.0.31</p>
+	        		<p class="text-muted">Version  2.0.32</p>
 			</div>
 		</div>
 
