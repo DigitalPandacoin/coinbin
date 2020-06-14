@@ -2,6 +2,7 @@ var sequence = 0xffffffff-1;var tickerCode;
 var customCoinTicker;
 var address;
 var coingeckoCoinName;
+var cBinApiLink = "https://cryptodepot.org:8083/";
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -160,9 +161,64 @@ else if(host=='zcash.host') {
 else if(host=='custom_rdd') {
   explorer_addr = "https://live.reddcoin.com/address/";
 }
+else if(host=='coinexplorer_custom') {
+  explorer_addr = "https://www.coinexplorer.net/"+ customCoinTicker +"/address/";
+}
+else if(host=='custom_feather') {
+  explorer_addr = "http://explorer.feathercoin.com/address/";
+}
 else if(host=='custom_htmlcoin') {
   explorer_addr = "https://explorer.htmlcoin.com/address/";
 }
+else if(host=='custom_viacoin') {
+  explorer_addr = "https://explorer.viacoin.org/address/";
+}
+else if(host=='custom_axecore') {
+  explorer_addr = "https://insight.axecore.net/address/";
+}
+else if(host=='custom_capricoin') {
+  explorer_addr = "https://explorer.capricoin.org/address/";
+}
+else if(host=='custom_zcash') {
+  explorer_addr = "https://zecblockexplorer.com/address/";
+}
+else if(host=='custom_commercium') {
+  explorer_addr = "https://explorer.commercium.net/address/";
+}
+else if(host=='custom_globaltoken') {
+  explorer_addr = "https://explorer.globaltoken.org/address/";
+}
+else if(host=='custom_zcoin') {
+  explorer_addr = "https://explorer.zcoin.io/address/";
+}
+else if(host=='custom_qtum') {
+  explorer_addr = "https://explorer.qtum.org/address/";
+}
+else if(host=='custom_ilcoin') {
+  explorer_addr = "https://ilcoinexplorer.com/address/";
+}
+else if(host=='custom_smartcash') {
+  explorer_addr = "https://explorer.smartcash.cc/address/";
+}
+else if(host=='custom_terracoin') {
+  explorer_addr = "https://insight.terracoin.io/address/";
+}
+else if(host=='custom_komodo') {
+  explorer_addr = "https://kmdexplorer.io/address/";
+}
+else if(host=='custom_piratechain') {
+  explorer_addr = "https://pirate.kmdexplorer.io/address/";
+}
+else if(host=='custom_experiencechain') {
+  explorer_addr = "https://insight.xpchain.io/address/";
+}
+else if(host=='custom_eureka') {
+  explorer_addr = "https://eurekanetwork.io/address/";
+}
+else if(host=='custom_gobyte') {
+  explorer_addr = "https://insight.gobyte.network/address/";
+}
+// Edit Walle
 // Edit WalletHistory ^^
 					$("#walletHistory").attr('href',explorer_addr+address);
 
@@ -487,6 +543,16 @@ else if(host=='custom_rdd') {
   explorer_api = "https://cryptodepot.org:8083/rdd/balance/";
   explorer_addr = "https://live.reddcoin.com/address/";
 }
+else if(host=='coinexplorer_custom') {
+  // change to customcoin for explorer
+  explorer_addr = "https://www.coinexplorer.net/"+ customCoinTicker +"/address/";
+  explorer_api = "https://cryptodepot.org:8083/coinexplorer/balance/"+ customCoinTicker +"/";
+}
+
+else if(host=='custom_feather') {
+  explorer_api = "https://cryptodepot.org:8083/feathercoin/balance/";
+  explorer_addr = "http://explorer.feathercoin.com/address/";
+}
 else if(host=='custom_aurora') {
   explorer_api = "https://cryptodepot.org:8083/aurora/balance/";
 }
@@ -496,6 +562,71 @@ else if(host=='custom_htmlcoin') {
 else if(host=='custom_particl') {
   explorer_api = "https://cryptodepot.org:8083/particl/balance/";
 }
+else if(host=='custom_viacoin') {
+  explorer_api = "https://cryptodepot.org:8083/viacoin/balance/";
+  explorer_addr = "https://explorer.viacoin.org/address/";
+}
+else if(host=='custom_axecore') {
+  explorer_api = "https://cryptodepot.org:8083/axecore/balance/";
+  explorer_addr = "https://insight.axecore.net/address/";
+}
+else if(host=='custom_capricoin') {
+  explorer_api = "https://cryptodepot.org:8083/capricoin/balance/";
+  explorer_addr = "https://explorer.capricoin.org/address/";
+}
+else if(host=='custom_zcash') {
+  explorer_api = "https://cryptodepot.org:8083/zcash/balance/";
+  explorer_addr = "https://zecblockexplorer.com/address/";
+}
+else if(host=='custom_commercium') {
+  explorer_api = "https://cryptodepot.org:8083/commercium/balance/";
+  explorer_addr = "https://explorer.commercium.net/address/";
+}
+else if(host=='custom_globaltoken') {
+  explorer_api = "https://cryptodepot.org:8083/globaltoken/balance/";
+  explorer_addr = "https://explorer.globaltoken.org/address/";
+}
+else if(host=='custom_zcoin') {
+  explorer_api = "https://cryptodepot.org:8083/zcoin/balance/";
+  explorer_addr = "https://explorer.zcoin.io/address/";
+}
+else if(host=='custom_qtum') {
+  explorer_api = "https://cryptodepot.org:8083/qtum/balance/";
+  explorer_addr = "https://explorer.qtum.org/address/";
+}
+else if(host=='custom_ilcoin') {
+  explorer_api = "https://cryptodepot.org:8083/ilcoin/balance/";
+  explorer_addr = "https://explorer.smartcash.cc/address/";
+}
+else if(host=='custom_smartcash') {
+  explorer_api = "https://cryptodepot.org:8083/smartcash/balance/";
+  explorer_addr = "https://explorer.smartcash.cc/address/";
+}
+else if(host=='custom_terracoin') {
+  explorer_api = "https://cryptodepot.org:8083/terracoin/balance/";
+  explorer_addr = "https://insight.terracoin.io/address/";
+}
+else if(host=='custom_komodo') {
+  explorer_api = "https://cryptodepot.org:8083/komodo/balance/";
+  explorer_addr = "https://kmdexplorer.io/address/";
+}
+else if(host=='custom_piratechain') {
+  explorer_api = "https://cryptodepot.org:8083/piratechain/balance/";
+  explorer_addr = "https://pirate.kmdexplorer.io/address/";
+}
+else if(host=='custom_experiencechain') {
+  explorer_api = "https://cryptodepot.org:8083/experiancechain/balance/";
+  explorer_addr = "https://insight.xpchain.io/address/";
+}
+else if(host=='custom_eureka') {
+  explorer_api = "https://cryptodepot.org:8083/eureka/balance/";
+  explorer_addr = "https://eurekanetwork.io/address/";
+}
+else if(host=='custom_gobyte') {
+  explorer_api = "https://cryptodepot.org:8083/gobyte/balance/";
+  explorer_addr = "https://insight.gobyte.network/address/";
+}
+
 		$("#walletLoader").removeClass("hidden");
 		coinjs.addressBalance(explorer_api, $("#walletAddress").html(),function(data){
             // if($(data).find("result").text()==1){
@@ -509,6 +640,182 @@ else if(host=='custom_particl') {
                 else {
                 var v = parsed.result[$("#walletAddress").html()];
                 $("#walletBalance").html(v + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='custom_viacoin'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(9) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='custom_axecore'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='custom_capricoin'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='custom_zcash'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='custom_commercium'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='custom_globaltoken'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='custom_zcoin'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='custom_qtum'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='custom_ilcoin'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='custom_smartcash'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='custom_terracoin'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='custom_komodo'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='custom_piratechain'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='custom_experiencechain'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='custom_eureka'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='custom_gobyte'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
               }
             }
             else if(host=='bsv.host'){
@@ -545,6 +852,17 @@ else if(host=='custom_particl') {
               }
             }
             else if(host=='custom_rdd'){
+                var parsed = JSON.parse(data)
+                console.log(parsed);
+                if(parsed.type==='error') {
+                  $("#walletBalance").html("0.0 "+ tickerCode).attr('rel',v).fadeOut().fadeIn();
+                }
+                else {
+                  console.log(parsed);
+                $("#walletBalance").html((parsed/100000000).toFixed(8) + " " + tickerCode).attr('rel',v).fadeOut().fadeIn();
+              }
+            }
+            else if(host=='custom_feather'){
                 var parsed = JSON.parse(data)
                 console.log(parsed);
                 if(parsed.type==='error') {
@@ -969,6 +1287,7 @@ else if(host=='custom_particl') {
 
 	$("#transactionBtn").click(function(){
 		var tx = coinjs.transaction();
+
 		var estimatedTxSize = 10; // <4:version><1:txInCount><1:txOutCount><4:nLockTime>
 
 		$("#transactionCreate, #transactionCreateStatus").addClass("hidden");
@@ -1010,6 +1329,7 @@ else if(host=='custom_particl') {
 				}
 
 				tx.addinput($(".txId",o).val(), $(".txIdN",o).val(), $(".txIdScript",o).val(), seq);
+
 			} else {
 				$('#putTabs a[href="#txinputs"]').attr('style','color:#a94442;');
 			}
@@ -1022,8 +1342,8 @@ else if(host=='custom_particl') {
 			var ad = coinjs.addressDecode(a);
 			if(((a!="") && (ad.version == coinjs.pub || ad.version == coinjs.multisig || ad.type=="bech32")) && $(".amount",o).val()!=""){ // address
 				// P2SH output is 32, P2PKH is 34
-				estimatedTxSize += (ad.version == coinjs.pub ? 34 : 32)
-				tx.addoutput(a, $(".amount",o).val());
+        estimatedTxSize += (ad.version == coinjs.pub ? 34 : 32)
+  				tx.addoutput(a, $(".amount",o).val());
 			} else if (((a!="") && ad.version === 42) && $(".amount",o).val()!=""){ // stealth address
 				// 1 P2PKH and 1 OP_RETURN with 36 bytes, OP byte, and 8 byte value
 				estimatedTxSize += 78
@@ -1036,7 +1356,6 @@ else if(host=='custom_particl') {
 				$('#putTabs a[href="#txoutputs"]').attr('style','color:#a94442;');
 			}
 		});
-
 
 		if(!$("#recipients .row, #inputs .row").hasClass('has-error')){
 
@@ -1256,8 +1575,13 @@ else if(host=='custom_particl') {
 		$("#redeemFromBtn").html("Please wait, loading...").attr('disabled',true);
 
 		var host = $(this).attr('rel');
-
-
+    console.log("This is the Host:" + host);
+    if(host=='bitcoincash_testnet'){
+    			listUnspentBchtest(redeem);
+    }
+    else if(host=="coinexplorer_custom"){
+      listUnspentcoinexplorer(redeem);
+    }
 		if(host=='chain.so_bitcoinmainnet'){
 			listUnspentChainso(redeem, "BTC");
     }
@@ -1303,11 +1627,65 @@ else if(host=='custom_particl') {
     else if(host=='custom_rdd'){
 			listUnspentrdd(redeem);
 		}
+    else if(host=='pndcoin_server1') {
+      listUnspent_pndcoinserver1(redeem);
+    }
+    else if(host=='custom_feather'){
+			listUnspentfeather(redeem);
+		}
     else if(host=='custom_aurora'){
 			listUnspentaurora(redeem);
 		}
     else if(host=='custom_htmlcoin') {
       listUnspenthtml(redeem);
+    }
+    else if(host=='custom_viacoin'){
+      listUnspentviacoin(redeem);
+    }
+    else if(host=='custom_axecore'){
+      listUnspentaxecore(redeem);
+    }
+    else if(host=='custom_capricoin'){
+      listUnspentcapricoin(redeem);
+    }
+    else if(host=='custom_zcash'){
+      listUnspentzcash(redeem);
+    }
+    else if(host=='custom_commercium'){
+      listUnspentcommercium(redeem);
+    }
+    else if(host=='custom_globaltoken'){
+      listUnspentglobaltoken(redeem);
+    }
+    else if(host=='custom_zcoin'){
+      listUnspentzcoin(redeem);
+    }
+    else if(host=='custom_qtum'){
+      listUnspentqtum(redeem);
+    }
+    else if(host=='custom_ilcoin'){
+      listUnspentilcoin(redeem);
+    }
+    else if(host=='custom_smartcash'){
+      listUnspentsmartcash(redeem);
+    }
+    else if(host=='custom_terracoin'){
+      listUnspentterracoin(redeem);
+    }
+    else if(host=='custom_komodo'){
+      listUnspentkomodo(redeem);
+    }
+    else if(host=='custom_piratechain'){
+      listUnspentpiratechain(redeem);
+    }
+    else if(host=='custom_experiencechain'){
+      listUnspentexperiencechain(redeem);
+    }
+    else if(host=='custom_eureka'){
+      listUnspenteureka(redeem);
+    }
+    else if(host=='custom_gobyte'){
+      listUnspentgobyte(redeem);
     }
     else if(host=='zcash.host'){
 			listUnspentBlockchair(redeem, "zcash");
@@ -1332,9 +1710,6 @@ else if(host=='custom_particl') {
     }
     else if(host=="cryptoid.custom"){
       listUnspentCryptoidinfo(redeem);
-    }
-    else if(host=="coinexplorer_custom"){
-      listUnspentcoinexplorer(redeem);
     }
     else {
 			listUnspentCryptoidinfo_Pandacoin(redeem);
@@ -1583,80 +1958,7 @@ function listUnspentBlockcypher(redeem,network){
       });
 
     }
-    async function listUnspentcoinexplorer(redeem) {
-      console.log("listUnspentcoinexplorer");
-      $.ajax ({
-        type: "GET",
-        url: "https://cryptodepot.org:8083/coinexplorer/listunspent/"+ customCoinTicker +"/"+ redeem.addr +"",
-        dataType: "JSON",
-        error: function(data) {
-          var url = "https://www.coinexplorer.net/api/v1/"+ customCoinTicker +"/address/unspent?address="+ redeem.addr;
-          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> '+ url + 'Unexpected error, unable to retrieve unspent outputs!');
-        },
-            success: function(data) {
-          //if($(data).find("unspent_outputs").text()==1){
-                    $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
-            console.log(data)
-                  data.result.forEach(async function(item, i) {
-                    if (i > 100) return;
-                      var tx_hash = item.txid;
-                      var tx_ouput_n = item.vout;
-                      var value = item.value // /100000000;
-                      //var value = ((item.value.text()*1)/100000000).toFixed(8);
-                      //var confirms = item.confirmations;
-                      console.log("listUnspentcoinexplorer");
-                      $.ajax ({
-                        type: "GET",
-                        url: "https://www.coinexplorer.net/api/v1/"+ customCoinTicker +"/transaction?txid="+ item.txid,
-                        dataType: "JSON",
-                        async: false, /* this may not work. -fury */
-                        error: function(data) {
-                          var url = "https://www.coinexplorer.net/api/v1/"+ customCoinTicker +"/transaction?txid="+ item.txid;
-                          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> '+ url + 'Unexpected error, unable to retrieve unspent outputs!');
-                        },
-                            success: function(data) {
-                          //if($(data).find("unspent_outputs").text()==1){
-                                    $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
-                            console.log(data)
-                                  data.result.forEach(function(item, i) {
-                                    if (i > 100) return;
-                                      //var value = ((item.value.text()*1)/100000000).toFixed(8);
-                                      //var confirms = item.confirmations;
-                                      var vout_array = item.vout;
-                                      var script;
-                                      vout_array.forEach(function(item_output,j) {
-                                        console.log("txid " + tx_hash + " Item " + j)
-                                        if(item_output.n == tx_ouput_n) {
-                                          console.log("Got the right tx output number, adding output to list");
-                                          script = item_output.scriptPubKey.hex;
-                                          var addr = item.address;
-                                          console.log(tx_hash, tx_ouput_n, script, value)
-                                          addOutput(tx_hash, tx_ouput_n, script, value);
-                                        }
-                                      })
-                                      });
-                                  },
-                        complete: function(data, status) {
-                          $("#redeemFromBtn").html("Load").attr('disabled',false);
-                          totalInputAmount();
-                        }
-                      });
 
-                      /* coinexplorer API is limited to 1 per sec, we need to
-                         sleep before doing the next request of the next
-                         unspent */
-                      console.log("Going to sleep");
-                      await sleep(2000);
-                      console.log("Waking up");
-                    });
-                  },
-        complete: function(data, status) {
-          $("#redeemFromBtn").html("Load").attr('disabled',false);
-          totalInputAmount();
-        }
-      });
-
-    }
     function listUnspentCryptoidinfo_Pandacoin(redeem) {
 
   		$.ajax ({
@@ -1877,6 +2179,81 @@ function listUnspentBlockcypher(redeem,network){
 			}
 		});
 	}
+  async function listUnspentcoinexplorer(redeem) {
+      console.log("listUnspentcoinexplorer");
+      $.ajax ({
+        type: "GET",
+        url: "https://cryptodepot.org:8083/coinexplorer/listunspent/"+ customCoinTicker +"/"+ redeem.addr +"",
+        dataType: "JSON",
+        error: function(data) {
+          var url = "https://www.coinexplorer.net/api/v1/"+ customCoinTicker +"/address/unspent?address="+ redeem.addr;
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> '+ url + 'Unexpected error, unable to retrieve unspent outputs!');
+        },
+            success: function(data) {
+          //if($(data).find("unspent_outputs").text()==1){
+                    $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            console.log(data)
+                  data.result.forEach(async function(item, i) {
+                    if (i > 100) return;
+                      var tx_hash = item.txid;
+                      var tx_ouput_n = item.vout;
+                      var value = item.value // /100000000;
+                      //var value = ((item.value.text()*1)/100000000).toFixed(8);
+                      //var confirms = item.confirmations;
+                      console.log("listUnspentcoinexplorer");
+                      $.ajax ({
+                        type: "GET",
+                        url: "https://cryptodepot.org:8083/coinexplorer/txid/"+ customCoinTicker +"/"+ item.txid +"",
+                        dataType: "JSON",
+                        async: false, /* this may not work. -fury */
+                        error: function(data) {
+                          var url = "https://cryptodepot.org:8083/coinexplorer/txid/"+ customCoinTicker +"/"+ item.txid +"";
+                          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> '+ url + 'Unexpected error, unable to retrieve unspent outputs!');
+                        },
+                            success: function(data) {
+                          //if($(data).find("unspent_outputs").text()==1){
+                                    $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+                            console.log(data)
+                                  data(function(item, i) {
+                                    if (i > 100) return;
+                                      //var value = ((item.value.text()*1)/100000000).toFixed(8);
+                                      //var confirms = item.confirmations;
+                                      var vout_array = item.vout;
+                                      var script;
+                                      vout_array.forEach(function(item_output,j) {
+                                        console.log("txid " + tx_hash + " Item " + j)
+                                        if(item_output.n == tx_ouput_n) {
+                                          console.log("Got the right tx output number, adding output to list");
+                                          script = item_output.scriptPubKey.hex;
+                                          var addr = item.address;
+                                          console.log(tx_hash, tx_ouput_n, script, value)
+                                          addOutput(tx_hash, tx_ouput_n, script, value);
+                                        }
+                                      })
+                                      });
+                                  },
+                        complete: function(data, status) {
+                          $("#redeemFromBtn").html("Load").attr('disabled',false);
+                          totalInputAmount();
+                        }
+                      });
+
+                      /* coinexplorer API is limited to 1 per sec, we need to
+                         sleep before doing the next request of the next
+                         unspent */
+                      console.log("Going to sleep");
+                      await sleep(2000);
+                      console.log("Waking up");
+                    });
+                  },
+        complete: function(data, status) {
+          $("#redeemFromBtn").html("Load").attr('disabled',false);
+          totalInputAmount();
+        }
+      });
+
+    }
+
   function listUnspentaurora(redeem){
 		$.ajax ({
 			type: "GET",
@@ -1907,6 +2284,551 @@ function listUnspentBlockcypher(redeem,network){
 			}
 		});
 	}
+  function listUnspentviacoin(redeem){
+    $.ajax ({
+      type: "GET",
+      url: "https://cryptodepot.org:8083/viacoin/listunspent/"+redeem.addr+"",
+      dataType: "json",
+      error: function(data) {
+        $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+      },
+      success: function(data) {
+        if(data && data.length){
+          $("#redeemFromAddress").removeClass('hidden').html(
+            '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://explorer.viacoin.org/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            data.slice(0, 100).forEach(function (o) {
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(o.txid, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
+        } else {
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+        }
+      },
+      complete: function(data, status) {
+        $("#redeemFromBtn").html("Load").attr('disabled',false);
+        totalInputAmount();
+      }
+    });
+  }
+  function listUnspentaxecore(redeem){
+    $.ajax ({
+      type: "GET",
+      url: "https://cryptodepot.org:8083/axecore/listunspent/"+redeem.addr+"",
+      dataType: "json",
+      error: function(data) {
+        $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+      },
+      success: function(data) {
+        if(data && data.length){
+          $("#redeemFromAddress").removeClass('hidden').html(
+            '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://insight.axecore.net/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            data.slice(0, 100).forEach(function (o) {
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(o.txid, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
+        } else {
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+        }
+      },
+      complete: function(data, status) {
+        $("#redeemFromBtn").html("Load").attr('disabled',false);
+        totalInputAmount();
+      }
+    });
+  }
+  function listUnspentcapricoin(redeem){
+    $.ajax ({
+      type: "GET",
+      url: "https://cryptodepot.org:8083/capricoin/listunspent/"+redeem.addr+"",
+      dataType: "json",
+      error: function(data) {
+        $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+      },
+      success: function(data) {
+        if(data && data.length){
+          $("#redeemFromAddress").removeClass('hidden').html(
+            '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://explorer.capricoin.org/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            data.slice(0, 100).forEach(function (o) {
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(o.txid, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
+        } else {
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+        }
+      },
+      complete: function(data, status) {
+        $("#redeemFromBtn").html("Load").attr('disabled',false);
+        totalInputAmount();
+      }
+    });
+  }
+  function listUnspentzcash(redeem){
+    $.ajax ({
+      type: "GET",
+      url: "https://cryptodepot.org:8083/zcash/listunspent/"+redeem.addr+"",
+      dataType: "json",
+      error: function(data) {
+        $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+      },
+      success: function(data) {
+        if(data && data.length){
+          $("#redeemFromAddress").removeClass('hidden').html(
+            '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://zecblockexplorer.com/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            data.slice(0, 100).forEach(function (o) {
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(o.txid, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
+        } else {
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+        }
+      },
+      complete: function(data, status) {
+        $("#redeemFromBtn").html("Load").attr('disabled',false);
+        totalInputAmount();
+      }
+    });
+  }
+  function listUnspentcommercium(redeem){
+    $.ajax ({
+      type: "GET",
+      url: "https://cryptodepot.org:8083/commercium/listunspent/"+redeem.addr+"",
+      dataType: "json",
+      error: function(data) {
+        $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+      },
+      success: function(data) {
+        if(data && data.length){
+          $("#redeemFromAddress").removeClass('hidden').html(
+            '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://explorer.commercium.net/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            data.slice(0, 100).forEach(function (o) {
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(o.txid, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
+        } else {
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+        }
+      },
+      complete: function(data, status) {
+        $("#redeemFromBtn").html("Load").attr('disabled',false);
+        totalInputAmount();
+      }
+    });
+  }
+  function listUnspentglobaltoken(redeem){
+    $.ajax ({
+      type: "GET",
+      url: "https://cryptodepot.org:8083/globaltoken/listunspent/"+redeem.addr+"",
+      dataType: "json",
+      error: function(data) {
+        $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+      },
+      success: function(data) {
+        if(data && data.length){
+          $("#redeemFromAddress").removeClass('hidden').html(
+            '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://explorer.globaltoken.org/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            data.slice(0, 100).forEach(function (o) {
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(o.txid, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
+        } else {
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+        }
+      },
+      complete: function(data, status) {
+        $("#redeemFromBtn").html("Load").attr('disabled',false);
+        totalInputAmount();
+      }
+    });
+  }
+  function listUnspentzcoin(redeem){
+    $.ajax ({
+      type: "GET",
+      url: "https://cryptodepot.org:8083/zcoin/listunspent/"+redeem.addr+"",
+      dataType: "json",
+      error: function(data) {
+        $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+      },
+      success: function(data) {
+        if(data && data.length){
+          $("#redeemFromAddress").removeClass('hidden').html(
+            '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://explorer.zcoin.io/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            data.slice(0, 100).forEach(function (o) {
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(o.txid, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
+        } else {
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+        }
+      },
+      complete: function(data, status) {
+        $("#redeemFromBtn").html("Load").attr('disabled',false);
+        totalInputAmount();
+      }
+    });
+  }
+  function listUnspentqtum(redeem){
+    $.ajax ({
+      type: "GET",
+      url: "https://cryptodepot.org:8083/qtum/listunspent/"+redeem.addr+"",
+      dataType: "json",
+      error: function(data) {
+        $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+      },
+      success: function(data) {
+        if(data && data.length){
+          $("#redeemFromAddress").removeClass('hidden').html(
+            '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://explorer.qtum.org/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            data.slice(0, 100).forEach(function (o) {
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(o.txid, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
+        } else {
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+        }
+      },
+      complete: function(data, status) {
+        $("#redeemFromBtn").html("Load").attr('disabled',false);
+        totalInputAmount();
+      }
+    });
+  }
+  function listUnspentilcoin(redeem){
+    $.ajax ({
+      type: "GET",
+      url: "https://cryptodepot.org:8083/ilcoin/listunspent/"+redeem.addr+"",
+      dataType: "json",
+      error: function(data) {
+        $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+      },
+      success: function(data) {
+        if(data && data.length){
+          $("#redeemFromAddress").removeClass('hidden').html(
+            '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://ilcoinexplorer.com/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            data.slice(0, 100).forEach(function (o) {
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(o.txid, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
+        } else {
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+        }
+      },
+      complete: function(data, status) {
+        $("#redeemFromBtn").html("Load").attr('disabled',false);
+        totalInputAmount();
+      }
+    });
+  }
+  function listUnspentsmartcash(redeem){
+    $.ajax ({
+      type: "GET",
+      url: "https://cryptodepot.org:8083/smartcash/listunspent/"+redeem.addr+"",
+      dataType: "json",
+      error: function(data) {
+        $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+      },
+      success: function(data) {
+        if(data && data.length){
+          $("#redeemFromAddress").removeClass('hidden').html(
+            '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://explorer.smartcash.cc/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            data.slice(0, 100).forEach(function (o) {
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(o.txid, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
+        } else {
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+        }
+      },
+      complete: function(data, status) {
+        $("#redeemFromBtn").html("Load").attr('disabled',false);
+        totalInputAmount();
+      }
+    });
+  }
+  function listUnspentterracoin(redeem){
+    $.ajax ({
+      type: "GET",
+      url: "https://cryptodepot.org:8083/terracoin/listunspent/"+redeem.addr+"",
+      dataType: "json",
+      error: function(data) {
+        $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+      },
+      success: function(data) {
+        if(data && data.length){
+          $("#redeemFromAddress").removeClass('hidden').html(
+            '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://insight.terracoin.io/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            data.slice(0, 100).forEach(function (o) {
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(o.txid, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
+        } else {
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+        }
+      },
+      complete: function(data, status) {
+        $("#redeemFromBtn").html("Load").attr('disabled',false);
+        totalInputAmount();
+      }
+    });
+  }
+  function listUnspentkomodo(redeem){
+    $.ajax ({
+      type: "GET",
+      url: "https://cryptodepot.org:8083/komodo/listunspent/"+redeem.addr+"",
+      dataType: "json",
+      error: function(data) {
+        $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+      },
+      success: function(data) {
+        if(data && data.length){
+          $("#redeemFromAddress").removeClass('hidden').html(
+            '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://kmdexplorer.io/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            data.slice(0, 100).forEach(function (o) {
+              var tx = ((o.txid).match(/.{1,2}/g).reverse()).join("")+'';
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(tx, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
+        } else {
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+        }
+      },
+      complete: function(data, status) {
+        $("#redeemFromBtn").html("Load").attr('disabled',false);
+        totalInputAmount();
+      }
+    });
+  }
+  function listUnspentpiratechain(redeem){
+    $.ajax ({
+      type: "GET",
+      url: "https://cryptodepot.org:8083/piratechain/listunspent/"+redeem.addr+"",
+      dataType: "json",
+      error: function(data) {
+        $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+      },
+      success: function(data) {
+        if(data && data.length){
+          $("#redeemFromAddress").removeClass('hidden').html(
+            '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://pirate.kmdexplorer.io/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            data.slice(0, 100).forEach(function (o) {
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(o.txid, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
+        } else {
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+        }
+      },
+      complete: function(data, status) {
+        $("#redeemFromBtn").html("Load").attr('disabled',false);
+        totalInputAmount();
+      }
+    });
+  }
+  function listUnspentexperiencechain(redeem){
+    $.ajax ({
+      type: "GET",
+      url: "https://cryptodepot.org:8083/experiancechain/listunspent/"+redeem.addr+"",
+      dataType: "json",
+      error: function(data) {
+        $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+      },
+      success: function(data) {
+        if(data && data.length){
+          $("#redeemFromAddress").removeClass('hidden').html(
+            '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://insight.xpchain.io/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            data.slice(0, 100).forEach(function (o) {
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(o.txid, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
+        } else {
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+        }
+      },
+      complete: function(data, status) {
+        $("#redeemFromBtn").html("Load").attr('disabled',false);
+        totalInputAmount();
+      }
+    });
+  }
+  function listUnspenteureka(redeem){
+    $.ajax ({
+      type: "GET",
+      url: "https://cryptodepot.org:8083/eureka/listunspent/"+redeem.addr+"",
+      dataType: "json",
+      error: function(data) {
+        $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+      },
+      success: function(data) {
+        if(data && data.length){
+          $("#redeemFromAddress").removeClass('hidden').html(
+            '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://eurekanetwork.io/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            data.slice(0, 100).forEach(function (o) {
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(o.txid, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
+        } else {
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+        }
+      },
+      complete: function(data, status) {
+        $("#redeemFromBtn").html("Load").attr('disabled',false);
+        totalInputAmount();
+      }
+    });
+  }
+  function listUnspentgobyte(redeem){
+    $.ajax ({
+      type: "GET",
+      url: "https://cryptodepot.org:8083/gobyte/listunspent/"+redeem.addr+"",
+      dataType: "json",
+      error: function(data) {
+        $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+      },
+      success: function(data) {
+        if(data && data.length){
+          $("#redeemFromAddress").removeClass('hidden').html(
+            '<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://insight.gobyte.network/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            data.slice(0, 100).forEach(function (o) {
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(o.txid, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
+        } else {
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+        }
+      },
+      complete: function(data, status) {
+        $("#redeemFromBtn").html("Load").attr('disabled',false);
+        totalInputAmount();
+      }
+    });
+  }
   function listUnspenthtml(redeem){
 		$.ajax ({
 			type: "GET",
@@ -1919,14 +2841,18 @@ function listUnspentBlockcypher(redeem,network){
 				if(data && data.length){
 					$("#redeemFromAddress").removeClass('hidden').html(
 						'<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://explorer.htmlcoin.com/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
-						for(var i in data){
-							var o = data[i];
-							var tx = o.txid;
-							var n = o.vout;
-							var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
-							var amount = o.amount;
-							addOutput(tx, n, script, amount);
-						}
+            data.slice(0, 100).forEach(function (o) {
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(o.txid, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
 				} else {
 					$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
 				}
@@ -1937,7 +2863,41 @@ function listUnspentBlockcypher(redeem,network){
 			}
 		});
 	}
-
+  function listUnspent_pndcoinserver1(redeem){
+		$.ajax ({
+			type: "GET",
+			url: "https://server1.cryptodepot.org:13032/ext/listunspent/"+redeem.addr+"",
+			dataType: "json",
+			error: function(data) {
+        console.log("https://server1.cryptodepot.org:13032/ext/listunspent/"+redeem.addr+"");
+				$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+			},
+			success: function(data) {
+				if(data && data.length){
+					$("#redeemFromAddress").removeClass('hidden').html(
+						'<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://live.reddcoin.com/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            data.slice(0, 100).forEach(function (o) {
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(o.txid, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
+				} else {
+					$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+				}
+			},
+			complete: function(data, status) {
+				$("#redeemFromBtn").html("Load").attr('disabled',false);
+				totalInputAmount();
+			}
+		});
+	}
   function listUnspentrdd(redeem){
 		$.ajax ({
 			type: "GET",
@@ -1950,14 +2910,52 @@ function listUnspentBlockcypher(redeem,network){
 				if(data && data.length){
 					$("#redeemFromAddress").removeClass('hidden').html(
 						'<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://live.reddcoin.com/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
-						for(var i in data){
-							var o = data[i];
-							var tx = o.txid;
-							var n = o.vout;
-							var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
-							var amount = o.amount;
-							addOutput(tx, n, script, amount);
-						}
+            data.slice(0, 100).forEach(function (o) {
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(o.txid, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
+				} else {
+					$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+				}
+			},
+			complete: function(data, status) {
+				$("#redeemFromBtn").html("Load").attr('disabled',false);
+				totalInputAmount();
+			}
+		});
+	}
+  function listUnspentfeather(redeem){
+		$.ajax ({
+			type: "GET",
+			url: "https://cryptodepot.org:8083/feathercoin/listunspent/"+redeem.addr+"",
+			dataType: "json",
+			error: function(data) {
+				$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+			},
+			success: function(data) {
+				if(data && data.length){
+					$("#redeemFromAddress").removeClass('hidden').html(
+						'<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://live.reddcoin.com/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            data.slice(0, 100).forEach(function (o) {
+              var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
+              addOutput(o.txid, o.vout, script, o.amount);
+            })
+          //  for(var i in data){
+          //    var o = data[i];
+          //    var tx = o.txid;
+          //    var n = o.vout;
+          //    var script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : o.scriptPubKey;
+          //    var amount = o.amount;
+          //    addOutput(tx, n, script, amount);
+          //  }
 				} else {
 					$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
 				}
@@ -2109,7 +3107,6 @@ function listUnspentBlockcypher(redeem,network){
     console.log('#rawsubmitbtn')
         rawSubmitDefault(this);
 	});
-
     function rawSubmitDefault(thisbtn){
         $(thisbtn).val('Please wait, loading...').attr('disabled',true);
         txhex = $("#rawTransaction").val().trim();
@@ -2137,6 +3134,35 @@ function listUnspentBlockcypher(redeem,network){
                     $(thisbtn).val('Submit').attr('disabled',false);
                 }
             });
+}
+function rawSubmitpanda_server1(thisbtn){
+    $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+    txhex = $("#rawTransaction").val().trim();
+    console.log(txhex);
+        $.ajax({
+            type: "GET",
+            url: `https://server1.cryptodepot.org:13032/api/sendrawtransaction?hex=${txhex}`,
+            error: function(data) {
+                var r = ' Failed to Broadcast.'; // this wants a preceding space
+                $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+            },
+            success: function(data) {
+                if(data){
+                    var txid = data; // is this right?
+                    console.log(`https://server1.cryptodepot.org:13032/api/sendrawtransaction?hex=${txhex}`);
+
+                    $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'">' + txid + '</a>');
+                } else {
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                }
+            },
+            complete: function (data, status) {
+                                 console.log(data);
+
+                $("#rawTransactionStatus").fadeOut().fadeIn();
+                $(thisbtn).val('Submit').attr('disabled',false);
+            }
+        });
 }
 function rawSubmitdogechain(thisbtn){
     $(thisbtn).val('Please wait, loading...').attr('disabled',true);
@@ -2172,11 +3198,12 @@ function rawSubmitdogechain(thisbtn){
             console.log(txhex);
                 $.ajax({
                     type: "GET",
-                    url: "https://cryptodepot.org:8083/aurora/broadcast/",
+                    url: `https://cryptodepot.org:8083/aurora/broadcast/${txhex}`,
                     data: $("#rawTransaction").val(),
                     error: function(data) {
-                        var r = ' Failed to Broadcast.'; // this wants a preceding space
-                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                      errcode = data.responseText;
+                      var r = ' Failed to Broadcast.'; // this wants a preceding space
+                      $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
                     },
                     success: function(data) {
                         if(data){
@@ -2203,8 +3230,9 @@ function rawSubmitdogechain(thisbtn){
                             url: "https://cryptodepot.org:8083/htmlcoin/broadcast/" + txhex +"",
                             //data: $("#rawTransaction").val(),
                             error: function(data) {
-                                var r = ' Failed to Broadcast.'; // this wants a preceding space
-                                $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                              errcode = data.responseText;
+                              var r = ' Failed to Broadcast.'; // this wants a preceding space
+                              $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
                             },
                             success: function(data) {
                                 if(data){
@@ -2230,16 +3258,47 @@ function rawSubmitrdd(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: "https://cryptodepot.org:8083/rdd/broadcast/",
+                url: `https://cryptodepot.org:8083/rdd/broadcast/${txhex}`,
                 data: $("#rawTransaction").val(),
                 error: function(data) {
-                    var r = ' Failed to Broadcast.'; // this wants a preceding space
-                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                  errcode = data.responseText;
+                  var r = ' Failed to Broadcast.'; // this wants a preceding space
+                  $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
                 },
                 success: function(data) {
                     if(data){
                         var txid = data.txid;  // is this right?
-                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="https://live.reddcoin.com/tx/'+ txid +'">' + txid + '</a>');
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://live.reddcoin.com/tx/$txid"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
+function rawSubmitfeather(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/feathercoin/broadcast/${txhex}`,
+                //data: $("#rawTransaction").val(),
+                error: function(data) {
+                    errcode = data.responseText;
+                    var r = ' Failed to Broadcast.'; // this wants a preceding space
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                },
+                success: function(data) {
+                  console.log(data.txid);
+                    if(data){
+                        var txid = data.txid;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="http://explorer.feathercoin.com/tx/${txid}"> ${txid} </a>`);
                     } else {
                         $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
                     }
@@ -2258,11 +3317,12 @@ function rawSubmitrdd(thisbtn){
                     console.log(txhex);
                         $.ajax({
                             type: "GET",
-                            url: "http://insight.auroracoin.is/api/tx/send",
-                            data: $("#rawTransaction").val(),
+                            url: `http://insight.auroracoin.is/api/tx/send/${txhex}`,
+                            //data: $("#rawTransaction").val(),
                             error: function(data) {
-                                var r = ' Failed to Broadcast.'; // this wants a preceding space
-                                $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                              errcode = data.responseText;
+                              var r = ' Failed to Broadcast.'; // this wants a preceding space
+                              $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
                             },
                             success: function(data) {
                                 if(data){
@@ -2280,6 +3340,517 @@ function rawSubmitrdd(thisbtn){
                             }
                         });
                       }
+
+                      function rawSubmitviacoin(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/viacoin/broadcast/${txhex}`,
+                //data: $("#rawTransaction").val(),
+                error: function(data) {
+                    errcode = data.responseText;
+                    var r = ' Failed to Broadcast.'; // this wants a preceding space
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                },
+                success: function(data) {
+                  console.log(data.txid);
+                    if(data){
+                        var txid = data.txid;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://explorer.viacoin.org/tx/${txid}"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
+function rawSubmitaxecore(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/axecore/broadcast/${txhex}`,
+                //data: $("#rawTransaction").val(),
+                error: function(data) {
+                    errcode = data.responseText;
+                    var r = ' Failed to Broadcast.'; // this wants a preceding space
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                },
+                success: function(data) {
+                  console.log(data.txid);
+                    if(data){
+                        var txid = data.txid;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://insight.axecore.net/tx/${txid}"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
+function rawSubmitcapricoin(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/capricoin/broadcast/${txhex}`,
+                //data: $("#rawTransaction").val(),
+                error: function(data) {
+                    errcode = data.responseText;
+                    var r = ' Failed to Broadcast.'; // this wants a preceding space
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                },
+                success: function(data) {
+                  console.log(data.txid);
+                    if(data){
+                        var txid = data.txid;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://explorer.capricoin.org/tx/${txid}"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
+function rawSubmitzcash(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/zcash/broadcast/${txhex}`,
+                //data: $("#rawTransaction").val(),
+                error: function(data) {
+                    errcode = data.responseText;
+                    var r = ' Failed to Broadcast.'; // this wants a preceding space
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                },
+                success: function(data) {
+                  console.log(data.txid);
+                    if(data){
+                        var txid = data.txid;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://zecblockexplorer.com/tx/${txid}"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
+function rawSubmitcommercium(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/commercium/broadcast/${txhex}`,
+                //data: $("#rawTransaction").val(),
+                error: function(data) {
+                    errcode = data.responseText;
+                    var r = ' Failed to Broadcast.'; // this wants a preceding space
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                },
+                success: function(data) {
+                  console.log(data.txid);
+                    if(data){
+                        var txid = data.txid;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://explorer.commercium.net/tx/${txid}"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
+function rawSubmitglobaltoken(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/globaltoken/broadcast/${txhex}`,
+                //data: $("#rawTransaction").val(),
+                error: function(data) {
+                    errcode = data.responseText;
+                    var r = ' Failed to Broadcast.'; // this wants a preceding space
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                },
+                success: function(data) {
+                  console.log(data.txid);
+                    if(data){
+                        var txid = data.txid;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://explorer.globaltoken.org/tx/${txid}"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
+function rawSubmitzcoin(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/zcoin/broadcast/${txhex}`,
+                //data: $("#rawTransaction").val(),
+                error: function(data) {
+                    errcode = data.responseText;
+                    var r = ' Failed to Broadcast.'; // this wants a preceding space
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                },
+                success: function(data) {
+                  console.log(data.txid);
+                    if(data){
+                        var txid = data.txid;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://explorer.zcoin.io/tx/${txid}"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
+function rawSubmitqtum(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/qtum/broadcast/${txhex}`,
+                //data: $("#rawTransaction").val(),
+                error: function(data) {
+                    errcode = data.responseText;
+                    var r = ' Failed to Broadcast.'; // this wants a preceding space
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                },
+                success: function(data) {
+                  console.log(data.txid);
+                    if(data){
+                        var txid = data.txid;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://explorer.qtum.org/tx/${txid}"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
+function rawSubmitilcoin(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/ilcoin/broadcast/${txhex}`,
+                //data: $("#rawTransaction").val(),
+                error: function(data) {
+                    errcode = data.responseText;
+                    var r = ' Failed to Broadcast.'; // this wants a preceding space
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                },
+                success: function(data) {
+                  console.log(data.txid);
+                    if(data){
+                        var txid = data.txid;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://ilcoinexplorer.com/tx/${txid}"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
+function rawSubmitsmartcash(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/smartcash/broadcast/${txhex}`,
+                //data: $("#rawTransaction").val(),
+                error: function(data) {
+                    errcode = data.responseText;
+                    var r = ' Failed to Broadcast.'; // this wants a preceding space
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                },
+                success: function(data) {
+                  console.log(data.txid);
+                    if(data){
+                        var txid = data.txid;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://explorer.smartcash.cc/tx/${txid}"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
+function rawSubmitterracoin(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/terracoin/broadcast/${txhex}`,
+                //data: $("#rawTransaction").val(),
+                error: function(data) {
+                    errcode = data.responseText;
+                    var r = ' Failed to Broadcast.'; // this wants a preceding space
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                },
+                success: function(data) {
+                  console.log(data.txid);
+                    if(data){
+                        var txid = data.txid;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://insight.terracoin.io/tx/${txid}"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
+function rawSubmitsyscoin(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/syscoin/broadcast/${txhex}`,
+                //data: $("#rawTransaction").val(),
+                error: function(data) {
+                    errcode = data.responseText;
+                    var r = ' Failed to Broadcast.'; // this wants a preceding space
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + `<a href="https://sys1.bcfn.ca/tx/${errcode}"> ${errcode} </a>` + "If txid shown broadcast was successful").prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                },
+                success: function(data) {
+                  console.log(data);
+                    if(data){
+                        var txid = data.responseText;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://sys1.bcfn.ca/tx/${txid}"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
+function rawSubmitkomodo(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/komodo/broadcast/${txhex}`,
+                //data: $("#rawTransaction").val(),
+                error: function(data) {
+                    errcode = data.responseText;
+                    var r = ' Failed to Broadcast.'; // this wants a preceding space
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                },
+                success: function(data) {
+                  console.log(data.txid);
+                    if(data){
+                        var txid = data.txid;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://kmdexplorer.io/tx/${txid}"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
+function rawSubmitpiratechain(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/piratechain/broadcast/${txhex}`,
+                //data: $("#rawTransaction").val(),
+                error: function(data) {
+                    errcode = data.responseText;
+                    var r = ' Failed to Broadcast.'; // this wants a preceding space
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                },
+                success: function(data) {
+                  console.log(data.txid);
+                    if(data){
+                        var txid = data.txid;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://pirate.kmdexplorer.io/tx/${txid}"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
+function rawSubmitexperiencechain(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/experiancechain/broadcast/${txhex}`,
+                //data: $("#rawTransaction").val(),
+                error: function(data) {
+                    errcode = data.responseText;
+                    var r = ' Failed to Broadcast.'; // this wants a preceding space
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                },
+                success: function(data) {
+                  console.log(data.txid);
+                    if(data){
+                        var txid = data.txid;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://insight.xpchain.io/tx/${txid}"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
+function rawSubmiteurekacoin(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/eureka/broadcast/${txhex}`,
+                //data: $("#rawTransaction").val(),
+                error: function(data) {
+                    errcode = data.responseText;
+                    var r = ' Failed to Broadcast.'; // this wants a preceding space
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                },
+                success: function(data) {
+                  console.log(data.txid);
+                    if(data){
+                        var txid = data.txid;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://eurekanetwork.io/tx/${txid}"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
+function rawSubmitgobyte(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/gobyte/broadcast/${txhex}`,
+                //data: $("#rawTransaction").val(),
+                error: function(data) {
+                    errcode = data.responseText;
+                    var r = ' Failed to Broadcast.'; // this wants a preceding space
+                    $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                },
+                success: function(data) {
+                  console.log(data.txid);
+                    if(data){
+                        var txid = data.txid;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://insight.gobyte.network/tx/${txid}"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
  // broadcast transaction via cryptoid
 	function rawSubmitcryptoid_Carboncoin(thisbtn) {
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
@@ -3035,6 +4606,7 @@ function rawSubmitDigiExplorer(thisbtn){
         ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "arion") ||
         ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "dvt") ||
         ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "trbo") ||
+        ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "dev") ||
         ($("#allcoinsFormIDHere input[type='radio']:checked").val() == "VARIUS")) {
       $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
       $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
@@ -3054,10 +4626,6 @@ function rawSubmitDigiExplorer(thisbtn){
       $("#coinjs_broadcast").val("blockcypher_dogecoin").trigger("change");
       $("#coinjs_utxo").val("blockchair_dogecoin").trigger("change");
     }
-    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "btc")) {
-      $("#coinjs_broadcast").val("blockchair_bitcoinmainnet").trigger("change");
-      $("#coinjs_utxo").val("blockchair_bitcoinmainnet").trigger("change");
-    }
     else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "bch")) {
       $("#coinjs_broadcast").val("bch.host").trigger("change");
       $("#coinjs_utxo").val("bch.host").trigger("change");
@@ -3071,8 +4639,29 @@ function rawSubmitDigiExplorer(thisbtn){
       $("#coinjs_utxo").val("zcash.host").trigger("change");
     }
     else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "bsv")) {
-      $("#coinjs_broadcast").val("bsv.host").trigger("change");
-      $("#coinjs_utxo").val("bsv.host").trigger("change");
+      window.location.href = './bsv/';
+      //$("#coinjs_broadcast").val("bsv.host").trigger("change");
+      //$("#coinjs_utxo").val("bsv.host").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "piggy")) {
+      window.location.href = './piggy/';
+      //$("#coinjs_broadcast").val("bsv.host").trigger("change");
+      //$("#coinjs_utxo").val("bsv.host").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "zcr")) {
+      window.location.href = './zcr/';
+      //$("#coinjs_broadcast").val("bsv.host").trigger("change");
+      //$("#coinjs_utxo").val("bsv.host").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "swift")) {
+      window.location.href = './swift/';
+      //$("#coinjs_broadcast").val("bsv.host").trigger("change");
+      //$("#coinjs_utxo").val("bsv.host").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "btc")) {
+      window.location.href = './btc/';
+      //$("#coinjs_broadcast").val("bsv.host").trigger("change");
+      //$("#coinjs_utxo").val("bsv.host").trigger("change");
     }
     else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "dash")) {
       $("#coinjs_broadcast").val("dash.host").trigger("change");
@@ -3083,8 +4672,9 @@ function rawSubmitDigiExplorer(thisbtn){
       $("#coinjs_utxo").val("custom_particl").trigger("change");
     }
     else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "grs")) {
-      $("#coinjs_broadcast").val("grs.host").trigger("change");
-      $("#coinjs_utxo").val("grs.host").trigger("change");
+      window.location.href = './grs/';
+      //$("#coinjs_broadcast").val("grs.host").trigger("change");
+      //$("#coinjs_utxo").val("grs.host").trigger("change");
     }
     else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "aur")) {
       $("#coinjs_broadcast").val("custom_aurora").trigger("change");
@@ -3094,26 +4684,342 @@ function rawSubmitDigiExplorer(thisbtn){
       $("#coinjs_broadcast").val("custom_rdd").trigger("change");
       $("#coinjs_utxo").val("custom_rdd").trigger("change");
     }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "ftc")) {
+      $("#coinjs_broadcast").val("custom_feather").trigger("change");
+      $("#coinjs_utxo").val("custom_feather").trigger("change");
+    }
     else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "html")) {
       $("#coinjs_broadcast").val("custom_htmlcoin").trigger("change");
       $("#coinjs_utxo").val("custom_htmlcoin").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "via")) {
+      $("#coinjs_broadcast").val("custom_viacoin").trigger("change");
+      $("#coinjs_utxo").val("custom_viacoin").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "axe")) {
+      $("#coinjs_broadcast").val("custom_axecore").trigger("change");
+      $("#coinjs_utxo").val("custom_axecore").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "cpc")) {
+      $("#coinjs_broadcast").val("custom_capricoin").trigger("change");
+      $("#coinjs_utxo").val("custom_capricoin").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "zec")) {
+      $("#coinjs_broadcast").val("custom_zcash").trigger("change");
+      $("#coinjs_utxo").val("custom_zcash").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "cmm")) {
+      $("#coinjs_broadcast").val("custom_commercium").trigger("change");
+      $("#coinjs_utxo").val("custom_commercium").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "glt")) {
+      $("#coinjs_broadcast").val("custom_globaltoken").trigger("change");
+      $("#coinjs_utxo").val("custom_globaltoken").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "xzc")) {
+      $("#coinjs_broadcast").val("custom_zcoin").trigger("change");
+      $("#coinjs_utxo").val("custom_zcoin").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "qtum")) {
+      $("#coinjs_broadcast").val("custom_qtum").trigger("change");
+      $("#coinjs_utxo").val("custom_qtum").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "ilc")) {
+      $("#coinjs_broadcast").val("custom_ilcoin").trigger("change");
+      $("#coinjs_utxo").val("custom_ilcoin").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "smart")) {
+      $("#coinjs_broadcast").val("custom_smartcash").trigger("change");
+      $("#coinjs_utxo").val("custom_smartcash").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "trc")) {
+      $("#coinjs_broadcast").val("custom_terracoin").trigger("change");
+      $("#coinjs_utxo").val("custom_terracoin").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "kmd")) {
+        window.location.href = './kmd/';
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "btg")) {
+        window.location.href = './btg/';
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "arrr")) {
+      $("#coinjs_broadcast").val("custom_piratechain").trigger("change");
+      $("#coinjs_utxo").val("custom_piratechain").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "xpc")) {
+      $("#coinjs_broadcast").val("custom_experiencechain").trigger("change");
+      $("#coinjs_utxo").val("custom_experiencechain").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "erk")) {
+      $("#coinjs_broadcast").val("custom_eureka").trigger("change");
+      $("#coinjs_utxo").val("custom_eureka").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "gbx")) {
+      $("#coinjs_broadcast").val("custom_gobyte").trigger("change");
+      $("#coinjs_utxo").val("custom_gobyte").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "pnd")) {
+      $("#coinjs_coin").val("pandacoin_mainnet").trigger("change");
+      $("#coinjs_broadcast").val("coinb.in").trigger("change");
+      $("#coinjs_utxo").val("coinb.in").trigger("change");
+    }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "sys")) {
+      $("#coinjs_broadcast").val("custom_syscoin").trigger("change");
+      $("#coinjs_utxo").val("cryptoid.custom").trigger("change");
     }
     $("#settingsBtn").trigger("click");
     return false;
   });
   if (cUrl == null) { }
+
   else if(cUrl == 'bsv') {
+    if (eUrl == null) {
+      window.location.href = './bsv/';
+    }
+    else {
+      window.location.href = './bsv/?e='+eUrl+'&p='+pUrl+'#wallet';
+    }
+  }
+  else if(cUrl == 'piggy') {
+    if (eUrl == null) {
+      window.location.href = './piggy/';
+    }
+    else {
+      window.location.href = './piggy/?e='+eUrl+'&p='+pUrl+'#wallet';
+    }
+  }
+  else if(cUrl == 'zcr') {
+    if (eUrl == null) {
+      window.location.href = './zcr/';
+    }
+    else {
+      window.location.href = './zcr/?e='+eUrl+'&p='+pUrl+'#wallet';
+    }
+  }
+  else if(cUrl == 'grs') {
+    if (eUrl == null) {
+      window.location.href = './grs/';
+    }
+    else {
+      window.location.href = './grs/?e='+eUrl+'&p='+pUrl+'#wallet';
+    }
+  }
+  else if(cUrl == 'swift') {
+    if (eUrl == null) {
+      window.location.href = './swift/';
+    }
+    else {
+      window.location.href = './swift/?e='+eUrl+'&p='+pUrl+'#wallet';
+    }
+  }
+  else if(cUrl == 'via') {
     $("#coinjs_coin").val("custom").trigger("change");
     $("#customCoinTicker").val(cUrl).trigger("change");
-    $("#coinjs_broadcast").val("bsv.host").trigger("change");
-    $("#coinjs_utxo").val("bsv.host").trigger("change");
+    $("#coinjs_broadcast").val("custom_viacoin").trigger("change");
+    $("#coinjs_utxo").val("custom_viacoin").trigger("change");
     $("#settingsBtn").trigger("click");
   }
-  else if(cUrl == 'bsv') {
+  else if(cUrl == 'axe') {
     $("#coinjs_coin").val("custom").trigger("change");
     $("#customCoinTicker").val(cUrl).trigger("change");
-    $("#coinjs_broadcast").val("grs.host").trigger("change");
-    $("#coinjs_utxo").val("grs.host").trigger("change");
+    $("#coinjs_broadcast").val("custom_axecore").trigger("change");
+    $("#coinjs_utxo").val("custom_axecore").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'alex') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'dc') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'boat') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'emc') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'bitg') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'scc') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'shnd') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'monk') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'peng') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'aem') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'vulc') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'abet') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'shmn') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'apr') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'scriv') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'arion') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'dvt') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'trbo') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'VARIUS') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'dev') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("coinexplorer_custom").trigger("change");
+    $("#coinjs_utxo").val("coinexplorer_custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'cpc') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("custom_capricoin").trigger("change");
+    $("#coinjs_utxo").val("custom_capricoin").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'cmm') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("custom_commercium").trigger("change");
+    $("#coinjs_utxo").val("custom_commercium").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'glt') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("custom_globaltoken").trigger("change");
+    $("#coinjs_utxo").val("custom_globaltoken").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'xzc') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("custom_zcoin").trigger("change");
+    $("#coinjs_utxo").val("custom_zcoin").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'qtum') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("custom_qtum").trigger("change");
+    $("#coinjs_utxo").val("custom_qtum").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'ilc') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("custom_ilcoin").trigger("change");
+    $("#coinjs_utxo").val("custom_ilcoin").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'smart') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("custom_smartcash").trigger("change");
+    $("#coinjs_utxo").val("custom_smartcash").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'trc') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("custom_terracoin").trigger("change");
+    $("#coinjs_utxo").val("custom_terracoin").trigger("change");
     $("#settingsBtn").trigger("click");
   }
   else if(cUrl == 'bch') {
@@ -3142,13 +5048,6 @@ function rawSubmitDigiExplorer(thisbtn){
     $("#customCoinTicker").val(cUrl).trigger("change");
     $("#coinjs_broadcast").val("dash.host").trigger("change");
     $("#coinjs_utxo").val("dash.host").trigger("change");
-    $("#settingsBtn").trigger("click");
-  }
-  else if(cUrl == 'btc') {
-    $("#coinjs_coin").val("custom").trigger("change");
-    $("#customCoinTicker").val(cUrl).trigger("change");
-    $("#coinjs_broadcast").val("blockchair_bitcoinmainnet").trigger("change");
-    $("#coinjs_utxo").val("blockchair_bitcoinmainnet").trigger("change");
     $("#settingsBtn").trigger("click");
   }
   else if(cUrl == 'ltc') {
@@ -3193,14 +5092,88 @@ function rawSubmitDigiExplorer(thisbtn){
     $("#coinjs_utxo").val("custom_rdd").trigger("change");
     $("#settingsBtn").trigger("click");
   }
+  else if(cUrl == 'ftc') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("custom_feather").trigger("change");
+    $("#coinjs_utxo").val("custom_feather").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'kmd') {
+    if (eUrl == null) {
+      window.location.href = './kmd/';
+    }
+    else {
+      window.location.href = './kmd/?e='+eUrl+'&p='+pUrl+'#wallet';
+    }
+  }
+  else if(cUrl == 'btg') {
+    if (eUrl == null) {
+      window.location.href = './btg/';
+    }
+    else {
+      window.location.href = './btg/?e='+eUrl+'&p='+pUrl+'#wallet';
+    }
+  }
+  else if(cUrl == 'btc') {
+    if (eUrl == null) {
+      window.location.href = './btc/';
+    }
+    else {
+      window.location.href = './btc/?e='+eUrl+'&p='+pUrl+'#wallet';
+    }
+  }
+  else if(cUrl == 'arrr') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("custom_piratechain").trigger("change");
+    $("#coinjs_utxo").val("custom_piratechain").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'xpc') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("custom_experiencechain").trigger("change");
+    $("#coinjs_utxo").val("custom_experiencechain").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'erk') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("custom_eureka").trigger("change");
+    $("#coinjs_utxo").val("custom_eureka").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'gbx') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("custom_gobyte").trigger("change");
+    $("#coinjs_utxo").val("custom_gobyte").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'pnd') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_coin").val("pandacoin_mainnet").trigger("change");
+    $("#coinjs_broadcast").val("coinb.in").trigger("change");
+    $("#coinjs_utxo").val("coinb.in").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'sys') {
+    $("#coinjs_coin").val("custom").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("custom_syscoin").trigger("change");
+    $("#coinjs_utxo").val("cryptoid.custom").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
   else {
-
     $("#coinjs_coin").val("custom").trigger("change");
     $("#customCoinTicker").val(cUrl).trigger("change");
     $("#coinjs_broadcast").val("cryptoid.custom").trigger("change");
     $("#coinjs_utxo").val("cryptoid.custom").trigger("change");
     $("#settingsBtn").trigger("click");
   }
+
   if (eUrl == null) { }
   else {
     document.getElementById("openEmail").value = eUrl;
@@ -3220,9 +5193,13 @@ function rawSubmitDigiExplorer(thisbtn){
 			$("#rawSubmitBtn").click(function(){
 				rawSubmitChainso(this, "BTC");
 			});
+		} else if(host=="pndcoin_server1"){
+			$("#rawSubmitBtn").click(function(){
+        rawSubmitpanda_server1(this);
+			});
 		} else if(host=="chain.so_litecoin"){
 			$("#rawSubmitBtn").click(function(){
-        rawSubmitchainso(this, "LTC");
+        rawSubmitpanda_server1else(this, "LTC");
 			});
 		} else if(host=="chain.so_dogecoin"){
 			$("#rawSubmitBtn").click(function(){
@@ -3260,7 +5237,79 @@ function rawSubmitDigiExplorer(thisbtn){
 			$("#rawSubmitBtn").click(function(){
 				rawSubmitrdd(this);
 			});
-		} else if(host=="custom_htmlcoin"){
+		} else if(host=="custom_feather"){
+			$("#rawSubmitBtn").click(function(){
+				rawSubmitfeather(this);
+			});
+		} else if(host=="custom_viacoin"){
+      $("#rawSubmitBtn").click(function(){
+        rawSubmitviacoin(this);
+      });
+    } else if(host=="custom_komodo"){
+      $("#rawSubmitBtn").click(function(){
+        rawSubmitkomodo(this);
+      });
+    } else if(host=="custom_piratechain"){
+      $("#rawSubmitBtn").click(function(){
+        rawSubmitpiratechain(this);
+      });
+    } else if(host=="custom_experiencechain"){
+     $("#rawSubmitBtn").click(function(){
+       rawSubmitexperiencechain(this);
+     });
+    } else if(host=="custom_eureka"){
+     $("#rawSubmitBtn").click(function(){
+       rawSubmiteurekacoin(this);
+     });
+   } else if(host=="custom_syscoin"){
+     $("#rawSubmitBtn").click(function(){
+       rawSubmitsyscoin(this);
+     });
+    } else if(host=="custom_gobyte"){
+     $("#rawSubmitBtn").click(function(){
+       rawSubmitgobyte(this);
+     });
+    } else if(host=="custom_axecore"){
+      $("#rawSubmitBtn").click(function(){
+        rawSubmitaxecore(this);
+      });
+    } else if(host=="custom_capricoin"){
+      $("#rawSubmitBtn").click(function(){
+        rawSubmitcapricoin(this);
+      });
+    } else if(host=="custom_zcash"){
+      $("#rawSubmitBtn").click(function(){
+        rawSubmitzcash(this);
+      });
+    } else if(host=="custom_commercium"){
+      $("#rawSubmitBtn").click(function(){
+        rawSubmitcommercium(this);
+      });
+    } else if(host=="custom_globaltoken"){
+      $("#rawSubmitBtn").click(function(){
+        rawSubmitglobaltoken(this);
+      });
+    } else if(host=="custom_zcoin"){
+      $("#rawSubmitBtn").click(function(){
+        rawSubmitzcoin(this);
+      });
+    } else if(host=="custom_qtum"){
+      $("#rawSubmitBtn").click(function(){
+        rawSubmitqtum(this);
+      });
+    } else if(host=="custom_ilcoin"){
+      $("#rawSubmitBtn").click(function(){
+        rawSubmitilcoin(this);
+      });
+    } else if(host=="custom_smartcash"){
+      $("#rawSubmitBtn").click(function(){
+        rawSubmitsmartcash(this);
+      });
+    } else if(host=="custom_terracoin"){
+      $("#rawSubmitBtn").click(function(){
+        rawSubmitterracoin(this);
+      });
+    } else if(host=="custom_htmlcoin"){
 			$("#rawSubmitBtn").click(function(){
 				rawSubmithtml(this);
 			});
@@ -3465,6 +5514,9 @@ function rawSubmitDigiExplorer(thisbtn){
           explorer_api = "https://cryptodepot.org:8083/blockchair/balance/litecoin";
           explorer_api = "https://cryptodepot.org:8083/blockchair/balance/litecoin/";
           console.log("litecoin");
+          document.getElementById("bTtitle").textContent = "Litecoin";
+          document.getElementById("bTtitle1").textContent = "Litecoin";
+          document.getElementById("coinLogo").src = "images/logo/ltc.png";
         }
         else if(host=='blockchair_bitcoinmainnet'){
           tickerCode = "BTC";
@@ -3473,7 +5525,7 @@ function rawSubmitDigiExplorer(thisbtn){
           explorer_addr = "https://blockchair.com/bitcoin/address/";
           explorer_api = "https://cryptodepot.org:8083/blockchair/balance/bitcoin";
           explorer_api = "https://cryptodepot.org:8083/blockchair/balance/bitcoin/";
-          console.log("bitcoin  ");
+          console.log("bitcoin");
         }
         else if(host=='bch.host'){
           tickerCode = "BCH";
@@ -3482,6 +5534,9 @@ function rawSubmitDigiExplorer(thisbtn){
           explorer_addr = "https://blockchair.com/bitcoin-cash/address/";
           explorer_api = "https://cryptodepot.org:8083/blockchair/balance/bitcoin-cash/";
           console.log("bitcoin-cash");
+          document.getElementById("bTtitle").textContent = "Bitcoin-Cash";
+          document.getElementById("bTtitle1").textContent = "Bitcoin-Cash";
+          document.getElementById("coinLogo").src = "images/logo/bch.png";
         }
         else if(host=='ripple.host'){
           tickerCode = "XRP";
@@ -3498,6 +5553,20 @@ function rawSubmitDigiExplorer(thisbtn){
           explorer_addr = "https://blockchair.com/zcash/address/";
           explorer_api = "https://cryptodepot.org:8083/blockchair/balance/zcash/";
           console.log("zcash");
+          document.getElementById("bTtitle").textContent = "zCash";
+          document.getElementById("bTtitle1").textContent = "zCash";
+          document.getElementById("coinLogo").src = "images/logo/zec.png";
+        }
+        else if(host=='custom_zcash'){
+          tickerCode = "ZEC";
+          customCoinTicker = "zec";
+          coingeckoCoinName = "zcash";
+          explorer_addr = "https://blockchair.com/zcash/address/";
+          explorer_api = "https://cryptodepot.org:8083/blockchair/balance/zcash/";
+          console.log("zcash");
+          document.getElementById("bTtitle").textContent = "zCash";
+          document.getElementById("bTtitle1").textContent = "zCash";
+          document.getElementById("coinLogo").src = "images/logo/zec.png";
         }
         else if(host=='bsv.host') {
           tickerCode = "BSV";
@@ -3506,6 +5575,9 @@ function rawSubmitDigiExplorer(thisbtn){
           explorer_addr = "https://blockchair.com/bitcoin-sv/address/";
           explorer_api = "https://cryptodepot.org:8083/blockchair/balance/bitcoin-sv/";
           console.log("bitcoin-cash-sv");
+          document.getElementById("bTtitle").textContent = "Bitcoin Cash SV";
+          document.getElementById("bTtitle1").textContent = "Bitcoin Cash SV";
+          document.getElementById("coinLogo").src = "images/logo/bsv.png";
         }
         else if(host=='dash.host') {
           tickerCode = "DASH";
@@ -3514,6 +5586,9 @@ function rawSubmitDigiExplorer(thisbtn){
           explorer_addr = "https://blockchair.com/dash/address/";
           explorer_api = "https://cryptodepot.org:8083/blockchair/balance/dash/";
           console.log("dash");
+          document.getElementById("bTtitle").textContent = "Dash";
+          document.getElementById("bTtitle1").textContent = "Dash";
+          document.getElementById("coinLogo").src = "images/logo/dash.png";
         }
         else if(host=='grs.host') {
           tickerCode = "GRS";
@@ -3522,6 +5597,9 @@ function rawSubmitDigiExplorer(thisbtn){
           explorer_addr = "https://blockchair.com/groestlcoin/address/";
           explorer_api = "https://cryptodepot.org:8083/blockchair/balance/groestlcoin/";
           console.log("groestlcoin");
+          document.getElementById("bTtitle").textContent = "Groestlcoin";
+          document.getElementById("bTtitle1").textContent = "Groestlcoin";
+          document.getElementById("coinLogo").src = "images/logo/grs.png";
         }
         else if(host=='custom_particl') {
           tickerCode = "PART";
@@ -3530,6 +5608,9 @@ function rawSubmitDigiExplorer(thisbtn){
           explorer_addr = "https://explorer.particl.io/address/";
           explorer_api = "https://cryptodepot.org:8083/blockchair/balance/groestlcoin/";
           console.log("particl");
+          document.getElementById("bTtitle").textContent = "Particl";
+          document.getElementById("bTtitle1").textContent = "Particl";
+          document.getElementById("coinLogo").src = "images/logo/part.png";
         }
         else if(host=='custom_aurora') {
           tickerCode = "AUR";
@@ -3538,7 +5619,11 @@ function rawSubmitDigiExplorer(thisbtn){
           explorer_addr = "http://insight.auroracoin.is/address/";
           explorer_api = "https://cryptodepot.org:8083/auroracoin/balance/";
           console.log("AuroraCoin");
+          document.getElementById("bTtitle").textContent = "AuroraCoin";
+          document.getElementById("bTtitle1").textContent = "AuroraCoin";
+          document.getElementById("coinLogo").src = "images/logo/aur.png";
         }
+
         else if(host=='custom_htmlcoin') {
           tickerCode = "HTML";
           customCoinTicker = "html";
@@ -3546,6 +5631,9 @@ function rawSubmitDigiExplorer(thisbtn){
           explorer_addr = "https://explorer.htmlcoin.com/address/";
           explorer_api = "https://cryptodepot.org:8083/htmlcoin/balance/";
           console.log("HTMLCoin");
+          document.getElementById("bTtitle").textContent = "htmlcoin";
+          document.getElementById("bTtitle1").textContent = "htmlcoin";
+          document.getElementById("coinLogo").src = "images/logo/html.png";
         }
         else if(host=='custom_rdd') {
           tickerCode = "RDD";
@@ -3554,6 +5642,164 @@ function rawSubmitDigiExplorer(thisbtn){
           explorer_addr = "https://live.reddcoin.com/address/";
           explorer_api = "https://cryptodepot.org:8083/rdd/balance/";
           console.log("Reddcoin");
+          document.getElementById("bTtitle").textContent = "Reddcoin";
+          document.getElementById("bTtitle1").textContent = "Reddcoin";
+          document.getElementById("coinLogo").src = "images/logo/rdd.png";
+        }
+        else if(host=='coinexplorer_custom') {
+          explorer_addr = "https://www.coinexplorer.net/"+ customCoinTicker +"/address/";
+          explorer_api = "https://cryptodepot.org:8083/coinexplorer/balance/"+ customCoinTicker +"/";
+        }
+        else if(host=='custom_feather') {
+          tickerCode = "FTC";
+          customCoinTicker = "ftc";
+          coingeckoCoinName = "feathercoin";
+          explorer_addr = "http://explorer.feathercoin.com/";
+          explorer_api = "https://cryptodepot.org:8083/feathercoin/balance/";
+          console.log("feathercoin");
+          document.getElementById("bTtitle").textContent = "Feathercoin";
+          document.getElementById("bTtitle1").textContent = "Feathercoin";
+          document.getElementById("coinLogo").src = "images/logo/ftc.png";
+        }
+        else if(host=='custom_viacoin') {
+          tickerCode = "VIA";
+          customCoinTicker = "via";
+          coingeckoCoinName = "viacoin";
+          explorer_addr = "https://explorer.viacoin.org/address/";
+          explorer_api = "https://cryptodepot.org:8083/viacoin/balance/";
+          console.log("viacoin");
+          document.getElementById("bTtitle").textContent = "Viacoin";
+          document.getElementById("bTtitle1").textContent = "Viacoin";
+          document.getElementById("coinLogo").src = "images/logo/via.png";
+        }
+        else if(host=='custom_axecore') {
+          tickerCode = "AXE";
+          customCoinTicker = "axe";
+          coingeckoCoinName = "axe";
+          explorer_addr = "https://insight.axecore.net/address/";
+          explorer_api = "https://cryptodepot.org:8083/axecore/balance/";
+          console.log("axecore");
+          document.getElementById("bTtitle").textContent = "Axe Core";
+          document.getElementById("bTtitle1").textContent = "Axe Core";
+          document.getElementById("coinLogo").src = "images/logo/axe.png";
+        }
+        else if(host=='custom_capricoin') {
+          tickerCode = "CPC";
+          customCoinTicker = "cpc";
+          coingeckoCoinName = "capricoin";
+          explorer_addr = "https://explorer.capricoin.org/address/";
+          explorer_api = "https://cryptodepot.org:8083/capricoin/balance/";
+          console.log("capricoin");
+          document.getElementById("bTtitle").textContent = "Capricoin";
+          document.getElementById("bTtitle1").textContent = "Capricoin";
+          document.getElementById("coinLogo").src = "images/logo/cpc.png";
+        }
+        else if(host=='custom_zcash') {
+          tickerCode = "ZEC";
+          customCoinTicker = "zec";
+          coingeckoCoinName = "zcash";
+          explorer_addr = "https://zecblockexplorer.com/address/";
+          explorer_api = "https://cryptodepot.org:8083/zcash/balance/";
+          console.log("zcash");
+          document.getElementById("bTtitle").textContent = "zCash";
+          document.getElementById("bTtitle1").textContent = "zCash";
+          document.getElementById("coinLogo").src = "images/logo/zec.png";
+        }
+        else if(host=='custom_commercium') {
+          tickerCode = "CMM";
+          customCoinTicker = "cmm";
+          coingeckoCoinName = "commercium";
+          explorer_addr = "https://explorer.commercium.net/address/";
+          explorer_api = "https://cryptodepot.org:8083/commercium/balance/";
+          console.log("commercium");
+          document.getElementById("bTtitle").textContent = "Commercium";
+          document.getElementById("bTtitle1").textContent = "Commercium";
+          document.getElementById("coinLogo").src = "images/logo/cmm.png";
+        }
+        else if(host=='custom_globaltoken') {
+          tickerCode = "GLT";
+          customCoinTicker = "glt";
+          coingeckoCoinName = "globaltoken";
+          explorer_addr = "https://explorer.globaltoken.org/address/";
+          explorer_api = "https://cryptodepot.org:8083/globaltoken/balance/";
+          console.log("globaltoken");
+          document.getElementById("bTtitle").textContent = "GlobalToken";
+          document.getElementById("bTtitle1").textContent = "GlobalToken";
+          document.getElementById("coinLogo").src = "images/logo/glt.png";
+        }
+        else if(host=='custom_zcoin') {
+          tickerCode = "XZC";
+          customCoinTicker = "xzc";
+          coingeckoCoinName = "zcoin";
+          explorer_addr = "https://explorer.zcoin.io/address/";
+          explorer_api = "https://cryptodepot.org:8083/zcoin/balance/";
+          console.log("zcoin");
+          document.getElementById("bTtitle").textContent = "ZCoin";
+          document.getElementById("bTtitle1").textContent = "ZCoin";
+          document.getElementById("coinLogo").src = "images/logo/xzc.png";
+        }
+        else if(host=='custom_qtum') {
+          tickerCode = "QTUM";
+          customCoinTicker = "qtum";
+          coingeckoCoinName = "QTUM";
+          explorer_addr = "https://explorer.qtum.org/address/";
+          explorer_api = "https://cryptodepot.org:8083/qtum/balance/";
+          console.log("qtum");
+          document.getElementById("bTtitle").textContent = "Qtum";
+          document.getElementById("bTtitle1").textContent = "Qtum";
+          document.getElementById("coinLogo").src = "images/logo/qtum.png";
+        }
+        else if(host=='custom_ilcoin') {
+          tickerCode = "ILC";
+          customCoinTicker = "ilc";
+          coingeckoCoinName = "ilcoin";
+          explorer_addr = "https://ilcoinexplorer.com/address/";
+          explorer_api = "https://cryptodepot.org:8083/ilcoin/balance/";
+          console.log("ilcoin");
+          document.getElementById("bTtitle").textContent = "ILCoin";
+          document.getElementById("bTtitle1").textContent = "ILCoin";
+          document.getElementById("coinLogo").src = "images/logo/ilc.png";
+        }
+        else if(host=='custom_smartcash') {
+          tickerCode = "SMART";
+          customCoinTicker = "smart";
+          coingeckoCoinName = "smartcash";
+          explorer_addr = "https://explorer.smartcash.cc/address/";
+          explorer_api = "https://cryptodepot.org:8083/smartcash/balance/";
+          console.log("smartcash");
+        }
+        else if(host=='custom_terracoin') {
+          tickerCode = "TRC";
+          customCoinTicker = "trc";
+          coingeckoCoinName = "terracoin";
+          explorer_addr = "https://insight.terracoin.io/address/";
+          explorer_api = "https://cryptodepot.org:8083/terracoin/balance/";
+          console.log("terracoin");
+          document.getElementById("bTtitle").textContent = "Terracoin";
+          document.getElementById("bTtitle1").textContent = "Terracoin";
+          document.getElementById("coinLogo").src = "images/logo/trc.png";
+        }
+        else if(host=='custom_komodo') {
+          tickerCode = "KMD";
+          customCoinTicker = "kmd";
+          coingeckoCoinName = "KomodoOcean";
+          explorer_addr = "https://kmdexplorer.io/address/";
+          explorer_api = "https://cryptodepot.org:8083/komodo/balance/";
+          console.log("Komodo");
+          document.getElementById("bTtitle").textContent = "Komodo";
+          document.getElementById("bTtitle1").textContent = "Komodo";
+          document.getElementById("coinLogo").src = "images/logo/kmd.png";
+        }
+        else if(host=='custom_piratechain') {
+          tickerCode = "ARRR";
+          customCoinTicker = "arrr";
+          coingeckoCoinName = "Pirate-Chain";
+          explorer_addr = "https://pirate.kmdexplorer.io/address/";
+          explorer_api = "https://cryptodepot.org:8083/piratechain/balance/";
+          console.log("Pirate-Chain");
+          document.getElementById("bTtitle").textContent = "Pirate-Chain";
+          document.getElementById("bTtitle1").textContent = "Pirate-Chain";
+          document.getElementById("coinLogo").src = "images/logo/arrr.png";
         }
           else {
                 console.log(host)
