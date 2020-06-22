@@ -237,7 +237,6 @@ else if(host=='custom_gobyte') {
 					$("#openWallet").removeClass("hidden").show();
 
 					walletBalance();
-					checkBalanceLoop();
 				} else {
 					$("#openLoginStatus").html("Your passwords do not match!").removeClass("hidden").fadeOut().fadeIn();
 				}
@@ -962,16 +961,6 @@ else if(host=='custom_gobyte') {
 
 			$("#walletLoader").addClass("hidden");
 		});
-	}
-
-	function checkBalanceLoop(){
-		clearTimeout(wallet_timer);
-		wallet_timer = setTimeout(function(){
-			if($("#walletLoader").hasClass("hidden")){
-				walletBalance();
-			}
-			checkBalanceLoop();
-		},45000);
 	}
 
 	/* new -> address code */
@@ -1699,9 +1688,6 @@ else if(host=='custom_gobyte') {
     else if(host=='cryptoid.info_carboncoin'){
 			listUnspentCryptoidinfo_Carboncoin(redeem);
 		}
-    else if(host=='cryptoid.info_pandacoin'){
-			listUnspentCryptoidinfo_Pandacoin(redeem);
-		}
     else if(host=='cryptoid.info_cypherfunk'){
 			listUnspentCypherFunk(redeem);
     }
@@ -1712,7 +1698,6 @@ else if(host=='custom_gobyte') {
       listUnspentCryptoidinfo(redeem);
     }
     else {
-			listUnspentCryptoidinfo_Pandacoin(redeem);
 		}
 
 		if($("#redeemFromStatus").hasClass("hidden")) {
@@ -1828,7 +1813,7 @@ else if(host=='custom_gobyte') {
 	}
 
 	/* default function to retreive unspent outputs*/
-	function listUnspentDefault(redeem){
+/*	function listUnspentDefault(redeem){
 		var tx = coinjs.transaction();
 		tx.listUnspent(redeem.addr, function(data){
 			if(redeem.addr) {
@@ -1850,7 +1835,7 @@ else if(host=='custom_gobyte') {
 			mediatorPayment(redeem);
 		});
 	}
-
+*/
 
 
 function listUnspentBlockcypher(redeem,network){
@@ -1899,7 +1884,7 @@ function listUnspentBlockcypher(redeem,network){
 			error: function() {
 				$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs! carbon test');
 			},
-                        success: function(data) {
+      success: function(data) {
 
 				if($(data).find("result").text()==1){
 					$("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
@@ -1956,46 +1941,7 @@ function listUnspentBlockcypher(redeem,network){
           totalInputAmount();
         }
       });
-
     }
-
-    function listUnspentCryptoidinfo_Pandacoin(redeem) {
-
-  		$.ajax ({
-  			type: "GET",
-  			url: "https://chainz.cryptoid.info/pnd/api.dws?q=unspent&key=1a9c92c7492b&active="+ redeem.addr + "",
-              //data: 'q=unspent&active='+ redeem.addr + '&key=1a9c92c7492b',
-  			dataType: "json",
-  			error: function() {
-  				$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> '+ url + 'Unexpected error, unable to retrieve unspent outputs! pnd test function error');
-  			},
-
-              success: function(data) {
-  				//if($(data).find("unspent_outputs").text()==1){
-                  	$("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
-  					console.log(data)
-                  data.unspent_outputs.forEach(function(item, i) {
-                    if (i > 100) return;
-                      var tx_hash = item.tx_hash;
-                      var tx_ouput_n = item.tx_ouput_n;
-                      var value = item.value /100000000;
-                      //var value = ((item.value.text()*1)/100000000).toFixed(8);
-                      var confirms = item.confirmations;
-                      console.log(confirms)
-                      var script = item.script;
-                      var addr = item.addr;
-                      console.log(addr)
-                      console.log(tx_hash, tx_ouput_n, script, value)
-                      addOutput(tx_hash, tx_ouput_n, script, value);
-                      });
-                  },
-  			complete: function(data, status) {
-  				$("#redeemFromBtn").html("Load").attr('disabled',false);
-  				totalInputAmount();
-  			}
-  		});
-
-  	}
 
     function listUnspent_dogechain(redeem) {
 
@@ -2046,7 +1992,7 @@ function listUnspentBlockcypher(redeem,network){
 
               success: function(data) {
   				//if($(data).find("unspent_outputs").text()==1){
-                  	$("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+                  	$("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a> ');
   					console.log(data)
                   data.unspent_outputs.forEach(function(item, i) {
                     if (i > 100) return;
@@ -2084,7 +2030,7 @@ function listUnspentBlockcypher(redeem,network){
                 console.log(data)
 				//if(data && data.length){
 					$("#redeemFromAddress").removeClass('hidden').html(
-						'<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+						'<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a> ');
 				data.unspent_outputs.forEach(function(item, i) {
           if (i > 100) return;
                     var tx_hash = item.tx_hash;
@@ -2178,82 +2124,47 @@ function listUnspentBlockcypher(redeem,network){
 				totalInputAmount();
 			}
 		});
-	}
-  async function listUnspentcoinexplorer(redeem) {
-      console.log("listUnspentcoinexplorer");
-      $.ajax ({
-        type: "GET",
-        url: "https://cryptodepot.org:8083/coinexplorer/listunspent/"+ customCoinTicker +"/"+ redeem.addr +"",
-        dataType: "JSON",
-        error: function(data) {
-          var url = "https://www.coinexplorer.net/api/v1/"+ customCoinTicker +"/address/unspent?address="+ redeem.addr;
-          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> '+ url + 'Unexpected error, unable to retrieve unspent outputs!');
-        },
+  }
+
+  function listUnspentcoinexplorer(redeem){
+        $.ajax ({
+            type: "GET",
+            url: `https://cryptodepot.org:8083/cetest/listunspent/${customCoinTicker}/${redeem.addr}`,
+            dataType: "json",
+            error: function(data) {
+                $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+            },
+            beforeSend: function(data) {
+              $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> WARNING: List Unspent can take sometime please be patient.');
+            },
             success: function(data) {
-          //if($(data).find("unspent_outputs").text()==1){
-                    $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
-            console.log(data)
-                  data.result.forEach(async function(item, i) {
-                    if (i > 100) return;
-                      var tx_hash = item.txid;
-                      var tx_ouput_n = item.vout;
-                      var value = item.value // /100000000;
-                      //var value = ((item.value.text()*1)/100000000).toFixed(8);
-                      //var confirms = item.confirmations;
-                      console.log("listUnspentcoinexplorer");
-                      $.ajax ({
-                        type: "GET",
-                        url: "https://cryptodepot.org:8083/coinexplorer/txid/"+ customCoinTicker +"/"+ item.txid +"",
-                        dataType: "JSON",
-                        async: false, /* this may not work. -fury */
-                        error: function(data) {
-                          var url = "https://cryptodepot.org:8083/coinexplorer/txid/"+ customCoinTicker +"/"+ item.txid +"";
-                          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> '+ url + 'Unexpected error, unable to retrieve unspent outputs!');
-                        },
-                            success: function(data) {
-                          //if($(data).find("unspent_outputs").text()==1){
-                                    $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
-                            console.log(data)
-                                  data(function(item, i) {
-                                    if (i > 100) return;
-                                      //var value = ((item.value.text()*1)/100000000).toFixed(8);
-                                      //var confirms = item.confirmations;
-                                      var vout_array = item.vout;
-                                      var script;
-                                      vout_array.forEach(function(item_output,j) {
-                                        console.log("txid " + tx_hash + " Item " + j)
-                                        if(item_output.n == tx_ouput_n) {
-                                          console.log("Got the right tx output number, adding output to list");
-                                          script = item_output.scriptPubKey.hex;
-                                          var addr = item.address;
-                                          console.log(tx_hash, tx_ouput_n, script, value)
-                                          addOutput(tx_hash, tx_ouput_n, script, value);
-                                        }
-                                      })
-                                      });
-                                  },
-                        complete: function(data, status) {
-                          $("#redeemFromBtn").html("Load").attr('disabled',false);
-                          totalInputAmount();
-                        }
-                      });
-
-                      /* coinexplorer API is limited to 1 per sec, we need to
-                         sleep before doing the next request of the next
-                         unspent */
-                      console.log("Going to sleep");
-                      await sleep(2000);
-                      console.log("Waking up");
-                    });
-                  },
-        complete: function(data, status) {
-          $("#redeemFromBtn").html("Load").attr('disabled',false);
-          totalInputAmount();
-        }
-      });
-
-    }
-
+                    $("#redeemFromStatus").addClass('hidden');
+                    $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://www.coinexplorer.net/' + customCoinTicker + '/address/'+ redeem.addr +'" target="_blank">'+redeem.addr+'</a>');
+                        data.forEach(val => {
+                            var o = val;
+                            console.log("Value of O: "+ o);
+                            var tx = JSON.parse(o).result.txid;
+                            var vout = JSON.parse(o).result.vout;
+                            vout.forEach(vo => {
+                              var v = vo;
+                              v.scriptPubKey.addresses.forEach(addr => {
+                                  if (addr === redeem.addr) {
+                                    v.scriptPubKey.addresses.some(addr => addr === redeem.addr)
+                                    n = v.n;
+                                    script = (redeem.isMultisig==true) ? $("#redeemFrom").val() : v.scriptPubKey.hex;
+                                    amount = v.value;
+                                    addOutput(tx, n, script, amount);
+                                }
+                              });
+                            });
+                        });
+            },
+            complete: function(data, status) {
+                $("#redeemFromBtn").html("Load").attr('disabled',false);
+                totalInputAmount();
+            }
+    });
+}
   function listUnspentaurora(redeem){
 		$.ajax ({
 			type: "GET",
