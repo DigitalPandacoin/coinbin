@@ -988,8 +988,8 @@ console.log(req.params.address);
   const PORT = process.env.PORT || 5555;
   app.listen(PORT, () => console.log(`listening on ${PORT}`));
   https.createServer({
-    key: fs.readFileSync('/etc/letsencrypt/live/cryptodepot.org/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/cryptodepot.org/cert.pem')
+    key: fs.readFileSync('changeme'),
+    cert: fs.readFileSync('changeme')
   }, app).listen(8083, function () {
    require('dns').lookup(require('os').hostname(), function (err, add, fam) {
      console.log('HTTPS running on http://%s:8083', add);
