@@ -1741,7 +1741,11 @@ else if(host=='custom_gobyte') {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       listUnspentCryptoidinfo(redeem);
+=======
+			listUnspentCryptoidinfo_Pandacoin(redeem);
+>>>>>>> parent of d94e04e... update
 =======
 			listUnspentCryptoidinfo_Pandacoin(redeem);
 >>>>>>> parent of d94e04e... update
@@ -2231,6 +2235,7 @@ function listUnspentBlockcypher(redeem,network){
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                     $("#redeemFromStatus").addClass('hidden');
                     $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://www.coinexplorer.net/' + customCoinTicker + '/address/'+ redeem.addr +'" target="_blank">'+redeem.addr+'</a>');
                         data.forEach(val => {
@@ -2263,6 +2268,8 @@ function listUnspentBlockcypher(redeem,network){
     });
 }
 =======
+=======
+>>>>>>> parent of d94e04e... update
 =======
 >>>>>>> parent of d94e04e... update
 =======
@@ -2333,6 +2340,9 @@ function listUnspentBlockcypher(redeem,network){
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of d94e04e... update
+=======
 >>>>>>> parent of d94e04e... update
 =======
 >>>>>>> parent of d94e04e... update
