@@ -3064,7 +3064,7 @@ function listUnspentBlockcypher(redeem,network){
                 success: function(data) {
                     if(data){
                         var txid = data; // is this right?
-                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'">' + txid + '</a> Txid: <a href="https://server1.cryptodepot.org:3001/tx/'+ txid +'">' + txid + '</a>');
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'" target="_BLANK">' + txid + '</a> Explorer: <a href="https://server1.cryptodepot.org:3001/tx/'+ txid +'" target="_BLANK">' + txid + '</a>');
                     } else {
                         $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
                     }
@@ -3093,7 +3093,7 @@ function rawSubmitpanda_server1(thisbtn){
                     var txid = data; // is this right?
                     console.log(`https://server1.cryptodepot.org:3001/api/sendrawtransaction?hex=${txhex}`);
 
-                    $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'">' + txid + '</a> Explorer: <a href="https://server1.cryptodepot.org:3001/tx/'+ txid +'">' + txid + '</a>');
+                    $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'" target="_BLANK">' + txid + '</a> Explorer: <a href="https://server1.cryptodepot.org:3001/tx/'+ txid +'" target="_BLANK">' + txid + '</a>');
                 } else {
                     $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
                 }
@@ -3121,7 +3121,7 @@ function rawSubmitdogechain(thisbtn){
             success: function(data) {
                 if(data){
                     var txid = data; // is this right?
-                    $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'">' + txid + '</a> Txid: <a href="https://server1.cryptodepot.org:3001/tx/'+ txid +'">' + txid + '</a>');
+                    $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'" target="_BLANK">' + txid + '</a> Explorer: <a href="https://server1.cryptodepot.org:3001/tx/'+ txid +'" target="_BLANK">' + txid + '</a>');
                 } else {
                     $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
                 }
@@ -3304,7 +3304,7 @@ function rawSubmitfeather(thisbtn){
                             success: function(data) {
                                 if(data){
                                     var txid = data.txid;  // is this right?
-                                    $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'">' + txid + '</a> Txid: <a href="https://server1.cryptodepot.org:3001/tx/'+ txid +'">' + txid + '</a>');
+                                    $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'" target="_BLANK">' + txid + '</a> Explorer: <a href="https://server1.cryptodepot.org:3001/tx/'+ txid +'" target="_BLANK">' + txid + '</a>');
                                 } else {
                                     $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
                                 }
