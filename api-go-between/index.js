@@ -974,13 +974,22 @@ console.log(req.params.address);
         res.send(body.result);
         });
     });
-
+    app.get('/deviantcoin/broadcast/:txhex', (req, res) => {
+      console.log(req.params.txhex);
+      request.get({
+        url: `http://161.97.75.8:8080/api/deviantcoin/sendrawtransaction?hex=${req.params.txhex}`,
+        json: true
+      }, function(error, response, body){
+        console.log(body);
+        res.send(body);
+        });
+    });
     server.listen(8088);
   const PORT = process.env.PORT || 5555;
   app.listen(PORT, () => console.log(`listening on ${PORT}`));
   https.createServer({
-    key: fs.readFileSync('changeme'),
-    cert: fs.readFileSync('changeme')
+    key: fs.readFileSync('/etc/letsencrypt/live/cryptodepot.org/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/cryptodepot.org/cert.pem')
   }, app).listen(8083, function () {
    require('dns').lookup(require('os').hostname(), function (err, add, fam) {
      console.log('HTTPS running on http://%s:8083', add);
