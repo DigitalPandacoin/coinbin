@@ -984,11 +984,31 @@ console.log(req.params.address);
         res.send(body);
         });
     });
+    app.get('/dimecoin/broadcast/:txhex', (req, res) => {
+      console.log(req.params.txhex);
+      request.get({
+        url: `http://161.97.75.8:8080/api/dimecoin/sendrawtransaction?hex=${req.params.txhex}`,
+        json: true
+      }, function(error, response, body){
+        console.log(body);
+        res.send(body);
+        });
+    });
+    app.get('/lynx/broadcast/:txhex', (req, res) => {
+      console.log(req.params.txhex);
+      request.get({
+        url: `http://161.97.75.8:8080/api/lynx/sendrawtransaction?hex=${req.params.txhex}`,
+        json: true
+      }, function(error, response, body){
+        console.log(body);
+        res.send(body);
+        });
+    });
     server.listen(8088);
   const PORT = process.env.PORT || 5555;
   app.listen(PORT, () => console.log(`listening on ${PORT}`));
   https.createServer({
-    key: fs.readFileSync('changeme'),
+    key: fs.readFileSync('chanageme'),
     cert: fs.readFileSync('changeme')
   }, app).listen(8083, function () {
    require('dns').lookup(require('os').hostname(), function (err, add, fam) {
