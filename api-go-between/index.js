@@ -1,9 +1,12 @@
 const express = require('express');
 const request = require('request');
+const http = require('http');
+const sleep = require('system-sleep');
 const https = require('https');
 const fs = require('fs');
 
 var app = express();
+var server = http.createServer(app);
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -14,7 +17,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-res.send("coinbin custom api");
+  res.redirect('https://cryptodepot.org/coinbin/')
 });
 
 // Chainz API Balance, List Unspent & Broadcast
@@ -65,6 +68,54 @@ console.log(req.params.address);
     console.log(req.params.address);
     request(
       { url: 'https://www.coinexplorer.net/api/v1/'+ req.params.coinname +'/address/unspent?address=' + req.params.address + ''},
+      (error, response, body) => {
+        if (error || response.statusCode !== 200) {
+          return res.status(500).json({ type: 'error', message: error });
+        }
+        res.send(JSON.stringify(JSON.parse(body), null, 2));
+      }
+    )
+  });
+
+  app.get('/cetest/listunspent/:coinname/:address', (req, res) => {
+    console.log(req.params.coinname);
+    console.log(req.params.address);
+    html="";
+    request(
+      { url: 'https://www.coinexplorer.net/api/v1/'+ req.params.coinname +'/address/unspent?address=' + req.params.address + ''},
+      (error, response, body) => {
+        var results = new Array();
+        JSON.parse(body).result.forEach(obj => {
+          sleep(2*1000);
+          Object.entries(obj).forEach(([key, value]) => {
+            if(key==='txid') {
+              console.log(`${value} -- Console.log`)
+            request(
+              { url: 'https://www.coinexplorer.net/api/v1/'+ req.params.coinname +'/transaction?txid=' + value + ''},
+              (error, response, body) => {
+                if (error || response.statusCode !== 200) {
+                  return res.status(500).json({ type: 'error', message: error });
+                }
+                console.log(results.length + " Length BEFORE");
+                results.push(JSON.stringify(JSON.parse(body)));
+                console.log(JSON.stringify(JSON.parse(body)) + "-- End Result");
+                console.log(results.length + " Length AFTER");
+              }
+            )
+          }
+          });
+        });
+        sleep(3*1000);
+        res.send(results, null, 2);
+      }
+    )
+  });
+
+  app.get('/coinexplorer/txid/:coinname/:txid', (req, res) => {
+    console.log(req.params.coinname);
+    console.log(req.params.txid);
+    request(
+      { url: 'https://www.coinexplorer.net/api/v1/'+ req.params.coinname +'/transaction?txid=' + req.params.txid + ''},
       (error, response, body) => {
         if (error || response.statusCode !== 200) {
           return res.status(500).json({ type: 'error', message: error });
@@ -923,12 +974,52 @@ console.log(req.params.address);
         res.send(body.result);
         });
     });
-
+    app.get('/deviantcoin/broadcast/:txhex', (req, res) => {
+      console.log(req.params.txhex);
+      request.get({
+        url: `http://161.97.75.8:8080/api/deviantcoin/sendrawtransaction?hex=${req.params.txhex}`,
+        json: true
+      }, function(error, response, body){
+        console.log(body);
+        res.send(body);
+        });
+    });
+    app.get('/dimecoin/broadcast/:txhex', (req, res) => {
+      console.log(req.params.txhex);
+      request.get({
+        url: `http://161.97.75.8:8080/api/dimecoin/sendrawtransaction?hex=${req.params.txhex}`,
+        json: true
+      }, function(error, response, body){
+        console.log(body);
+        res.send(body);
+        });
+    });
+    app.get('/blocknet/broadcast/:txhex', (req, res) => {
+      console.log(req.params.txhex);
+      request.get({
+        url: `http://161.97.75.8:8080/api/blocknet/sendrawtransaction?hex=${req.params.txhex}`,
+        json: true
+      }, function(error, response, body){
+        console.log(body);
+        res.send(body);
+        });
+    });
+    app.get('/lynx/broadcast/:txhex', (req, res) => {
+      console.log(req.params.txhex);
+      request.get({
+        url: `http://161.97.75.8:8080/api/lynx/sendrawtransaction?hex=${req.params.txhex}`,
+        json: true
+      }, function(error, response, body){
+        console.log(body);
+        res.send(body);
+        });
+    });
+    server.listen(8088);
   const PORT = process.env.PORT || 5555;
   app.listen(PORT, () => console.log(`listening on ${PORT}`));
   https.createServer({
-    key: fs.readFileSync(''), //change me
-      cert: fs.readFileSync('') //change me
+    key: fs.readFileSync('changeme'),
+    cert: fs.readFileSync('changeme')
   }, app).listen(8083, function () {
    require('dns').lookup(require('os').hostname(), function (err, add, fam) {
      console.log('HTTPS running on http://%s:8083', add);

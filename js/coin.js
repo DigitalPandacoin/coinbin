@@ -1117,7 +1117,7 @@
 				success: function(data) {
 						if(data){
 								var txid = data; // is this right?
-								$("#walletSendConfirmStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'">' + txid + '</a>');
+								$("#walletSendConfirmStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(' Txid: <a href="http://cryptodepot.org:8082/'+ txid +'" target="_BLANK">' + txid + '</a> Explorer: <a href="https://server1.cryptodepot.org:3001/tx/'+ txid +'" target="_BLANK">' + txid + '</a>');
 						} else {
 								$("#walletSendConfirmStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
 						}
