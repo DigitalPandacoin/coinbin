@@ -994,6 +994,16 @@ console.log(req.params.address);
         res.send(body);
         });
     });
+    app.get('/blocknet/broadcast/:txhex', (req, res) => {
+      console.log(req.params.txhex);
+      request.get({
+        url: `http://161.97.75.8:8080/api/blocknet/sendrawtransaction?hex=${req.params.txhex}`,
+        json: true
+      }, function(error, response, body){
+        console.log(body);
+        res.send(body);
+        });
+    });
     app.get('/lynx/broadcast/:txhex', (req, res) => {
       console.log(req.params.txhex);
       request.get({

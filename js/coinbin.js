@@ -1625,7 +1625,13 @@ else if(host=='custom_gobyte') {
     else if(host=="custom_deviantcoin"){
       listUnspentcoinexplorer(redeem);
     }
+    else if(host=="custom_utip") {
+      listUnspentCryptoidutip(redeem);
+    }
     else if(host=="custom_dimecoin"){
+      listUnspentCryptoidinfo(redeem);
+    }
+    else if(host=="custom_blocknet"){
       listUnspentCryptoidinfo(redeem);
     }
     //else if(host=="custom_lynx"){
@@ -1758,7 +1764,7 @@ else if(host=='custom_gobyte') {
       listUnspentCryptoidinfo(redeem);
     }
     else {
-      listUnspentCryptoidinfo(redeem);
+    //  listUnspentCryptoidinfo(redeem);
 		}
 
 		if($("#redeemFromStatus").hasClass("hidden")) {
@@ -1977,11 +1983,9 @@ function listUnspentBlockcypher(redeem,network){
         error: function() {
           $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs! pnd test function error');
         },
-
-              success: function(data) {
+        success: function(data) {
           //if($(data).find("unspent_outputs").text()==1){
                     $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
-            console.log(data)
                   data.unspent_outputs.forEach(function(item, i) {
                     if (i > 100) return;
                       var tx_hash = item.tx_hash;
@@ -1995,6 +1999,42 @@ function listUnspentBlockcypher(redeem,network){
                       console.log(addr)
                       console.log(tx_hash, tx_ouput_n, script, value)
                       addOutput(tx_hash, tx_ouput_n, script, value);
+                      });
+                  },
+        complete: function(data, status) {
+          $("#redeemFromBtn").html("Load").attr('disabled',false);
+          totalInputAmount();
+        }
+      });
+    }
+    function listUnspentCryptoidutip(redeem) {
+      console.log("listUnspentCryptoidutip");
+      $.ajax ({
+        type: "GET",
+        url: "https://cryptodepot.org:8083/chainz/listunspent/"+ customCoinTicker +"/"+ redeem.addr,
+        dataType: "json",
+        error: function() {
+          $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs! pnd test function error');
+        },
+
+              success: function(data) {
+          //if($(data).find("unspent_outputs").text()==1){
+                    $("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+            console.log(data)
+                  data.unspent_outputs.forEach(function(item, i) {
+                    if (i > 100) return;
+
+                      var tx_hash = /* ((""+item.tx_hash).match(/.{1,2}/g).reverse()).join("")+''; */ item.tx_hash;
+                      var tx_ouput_n = item.tx_ouput_n;
+                      var value = item.value /100000000;
+                      //var value = ((item.value.text()*1)/100000000).toFixed(8);
+                      var confirms = item.confirmations;
+                      console.log(confirms)
+                      var script = item.script;
+                      var addr = item.addr;
+                      console.log(addr)
+                      console.log(tx_hash, tx_ouput_n, script, value)
+                      addOutput('3c5d035f0'+tx_hash, tx_ouput_n, script, value);
                       });
                   },
         complete: function(data, status) {
@@ -3310,6 +3350,40 @@ function rawSubmitdimecoin(thisbtn){
                     if(data){
                         var txid = data;  // is this right?
                         $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://www.coinexplorer.net/DEV/transaction/${txid}"> ${txid} </a>`);
+                    } else {
+                        $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                    }
+                },
+                complete: function (data, status) {
+                                     console.log(data);
+
+                    $("#rawTransactionStatus").fadeOut().fadeIn();
+                    $(thisbtn).val('Submit').attr('disabled',false);
+                }
+            });
+}
+function rawSubmitblocknet(thisbtn){
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        console.log(txhex);
+            $.ajax({
+                type: "GET",
+                url: `https://cryptodepot.org:8083/blocknet/broadcast/${txhex}`,
+                data: $("#rawTransaction").val(),
+                error: function(data) {
+                  if(data.responseText ==="There was an error. Check your console.") {
+                  errcode = data.responseText;
+                  var r = ' Failed to Broadcast.'; // this wants a preceding space
+                  $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+                } else {
+                  var txid = data.responseText;
+                    $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: ${txid} <br> <a href="https://chainz.cryptoid.info/block/tx.dws?${txid}" target="_BLANK"> View on Block Explorer </a>`);
+                }
+                },
+                success: function(data) {
+                    if(data){
+                        var txid = data;  // is this right?
+                        $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: ${txid} <br> <a href="https://chainz.cryptoid.info/block/tx.dws?${txid}" target="_BLANK"> View on Block Explorer </a>`);
                     } else {
                         $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
                     }
@@ -4690,6 +4764,11 @@ function rawSubmitDigiExplorer(thisbtn){
       $("#coinjs_broadcast").val("custom_deviantcoin").trigger("change");
       $("#coinjs_utxo").val("custom_deviantcoin").trigger("change");
     }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "block")) {
+      $("#coinjs_coin").val("custom_blocknet").trigger("change");
+      $("#coinjs_broadcast").val("custom_blocknet").trigger("change");
+      $("#coinjs_utxo").val("custom_blocknet").trigger("change");
+    }
     else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "dgb")) {
       $("#coinjs_coin").val("digibyte_mainnet").trigger("change");
       $("#coinjs_broadcast").val("digiexplorer.info").trigger("change");
@@ -5057,6 +5136,13 @@ function rawSubmitDigiExplorer(thisbtn){
     $("#coinjs_utxo").val("custom_deviantcoin").trigger("change");
     $("#settingsBtn").trigger("click");
   }
+  else if(cUrl == 'block') {
+    $("#coinjs_coin").val("custom_blocknet").trigger("change");
+    $("#customCoinTicker").val(cUrl).trigger("change");
+    $("#coinjs_broadcast").val("custom_blocknet").trigger("change");
+    $("#coinjs_utxo").val("custom_blocknet").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
   else if(cUrl == 'cpc') {
     $("#coinjs_coin").val("custom").trigger("change");
     $("#customCoinTicker").val(cUrl).trigger("change");
@@ -5284,15 +5370,19 @@ function rawSubmitDigiExplorer(thisbtn){
 			$("#rawSubmitBtn").click(function(){
 				rawSubmitChainso(this, "BTC");
 			});
-		} if(host=="custom_deviantcoin"){
+		} else if(host=="custom_deviantcoin"){
 			$("#rawSubmitBtn").click(function(){
 				rawSubmitdeviantcoin(this);
 			});
-		} if(host=="custom_dimecoin"){
+		} else if(host=="custom_dimecoin"){
 			$("#rawSubmitBtn").click(function(){
 				rawSubmitdimecoin(this);
 			});
-		} if(host=="custom_lynx"){
+		} else if(host=="custom_blocknet"){
+			$("#rawSubmitBtn").click(function(){
+				rawSubmitblocknet(this);
+			});
+		} else if(host=="custom_lynx"){
 			$("#rawSubmitBtn").click(function(){
 				rawSubmitlynx(this);
 			});
@@ -5940,6 +6030,19 @@ function rawSubmitDigiExplorer(thisbtn){
           document.getElementById("bTtitle").textContent = "Pirate-Chain";
           document.getElementById("bTtitle1").textContent = "Pirate-Chain";
           document.getElementById("coinLogo").src = "images/logo/arrr.png";
+        }
+        else if(host=='custom_blocknet'){
+          console.log(host)
+          explorer_tx = "https://chainz.cryptoid.info/pnd/tx.dws?";
+          explorer_addr = "https://chainz.cryptoid.info/pnd/address.dws?";
+          explorer_block = "https://chainz.cryptoid.info/pnd/block.dws?";
+          explorer_api = "https://cryptodepot.org:8083/chainz/balance/pnd/";
+          tickerCode = "BLOCK";
+          customCoinTicker = "block";
+          coingeckoCoinName = "blocknet";
+          document.getElementById("coinLogo").src = "images/logo/block.png";
+          document.getElementById("bTtitle").textContent = "Blocknet";
+          document.getElementById("bTtitle1").textContent = "Blocknet";
         }
           else {
                 console.log(host)
