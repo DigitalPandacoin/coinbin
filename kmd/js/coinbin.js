@@ -1249,28 +1249,33 @@ $(document).ready(function() {
 	function rawSubmitDefault(btn){
 		var thisbtn = btn;
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
-		$.ajax ({
-			type: "POST",
-			url: coinjs.host+'?uid='+coinjs.uid+'&key='+coinjs.key+'&setmodule=bitcoin&request=sendrawtransaction',
-			data: {'rawtx':$("#rawTransaction").val()},
-			dataType: "xml",
-			error: function(data) {
-				$("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(" There was an error submitting your request, please try again").prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
-			},
-                        success: function(data) {
-				$("#rawTransactionStatus").html(unescape($(data).find("response").text()).replace(/\+/g,' ')).removeClass('hidden');
-				if($(data).find("result").text()==1){
-					$("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger');
-					$("#rawTransactionStatus").html('txid: '+$(data).find("txid").text());
-				} else {
-					$("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span> ');
-				}
-			},
-			complete: function(data, status) {
-				$("#rawTransactionStatus").fadeOut().fadeIn();
-				$(thisbtn).val('Submit').attr('disabled',false);
-			}
-		});
+		txhex = $("#rawTransaction").val().trim();
+		console.log(txhex);
+				$.ajax({
+						type: "GET",
+						url: `https://api.cryptodepot.org:8083/komodo/broadcast/${txhex}`,
+						//data: $("#rawTransaction").val(),
+						error: function(data) {
+								errcode = data.responseText;
+								var r = ' Failed to Broadcast.'; // this wants a preceding space
+								$("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+						},
+						success: function(data) {
+							console.log(data.txid);
+								if(data){
+										var txid = data.txid;  // is this right?
+										$("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: <a href="https://kmdexplorer.io/tx/${txid}"> ${txid} </a>`);
+								} else {
+										$("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+								}
+						},
+						complete: function (data, status) {
+																 console.log(data);
+
+								$("#rawTransactionStatus").fadeOut().fadeIn();
+								$(thisbtn).val('Submit').attr('disabled',false);
+						}
+				});
 	}
 
 	// broadcast transaction via cryptoid

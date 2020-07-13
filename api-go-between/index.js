@@ -25,7 +25,7 @@ app.get('/chainz/balance/:coinname/:address', (req, res) => {
 console.log(req.params.coinname);
 console.log(req.params.address);
   request(
-    { url: 'https://chainz.cryptoid.info/' + req.params.coinname + '/api.dws?q=getbalance&a='+ req.params.address+ ''},
+    { url: 'https://chainz.cryptoid.info/' + req.params.coinname + '/api.dws?q=getbalance&key=1a9c92c7492b&a='+ req.params.address+ ''},
     (error, response, body) => {
       if (error || response.statusCode !== 200) {
         return res.status(500).json({ type: 'error', message: error });
@@ -977,7 +977,7 @@ console.log(req.params.address);
     app.get('/deviantcoin/broadcast/:txhex', (req, res) => {
       console.log(req.params.txhex);
       request.get({
-        url: `http://161.97.75.8:8080/api/deviantcoin/sendrawtransaction?hex=${req.params.txhex}`,
+        url: `http://api.cryptodepot.org:8080/api/deviantcoin/sendrawtransaction?hex=${req.params.txhex}`,
         json: true
       }, function(error, response, body){
         console.log(body);
@@ -987,7 +987,7 @@ console.log(req.params.address);
     app.get('/dimecoin/broadcast/:txhex', (req, res) => {
       console.log(req.params.txhex);
       request.get({
-        url: `http://161.97.75.8:8080/api/dimecoin/sendrawtransaction?hex=${req.params.txhex}`,
+        url: `http://api.cryptodepot.org:8080/api/dimecoin/sendrawtransaction?hex=${req.params.txhex}`,
         json: true
       }, function(error, response, body){
         console.log(body);
@@ -997,7 +997,7 @@ console.log(req.params.address);
     app.get('/blocknet/broadcast/:txhex', (req, res) => {
       console.log(req.params.txhex);
       request.get({
-        url: `http://161.97.75.8:8080/api/blocknet/sendrawtransaction?hex=${req.params.txhex}`,
+        url: `http://api.cryptodepot.org:8080/api/blocknet/sendrawtransaction?hex=${req.params.txhex}`,
         json: true
       }, function(error, response, body){
         console.log(body);
@@ -1007,7 +1007,7 @@ console.log(req.params.address);
     app.get('/lynx/broadcast/:txhex', (req, res) => {
       console.log(req.params.txhex);
       request.get({
-        url: `http://161.97.75.8:8080/api/lynx/sendrawtransaction?hex=${req.params.txhex}`,
+        url: `http://api.cryptodepot.org:8080/api/lynx/sendrawtransaction?hex=${req.params.txhex}`,
         json: true
       }, function(error, response, body){
         console.log(body);
@@ -1018,8 +1018,8 @@ console.log(req.params.address);
   const PORT = process.env.PORT || 5555;
   app.listen(PORT, () => console.log(`listening on ${PORT}`));
   https.createServer({
-    key: fs.readFileSync('changeme'),
-    cert: fs.readFileSync('changeme')
+    key: fs.readFileSync('/etc/letsencrypt/live/api.cryptodepot.org/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/api.cryptodepot.org/cert.pem')
   }, app).listen(8083, function () {
    require('dns').lookup(require('os').hostname(), function (err, add, fam) {
      console.log('HTTPS running on http://%s:8083', add);
