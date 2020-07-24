@@ -7,10 +7,10 @@
  * JSON RPC functionality addapted from JSON-RPC PHP by Sergio Vaccaro <sergio@inservibile.org>
 */
 //----------
-define('RPC_HOST', "localhost"); // @ CHANGEME
-define('RPC_PORT', "10000"); // @ CHANGEME
-define('RPC_USER', "pandacoinrpc"); // @ CHANGEME
-define('RPC_PASS', "38ZjqLZzb2PQujUmQMCir42Ah4c6KUj6MwBWeqT3ffq6x"); // @ CHANGEME
+define('RPC_HOST', ""); // @ CHANGEME
+define('RPC_PORT', ""); // @ CHANGEME
+define('RPC_USER', ""); // @ CHANGEME
+define('RPC_PASS', ""); // @ CHANGEME
 //----------
 function XVarDump(&$Var, $flatten = true) // for debugging
 {

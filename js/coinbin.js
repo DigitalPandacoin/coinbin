@@ -2,7 +2,7 @@ var sequence = 0xffffffff-1;var tickerCode;
 var customCoinTicker;
 var address;
 var coingeckoCoinName;
-var cBinApiLink = "https://api.cryptodepot.org:8083/";
+var cBinApiLink = "https://api.cryptodepot.org/";
 var host = 'coinb.in';
 
 function sleep(ms) {
@@ -39,7 +39,7 @@ console.log("coinbin.js customCoinTicker reset to pnd")
                 var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/tx.dws?";
                 var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/address.dws?";
                 var explorer_block = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/block.dws?";
-                var explorer_api = "https://api.cryptodepot.org:8083/chainz/balance/"+ customCoinTicker.toLowerCase() +"/";
+                var explorer_api = "https://api.cryptodepot.org/chainz/balance/"+ customCoinTicker.toLowerCase() +"/";
 
 
     var wallet_timer = false;
@@ -129,7 +129,7 @@ else if(host=='panda.tech') {
 
 else if(host=='chainz_custom'){
   var explorer_addr = "https://www.coinexplorer.net/"+ customCoinTicker +"/address/";
-  var explorer_api = "https://api.cryptodepot.org:8083/chainz/balance/"+ customCoinTicker +"/";
+  var explorer_api = "https://api.cryptodepot.org/chainz/balance/"+ customCoinTicker +"/";
   customCoinTicker = $('#customCoinTicker').val();
 }
 
@@ -139,7 +139,17 @@ else if(host=='cryptoid.custom') {
   var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/tx.dws?";
   var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/address.dws?";
   var explorer_block = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/block.dws?";
-  var explorer_api = "https://api.cryptodepot.org:8083/chainz/balance/"+ customCoinTicker.toLowerCase() +"/";
+  var explorer_api = "https://api.cryptodepot.org/chainz/balance/"+ customCoinTicker.toLowerCase() +"/";
+  var customCoinTicker = tickerCode.toLowerCase();
+  console.log(host);
+}
+else if(host=='cryptoid.info_cypherfunk') {
+  // change to customcoin for explorer
+  customCoinTicker = tickerCode;
+  var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/tx.dws?";
+  var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/address.dws?";
+  var explorer_block = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/block.dws?";
+  var explorer_api = "https://api.cryptodepot.org/chainz/balance/"+ customCoinTicker.toLowerCase() +"/";
   var customCoinTicker = tickerCode.toLowerCase();
   console.log(host);
 }
@@ -390,15 +400,27 @@ else if(host=='custom_gobyte') {
 				// and finally broadcast!
 
 				tx2.broadcast(function(data){
-					if($(data).find("result").text()=="1"){
-						$("#walletSendConfirmStatus").removeClass('hidden').addClass('alert-success').html('txid: <a href="https://coinb.in/tx/'+$(data).find("txid").text()+'" target="_blank">'+$(data).find("txid").text()+'</a>');
-					} else {
-						$("#walletSendConfirmStatus").removeClass('hidden').addClass('alert-danger').html(unescape($(data).find("response").text()).replace(/\+/g,' '));
-						$("#walletSendFailTransaction").removeClass('hidden');
-						$("#walletSendFailTransaction textarea").val(signed);
-						thisbtn.attr('disabled',false);
-					}
-
+          if(host=='pandacoin_mainnet') {
+            if(data){
+              console.log(data);
+              $("#walletSendConfirmStatus").removeClass('hidden').addClass('alert-success').html('txid: <a href="https://chainz.cryptoid.info/pnd/tx.dws?' + data +'" target="_blank">'+ data +'</a>');
+            } else {
+              console.log(data);
+              $("#walletSendConfirmStatus").removeClass('hidden').addClass('alert-danger').html(unescape($(data).find("response").text()).replace(/\+/g,' '));
+              $("#walletSendFailTransaction").removeClass('hidden');
+              $("#walletSendFailTransaction textarea").val(signed);
+              thisbtn.attr('disabled',false);
+          }
+          } else {
+              if($(data).find("result").text()=="1"){
+                $("#walletSendConfirmStatus").removeClass('hidden').addClass('alert-success').html('txid: <a href="https://coinb.in/tx/'+$(data).find("txid").text()+'" target="_blank">'+$(data).find("txid").text()+'</a>');
+              } else {
+                $("#walletSendConfirmStatus").removeClass('hidden').addClass('alert-danger').html(unescape($(data).find("response").text()).replace(/\+/g,' '));
+    						$("#walletSendFailTransaction").removeClass('hidden');
+    						$("#walletSendFailTransaction textarea").val(signed);
+    						thisbtn.attr('disabled',false);
+  					}
+          }
 					// update wallet balance
 					walletBalance();
 
@@ -498,9 +520,13 @@ console.log("coinbin.js customCoinTicker reset to pnd")
 if(customCoinTicker == null){
         customCoinTicker = tickerCode.toLowerCase();
 }
+if(host=='cryptoid.custom') {customCoinTicker = $('#customCoinTicker').val();}
+console.log(host);
 console.log(customCoinTicker);
+
+
 //configureGetUnspentTx();
-var explorer_api = "https://api.cryptodepot.org:8083/chainz/balance/"+ customCoinTicker.toLowerCase() +"/";
+var explorer_api = "https://api.cryptodepot.org/chainz/balance/"+ customCoinTicker.toLowerCase() +"/";
 var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/address.dws?";
 //configureGetUnspentTx();
 var host = $("#coinjs_broadcast option:selected").val();
@@ -514,29 +540,40 @@ if(host=='blockcypher_dogecoin'){
                 coingeckoCoinName = "dogecoin";
                 coingecko = "true";
 }
+else if(host=='cryptoid.info_cypherfunk') {
+  // change to customcoin for explorer
+  customCoinTicker = tickerCode;
+  var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/tx.dws?";
+  var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/address.dws?";
+  var explorer_block = "https://chainz.cryptoid.info/"+ customCoinTicker.toLowerCase() +"/block.dws?";
+  var explorer_api = "https://api.cryptodepot.org/chainz/balance/"+ customCoinTicker.toLowerCase() +"/";
+  var customCoinTicker = tickerCode.toLowerCase();
+  console.log(host);
+}
+
 else if(host=='coinexplorer_custom'){
   var host = "coinexplorer_custom";
   var explorer_addr = "https://www.coinexplorer.net/"+ customCoinTicker +"/address/";
-  var explorer_api = "https://api.cryptodepot.org:8083/coinexplorer/balance/"+ customCoinTicker +"/";
+  var explorer_api = "https://api.cryptodepot.org/coinexplorer/balance/"+ customCoinTicker +"/";
   customCoinTicker = $('#customCoinTicker').val();
 }
 else if(host=='custom_deviantcoin'){
   var host = "custom_deviantcoin";
   var explorer_addr = "https://www.coinexplorer.net/"+ customCoinTicker +"/address/";
-  var explorer_api = "https://api.cryptodepot.org:8083/coinexplorer/balance/"+ customCoinTicker +"/";
+  var explorer_api = "https://api.cryptodepot.org/coinexplorer/balance/"+ customCoinTicker +"/";
   customCoinTicker = $('#customCoinTicker').val();
 }
 else if(host=='custom_lynx') {
   customCoinTicker = "lynx";
   explorer_addr = "https://chainz.cryptoid.info/"+ customCoinTicker +"/address.dws?";
-  explorer_api = "https://api.cryptodepot.org:8083/chainz/balance/"+ customCoinTicker +"/";
+  explorer_api = "https://api.cryptodepot.org/chainz/balance/"+ customCoinTicker +"/";
 
 }
 else if(host=='custom_aurora') {
   // change to customcoin for explorer
   var host = "custom_aurora"
   explorer_addr = "http://insight.auroracoin.is/address/";
-  explorer_api = "https://api.cryptodepot.org:8083/auroracoin/balance/";
+  explorer_api = "https://api.cryptodepot.org/auroracoin/balance/";
   customCoinTicker = $('#customCoinTicker').val();
 
 }
@@ -549,127 +586,127 @@ else if(host=='panda.tech') {
 }
 else if(host=='bsv.host') {
   explorer_addr = "https://blockchair.com/bitcoin-sv/address/";
-  explorer_api = "https://api.cryptodepot.org:8083/blockchair/balance/bitcoin-sv/";
+  explorer_api = "https://api.cryptodepot.org/blockchair/balance/bitcoin-sv/";
 }
 else if(host=='dash.host') {
   explorer_addr = "https://blockchair.com/dash/address/";
-  explorer_api = "https://api.cryptodepot.org:8083/blockchair/balance/dash/"
+  explorer_api = "https://api.cryptodepot.org/blockchair/balance/dash/"
 }
 else if(host=='bch.host') {
   explorer_addr = "https://blockchair.com/bitcoin-cash/address/";
-  explorer_api = "https://api.cryptodepot.org:8083/blockchair/balance/bitcoin-cash/";
+  explorer_api = "https://api.cryptodepot.org/blockchair/balance/bitcoin-cash/";
 }
 else if(host=='ripple.host') {
   explorer_addr = "https://blockchair.com/ripple/address/";
-  explorer_api = "https://api.cryptodepot.org:8083/blockchair/balance/ripple/";
+  explorer_api = "https://api.cryptodepot.org/blockchair/balance/ripple/";
 }
 else if(host=='zcash.host') {
   explorer_addr = "https://blockchair.com/zcash/address/";
-  explorer_api = "https://api.cryptodepot.org:8083/blockchair/balance/zcash/";
+  explorer_api = "https://api.cryptodepot.org/blockchair/balance/zcash/";
 }
 else if(host=='grs.host') {
   explorer_addr = "https://blockchair.com/groestlcoin/address/";
-  explorer_api = "https://api.cryptodepot.org:8083/blockchair/balance/groestlcoin/";
+  explorer_api = "https://api.cryptodepot.org/blockchair/balance/groestlcoin/";
 }
 else if(host=='custom_rdd') {
-  explorer_api = "https://api.cryptodepot.org:8083/rdd/balance/";
+  explorer_api = "https://api.cryptodepot.org/rdd/balance/";
   explorer_addr = "https://live.reddcoin.com/address/";
 }
 else if(host=='coinexplorer_custom') {
   // change to customcoin for explorer
   explorer_addr = "https://www.coinexplorer.net/"+ customCoinTicker +"/address/";
-  explorer_api = "https://api.cryptodepot.org:8083/coinexplorer/balance/"+ customCoinTicker +"/";
+  explorer_api = "https://api.cryptodepot.org/coinexplorer/balance/"+ customCoinTicker +"/";
 }
 else if(host=='custom_deviantcoin') {
   // change to customcoin for explorer
   explorer_addr = "https://www.coinexplorer.net/"+ customCoinTicker +"/address/";
-  explorer_api = "https://api.cryptodepot.org:8083/coinexplorer/balance/"+ customCoinTicker +"/";
+  explorer_api = "https://api.cryptodepot.org/coinexplorer/balance/"+ customCoinTicker +"/";
 }
 else if(host=='custom_lynx') {
   customCoinTicker = "lynx";
   explorer_addr = "https://chainz.cryptoid.info/"+ customCoinTicker +"/address.dws?";
-  explorer_api = "https://api.cryptodepot.org:8083/chainz/balance/"+ customCoinTicker +"/";
+  explorer_api = "https://api.cryptodepot.org/chainz/balance/"+ customCoinTicker +"/";
 }
 else if(host=='custom_aurora') {
   explorer_addr = "http://insight.auroracoin.is/address/";
-  explorer_api = "https://api.cryptodepot.org:8083/auroracoin/balance/";
+  explorer_api = "https://api.cryptodepot.org/auroracoin/balance/";
 
 }
 else if(host=='custom_feather') {
-  explorer_api = "https://api.cryptodepot.org:8083/feathercoin/balance/";
+  explorer_api = "https://api.cryptodepot.org/feathercoin/balance/";
   explorer_addr = "http://explorer.feathercoin.com/address/";
 }
 else if(host=='custom_aurora') {
-  explorer_api = "https://api.cryptodepot.org:8083/aurora/balance/";
+  explorer_api = "https://api.cryptodepot.org/aurora/balance/";
 }
 else if(host=='custom_htmlcoin') {
-  explorer_api = "https://api.cryptodepot.org:8083/htmlcoin/balance/";
+  explorer_api = "https://api.cryptodepot.org/htmlcoin/balance/";
 }
 else if(host=='custom_particl') {
-  explorer_api = "https://api.cryptodepot.org:8083/particl/balance/";
+  explorer_api = "https://api.cryptodepot.org/particl/balance/";
 }
 else if(host=='custom_viacoin') {
-  explorer_api = "https://api.cryptodepot.org:8083/viacoin/balance/";
+  explorer_api = "https://api.cryptodepot.org/viacoin/balance/";
   explorer_addr = "https://explorer.viacoin.org/address/";
 }
 else if(host=='custom_axecore') {
-  explorer_api = "https://api.cryptodepot.org:8083/axecore/balance/";
+  explorer_api = "https://api.cryptodepot.org/axecore/balance/";
   explorer_addr = "https://insight.axecore.net/address/";
 }
 else if(host=='custom_capricoin') {
-  explorer_api = "https://api.cryptodepot.org:8083/capricoin/balance/";
+  explorer_api = "https://api.cryptodepot.org/capricoin/balance/";
   explorer_addr = "https://explorer.capricoin.org/address/";
 }
 else if(host=='custom_zcash') {
-  explorer_api = "https://api.cryptodepot.org:8083/zcash/balance/";
+  explorer_api = "https://api.cryptodepot.org/zcash/balance/";
   explorer_addr = "https://zecblockexplorer.com/address/";
 }
 else if(host=='custom_commercium') {
-  explorer_api = "https://api.cryptodepot.org:8083/commercium/balance/";
+  explorer_api = "https://api.cryptodepot.org/commercium/balance/";
   explorer_addr = "https://explorer.commercium.net/address/";
 }
 else if(host=='custom_globaltoken') {
-  explorer_api = "https://api.cryptodepot.org:8083/globaltoken/balance/";
+  explorer_api = "https://api.cryptodepot.org/globaltoken/balance/";
   explorer_addr = "https://explorer.globaltoken.org/address/";
 }
 else if(host=='custom_zcoin') {
-  explorer_api = "https://api.cryptodepot.org:8083/zcoin/balance/";
+  explorer_api = "https://api.cryptodepot.org/zcoin/balance/";
   explorer_addr = "https://explorer.zcoin.io/address/";
 }
 else if(host=='custom_qtum') {
-  explorer_api = "https://api.cryptodepot.org:8083/qtum/balance/";
+  explorer_api = "https://api.cryptodepot.org/qtum/balance/";
   explorer_addr = "https://explorer.qtum.org/address/";
 }
 else if(host=='custom_ilcoin') {
-  explorer_api = "https://api.cryptodepot.org:8083/ilcoin/balance/";
+  explorer_api = "https://api.cryptodepot.org/ilcoin/balance/";
   explorer_addr = "https://explorer.smartcash.cc/address/";
 }
 else if(host=='custom_smartcash') {
-  explorer_api = "https://api.cryptodepot.org:8083/smartcash/balance/";
+  explorer_api = "https://api.cryptodepot.org/smartcash/balance/";
   explorer_addr = "https://explorer.smartcash.cc/address/";
 }
 else if(host=='custom_terracoin') {
-  explorer_api = "https://api.cryptodepot.org:8083/terracoin/balance/";
+  explorer_api = "https://api.cryptodepot.org/terracoin/balance/";
   explorer_addr = "https://insight.terracoin.io/address/";
 }
 else if(host=='custom_komodo') {
-  explorer_api = "https://api.cryptodepot.org:8083/komodo/balance/";
+  explorer_api = "https://api.cryptodepot.org/komodo/balance/";
   explorer_addr = "https://kmdexplorer.io/address/";
 }
 else if(host=='custom_piratechain') {
-  explorer_api = "https://api.cryptodepot.org:8083/piratechain/balance/";
+  explorer_api = "https://api.cryptodepot.org/piratechain/balance/";
   explorer_addr = "https://pirate.kmdexplorer.io/address/";
 }
 else if(host=='custom_experiencechain') {
-  explorer_api = "https://api.cryptodepot.org:8083/experiancechain/balance/";
+  explorer_api = "https://api.cryptodepot.org/experiancechain/balance/";
   explorer_addr = "https://insight.xpchain.io/address/";
 }
 else if(host=='custom_eureka') {
-  explorer_api = "https://api.cryptodepot.org:8083/eureka/balance/";
+  explorer_api = "https://api.cryptodepot.org/eureka/balance/";
   explorer_addr = "https://eurekanetwork.io/address/";
 }
 else if(host=='custom_gobyte') {
-  explorer_api = "https://api.cryptodepot.org:8083/gobyte/balance/";
+  explorer_api = "https://api.cryptodepot.org/gobyte/balance/";
   explorer_addr = "https://insight.gobyte.network/address/";
 }
 
@@ -1628,6 +1665,9 @@ else if(host=='custom_gobyte') {
     else if(host=="coinexplorer_custom"){
       listUnspentcoinexplorer(redeem);
     }
+    else if(host=='cryptoid.info_cypherfunk'){
+      listUnspentCryptoidinfo(redeem);
+    }
     else if(host=="custom_deviantcoin"){
       listUnspentcoinexplorer(redeem);
     }
@@ -1985,7 +2025,7 @@ function listUnspentBlockcypher(redeem,network){
       console.log("listUnspentCryptoidinfo");
       $.ajax ({
         type: "GET",
-        url: "https://api.cryptodepot.org:8083/chainz/listunspent/"+ customCoinTicker +"/"+ redeem.addr,
+        url: "https://api.cryptodepot.org/chainz/listunspent/"+ customCoinTicker +"/"+ redeem.addr,
         dataType: "json",
         error: function() {
           $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs! pnd test function error');
@@ -2018,7 +2058,7 @@ function listUnspentBlockcypher(redeem,network){
       console.log("listUnspentCryptoidutip");
       $.ajax ({
         type: "GET",
-        url: "https://api.cryptodepot.org:8083/chainz/listunspent/"+ customCoinTicker +"/"+ redeem.addr,
+        url: "https://api.cryptodepot.org/chainz/listunspent/"+ customCoinTicker +"/"+ redeem.addr,
         dataType: "json",
         error: function() {
           $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs! pnd test function error');
@@ -2237,7 +2277,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspentcoinexplorer(redeem){
         $.ajax ({
             type: "GET",
-            url: `https://api.cryptodepot.org:8083/cetest/listunspent/${customCoinTicker}/${redeem.addr}`,
+            url: `https://api.cryptodepot.org/cetest/listunspent/${customCoinTicker}/${redeem.addr}`,
             dataType: "json",
             error: function(data) {
                 $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2280,7 +2320,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspentaurora(redeem){
 		$.ajax ({
 			type: "GET",
-			url: "https://api.cryptodepot.org:8083/auroracoin/listunspent/"+redeem.addr+"",
+			url: "https://api.cryptodepot.org/auroracoin/listunspent/"+redeem.addr+"",
 			dataType: "json",
 			error: function(data) {
 				$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2310,7 +2350,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspentviacoin(redeem){
     $.ajax ({
       type: "GET",
-      url: "https://api.cryptodepot.org:8083/viacoin/listunspent/"+redeem.addr+"",
+      url: "https://api.cryptodepot.org/viacoin/listunspent/"+redeem.addr+"",
       dataType: "json",
       error: function(data) {
         $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2344,7 +2384,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspentaxecore(redeem){
     $.ajax ({
       type: "GET",
-      url: "https://api.cryptodepot.org:8083/axecore/listunspent/"+redeem.addr+"",
+      url: "https://api.cryptodepot.org/axecore/listunspent/"+redeem.addr+"",
       dataType: "json",
       error: function(data) {
         $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2378,7 +2418,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspentcapricoin(redeem){
     $.ajax ({
       type: "GET",
-      url: "https://api.cryptodepot.org:8083/capricoin/listunspent/"+redeem.addr+"",
+      url: "https://api.cryptodepot.org/capricoin/listunspent/"+redeem.addr+"",
       dataType: "json",
       error: function(data) {
         $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2412,7 +2452,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspentzcash(redeem){
     $.ajax ({
       type: "GET",
-      url: "https://api.cryptodepot.org:8083/zcash/listunspent/"+redeem.addr+"",
+      url: "https://api.cryptodepot.org/zcash/listunspent/"+redeem.addr+"",
       dataType: "json",
       error: function(data) {
         $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2446,7 +2486,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspentcommercium(redeem){
     $.ajax ({
       type: "GET",
-      url: "https://api.cryptodepot.org:8083/commercium/listunspent/"+redeem.addr+"",
+      url: "https://api.cryptodepot.org/commercium/listunspent/"+redeem.addr+"",
       dataType: "json",
       error: function(data) {
         $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2480,7 +2520,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspentglobaltoken(redeem){
     $.ajax ({
       type: "GET",
-      url: "https://api.cryptodepot.org:8083/globaltoken/listunspent/"+redeem.addr+"",
+      url: "https://api.cryptodepot.org/globaltoken/listunspent/"+redeem.addr+"",
       dataType: "json",
       error: function(data) {
         $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2514,7 +2554,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspentzcoin(redeem){
     $.ajax ({
       type: "GET",
-      url: "https://api.cryptodepot.org:8083/zcoin/listunspent/"+redeem.addr+"",
+      url: "https://api.cryptodepot.org/zcoin/listunspent/"+redeem.addr+"",
       dataType: "json",
       error: function(data) {
         $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2548,7 +2588,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspentqtum(redeem){
     $.ajax ({
       type: "GET",
-      url: "https://api.cryptodepot.org:8083/qtum/listunspent/"+redeem.addr+"",
+      url: "https://api.cryptodepot.org/qtum/listunspent/"+redeem.addr+"",
       dataType: "json",
       error: function(data) {
         $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2582,7 +2622,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspentilcoin(redeem){
     $.ajax ({
       type: "GET",
-      url: "https://api.cryptodepot.org:8083/ilcoin/listunspent/"+redeem.addr+"",
+      url: "https://api.cryptodepot.org/ilcoin/listunspent/"+redeem.addr+"",
       dataType: "json",
       error: function(data) {
         $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2616,7 +2656,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspentsmartcash(redeem){
     $.ajax ({
       type: "GET",
-      url: "https://api.cryptodepot.org:8083/smartcash/listunspent/"+redeem.addr+"",
+      url: "https://api.cryptodepot.org/smartcash/listunspent/"+redeem.addr+"",
       dataType: "json",
       error: function(data) {
         $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2650,7 +2690,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspentterracoin(redeem){
     $.ajax ({
       type: "GET",
-      url: "https://api.cryptodepot.org:8083/terracoin/listunspent/"+redeem.addr+"",
+      url: "https://api.cryptodepot.org/terracoin/listunspent/"+redeem.addr+"",
       dataType: "json",
       error: function(data) {
         $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2684,7 +2724,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspentkomodo(redeem){
     $.ajax ({
       type: "GET",
-      url: "https://api.cryptodepot.org:8083/komodo/listunspent/"+redeem.addr+"",
+      url: "https://api.cryptodepot.org/komodo/listunspent/"+redeem.addr+"",
       dataType: "json",
       error: function(data) {
         $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2719,7 +2759,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspentpiratechain(redeem){
     $.ajax ({
       type: "GET",
-      url: "https://api.cryptodepot.org:8083/piratechain/listunspent/"+redeem.addr+"",
+      url: "https://api.cryptodepot.org/piratechain/listunspent/"+redeem.addr+"",
       dataType: "json",
       error: function(data) {
         $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2753,7 +2793,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspentexperiencechain(redeem){
     $.ajax ({
       type: "GET",
-      url: "https://api.cryptodepot.org:8083/experiancechain/listunspent/"+redeem.addr+"",
+      url: "https://api.cryptodepot.org/experiancechain/listunspent/"+redeem.addr+"",
       dataType: "json",
       error: function(data) {
         $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2787,7 +2827,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspenteureka(redeem){
     $.ajax ({
       type: "GET",
-      url: "https://api.cryptodepot.org:8083/eureka/listunspent/"+redeem.addr+"",
+      url: "https://api.cryptodepot.org/eureka/listunspent/"+redeem.addr+"",
       dataType: "json",
       error: function(data) {
         $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2821,7 +2861,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspentgobyte(redeem){
     $.ajax ({
       type: "GET",
-      url: "https://api.cryptodepot.org:8083/gobyte/listunspent/"+redeem.addr+"",
+      url: "https://api.cryptodepot.org/gobyte/listunspent/"+redeem.addr+"",
       dataType: "json",
       error: function(data) {
         $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2855,7 +2895,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspenthtml(redeem){
 		$.ajax ({
 			type: "GET",
-			url: "https://api.cryptodepot.org:8083/htmlcoin/listunspent/"+redeem.addr+"",
+			url: "https://api.cryptodepot.org/htmlcoin/listunspent/"+redeem.addr+"",
 			dataType: "json",
 			error: function(data) {
 				$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2887,6 +2927,7 @@ function listUnspentBlockcypher(redeem,network){
 		});
 	}
   function listUnspent_pndcoinserver1(redeem){
+    console.log('test');
 		$.ajax ({
 			type: "GET",
 			url: "https://server1.cryptodepot.org:3001/ext/listunspent/"+redeem.addr+"",
@@ -2896,12 +2937,13 @@ function listUnspentBlockcypher(redeem,network){
 				$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
 			},
 			success: function(data) {
-				if(data && data.length){
+				if(data){
+          data1 = JSON.parse(data);
 					$("#redeemFromAddress").removeClass('hidden').html(
 						'<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="https://live.reddcoin.com/address/'+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
-            data.slice(0, 100).forEach(function (o) {
+            data1.slice(0, 100).forEach(function (o) {
               var script = redeem.isMultisig ? $("#redeemFrom").val() : o.scriptPubKey;
-              addOutput(o.txid, o.vout, script, o.amount);
+              addOutput(o.tx_hash, o.tx_output_n, script, o.value);
             })
           //  for(var i in data){
           //    var o = data[i];
@@ -2924,7 +2966,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspentrdd(redeem){
 		$.ajax ({
 			type: "GET",
-			url: "https://api.cryptodepot.org:8083/rdd/listunspent/"+redeem.addr+"",
+			url: "https://api.cryptodepot.org/rdd/listunspent/"+redeem.addr+"",
 			dataType: "json",
 			error: function(data) {
 				$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -2958,7 +3000,7 @@ function listUnspentBlockcypher(redeem,network){
   function listUnspentfeather(redeem){
 		$.ajax ({
 			type: "GET",
-			url: "https://api.cryptodepot.org:8083/feathercoin/listunspent/"+redeem.addr+"",
+			url: "https://api.cryptodepot.org/feathercoin/listunspent/"+redeem.addr+"",
 			dataType: "json",
 			error: function(data) {
 				$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
@@ -3221,7 +3263,7 @@ function rawSubmitdogechain(thisbtn){
             console.log(txhex);
                 $.ajax({
                     type: "GET",
-                    url: `https://api.cryptodepot.org:8083/aurora/broadcast/${txhex}`,
+                    url: `https://api.cryptodepot.org/aurora/broadcast/${txhex}`,
                     data: $("#rawTransaction").val(),
                     error: function(data) {
                       errcode = data.responseText;
@@ -3250,7 +3292,7 @@ function rawSubmitdogechain(thisbtn){
                     console.log(txhex);
                         $.ajax({
                             type: "GET",
-                            url: "https://api.cryptodepot.org:8083/htmlcoin/broadcast/" + txhex +"",
+                            url: "https://api.cryptodepot.org/htmlcoin/broadcast/" + txhex +"",
                             //data: $("#rawTransaction").val(),
                             error: function(data) {
                               errcode = data.responseText;
@@ -3281,7 +3323,7 @@ function rawSubmitrdd(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/rdd/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/rdd/broadcast/${txhex}`,
                 data: $("#rawTransaction").val(),
                 error: function(data) {
                   errcode = data.responseText;
@@ -3311,7 +3353,7 @@ function rawSubmitdeviantcoin(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/deviantcoin/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/deviantcoin/broadcast/${txhex}`,
                 data: $("#rawTransaction").val(),
                 error: function(data) {
                   if(data.responseText ==="There was an error. Check your console.") {
@@ -3341,7 +3383,7 @@ function rawSubmitdimecoin(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/dimecoin/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/dimecoin/broadcast/${txhex}`,
                 data: $("#rawTransaction").val(),
                 error: function(data) {
                   if(data.responseText ==="There was an error. Check your console.") {
@@ -3375,7 +3417,7 @@ function rawSubmitblocknet(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/blocknet/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/blocknet/broadcast/${txhex}`,
                 data: $("#rawTransaction").val(),
                 error: function(data) {
                   if(data.responseText ==="There was an error. Check your console.") {
@@ -3409,7 +3451,7 @@ function rawSubmitlynx(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/lynx/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/lynx/broadcast/${txhex}`,
                 data: $("#rawTransaction").val(),
                 error: function(data) {
                   if(data.responseText ==="There was an error. Check your console.") {
@@ -3443,7 +3485,7 @@ function rawSubmitfeather(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/feathercoin/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/feathercoin/broadcast/${txhex}`,
                 //data: $("#rawTransaction").val(),
                 error: function(data) {
                     errcode = data.responseText;
@@ -3497,13 +3539,13 @@ function rawSubmitfeather(thisbtn){
                         });
                       }
 
-                      function rawSubmitviacoin(thisbtn){
+function rawSubmitviacoin(thisbtn){
         $(thisbtn).val('Please wait, loading...').attr('disabled',true);
         txhex = $("#rawTransaction").val().trim();
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/viacoin/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/viacoin/broadcast/${txhex}`,
                 //data: $("#rawTransaction").val(),
                 error: function(data) {
                     errcode = data.responseText;
@@ -3533,7 +3575,7 @@ function rawSubmitaxecore(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/axecore/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/axecore/broadcast/${txhex}`,
                 //data: $("#rawTransaction").val(),
                 error: function(data) {
                     errcode = data.responseText;
@@ -3563,7 +3605,7 @@ function rawSubmitcapricoin(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/capricoin/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/capricoin/broadcast/${txhex}`,
                 //data: $("#rawTransaction").val(),
                 error: function(data) {
                     errcode = data.responseText;
@@ -3593,7 +3635,7 @@ function rawSubmitzcash(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/zcash/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/zcash/broadcast/${txhex}`,
                 //data: $("#rawTransaction").val(),
                 error: function(data) {
                     errcode = data.responseText;
@@ -3623,7 +3665,7 @@ function rawSubmitcommercium(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/commercium/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/commercium/broadcast/${txhex}`,
                 //data: $("#rawTransaction").val(),
                 error: function(data) {
                     errcode = data.responseText;
@@ -3653,7 +3695,7 @@ function rawSubmitglobaltoken(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/globaltoken/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/globaltoken/broadcast/${txhex}`,
                 //data: $("#rawTransaction").val(),
                 error: function(data) {
                     errcode = data.responseText;
@@ -3683,7 +3725,7 @@ function rawSubmitzcoin(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/zcoin/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/zcoin/broadcast/${txhex}`,
                 //data: $("#rawTransaction").val(),
                 error: function(data) {
                     errcode = data.responseText;
@@ -3713,7 +3755,7 @@ function rawSubmitqtum(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/qtum/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/qtum/broadcast/${txhex}`,
                 //data: $("#rawTransaction").val(),
                 error: function(data) {
                     errcode = data.responseText;
@@ -3743,7 +3785,7 @@ function rawSubmitilcoin(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/ilcoin/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/ilcoin/broadcast/${txhex}`,
                 //data: $("#rawTransaction").val(),
                 error: function(data) {
                     errcode = data.responseText;
@@ -3773,7 +3815,7 @@ function rawSubmitsmartcash(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/smartcash/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/smartcash/broadcast/${txhex}`,
                 //data: $("#rawTransaction").val(),
                 error: function(data) {
                     errcode = data.responseText;
@@ -3803,7 +3845,7 @@ function rawSubmitterracoin(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/terracoin/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/terracoin/broadcast/${txhex}`,
                 //data: $("#rawTransaction").val(),
                 error: function(data) {
                     errcode = data.responseText;
@@ -3833,7 +3875,7 @@ function rawSubmitsyscoin(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/syscoin/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/syscoin/broadcast/${txhex}`,
                 //data: $("#rawTransaction").val(),
                 error: function(data) {
                     errcode = data.responseText;
@@ -3863,7 +3905,7 @@ function rawSubmitkomodo(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/komodo/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/komodo/broadcast/${txhex}`,
                 //data: $("#rawTransaction").val(),
                 error: function(data) {
                     errcode = data.responseText;
@@ -3893,7 +3935,7 @@ function rawSubmitpiratechain(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/piratechain/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/piratechain/broadcast/${txhex}`,
                 //data: $("#rawTransaction").val(),
                 error: function(data) {
                     errcode = data.responseText;
@@ -3923,7 +3965,7 @@ function rawSubmitexperiencechain(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/experiancechain/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/experiancechain/broadcast/${txhex}`,
                 //data: $("#rawTransaction").val(),
                 error: function(data) {
                     errcode = data.responseText;
@@ -3953,7 +3995,7 @@ function rawSubmiteurekacoin(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/eureka/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/eureka/broadcast/${txhex}`,
                 //data: $("#rawTransaction").val(),
                 error: function(data) {
                     errcode = data.responseText;
@@ -3983,7 +4025,7 @@ function rawSubmitgobyte(thisbtn){
         console.log(txhex);
             $.ajax({
                 type: "GET",
-                url: `https://api.cryptodepot.org:8083/gobyte/broadcast/${txhex}`,
+                url: `https://api.cryptodepot.org/gobyte/broadcast/${txhex}`,
                 //data: $("#rawTransaction").val(),
                 error: function(data) {
                     errcode = data.responseText;
@@ -4694,7 +4736,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_addr = "https://chain.so/address/DOGE/";
             }
 
-      customCoinTicker = $('#customCoinTicker').val();
+      if(host=='cryptoid.custom') {customCoinTicker = $('#customCoinTicker').val();}
       console.log(customCoinTicker);
 
 			$("#statusSettings").addClass("alert-success").removeClass("hidden").html("<span class=\"glyphicon glyphicon-ok\"></span> Settings updates successfully").fadeOut().fadeIn();
@@ -4938,6 +4980,14 @@ function rawSubmitDigiExplorer(thisbtn){
       $("#coinjs_broadcast").val("custom_syscoin").trigger("change");
       $("#coinjs_utxo").val("cryptoid.custom").trigger("change");
     }
+    else if(($("#allcoinsFormIDHere input[type='radio']:checked").val() == "funk")) {
+      $("#coinjs_coin").val("cypherfunk_mainnet").trigger("change");
+      $("#coinjs_broadcast").val("cryptoid.info_cypherfunk").trigger("change");
+      $("#coinjs_utxo").val("cryptoid.info_cypherfunk").trigger("change");
+    }
+    else {
+      alert($("#allcoinsFormIDHere input[type='radio']:checked").val() + " Coin is not yet Functional");
+    }
     $("#settingsBtn").trigger("click");
     return false;
   });
@@ -5142,6 +5192,12 @@ function rawSubmitDigiExplorer(thisbtn){
     $("#customCoinTicker").val(cUrl).trigger("change");
     $("#coinjs_broadcast").val("custom_deviantcoin").trigger("change");
     $("#coinjs_utxo").val("custom_deviantcoin").trigger("change");
+    $("#settingsBtn").trigger("click");
+  }
+  else if(cUrl == 'funk') {
+    $("#coinjs_coin").val("cypherfunk_mainnet").trigger("change");
+    $("#coinjs_broadcast").val("cryptoid.info_cypherfunk").trigger("change");
+    $("#coinjs_utxo").val("cryptoid.info_cypherfunk").trigger("change");
     $("#settingsBtn").trigger("click");
   }
   else if(cUrl == 'block') {
@@ -5577,7 +5633,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_tx = "https://chainz.cryptoid.info/funk/tx.dws?";
                 explorer_addr = "https://chainz.cryptoid.info/funk/address.dws?";
                 explorer_block = "https://chainz.cryptoid.info/funk/block.dws?";
-                explorer_api = "https://api.cryptodepot.org:8083/chainz/balance/funk/";
+                explorer_api = "https://api.cryptodepot.org/chainz/balance/funk/";
                 tickerCode = "FUNK";
                 customCoinTicker = "funk";
                 coingeckoCoinName = "the-cypherfunks";
@@ -5591,7 +5647,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 explorer_tx = "https://chainz.cryptoid.info/zeit/tx.dws?";
                 explorer_addr = "https://chainz.cryptoid.info/zeit/address.dws?";
                 explorer_block = "https://chainz.cryptoid.info/zeit/block.dws?";
-                explorer_api = "https://api.cryptodepot.org:8083/chainz/balance/zeit/";
+                explorer_api = "https://api.cryptodepot.org/chainz/balance/zeit/";
                 tickerCode = "ZEIT";
                 customCoinTicker = "zeit";
                 coingeckoCoinName = "zeitcoin";
@@ -5685,14 +5741,14 @@ function rawSubmitDigiExplorer(thisbtn){
           var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinTicker +"/tx.dws?";
           var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinTicker +"/address.dws?";
           var explorer_block = "https://chainz.cryptoid.info/"+ customCoinTicker +"/block.dws?";
-          var explorer_api = "https://api.cryptodepot.org:8083/chainz/balance/"+ customCoinTicker +"/";
+          var explorer_api = "https://api.cryptodepot.org/chainz/balance/"+ customCoinTicker +"/";
           var customCoinTicker = tickerCode.toLowerCase();
           console.log(host);
         }
         else if(host=='coinexplorer_custom') {
           // change to customcoin for explorer
           explorer_addr = "https://www.coinexplorer.net/"+ customCoinTicker +"/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/coinexplorer/balance/"+ customCoinTicker +"/";
+          explorer_api = "https://api.cryptodepot.org/coinexplorer/balance/"+ customCoinTicker +"/";
           console.log(host);
           console.log(coingeckoCoinName);
 
@@ -5700,7 +5756,7 @@ function rawSubmitDigiExplorer(thisbtn){
         else if(host=='custom_deviantcoin') {
           // change to customcoin for explorer
           explorer_addr = "https://www.coinexplorer.net/"+ customCoinTicker +"/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/coinexplorer/balance/"+ customCoinTicker +"/";
+          explorer_api = "https://api.cryptodepot.org/coinexplorer/balance/"+ customCoinTicker +"/";
           console.log(host);
           console.log(coingeckoCoinName);
 
@@ -5710,7 +5766,7 @@ function rawSubmitDigiExplorer(thisbtn){
           var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinTicker +"/tx.dws?";
           var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinTicker +"/address.dws?";
           var explorer_block = "https://chainz.cryptoid.info/"+ customCoinTicker +"/block.dws?";
-          var explorer_api = "https://api.cryptodepot.org:8083/chainz/balance/"+ customCoinTicker +"/";
+          var explorer_api = "https://api.cryptodepot.org/chainz/balance/"+ customCoinTicker +"/";
           tickerCode = "LYNX";
           customCoinTicker = "lynx";
           console.log(host);
@@ -5723,7 +5779,7 @@ function rawSubmitDigiExplorer(thisbtn){
           var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinTicker +"/tx.dws?";
           var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinTicker +"/address.dws?";
           var explorer_block = "https://chainz.cryptoid.info/"+ customCoinTicker +"/block.dws?";
-          var explorer_api = "https://api.cryptodepot.org:8083/chainz/balance/"+ customCoinTicker +"/";
+          var explorer_api = "https://api.cryptodepot.org/chainz/balance/"+ customCoinTicker +"/";
           tickerCode = "UTIP";
           customCoinTicker = "utip";
           console.log(host);
@@ -5736,7 +5792,7 @@ function rawSubmitDigiExplorer(thisbtn){
           var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinTicker +"/tx.dws?";
           var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinTicker +"/address.dws?";
           var explorer_block = "https://chainz.cryptoid.info/"+ customCoinTicker +"/block.dws?";
-          var explorer_api = "https://api.cryptodepot.org:8083/chainz/balance/"+ customCoinTicker +"/";
+          var explorer_api = "https://api.cryptodepot.org/chainz/balance/"+ customCoinTicker +"/";
           tickerCode = "DIME";
           customCoinTicker = "dime";
           console.log(host);
@@ -5749,7 +5805,7 @@ function rawSubmitDigiExplorer(thisbtn){
           var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinTicker +"/tx.dws?";
           var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinTicker +"/address.dws?";
           var explorer_block = "https://chainz.cryptoid.info/"+ customCoinTicker +"/block.dws?";
-          var explorer_api = "https://api.cryptodepot.org:8083/chainz/balance/"+ customCoinTicker +"/";
+          var explorer_api = "https://api.cryptodepot.org/chainz/balance/"+ customCoinTicker +"/";
           tickerCode = "BLOCK";
           customCoinTicker = "block";
           console.log(host);
@@ -5762,7 +5818,7 @@ function rawSubmitDigiExplorer(thisbtn){
           var explorer_tx = "https://chainz.cryptoid.info/"+ customCoinTicker +"/tx.dws?";
           var explorer_addr = "https://chainz.cryptoid.info/"+ customCoinTicker +"/address.dws?";
           var explorer_block = "https://chainz.cryptoid.info/"+ customCoinTicker +"/block.dws?";
-          var explorer_api = "https://api.cryptodepot.org:8083/chainz/balance/"+ customCoinTicker +"/";
+          var explorer_api = "https://api.cryptodepot.org/chainz/balance/"+ customCoinTicker +"/";
           tickerCode = "SYS";
           customCoinTicker = "sys";
           console.log(host);
@@ -5775,7 +5831,7 @@ function rawSubmitDigiExplorer(thisbtn){
           var explorer_tx = "https://www.coinexplorer.net/"+ customCoinTicker +"/transaction/";
           var explorer_addr = "https://www.coinexplorer.net/"+ customCoinTicker +"/address/";
           var explorer_block = "https://www.coinexplorer.net/"+ customCoinTicker +"/block/";
-          var explorer_api = "https://api.cryptodepot.org:8083/coinexplorer/balance/"+ customCoinTicker +"/";
+          var explorer_api = "https://api.cryptodepot.org/coinexplorer/balance/"+ customCoinTicker +"/";
           tickerCode = "DEV";
           customCoinTicker = "dev";
           console.log(host);
@@ -5786,7 +5842,7 @@ function rawSubmitDigiExplorer(thisbtn){
         else if(host=='custom_aurora') {
           // change to customcoin for explorer
           explorer_addr = "http://insight.auroracoin.is/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/auroracoin/balance/";
+          explorer_api = "https://api.cryptodepot.org/auroracoin/balance/";
           console.log(host);
           console.log(coingeckoCoinName);
 
@@ -5798,6 +5854,7 @@ function rawSubmitDigiExplorer(thisbtn){
           var explorer_block = "http://pandacoin.tech:3001/block/";
           var explorer_api = "http://pandacoin.tech:3001/ext/getbalance/";
           console.log(host);
+          customCoinTicker = "pnd";
           coingeckoCoinName = "pandacoin";
           console.log("Pandacoin tech IF");
         }
@@ -5806,8 +5863,8 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "ltc";
           coingeckoCoinName = "litecoin";
           explorer_addr = "https://blockchair.com/litecoin/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/blockchair/balance/litecoin";
-          explorer_api = "https://api.cryptodepot.org:8083/blockchair/balance/litecoin/";
+          explorer_api = "https://api.cryptodepot.org/blockchair/balance/litecoin";
+          explorer_api = "https://api.cryptodepot.org/blockchair/balance/litecoin/";
           console.log("litecoin");
           document.getElementById("bTtitle").textContent = "Litecoin";
           document.getElementById("bTtitle1").textContent = "Litecoin";
@@ -5818,8 +5875,8 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "btc";
           coingeckoCoinName = "bitcoin";
           explorer_addr = "https://blockchair.com/bitcoin/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/blockchair/balance/bitcoin";
-          explorer_api = "https://api.cryptodepot.org:8083/blockchair/balance/bitcoin/";
+          explorer_api = "https://api.cryptodepot.org/blockchair/balance/bitcoin";
+          explorer_api = "https://api.cryptodepot.org/blockchair/balance/bitcoin/";
           console.log("bitcoin");
         }
         else if(host=='bch.host'){
@@ -5827,7 +5884,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "bch";
           coingeckoCoinName = "bitcoin-cash";
           explorer_addr = "https://blockchair.com/bitcoin-cash/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/blockchair/balance/bitcoin-cash/";
+          explorer_api = "https://api.cryptodepot.org/blockchair/balance/bitcoin-cash/";
           console.log("bitcoin-cash");
           document.getElementById("bTtitle").textContent = "Bitcoin-Cash";
           document.getElementById("bTtitle1").textContent = "Bitcoin-Cash";
@@ -5838,7 +5895,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "XRP";
           coingeckoCoinName = "ripple";
           explorer_addr = "https://blockchair.com/ripple/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/blockchair/balance/ripple/";
+          explorer_api = "https://api.cryptodepot.org/blockchair/balance/ripple/";
           console.log("ripple");
         }
         else if(host=='zcash.host'){
@@ -5846,7 +5903,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "zec";
           coingeckoCoinName = "zcash";
           explorer_addr = "https://blockchair.com/zcash/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/blockchair/balance/zcash/";
+          explorer_api = "https://api.cryptodepot.org/blockchair/balance/zcash/";
           console.log("zcash");
           document.getElementById("bTtitle").textContent = "zCash";
           document.getElementById("bTtitle1").textContent = "zCash";
@@ -5857,7 +5914,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "zec";
           coingeckoCoinName = "zcash";
           explorer_addr = "https://blockchair.com/zcash/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/blockchair/balance/zcash/";
+          explorer_api = "https://api.cryptodepot.org/blockchair/balance/zcash/";
           console.log("zcash");
           document.getElementById("bTtitle").textContent = "zCash";
           document.getElementById("bTtitle1").textContent = "zCash";
@@ -5868,7 +5925,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "BSV";
           coingeckoCoinName = "bitcoin-cash-sv";
           explorer_addr = "https://blockchair.com/bitcoin-sv/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/blockchair/balance/bitcoin-sv/";
+          explorer_api = "https://api.cryptodepot.org/blockchair/balance/bitcoin-sv/";
           console.log("bitcoin-cash-sv");
           document.getElementById("bTtitle").textContent = "Bitcoin Cash SV";
           document.getElementById("bTtitle1").textContent = "Bitcoin Cash SV";
@@ -5879,7 +5936,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "dash";
           coingeckoCoinName = "dash";
           explorer_addr = "https://blockchair.com/dash/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/blockchair/balance/dash/";
+          explorer_api = "https://api.cryptodepot.org/blockchair/balance/dash/";
           console.log("dash");
           document.getElementById("bTtitle").textContent = "Dash";
           document.getElementById("bTtitle1").textContent = "Dash";
@@ -5890,7 +5947,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "grs";
           coingeckoCoinName = "groestlcoin";
           explorer_addr = "https://blockchair.com/groestlcoin/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/blockchair/balance/groestlcoin/";
+          explorer_api = "https://api.cryptodepot.org/blockchair/balance/groestlcoin/";
           console.log("groestlcoin");
           document.getElementById("bTtitle").textContent = "Groestlcoin";
           document.getElementById("bTtitle1").textContent = "Groestlcoin";
@@ -5901,7 +5958,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "part";
           coingeckoCoinName = "particl";
           explorer_addr = "https://explorer.particl.io/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/blockchair/balance/groestlcoin/";
+          explorer_api = "https://api.cryptodepot.org/blockchair/balance/groestlcoin/";
           console.log("particl");
           document.getElementById("bTtitle").textContent = "Particl";
           document.getElementById("bTtitle1").textContent = "Particl";
@@ -5912,7 +5969,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "aur";
           coingeckoCoinName = "auroracoin";
           explorer_addr = "http://insight.auroracoin.is/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/auroracoin/balance/";
+          explorer_api = "https://api.cryptodepot.org/auroracoin/balance/";
           console.log("AuroraCoin");
           document.getElementById("bTtitle").textContent = "AuroraCoin";
           document.getElementById("bTtitle1").textContent = "AuroraCoin";
@@ -5924,7 +5981,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "html";
           coingeckoCoinName = "htmlcoin";
           explorer_addr = "https://explorer.htmlcoin.com/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/htmlcoin/balance/";
+          explorer_api = "https://api.cryptodepot.org/htmlcoin/balance/";
           console.log("HTMLCoin");
           document.getElementById("bTtitle").textContent = "htmlcoin";
           document.getElementById("bTtitle1").textContent = "htmlcoin";
@@ -5935,7 +5992,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "rdd";
           coingeckoCoinName = "reddcoin";
           explorer_addr = "https://live.reddcoin.com/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/rdd/balance/";
+          explorer_api = "https://api.cryptodepot.org/rdd/balance/";
           console.log("Reddcoin");
           document.getElementById("bTtitle").textContent = "Reddcoin";
           document.getElementById("bTtitle1").textContent = "Reddcoin";
@@ -5946,7 +6003,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "ftc";
           coingeckoCoinName = "feathercoin";
           explorer_addr = "http://explorer.feathercoin.com/";
-          explorer_api = "https://api.cryptodepot.org:8083/feathercoin/balance/";
+          explorer_api = "https://api.cryptodepot.org/feathercoin/balance/";
           console.log("feathercoin");
           document.getElementById("bTtitle").textContent = "Feathercoin";
           document.getElementById("bTtitle1").textContent = "Feathercoin";
@@ -5957,7 +6014,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "via";
           coingeckoCoinName = "viacoin";
           explorer_addr = "https://explorer.viacoin.org/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/viacoin/balance/";
+          explorer_api = "https://api.cryptodepot.org/viacoin/balance/";
           console.log("viacoin");
           document.getElementById("bTtitle").textContent = "Viacoin";
           document.getElementById("bTtitle1").textContent = "Viacoin";
@@ -5968,7 +6025,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "axe";
           coingeckoCoinName = "axe";
           explorer_addr = "https://insight.axecore.net/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/axecore/balance/";
+          explorer_api = "https://api.cryptodepot.org/axecore/balance/";
           console.log("axecore");
           document.getElementById("bTtitle").textContent = "Axe Core";
           document.getElementById("bTtitle1").textContent = "Axe Core";
@@ -5979,7 +6036,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "cpc";
           coingeckoCoinName = "capricoin";
           explorer_addr = "https://explorer.capricoin.org/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/capricoin/balance/";
+          explorer_api = "https://api.cryptodepot.org/capricoin/balance/";
           console.log("capricoin");
           document.getElementById("bTtitle").textContent = "Capricoin";
           document.getElementById("bTtitle1").textContent = "Capricoin";
@@ -5990,7 +6047,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "zec";
           coingeckoCoinName = "zcash";
           explorer_addr = "https://zecblockexplorer.com/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/zcash/balance/";
+          explorer_api = "https://api.cryptodepot.org/zcash/balance/";
           console.log("zcash");
           document.getElementById("bTtitle").textContent = "zCash";
           document.getElementById("bTtitle1").textContent = "zCash";
@@ -6001,7 +6058,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "cmm";
           coingeckoCoinName = "commercium";
           explorer_addr = "https://explorer.commercium.net/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/commercium/balance/";
+          explorer_api = "https://api.cryptodepot.org/commercium/balance/";
           console.log("commercium");
           document.getElementById("bTtitle").textContent = "Commercium";
           document.getElementById("bTtitle1").textContent = "Commercium";
@@ -6012,7 +6069,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "glt";
           coingeckoCoinName = "globaltoken";
           explorer_addr = "https://explorer.globaltoken.org/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/globaltoken/balance/";
+          explorer_api = "https://api.cryptodepot.org/globaltoken/balance/";
           console.log("globaltoken");
           document.getElementById("bTtitle").textContent = "GlobalToken";
           document.getElementById("bTtitle1").textContent = "GlobalToken";
@@ -6023,7 +6080,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "xzc";
           coingeckoCoinName = "zcoin";
           explorer_addr = "https://explorer.zcoin.io/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/zcoin/balance/";
+          explorer_api = "https://api.cryptodepot.org/zcoin/balance/";
           console.log("zcoin");
           document.getElementById("bTtitle").textContent = "ZCoin";
           document.getElementById("bTtitle1").textContent = "ZCoin";
@@ -6034,7 +6091,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "qtum";
           coingeckoCoinName = "QTUM";
           explorer_addr = "https://explorer.qtum.org/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/qtum/balance/";
+          explorer_api = "https://api.cryptodepot.org/qtum/balance/";
           console.log("qtum");
           document.getElementById("bTtitle").textContent = "Qtum";
           document.getElementById("bTtitle1").textContent = "Qtum";
@@ -6045,7 +6102,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "ilc";
           coingeckoCoinName = "ilcoin";
           explorer_addr = "https://ilcoinexplorer.com/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/ilcoin/balance/";
+          explorer_api = "https://api.cryptodepot.org/ilcoin/balance/";
           console.log("ilcoin");
           document.getElementById("bTtitle").textContent = "ILCoin";
           document.getElementById("bTtitle1").textContent = "ILCoin";
@@ -6056,7 +6113,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "smart";
           coingeckoCoinName = "smartcash";
           explorer_addr = "https://explorer.smartcash.cc/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/smartcash/balance/";
+          explorer_api = "https://api.cryptodepot.org/smartcash/balance/";
           console.log("smartcash");
         }
         else if(host=='custom_terracoin') {
@@ -6064,7 +6121,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "trc";
           coingeckoCoinName = "terracoin";
           explorer_addr = "https://insight.terracoin.io/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/terracoin/balance/";
+          explorer_api = "https://api.cryptodepot.org/terracoin/balance/";
           console.log("terracoin");
           document.getElementById("bTtitle").textContent = "Terracoin";
           document.getElementById("bTtitle1").textContent = "Terracoin";
@@ -6075,7 +6132,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "kmd";
           coingeckoCoinName = "KomodoOcean";
           explorer_addr = "https://kmdexplorer.io/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/komodo/balance/";
+          explorer_api = "https://api.cryptodepot.org/komodo/balance/";
           console.log("Komodo");
           document.getElementById("bTtitle").textContent = "Komodo";
           document.getElementById("bTtitle1").textContent = "Komodo";
@@ -6086,7 +6143,7 @@ function rawSubmitDigiExplorer(thisbtn){
           customCoinTicker = "arrr";
           coingeckoCoinName = "Pirate-Chain";
           explorer_addr = "https://pirate.kmdexplorer.io/address/";
-          explorer_api = "https://api.cryptodepot.org:8083/piratechain/balance/";
+          explorer_api = "https://api.cryptodepot.org/piratechain/balance/";
           console.log("Pirate-Chain");
           document.getElementById("bTtitle").textContent = "Pirate-Chain";
           document.getElementById("bTtitle1").textContent = "Pirate-Chain";
@@ -6097,7 +6154,7 @@ function rawSubmitDigiExplorer(thisbtn){
           explorer_tx = "https://chainz.cryptoid.info/pnd/tx.dws?";
           explorer_addr = "https://chainz.cryptoid.info/pnd/address.dws?";
           explorer_block = "https://chainz.cryptoid.info/pnd/block.dws?";
-          explorer_api = "https://api.cryptodepot.org:8083/chainz/balance/pnd/";
+          explorer_api = "https://api.cryptodepot.org/chainz/balance/pnd/";
           tickerCode = "BLOCK";
           customCoinTicker = "block";
           coingeckoCoinName = "blocknet";
@@ -6110,7 +6167,7 @@ function rawSubmitDigiExplorer(thisbtn){
               explorer_tx = "https://chainz.cryptoid.info/pnd/tx.dws?";
               explorer_addr = "https://chainz.cryptoid.info/pnd/address.dws?";
               explorer_block = "https://chainz.cryptoid.info/pnd/block.dws?";
-              explorer_api = "https://api.cryptodepot.org:8083/chainz/balance/pnd/";
+              explorer_api = "https://api.cryptodepot.org/chainz/balance/pnd/";
               tickerCode = "PND";
               customCoinTicker = "pnd";
               coingeckoCoinName = "pandacoin";
@@ -6119,12 +6176,26 @@ function rawSubmitDigiExplorer(thisbtn){
               document.getElementById("bTtitle").textContent = "Pandacoin";
               document.getElementById("bTtitle1").textContent = "Pandacoin";
       }
-          else {
+      else if(host=="cryptoid.info_cypherfunk"){
+            console.log(host)
+            explorer_tx = "https://chainz.cryptoid.info/funk/tx.dws?";
+            explorer_addr = "https://chainz.cryptoid.info/funk/address.dws?";
+            explorer_block = "https://chainz.cryptoid.info/funk/block.dws?";
+            explorer_api = "https://api.cryptodepot.org/chainz/balance/funk/";
+            tickerCode = "FUNK";
+            customCoinTicker = "funk";
+            coingeckoCoinName = "the-cypherfunks";
+            console.log("Funk else");
+            document.getElementById("coinLogo").src = "images/logo/funk.png";
+            document.getElementById("bTtitle").textContent = "Cypherfunk";
+            document.getElementById("bTtitle1").textContent = "Cypherfunk";
+    }
+        else if(host=='coinb.in'){
                 console.log(host)
                 explorer_tx = "https://chainz.cryptoid.info/pnd/tx.dws?";
                 explorer_addr = "https://chainz.cryptoid.info/pnd/address.dws?";
                 explorer_block = "https://chainz.cryptoid.info/pnd/block.dws?";
-                explorer_api = "https://api.cryptodepot.org:8083/chainz/balance/pnd/";
+                explorer_api = "https://api.cryptodepot.org/chainz/balance/pnd/";
                 tickerCode = "PND";
                 customCoinTicker = "pnd";
                 coingeckoCoinName = "pandacoin";
@@ -6133,6 +6204,7 @@ function rawSubmitDigiExplorer(thisbtn){
                 document.getElementById("bTtitle").textContent = "Pandacoin";
                 document.getElementById("bTtitle1").textContent = "Pandacoin";
         }
+        else {}
 	}
 
 

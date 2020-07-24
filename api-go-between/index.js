@@ -180,7 +180,18 @@ console.log(req.params.address);
 
     });
   });
+  app.get('/dash/broadcast/:txhex', (req, res) => {
+    console.log(req.params.txhex);
+    request.post({
+      url: 'https://insight.dash.org/insight-api/tx/send',
+      body: {rawtx: req.params.txhex},
+      json: true
+    }, function(error, response, body){
+      console.log(body);
+      res.send(body);
 
+    });
+  });
   app.get('/htmlcoin/balance/:address', (req, res) => {
     console.log(req.params.address);
     request(
@@ -1018,8 +1029,8 @@ console.log(req.params.address);
   const PORT = process.env.PORT || 5555;
   app.listen(PORT, () => console.log(`listening on ${PORT}`));
   https.createServer({
-    key: fs.readFileSync('/etc/letsencrypt/live/api.cryptodepot.org/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/api.cryptodepot.org/cert.pem')
+    key: fs.readFileSync('privkey.pem'),
+    cert: fs.readFileSync('cert.pem')
   }, app).listen(8083, function () {
    require('dns').lookup(require('os').hostname(), function (err, add, fam) {
      console.log('HTTPS running on http://%s:8083', add);
