@@ -3206,7 +3206,7 @@ function rawSubmitpanda_server1(thisbtn){
     console.log(txhex);
         $.ajax({
             type: "GET",
-            url: `https://server1.cryptodepot.org:3001/api/sendrawtransaction?hex=${txhex}`,
+            url: `https://apit.cryptodepot.org/c/pandacoin/sendrawtransaction?hex=${txhex}`,
             error: function(data) {
                 var r = ' Failed to Broadcast.'; // this wants a preceding space
                 $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
