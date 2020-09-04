@@ -5152,7 +5152,7 @@ else if (document.getElementById("customCoinTicker").value == "kmd") {
 coingeckoCoinName = coingeckoCoinName;
 			if (coinGecko === "true") {
 				document.getElementById("market-ticker").innerHTML = `<coingecko-coin-market-ticker-list-widget  coin-id="${coingeckoCoinName}" currency="usd" locale="en"></coingecko-coin-market-ticker-list-widget>`;
-				document.getElementById("coin-tick").innerHTML = `<coingecko-coin-price-marquee-widget  coin-ids="bitcoin,litecoin,pandacoin,dogecoin,dash,qtum,the-cypherfunks,viacoin,digibyte,htmlcoin,${coingeckoCoinName}" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget>`;
+				document.getElementById("coin-tick").innerHTML = `<coingecko-coin-price-marquee-widget  coin-ids="bitcoin,litecoin,pandacoin,dogecoin,dash,qtum,viacoin,digibyte,htmlcoin,${coingeckoCoinName}" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget>`;
 				document.getElementById("coingeckoinfo").innerHTML = `<center><a href="https://www.coingecko.com/en/coins/${coingeckoCoinName}">Coin Info</a></center>`;
 			}
 		}
@@ -5288,7 +5288,7 @@ jQuery(document).ready(function($) {
 						<div class="row">
 							<div class="col-md-12">
 								<script src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js"></script>
-								<div id="coin-tick"><coingecko-coin-price-marquee-widget  coin-ids="bitcoin,litecoin,pandacoin,dogecoin,dash,qtum,the-cypherfunks,viacoin,digibyte,htmlcoin" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget></div><br>
+								<div id="coin-tick"><coingecko-coin-price-marquee-widget  coin-ids="bitcoin,litecoin,pandacoin,dogecoin,dash,qtum,viacoin,digibyte,htmlcoin" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget></div><br>
 								<h2>Open Wallet <small> browser based <span id="bTtitle">Pandacoin</span> wallet</small></h2>
 								<div id="openLogin">
 									<form class="form-signin" role="form" action="javascript:;">
