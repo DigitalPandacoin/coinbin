@@ -400,27 +400,15 @@ else if(host=='custom_gobyte') {
 				// and finally broadcast!
 
 				tx2.broadcast(function(data){
-          if(host=='pandacoin_mainnet') {
-            if(data){
-              console.log(data);
-              $("#walletSendConfirmStatus").removeClass('hidden').addClass('alert-success').html('txid: <a href="https://chainz.cryptoid.info/pnd/tx.dws?' + data +'" target="_blank">'+ data +'</a>');
-            } else {
-              console.log(data);
-              $("#walletSendConfirmStatus").removeClass('hidden').addClass('alert-danger').html(unescape($(data).find("response").text()).replace(/\+/g,' '));
-              $("#walletSendFailTransaction").removeClass('hidden');
-              $("#walletSendFailTransaction textarea").val(signed);
-              thisbtn.attr('disabled',false);
-          }
-          } else {
-              if($(data).find("result").text()=="1"){
-                $("#walletSendConfirmStatus").removeClass('hidden').addClass('alert-success').html('txid: <a href="https://coinb.in/tx/'+$(data).find("txid").text()+'" target="_blank">'+$(data).find("txid").text()+'</a>');
-              } else {
-                $("#walletSendConfirmStatus").removeClass('hidden').addClass('alert-danger').html(unescape($(data).find("response").text()).replace(/\+/g,' '));
-    						$("#walletSendFailTransaction").removeClass('hidden');
-    						$("#walletSendFailTransaction textarea").val(signed);
-    						thisbtn.attr('disabled',false);
-  					}
-          }
+					if($(data).find("result").text()=="1"){
+						$("#walletSendConfirmStatus").removeClass('hidden').addClass('alert-success').html('txid: <a href="https://coinb.in/tx/'+$(data).find("txid").text()+'" target="_blank">'+$(data).find("txid").text()+'</a>');
+					} else {
+						$("#walletSendConfirmStatus").removeClass('hidden').addClass('alert-danger').html(unescape($(data).find("response").text()).replace(/\+/g,' '));
+						$("#walletSendFailTransaction").removeClass('hidden');
+						$("#walletSendFailTransaction textarea").val(signed);
+						thisbtn.attr('disabled',false);
+					}
+
 					// update wallet balance
 					walletBalance();
 
@@ -1666,6 +1654,9 @@ else if(host=='custom_gobyte') {
       listUnspentcoinexplorer(redeem);
     }
     else if(host=='cryptoid.info_cypherfunk'){
+      listUnspentCryptoidinfo(redeem);
+    }
+    else if(host=='cryptoid.info_cypherfunkdot'){
       listUnspentCryptoidinfo(redeem);
     }
     else if(host=="custom_deviantcoin"){
@@ -3206,7 +3197,7 @@ function rawSubmitpanda_server1(thisbtn){
     console.log(txhex);
         $.ajax({
             type: "GET",
-            url: `https://apit.cryptodepot.org/c/pandacoin/sendrawtransaction?hex=${txhex}`,
+            url: `https://server1.cryptodepot.org:3001/api/sendrawtransaction?hex=${txhex}`,
             error: function(data) {
                 var r = ' Failed to Broadcast.'; // this wants a preceding space
                 $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
@@ -3539,7 +3530,7 @@ function rawSubmitfeather(thisbtn){
                         });
                       }
 
-function rawSubmitviacoin(thisbtn){
+                      function rawSubmitviacoin(thisbtn){
         $(thisbtn).val('Please wait, loading...').attr('disabled',true);
         txhex = $("#rawTransaction").val().trim();
         console.log(txhex);
@@ -4105,6 +4096,38 @@ function rawSubmitgobyte(thisbtn){
           $(thisbtn).val('Submit').attr('disabled',false);
         }
       });
+      }
+
+      function rawSubmitCypherFunkdot(thisbtn) {
+        $(thisbtn).val('Please wait, loading...').attr('disabled',true);
+        txhex = $("#rawTransaction").val().trim();
+        $.ajax({
+          type: "GET",
+          url: `https://api.cryptodepot.org/cypherfunk/broadcast/${txhex}`,
+          data: $("#rawTransaction").val(),
+          error: function(data) {
+            if(data.responseText ==="There was an error. Check your console.") {
+              errcode = data.responseText;
+              var r = ' Failed to Broadcast.'; // this wants a preceding space
+              $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r + " " + errcode).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+            } else {
+              var txid = data.responseText;
+              $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: ${txid} <br> <a href="https://chainz.cryptoid.info/funk/tx.dws?${txid}" target="_BLANK"> View on Block Explorer </a>`);
+            }
+          },
+          success: function(data) {
+            if(data) {
+              var txid = data;  // is this right?
+              $("#rawTransactionStatus").addClass('alert-success').removeClass('alert-danger').removeClass("hidden").html(` Txid: ${txid} <br> <a href="https://chainz.cryptoid.info/funk/tx.dws?${txid}" target="_BLANK"> View on Block Explorer </a>`);
+            } else {
+              $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(' Unexpected error, please try again').prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
+            }
+          },
+          complete: function (data, status) {
+            $("#rawTransactionStatus").fadeOut().fadeIn();
+            $(thisbtn).val('Submit').attr('disabled',false);
+          }
+        });
       }
 
       function rawSubmitcryptoid(thisbtn){
@@ -4985,9 +5008,6 @@ function rawSubmitDigiExplorer(thisbtn){
       $("#coinjs_broadcast").val("cryptoid.info_cypherfunk").trigger("change");
       $("#coinjs_utxo").val("cryptoid.info_cypherfunk").trigger("change");
     }
-    else {
-      alert($("#allcoinsFormIDHere input[type='radio']:checked").val() + " Coin is not yet Functional");
-    }
     $("#settingsBtn").trigger("click");
     return false;
   });
@@ -5606,6 +5626,10 @@ function rawSubmitDigiExplorer(thisbtn){
 			$("#rawSubmitBtn").click(function(){
 				rawSubmitCypherFunk(this);
 			});
+    } else if(host=="cryptoid.info_cypherfunkdot"){
+  $("#rawSubmitBtn").click(function(){
+    rawSubmitCypherFunkdot(this);
+  });
         } else if(host=="cryptoid.info_zeitcoin"){
 			$("#rawSubmitBtn").click(function(){
 				rawSubmitzeitcoin(this);
