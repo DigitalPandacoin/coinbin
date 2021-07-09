@@ -19,8 +19,22 @@
 	coinjs.compressed = false;
 
 	/* other vars */
-	coinjs.developer = 'PWEuZH8VWWnYKjwiuL7iRYCDggJjiVqLRa'; //bitcoin
+coinjs.developer = 'PWEuZH8VWWnYKjwiuL7iRYCDggJjiVqLRa'; //jrm pandacoin_mainnet
+//JRM2 added from cointoolkit
+/* Bitcoin by default */
+coinjs.pub = 0x37;
+coinjs.priv = 0xb7;
+coinjs.multisig = 0x16;
+coinjs.hdkey = {'prv':0x0488ade4, 'pub':0x0488b21e};
+coinjs.bech32 = {'charset':'qpzry9x8gf2tvdw0s3jn54khce6mua7l', 'version':0, 'hrp':'pn'};
+coinjs.txExtraTimeField = true;
+coinjs.txExtraTimeFieldValue = false;
+coinjs.txExtraUnitField = false;
+coinjs.txExtraUnitFieldValue = false;
 
+coinjs.decimalPlaces = 6;
+coinjs.symbol = 'PND';
+$("#nTime").val(Date.now() / 1000 | 0);
 	/* bit(coinb.in) api vars */
 	coinjs.hostname	= ((document.location.hostname.split(".")[(document.location.hostname.split(".")).length-1]) == 'onion') ? '4zpinp6gdkjfplhk.onion' : 'coinb.in';
 	coinjs.host = ('https:'==document.location.protocol?'https://':'http://')+coinjs.hostname+'/api/';
@@ -960,7 +974,9 @@
 		r.witness = false;
 		r.timestamp = null;
 		r.block = null;
-
+//jrm3 added from cointoolkit
+r.nTime = (Date.now() / 1000)*1;
+r.nUnit = 0;
 		/* add an input to a transaction */
 		r.addinput = function(txid, index, script, sequence){
 			var o = {};
@@ -973,7 +989,11 @@
 		/* add an output to a transaction */
 		r.addoutput = function(address, value){
 			var o = {};
-			o.value = new BigInteger('' + Math.round((value*1) * 1e8), 10);
+			// JRM2 was o.value = new BigInteger('' + Math.round((value*1) * 1e8), 10);
+			//JRM2 stab in the dark try for spend later only for coins w digits =6
+			//jrm3 was o.value = new BigInteger('' + Math.round((value*1) * 1e6), 10);
+			//jrm2 added from Cointoolkit
+			o.value = new BigInteger('' + Math.round((value*1) * ("1e"+coinjs.decimalPlaces)), 10);
 			var s = coinjs.script();
 			o.script = s.spendToScript(address);
 
@@ -1038,7 +1058,7 @@
 		/* list unspent transactions */
 		r.listUnspent = function(address, callback) {
 			console.log("no");
-			coinjs.ajax('https://cryptodepot.org:8083/chainz/listunspent/pnd/'+ address +'&key=1a9c92c7492b', callback, "GET");
+			coinjs.ajax('https://api.cryptodepot.org/chainz/listunspent/pnd/'+address, callback, "GET");
 		}
 
 		/* add unspent to transaction */
@@ -1085,8 +1105,13 @@
 				}
 
 				x.unspent = unspent;
-				x.value = value;
+				console.log(unspent);
+				//jrm2 was x.value = value;
+			x.value = (value/100);
+				console.log(value);
 				x.total = total;
+				console.log(total);
+				console.log(x);
 				return callback(x);
 			});
 		}
@@ -1104,12 +1129,12 @@
 		/* broadcast a transaction */
 		r.broadcast = function(callback, txhex){
 			console.log("Reqesting");
+			console.log(txhex);
 			$.ajax({
 				type: "POST",
-				url: "./js/RPCSendRawTrans.php",
+				url: "https://chainz.cryptoid.info/pnd/api.dws?q=pushtx&key=1205735eba8c",
 				data: txhex,
-				//dataType: "json",
-				//contentType: "application/json",
+				dataType: "text", //"json",
 				error: function(data) {
 						var r = ' Failed to Broadcast.'; // this wants a preceding space
 						$("#walletSendConfirmStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
@@ -1652,7 +1677,10 @@
 		r.serialize = function(){
 			var buffer = [];
 			buffer = buffer.concat(coinjs.numToBytes(parseInt(this.version),4));
-
+			//JRM2 added from cointoolkit
+			if (coinjs.txExtraTimeField) {
+				buffer = buffer.concat(coinjs.numToBytes(parseInt(this.nTime),4));
+			}
 			if(coinjs.isArray(this.witness)){
 				buffer = buffer.concat([0x00, 0x01]);
 			}
@@ -1726,6 +1754,10 @@
 
 			var obj = new coinjs.transaction();
 			obj.version = readAsInt(4);
+//jrm added from cointoolkit
+			if (coinjs.txExtraTimeField) {
+				obj.nTime = readAsInt(4);
+			}
 
 			if(buffer[pos] == 0x00 && buffer[pos+1] == 0x01){
 				// segwit transaction

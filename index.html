@@ -15,7 +15,9 @@
 		<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
 		<link rel="stylesheet" href="css/style.css" media="screen">
 		<link rel="shortcut icon" href="https://cryptodepot.org/currency-icon-11.jpg" />
-
+		<link rel="icon"
+		      type="image/png"
+		      href="https://cryptodepot.org/currency-icon-11.jpg" />
 		<script src="js/jquery-1.9.1.min.js"></script>
 		<script src="js/moment.min.js"></script>
 		<script src="js/transition.js"></script>
@@ -5151,8 +5153,7 @@ else if (document.getElementById("customCoinTicker").value == "kmd") {
 				window.document.getElementById("xfeeTicker").textContent = tickerCode;
 coingeckoCoinName = coingeckoCoinName;
 			if (coinGecko === "true") {
-				document.getElementById("market-ticker").innerHTML = `<coingecko-coin-market-ticker-list-widget  coin-id="${coingeckoCoinName}" currency="usd" locale="en"></coingecko-coin-market-ticker-list-widget>`;
-				document.getElementById("coin-tick").innerHTML = `<coingecko-coin-price-marquee-widget  coin-ids="bitcoin,litecoin,pandacoin,dogecoin,dash,qtum,viacoin,digibyte,htmlcoin,${coingeckoCoinName}" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget>`;
+
 				document.getElementById("coingeckoinfo").innerHTML = `<center><a href="https://www.coingecko.com/en/coins/${coingeckoCoinName}">Coin Info</a></center>`;
 			}
 		}
@@ -5287,8 +5288,7 @@ jQuery(document).ready(function($) {
 					<div class="tab-pane tab-content" id="wallet">
 						<div class="row">
 							<div class="col-md-12">
-								<script src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js"></script>
-								<div id="coin-tick"><coingecko-coin-price-marquee-widget  coin-ids="bitcoin,litecoin,pandacoin,dogecoin,dash,qtum,viacoin,digibyte,htmlcoin" currency="usd" background-color="#ffffff" locale="en"></coingecko-coin-price-marquee-widget></div><br>
+
 								<h2>Open Wallet <small> browser based <span id="bTtitle">Pandacoin</span> wallet</small></h2>
 								<div id="openLogin">
 									<form class="form-signin" role="form" action="javascript:;">
@@ -5352,6 +5352,7 @@ jQuery(document).ready(function($) {
 													<li role="presentation" class="active"><a href="javascript:;" id="walletBalance">0.00 PND</a></li>
 													<li role="presentation"><a href="javascript:;" id="walletShowSpend">Spend</a></li>
 													<li role="presentation"><a id="walletHistory" href="javascript:;" target="_blank">History</a></li>
+
 													<li role="presentation"><a href="javascript:;" id="walletShowKeys">Keys</a></li>
 												</ul>
 												<div id="coingeckoinfo"><center><a href="https://www.coingecko.com/en/coins/pandacoin">Coin Info</a></center></div>
@@ -5417,7 +5418,7 @@ jQuery(document).ready(function($) {
 													<div class="row">
 														<div class="col-xs-6">
 															<label><abbr title="the amount to pay in network miner fee">Transaction Fee</abbr>&nbsp;&nbsp;<a href="javascript:;" id="feesestwallet"><span class="glyphicon glyphicon-question-sign"></span></a></label>
-															<input type="text" class="form-control" value="2.00000000" id="txFee">
+															<input type="text" class="form-control" value="5.00000000" id="txFee">
 														</div>
 														<div class="col-xs-5">
 															<label><abbr title="the amount to donate to coinb.in">PND Donation</abbr></label>
@@ -5438,8 +5439,7 @@ jQuery(document).ready(function($) {
 							</div>
 						</div>
 						<br><br>
-						<script src="https://widgets.coingecko.com/coingecko-coin-market-ticker-list-widget.js"></script>
-						<div id="market-ticker"><coingecko-coin-market-ticker-list-widget  coin-id="pandacoin" currency="usd" locale="en"></coingecko-coin-market-ticker-list-widget></div>
+
 					</div>
 
 					<div class="tab-pane tab-content" id="newAddress">
@@ -6489,8 +6489,8 @@ jQuery(document).ready(function($) {
 
 					<div class="tab-pane tab-content" id="about">
 						<h2>About <small>open source Pandacoin wallet</small></h2>
-						<p>Version 2.0.35</p>
-						<p>Compatible with Pandacoin</p>
+						<p>Version 2.0.38</p>
+						<p>Compatible with the new Pandacoin network and blockchain.</p>
                         <p><a href="https://github.com/DigitalPandacoin/coinbin">https://github.com/DigitalPandacoin/coinbin</a></p>
 						<p>Forked from <a href="https://coinb.in">https://coinb.in</a></p>
                         <p>Github <a href="https://github.com/DigitalPandacoin/coinbin">https://github.com/DigitalPandacoin/coinbin</a></p>
@@ -6949,7 +6949,7 @@ jQuery(document).ready(function($) {
 								<b>Network</b>: <br>
 								<p class="text-muted">Select which network you'd like to use for key pair generation.</p>
 								<select class="form-control" id="coinjs_coin">
-									<option value="pandacoin_mainnet" rel="0x37;0xb7;0x16;0x488b21e;0x488ade4;coinb.in;coinb.in">Pandacoin (mainnet)</option>
+									<option value="pandacoin_mainnet" rel="0x37;0xb7;0x16;0x488b21e;0x488ade4;pndcoin_server1;pndcoin_server1">Pandacoin (mainnet)</option>
 									<option value="pandacoin_mainnet" rel="0x37;0xb7;0x16;0x488b21e;0x488ade4;pndcoin_server1;pndcoin_server1">Pandacoin (server1)</option>
                   <option value="cypherfunk_mainnet" rel="0x1c;0x9c;0x3f;0x488b21e;0x488ade4;cryptoid.info_cypherfunk;cryptoid.info_cypherfunk">Cypherfunk (mainnet)</option>
 									<option value="cypherfunk_cryptodepot" rel="0x1c;0x9c;0x3f;0x488b21e;0x488ade4;cryptoid.info_cypherfunkdot;cryptoid.info_cypherfunkdot">Cypherfunk (CryptoDepot)</option>
@@ -7256,7 +7256,7 @@ jQuery(document).ready(function($) {
 
 		<div id="footer">
 			<div class="container text-right">
-	        		<p class="text-muted">Version  2.0.35</p>
+	        		<p class="text-muted">Version  2.0.38</p>
 			</div>
 		</div>
 
