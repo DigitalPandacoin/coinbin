@@ -4,7 +4,7 @@ var address;
 var coingeckoCoinName;
 var cBinApiLink = "https://api.cryptodepot.org/";
 var host = 'coinb.in';
-
+$("#nTime").val(Date.now() / 1000 | 0);
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -48,7 +48,7 @@ console.log("coinbin.js customCoinTicker reset to pnd")
 	$("#openBtn").click(function(){
       console.log(document.getElementById("openEmail").value);
       console.log(openPass)
-    document.getElementById("giftlinkinput").value = "https://cryptodepot.org/coinbin/?c=" + tickerCode.toLowerCase() + "&e=" + document.getElementById("openEmail").value + "&p=" + document.getElementById("openPass").value + "#wallet";
+          document.getElementById("giftlinkinput").value = "https://cryptodepot.org/coinbin/?&e=" + document.getElementById("openEmail").value + "&p=" + document.getElementById("openPass").value + "#wallet";
 		var email = $("#openEmail").val().toLowerCase();
 		if(email.match(/[\s\w\d]+@[\s\w\d]+/g)){
 			if($("#openPass").val().length>=10){
@@ -244,13 +244,17 @@ else if(host=='custom_gobyte') {
 // Edit Walle
 // Edit WalletHistory ^^
 					$("#walletHistory").attr('href',explorer_addr+address);
-
+          if(tickerCode == "PND"){
+          $("#walletSubmit").attr('href',"https://api.cryptodepot.org/c/pandacoin/importprivkey?pandacoinprivkey="+wif);
+} else $("#walletSubmit").html("");
 					$("#walletQrCode").html("");
 					var qrcode = new QRCode("walletQrCode");
           qrcode.makeCode(coingeckoCoinName+":"+address);
           $("#giftQrCode").html("");
 					var qrcode = new QRCode("giftQrCode");
-          qrcode.makeCode("https://cryptodepot.org/coinbin/?c=" + tickerCode.toLowerCase() + "&e=" + document.getElementById("openEmail").value + "&p=" + document.getElementById("openPass").value + "#wallet");
+          qrcode.makeCode("https://cryptodepot.org/coinbin/?&e=" + document.getElementById("openEmail").value + "&p=" + document.getElementById("openPass").value + "#wallet");
+
+
 
 					$("#walletKeys .privkey").val(wif);
 					$("#walletKeys .pubkey").val(pubkey);
@@ -283,7 +287,9 @@ else if(host=='custom_gobyte') {
 
 		$("#walletAddress").html("");
 		$("#walletHistory").attr('href',explorer_addr+address);
-
+    if(tickerCode == "PND"){
+    $("#walletSubmit").attr('href',"https://api.cryptodepot.org/c/pandacoin/importprivkey?pandacoinprivkey=");
+} else $("#walletSubmit").html("");
 		$("#walletQrCode").html("");
 		var qrcode = new QRCode("walletQrCode");
 	   qrcode.makeCode(coingeckoCoinName+":"+address);
@@ -381,8 +387,9 @@ else if(host=='custom_gobyte') {
 
 		tx.addUnspent($("#walletAddress").html(), function(data){
 
-			var dvalue = (data.value/100000000).toFixed(8) * 1;
-			total = (total*1).toFixed(8) * 1;
+			//jrmwas var dvalue = (data.value/100000000).toFixed(8) * 1;
+  var dvalue = data.value/("1e"+coinjs.decimalPlaces);
+	//jrmwas		total = (total*1).toFixed(8) * 1;    since missing in cointools
 
 			if(dvalue>=total){
 				var change = dvalue-total;
@@ -464,8 +471,9 @@ else if(host=='custom_gobyte') {
 			}
 		});
 
-		total = total.toFixed(8);
-
+		//was total = total.toFixed(8);
+    total = total.toFixed(coinjs.decimalPlaces);
+console.log(total);
 		if($("#walletSpend .has-error").length==0){
 			var balance = ($("#walletBalance").html()).replace(/[^0-9\.]+/g,'')*1;
 			if(total<=balance){
@@ -501,6 +509,9 @@ else if(host=='custom_gobyte') {
 	function walletBalance(){
 		var tx = coinjs.transaction();
 console.log("function walletBalance()");
+console.log(coinjs_pub);
+console.log(coinjs_priv);
+console.log(coinjs_multisig);
 if(tickerCode == null){
         tickerCode = "PND";
 console.log("coinbin.js customCoinTicker reset to pnd")
@@ -1366,7 +1377,12 @@ else if(host=='custom_gobyte') {
 		if(($("#nLockTime").val()).match(/^[0-9]+$/g)){
 			tx.lock_time = $("#nLockTime").val()*1;
 		}
-
+//JRM2 added from Cointoolkit came up with modified tx.nTime = (Date.now() / 1000 | 0)*1;  for now
+//$("#nTime").val(Date.now() / 1000 | 0);
+//if(($("#nTime").val()).match(/^[0-9]+$/g)){
+if (coinjs.txExtraTimeField) {
+  tx.nTime = (Date.now() / 1000 | 0)*1;
+}
 		$("#inputs .row").removeClass('has-error');
 
 		$('#putTabs a[href="#txinputs"], #putTabs a[href="#txoutputs"]').attr('style','');
@@ -1415,6 +1431,8 @@ else if(host=='custom_gobyte') {
 				// P2SH output is 32, P2PKH is 34
         estimatedTxSize += (ad.version == coinjs.pub ? 34 : 32)
   				tx.addoutput(a, $(".amount",o).val());
+          //JRM2
+          console.log(a, $(".amount",o).val());
 			} else if (((a!="") && ad.version === 42) && $(".amount",o).val()!=""){ // stealth address
 				// 1 P2PKH and 1 OP_RETURN with 36 bytes, OP byte, and 8 byte value
 				estimatedTxSize += 78
@@ -2921,7 +2939,7 @@ function listUnspentBlockcypher(redeem,network){
     console.log('test');
 		$.ajax ({
 			type: "GET",
-			url: "https://server1.cryptodepot.org:3001/ext/listunspent/"+redeem.addr+"",
+			url: "https://funk.cryptodepot.org:3004/ext/listunspent/"+redeem.addr+"",
 			dataType: "json",
 			error: function(data) {
         console.log("https://server1.cryptodepot.org:3001/ext/listunspent/"+redeem.addr+"");
@@ -3116,7 +3134,9 @@ function listUnspentBlockcypher(redeem,network){
 				if(!isNaN($(o).val())){
 					f += $(o).val()*1;
 				}
-				$("#totalInput").html((($("#totalInput").html()*1) + (f*1)).toFixed(8));
+				//jrm was $("#totalInput").html((($("#totalInput").html()*1) + (f*1)).toFixed(8));
+        //jrm added from Cointoolkit
+        $("#totalInput").html((($("#totalInput").html()*1) + (f*1)).toFixed(coinjs.decimalPlaces));
 			}
 		});
 		totalFee();
@@ -3135,14 +3155,18 @@ function listUnspentBlockcypher(redeem,network){
 						f += $(o).val()*1;
 					}
 				});
-				$("#totalOutput").html((f).toFixed(8));
+				//JRM was$("#totalOutput").html((f).toFixed(8));
+        //JRM2 added from cointools
+        $("#totalOutput").html((f).toFixed(coinjs.decimalPlaces));
 			}
 			totalFee();
 		}).keyup();
 	}
 
 	function totalFee(){
-		var fee = (($("#totalInput").html()*1) - ($("#totalOutput").html()*1)).toFixed(8);
+		//jrm was var fee = (($("#totalInput").html()*1) - ($("#totalOutput").html()*1)).toFixed(8);
+    //jrm added from cointools
+    var fee = (($("#totalInput").html()*1) - ($("#totalOutput").html()*1)).toFixed(coinjs.decimalPlaces);
 		$("#transactionFee").val((fee>0)?fee:'0.00');
 	}
 
@@ -3197,7 +3221,7 @@ function rawSubmitpanda_server1(thisbtn){
     console.log(txhex);
         $.ajax({
             type: "GET",
-            url: `https://server1.cryptodepot.org:3001/api/sendrawtransaction?hex=${txhex}`,
+            url: `http://funk.cryptodepot.org:3004/api/sendrawtransaction?hex=${txhex}`,
             error: function(data) {
                 var r = ' Failed to Broadcast.'; // this wants a preceding space
                 $("#rawTransactionStatus").addClass('alert-danger').removeClass('alert-success').removeClass("hidden").html(r).prepend('<span class="glyphicon glyphicon-exclamation-sign"></span>');
@@ -4427,7 +4451,9 @@ function rawSubmitDigiExplorer(thisbtn){
 
 					h += '<tr>';
 					h += '<td><input type="text" class="form-control" value="(OP_RETURN) '+data+'" readonly></td>';
-					h += '<td class="col-xs-1">'+(o.value/100000000).toFixed(8)+'</td>';
+					//jrm was h += '<td class="col-xs-1">'+(o.value/100000000).toFixed(8)+'</td>';
+          //JRM2 added from cointools
+          h += '<td class="col-xs-1">'+(o.value/("1e"+coinjs.decimalPlaces)).toFixed(coinjs.decimalPlaces)+'</td>';
 					h += '<td class="col-xs-2"><input class="form-control" type="text" value="'+Crypto.util.bytesToHex(o.script.buffer)+'" readonly></td>';
 					h += '</tr>';
 				} else {
@@ -4446,7 +4472,8 @@ function rawSubmitDigiExplorer(thisbtn){
 
 					h += '<tr>';
 					h += '<td><input class="form-control" type="text" value="'+addr+'" readonly></td>';
-					h += '<td class="col-xs-1">'+(o.value/100000000).toFixed(8)+'</td>';
+					//jrm was h += '<td class="col-xs-1">'+(o.value/100000000).toFixed(8)+'</td>';
+        	h += '<td class="col-xs-1">'+(o.value/("1e"+coinjs.decimalPlaces)).toFixed(coinjs.decimalPlaces)+'</td>';
 					h += '<td class="col-xs-2"><input class="form-control" type="text" value="'+Crypto.util.bytesToHex(o.script.buffer)+'" readonly></td>';
 					h += '</tr>';
 				}
@@ -4721,7 +4748,9 @@ function rawSubmitDigiExplorer(thisbtn){
 	$("#coinjs_pub").val('0x'+(coinjs.pub).toString(16));
 	$("#coinjs_priv").val('0x'+(coinjs.priv).toString(16));
 	$("#coinjs_multisig").val('0x'+(coinjs.multisig).toString(16));
-
+  console.log(coinjs_pub);
+  console.log(coinjs_priv);
+  console.log(coinjs_multisig);
 	$("#coinjs_hdpub").val('0x'+(coinjs.hdkey.pub).toString(16));
 	$("#coinjs_hdprv").val('0x'+(coinjs.hdkey.prv).toString(16));
   //$("#coinjs_ticker");
@@ -4747,7 +4776,16 @@ function rawSubmitDigiExplorer(thisbtn){
 
 			coinjs.hdkey.pub =  $("#coinjs_hdpub").val()*1;
 			coinjs.hdkey.prv =  $("#coinjs_hdprv").val()*1;
-
+      coinjs.txExtraTimeField = ($("#coinjs_extratimefield").val() == "true");
+      //JRM2 added from cointookit
+      if (coinjs.txExtraTimeField) {
+        $("#nTime").val(Date.now() / 1000 | 0);
+        $("#txTimeOptional").show();
+        $("#verifyTransactionData .txtime").show();
+      } else {
+        $("#txTimeOptional").hide();
+        $("#verifyTransactionData .txtime").hide();
+      }
 			configureBroadcast();
 			configureGetUnspentTx();
 
@@ -5413,11 +5451,17 @@ function rawSubmitDigiExplorer(thisbtn){
     $("#settingsBtn").trigger("click");
   }
   else if(cUrl == 'pnd') {
-    $("#coinjs_coin").val("custom").trigger("change");
+    document.getElementById("coinjs_pub").value = "0x37";
+    document.getElementById("coinjs_priv").value = "0xb7";
+    document.getElementById("coinjs_multisig").value = "0x16";
+    document.getElementById("bTtitle").textContent = "Pandacoin";
+    document.getElementById("bTtitle1").textContent = "Pandacoin";
+    document.getElementById("coinLogo").src = "images/logo/pnd.png";
+    $("#coinjs_coin").val("pndcoin_server1").trigger("change");
     $("#customCoinTicker").val(cUrl).trigger("change");
-    $("#coinjs_coin").val("pandacoin_mainnet").trigger("change");
-    $("#coinjs_broadcast").val("coinb.in").trigger("change");
-    $("#coinjs_utxo").val("coinb.in").trigger("change");
+    $("#coinjs_coin").val("pndcoin_server1").trigger("change");
+    $("#coinjs_broadcast").val("pndcoin_server1").trigger("change");
+    $("#coinjs_utxo").val("pndcoin_server1").trigger("change");
     $("#settingsBtn").trigger("click");
   }
   else if(cUrl == 'sys') {
